@@ -1,0 +1,53 @@
+#SPARQL querying
+
+#simple example with bob and alice and Mona Lisa
+https://atomgraph.github.io/SPARQL-Playground/
+
+#example with SERVICE keyword (federated querying)
+https://qlever.cs.uni-freiburg.de/imdb/ATEsSP
+
+#Slightly complex query
+https://qlever.cs.uni-freiburg.de/wikidata/FMZ8Sr
+
+#TASK:
+Find the name and long + lat coordinates of a borehole which used Dynamite
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+prefix ui: <http://example.org/underground_infra#> 
+
+SELECT ?name ?longitude ?latitude
+WHERE {
+?SomeBorehole rdf:type ui:Borehole ;
+ui:equipment "Dynamite" ;
+ui:name ?name ;
+ui:longitude ?longitude ;
+ui:latitude ?latitude.
+}
+
+#TASK:
+A3.b: I am a researcher in the geothermal energy domain and would like to know about the experiment setup (e.g., infrastructure, instrumentation), which stimulation protocols were used (e.g., pressure and flow rates), and what data was produced (e.g., seismic waveforms, temperature, pressure, displacement) so that I can generate new data products and software (e.g., model, algorithm, interpretation).
+
+Pseudo SPARQL:
+
+SELECT *
+WHERE {
+    ?SomeExperiment a bd:GeothermalExperiment ;
+                bd:hasInstrumentation ?instrumentation ;
+                bd:usesStimulationProtocol ?stimulationProtocol ;
+                bd:producedData ?dataProduced ;
+                bd:hasInfrastructure ?SomeUndergroundInfrastructure.
+    
+    ?SomeUndergroundInfrastructure bd:name ?name ;
+                bd:longitude ?longitude ;
+                bd:latitude ?latitude
+                ...
+                .
+    ?stimulationProtocol a bd:StimulationProtocol ;
+                bd:property "value" ;
+                ...
+                .
+    }
+    
+
+                                    
+                

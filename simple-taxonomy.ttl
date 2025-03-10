@@ -1,0 +1,51 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ui: <http://example.org/underground_infra#> .
+
+ui:UndergroundInfrastructure rdf:type rdfs:Class ;
+    rdfs:label "Underground Infrastructure" .
+
+ui:Borehole rdf:type rdfs:Class ;
+    rdfs:label "Borehole" ;
+    rdfs:subClassOf ui:UndergroundInfrastructure .
+
+ui:BoreholeArray rdf:type rdfs:Class ;
+    rdfs:label "Borehole Array" ;
+    rdfs:subClassOf ui:UndergroundInfrastructure .
+
+ui:name rdf:type rdf:Property ;
+    rdfs:domain ui:Borehole ;
+    rdfs:range xsd:string .
+
+ui:type rdf:type rdf:Property ;
+    rdfs:domain ui:Borehole ;
+    rdfs:range xsd:string .
+
+ui:longitude rdf:type rdf:Property ;
+    rdfs:domain ui:Borehole ;
+    rdfs:range xsd:double .
+
+ui:latitude rdf:type rdf:Property ;
+    rdfs:domain ui:Borehole ;
+    rdfs:range xsd:double .
+
+ui:elevation rdf:type rdf:Property ;
+    rdfs:domain ui:Borehole ;
+    rdfs:range xsd:double .
+
+ui:depth rdf:type rdf:Property ;
+    rdfs:domain ui:Borehole ;
+    rdfs:range xsd:double .
+
+ui:equipment rdf:type rdf:Property ;
+    rdfs:domain ui:Borehole ;
+    rdfs:range xsd:string .
+
+ui:location rdf:type rdf:Property ;
+    rdfs:domain ui:BoreholeArray ;
+    rdfs:range xsd:string .
+
+ui:purpose rdf:type rdf:Property ;
+    rdfs:domain ui:BoreholeArray ;
+    rdfs:range xsd:string .

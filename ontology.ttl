@@ -1,0 +1,100 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ui: <http://example.org/underground_infra#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+ui:UndergroundInfrastructureShape rdf:type sh:NodeShape ;
+    sh:targetClass ui:UndergroundInfrastructure .
+
+ui:BoreholeShape rdf:type sh:NodeShape ;
+    sh:targetClass ui:Borehole ;
+    sh:property [
+        sh:path ui:name ;
+        sh:datatype xsd:string ;
+    ] ;
+    sh:property [
+        sh:path ui:type ;
+        sh:datatype xsd:string ;
+    ] ;
+    sh:property [
+        sh:path ui:longitude ;
+        sh:datatype xsd:double ;
+    ] ;
+    sh:property [
+        sh:path ui:latitude ;
+        sh:datatype xsd:double ;
+    ] ;
+    sh:property [
+        sh:path ui:elevation ;
+        sh:datatype xsd:double ;
+    ] ;
+    sh:property [
+        sh:path ui:depth ;
+        sh:datatype xsd:double ;
+    ] ;
+    sh:property [
+        sh:path ui:equipment ;
+        sh:datatype xsd:string ;
+    ] .
+
+ui:BoreholeArrayShape rdf:type sh:NodeShape ;
+    sh:targetClass ui:BoreholeArray ;
+    sh:property [
+        sh:path ui:location ;
+        sh:datatype xsd:string ;
+    ] ;
+    sh:property [
+        sh:path ui:purpose ;
+        sh:datatype xsd:string ;
+    ] .
+
+ui:UndergroundInfrastructure rdf:type rdfs:Class ;
+    rdfs:label "Underground Infrastructure" ;
+    rdfs:comment "A general category for underground structures used for geological, scientific, or engineering purposes." .
+
+ui:Borehole rdf:type rdfs:Class ;
+    rdfs:label "Borehole" ;
+    rdfs:subClassOf ui:UndergroundInfrastructure ;
+    rdfs:comment "A narrow, deep hole drilled into the ground for various applications such as exploration, extraction, or research." .
+
+ui:BoreholeArray rdf:type rdfs:Class ;
+    rdfs:label "Borehole Array" ;
+    rdfs:subClassOf ui:UndergroundInfrastructure ;
+    rdfs:comment "A collection of boreholes arranged for a specific purpose, such as geophysical studies or monitoring." .
+
+ui:name rdf:type rdf:Property ;
+    rdfs:label "Name" ;
+    rdfs:comment "The identifier or designation of the borehole." .
+
+ui:type rdf:type rdf:Property ;
+    rdfs:label "Type" ;
+    rdfs:comment "The classification or category of the borehole, such as exploratory or monitoring." .
+
+ui:longitude rdf:type rdf:Property ;
+    rdfs:label "Longitude" ;
+    rdfs:comment "The geographical longitude coordinate of the borehole." .
+
+ui:latitude rdf:type rdf:Property ;
+    rdfs:label "Latitude" ;
+    rdfs:comment "The geographical latitude coordinate of the borehole." .
+
+ui:elevation rdf:type rdf:Property ;
+    rdfs:label "Elevation" ;
+    rdfs:comment "The height above sea level at the borehole location." .
+
+ui:depth rdf:type rdf:Property ;
+    rdfs:label "Depth" ;
+    rdfs:comment "The vertical depth of the borehole." .
+
+ui:equipment rdf:type rdf:Property ;
+    rdfs:label "Equipment" ;
+    rdfs:comment "Any tools or instruments installed in the borehole." .
+
+ui:location rdf:type rdf:Property ;
+    rdfs:label "Location" ;
+    rdfs:comment "The general area where the borehole array is situated." .
+
+ui:purpose rdf:type rdf:Property ;
+    rdfs:label "Purpose" ;
+    rdfs:comment "The intended function or objective of the borehole array." .

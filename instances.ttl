@@ -1,0 +1,34 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ui: <http://example.org/underground_infra#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+# Sample Instances
+ui:Borehole1 rdf:type ui:Borehole ;
+    ui:name "BH-001" ;
+    ui:type "Exploratory" ;
+    ui:longitude -122.4194 ;
+    ui:latitude 37.7749 ;
+    ui:elevation 30.5 ; 
+    ui:depth 200.0 ; 
+    ui:equipment "Vibration sensor", "Dynamite" .
+
+ui:Borehole2 rdf:type ui:Borehole ;
+    ui:name "BH-002" ;
+    ui:type "Monitoring" ;
+    ui:longitude -123.1216 ;
+    ui:latitude 49.2827 ;
+    ui:elevation 15.2 ;
+    ui:depth 150.0 ;
+    ui:equipment "Temperature Probe", "Pressure Sensor" .
+
+ui:BoreholeArray1 rdf:type ui:BoreholeArray ;
+    ui:location "Vailais Basin" ;
+    ui:purpose "Seismic Monitoring" .
+
+ui:BoreholeArray2 rdf:type ui:BoreholeArray ;
+    ui:location "Ticino Region" ;
+    ui:purpose "Groundwater Analysis" .
+
+#What do you notice about this data? What is missing?
