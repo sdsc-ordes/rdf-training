@@ -1,0 +1,1 @@
+This repository is a place for hosting some training materials and exercises related to RDF. Currently a glorified dropbox, it may be expanded in the future to be more domain agnostic and host tools that make learning RDF easier.
