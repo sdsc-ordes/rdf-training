@@ -12,10 +12,14 @@ ui:BoreholeShape rdf:type sh:NodeShape ;
     sh:property [
         sh:path ui:name ;
         sh:datatype xsd:string ;
+        sh:maxLength 100 ;
+        sh:minCount 1 ;
     ] ;
     sh:property [
         sh:path ui:type ;
         sh:datatype xsd:string ;
+        sh:class ui:BoreholeType ; #picklist of possible borehole types
+       #sh:in ("Borehole Type 1" "Borehole Type 2") # Do we want to say anything about these types?
     ] ;
     sh:property [
         sh:path ui:longitude ;
@@ -27,7 +31,8 @@ ui:BoreholeShape rdf:type sh:NodeShape ;
     ] ;
     sh:property [
         sh:path ui:elevation ;
-        sh:datatype xsd:double ;
+        sh:node [sh:path qudt:unit ;
+                 sh:hasValue <https://qudt.org/vocab/unit/CentiM> ;]
     ] ;
     sh:property [
         sh:path ui:depth ;
