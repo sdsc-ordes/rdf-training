@@ -3,6 +3,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix ui: <http://example.org/underground_infra#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
 
 ui:UndergroundInfrastructureShape rdf:type sh:NodeShape ;
     sh:targetClass ui:UndergroundInfrastructure .
