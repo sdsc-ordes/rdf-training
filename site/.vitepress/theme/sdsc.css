@@ -16,3 +16,8 @@
 .VPHero .text {
   font-family: var(--sdsc-font-heading);
 }
+
+/* Copyable prompts wrap instead of scrolling. */
+.vp-doc .prompt code {
+  white-space: pre-wrap;
+}

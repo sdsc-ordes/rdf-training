@@ -9,6 +9,17 @@ export default defineConfig({
   themeConfig: {
     logo: { light: '/SDSC_Logo_RGB.png', dark: '/SDSC_Logo_White.png' },
     siteTitle: false,
+    nav: [{ text: 'Hands-on', link: '/hands-on/h1-model' }],
+    sidebar: [
+      {
+        text: 'Hands-on',
+        items: [
+          { text: 'H1 · Model', link: '/hands-on/h1-model' },
+          { text: 'H2 · Generate and validate', link: '/hands-on/h2-validate' },
+          { text: 'H3 · Query', link: '/hands-on/h3-query' },
+        ],
+      },
+    ],
     socialLinks: [{ icon: 'github', link: 'https://github.com/sdsc-ordes/rdf-training' }],
   },
 })
