@@ -10,6 +10,7 @@
 @prefix course:   <https://sdsc-ordes.github.io/rdf-training/id/course/> .
 @prefix person:   <https://sdsc-ordes.github.io/rdf-training/id/person/> .
 
+# #region pizza
 recipe:pizza-margherita a schema:Recipe ;
     schema:name "Pizza Margherita" ;
     schema:description "Classic Neapolitan pizza with tomato, mozzarella and basil."@en ;
@@ -19,6 +20,7 @@ recipe:pizza-margherita a schema:Recipe ;
     rec:course course:main ;
     schema:suitableForDiet schema:VegetarianDiet ;
     rec:hasIngredient food:wheat-flour, food:tomato, food:mozzarella, food:basil, food:olive-oil .
+# #endregion pizza
 
 recipe:gazpacho a schema:Recipe ;
     schema:name "Gazpacho"@es ;

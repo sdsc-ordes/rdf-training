@@ -48,13 +48,15 @@ recsh:Recipe-author a sh:PropertyShape ;
     sh:severity sh:Warning ;
     sh:message "Add an author: a schema:Person, e.g. person:anna-keller."@en .
 
+# #region totalTime
 recsh:Recipe-totalTime a sh:PropertyShape ;
     sh:path schema:totalTime ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
     sh:datatype xsd:dayTimeDuration ;
-    sh:message "Each recipe needs exactly one totalTime typed xsd:dayTimeDuration, e.g. \"PT30M\"^^xsd:dayTimeDuration."@en,
-        "Jedes Rezept braucht genau eine totalTime vom Typ xsd:dayTimeDuration, z. B. \"PT30M\"^^xsd:dayTimeDuration."@de .
+    sh:message "Use exactly one totalTime of type xsd:dayTimeDuration, e.g. \"PT30M\"^^xsd:dayTimeDuration."@en,
+        "Genau eine totalTime vom Typ xsd:dayTimeDuration, z. B. \"PT30M\"^^xsd:dayTimeDuration."@de .
+# #endregion totalTime
 
 recsh:Recipe-cuisine a sh:PropertyShape ;
     sh:path rec:cuisine ;
