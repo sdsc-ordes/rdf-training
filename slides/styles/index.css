@@ -30,3 +30,9 @@
 
 /* Compact tables. */
 .slidev-layout table.compact { font-size: 0.8rem; }
+
+/* Show code exactly as typed: no ligatures (e.g. {| |} and -> in Fira Code). */
+.slidev-layout pre code { font-variant-ligatures: none; }
+
+/* Per-slide option (frontmatter `class: code-small`) for wide listings. */
+.slidev-layout.code-small pre { font-size: 0.64rem; }
