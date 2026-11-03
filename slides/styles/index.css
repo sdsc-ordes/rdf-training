@@ -46,3 +46,13 @@
 .lg-ours::before { background: var(--sdsc-secondary); border-color: var(--sdsc-secondary); }
 .lg-reused::before { background: var(--sdsc-light-blue-bg); }
 .lg-external::before { border-style: dashed; }
+
+/* Prefix declarations (added by setup/shiki.ts or written in the code): greyed, still readable and linked. */
+.slidev-layout .code-prefixes { opacity: 0.45; margin-bottom: 0.3em; font-size: 0.85em; line-height: 1.4; }
+.slidev-layout .code-prefixes > div { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.slidev-layout .code-prefixes a { color: inherit; text-decoration: none; }
+.slidev-layout .code-prefixes a:hover { text-decoration: underline; }
+.slidev-layout .line.prefix-line { opacity: 0.45; }
+
+/* Two-column grids: let columns shrink (code then wraps prefixes with an ellipsis) instead of growing past the slide. */
+.slidev-layout.two-cols-header > *, .slidev-layout.two-cols > * { min-width: 0; }
