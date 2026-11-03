@@ -4,7 +4,7 @@ minutes: 3
 
 # Family A: graphs built by an LLM
 
-```mermaid {scale: 0.85}
+```mermaid {scale: 0.72}
 graph LR
   T[Text chunks] --> X[LLM extracts<br/>entities and relations]
   X --> G[(Graph)]

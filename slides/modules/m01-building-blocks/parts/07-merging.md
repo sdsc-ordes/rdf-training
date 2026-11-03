@@ -1,5 +1,6 @@
 ---
 layout: two-cols-header
+class: code-small
 minutes: 2
 ---
 
