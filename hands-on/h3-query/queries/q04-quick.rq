@@ -1,0 +1,12 @@
+# q04 · Which recipes take less than 30 minutes? (CQ1)
+PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
+PREFIX schema: <https://schema.org/>
+
+SELECT ?name ?time WHERE {
+  ?recipe a schema:Recipe ;
+          schema:name ?name ;
+          schema:totalTime ?time .
+  FILTER(lang(?name) = "en")
+  FILTER(?time < "PT30M"^^xsd:dayTimeDuration)
+}
+ORDER BY ?time ?name

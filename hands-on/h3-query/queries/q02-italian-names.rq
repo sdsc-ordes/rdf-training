@@ -1,0 +1,10 @@
+# q02 · Recipe names in Italian, falling back to English
+PREFIX schema: <https://schema.org/>
+
+SELECT ?recipe ?name WHERE {
+  ?recipe a schema:Recipe .
+  OPTIONAL { ?recipe schema:name ?it FILTER(lang(?it) = "it") }
+  OPTIONAL { ?recipe schema:name ?en FILTER(lang(?en) = "en") }
+  BIND(COALESCE(?it, ?en) AS ?name)
+}
+ORDER BY ?name

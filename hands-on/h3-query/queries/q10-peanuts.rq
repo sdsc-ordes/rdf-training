@@ -1,0 +1,8 @@
+# q10 · Does Pad Thai contain peanuts, also hidden inside products?
+PREFIX rec:      <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#>
+PREFIX recipe:   <https://sdsc-ordes.github.io/rdf-training/id/recipe/>
+PREFIX allergen: <https://sdsc-ordes.github.io/rdf-training/id/allergen/>
+
+ASK {
+  recipe:pad-thai rec:hasIngredient/rec:containsIngredient*/rec:hasAllergen allergen:peanuts .
+}

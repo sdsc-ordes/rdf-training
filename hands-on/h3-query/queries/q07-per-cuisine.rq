@@ -1,0 +1,12 @@
+# q07 · How many recipes per cuisine?
+PREFIX skos:   <http://www.w3.org/2004/02/skos/core#>
+PREFIX schema: <https://schema.org/>
+PREFIX rec:    <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#>
+
+SELECT ?cuisine (COUNT(?recipe) AS ?recipes) WHERE {
+  ?recipe a schema:Recipe ;
+          rec:cuisine/skos:prefLabel ?cuisine .
+  FILTER(lang(?cuisine) = "en")
+}
+GROUP BY ?cuisine
+ORDER BY DESC(?recipes) ?cuisine

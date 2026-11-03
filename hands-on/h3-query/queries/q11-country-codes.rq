@@ -1,0 +1,13 @@
+# q11 · Where do our ingredients grow? Country codes fetched live from Wikidata
+# online: true
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX wdt:  <http://www.wikidata.org/prop/direct/>
+PREFIX rec:  <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#>
+
+SELECT ?country ?code WHERE {
+  { SELECT DISTINCT ?c WHERE { ?food rec:grownIn ?c } }
+  ?c rdfs:label ?country .
+  FILTER(lang(?country) = "en")
+  SERVICE <https://query.wikidata.org/sparql> { ?c wdt:P297 ?code }
+}
+ORDER BY ?country
