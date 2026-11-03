@@ -14,10 +14,10 @@ minutes: 3
 
 <div class="sdsc-takeaway">Only RDF is required. Add the other layers when you need them.</div>
 
-<p class="fine">Status, November 2026: RDF 1.2 and SPARQL 1.2 are W3C Candidate Recommendations; SHACL 1.2 is a Working Draft.</p>
+<p class="fine">Status, November 2026: RDF 1.2 is a W3C Candidate Recommendation; SPARQL 1.2 and SHACL 1.2 are Working Drafts.</p>
 
 <!--
 RDF Recommendation 1999 (1.1 in 2014, 1.2 CR April 2026). RDFS Rec 2004. OWL 2004, OWL 2 2009.
-SPARQL 2008, 1.1 2013. SKOS 2009. SHACL 2017. JSON-LD 1.1 2020.
+SPARQL 2008, 1.1 2013, 1.2 Working Draft. SKOS 2009. SHACL 2017. JSON-LD 1.1 2020.
 Re-check the 1.2 status before each delivery: https://www.w3.org/TR/
 -->

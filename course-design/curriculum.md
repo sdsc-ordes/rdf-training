@@ -35,7 +35,7 @@ Minutes = core / full.
 
 ### M02 W3C stack vs property graphs (10 / 25)
 - Core: one redrawn stack (model / syntax / semantics / validation / query); same fact in Turtle and Cypher; 5-row trade-off table; scenario vote
-- Ext: timeline (RDF 1999 → 1.1 2014 → 1.2 CR 2026; RDFS 2004; OWL 2004/2009; SPARQL 2008/2013/1.2 CR; SKOS 2009; SHACL 2017/1.2 WD; JSON-LD 1.1 2020); RDF 1.2 triple terms + annotation syntax; named graphs; RDFS entailment; GQL (ISO/IEC 39075:2024), Cypher 25; ecosystem (Kuzu archived 2025, Memgraph, FalkorDB, Spanner Graph); RDF↔LPG bridges
+- Ext: timeline (RDF 1999 → 1.1 2014 → 1.2 CR 2026; RDFS 2004; OWL 2004/2009; SPARQL 2008/2013/1.2 WD; SKOS 2009; SHACL 2017/1.2 WD; JSON-LD 1.1 2020); RDF 1.2 triple terms + annotation syntax; named graphs; RDFS entailment; GQL (ISO/IEC 39075:2024), Cypher 25; ecosystem (Kuzu archived 2025, Memgraph, FalkorDB, Spanner Graph); RDF↔LPG bridges
 - Example: "Alice rated Rösti 5 stars (source, confidence)" as Cypher edge property, RDF 1.2 annotation, RDF 1.1 n-ary
 - Vote: supplier allergen merge → RDF; in-app recommendations → LPG; open nutrition data → RDF/JSON-LD
 - Takeaway: *RDF is built for shared meaning across organisations, property graphs for traversal inside one app — the gap is narrowing.*
@@ -91,7 +91,7 @@ Minutes = core / full.
 
 ### M06 SPARQL (5 / 20)
 - Core: a query is a Turtle-like pattern with variables; SELECT anatomy on CQ1; where to run it
-- Ext: fixed Alice/Bob/Charlie (predict the rows); syntax cheat sheet; OPTIONAL, FILTER/NOT EXISTS, property paths, GROUP BY/HAVING, VALUES/BIND/COALESCE; SERVICE to Wikidata via QLever; CONSTRUCT/ASK/DESCRIBE/Update; endpoints; SPARQL 1.2; check LLM-written queries
+- Ext: fixed Alice/Bob/Charlie (predict the rows); syntax cheat sheet; OPTIONAL, FILTER/NOT EXISTS, property paths, GROUP BY/HAVING, VALUES/BIND/COALESCE; SERVICE to Wikidata via QLever; CONSTRUCT/ASK/DESCRIBE/Update; endpoints; SPARQL 1.2 (Working Draft); check LLM-written queries
 - Takeaway: *A query is a graph pattern with holes; you get every way it fits the data.*
 
 ### H3 Ask the recipe graph (10 / 30)
@@ -205,7 +205,7 @@ Never cut: H2 validation loop, M09 Q2/Q5, H1 core.
 
 ## Re-verify before each delivery
 
-RDF 1.2 / SPARQL 1.2 / SHACL 1.2 status · WDQS → QLever cutover · TopBraid Composer status · GraphDB 11 MCP · UniProt/Wikidata sizes · exact titles of 2026 agentic GraphRAG survey, SEMANTiCS 2026 SPARQL-MCP, WU "Agentic SPARQL"
+RDF 1.2 (CR) / SPARQL 1.2 (WD) / SHACL 1.2 (WD) status · WDQS → QLever cutover · TopBraid Composer status · GraphDB 11 MCP · UniProt/Wikidata sizes · exact titles of 2026 agentic GraphRAG survey, SEMANTiCS 2026 SPARQL-MCP, WU "Agentic SPARQL"
 
 ## Sources
 
