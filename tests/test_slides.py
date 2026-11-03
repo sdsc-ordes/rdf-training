@@ -14,7 +14,7 @@ SITE = rdf.ROOT / "site"
 DOCS = sorted([*SLIDES.rglob("*.md"), *SITE.glob("**/*.md")])
 PREFIXES = rdf.PREFIXES.read_text()
 NAMESPACES = dict(Graph().parse(rdf.PREFIXES).namespaces())
-AGENDA_MINUTES = {"workshop-2h.md": 120}
+AGENDA_MINUTES = {"workshop-2h.md": 120, "full-day.md": 360}
 
 
 def code_blocks(path: Path):
@@ -125,11 +125,12 @@ def test_deck_minutes_match_agenda(deck):
 
 
 @pytest.mark.parametrize("module", MODULES, ids=lambda p: p.name)
-def test_module_core_is_subset_of_full(module):
-    core = [p for p, _ in expand(module / "core.md")]
-    full = [p for p, _ in expand(module / "full.md")]
-    assert set(core) <= set(full)
-    assert {p.resolve() for p in (module / "parts").glob("*.md")} == set(full)
+def test_module_parts_are_all_used(module):
+    core = {p for p, _ in expand(module / "core.md")} if (module / "core.md").exists() else set()
+    full = {p for p, _ in expand(module / "full.md")}
+    if not module.name.startswith("h"):  # hands-on modules have a short 2 h brief of their own
+        assert core <= full
+    assert {p.resolve() for p in (module / "parts").glob("*.md")} == core | full
 
 
 def test_workshop_uses_core_modules_only():
