@@ -30,4 +30,5 @@ jobs:
       - run: npm ci
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
+      - run: npm run cross-check
       - run: npm run build
