@@ -17,7 +17,7 @@
 
 # --- Recipe ----------------------------------------------------------------
 
-# #region recipeShape
+# #region recipeShapes
 recsh:RecipeShape a sh:NodeShape ;
     sh:targetClass schema:Recipe ;
     sh:property recsh:Recipe-name, recsh:Recipe-description, recsh:Recipe-author,
@@ -25,7 +25,15 @@ recsh:RecipeShape a sh:NodeShape ;
         recsh:Recipe-hasIngredient, recsh:Recipe-recipeIngredient, recsh:Recipe-usage ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) .
-# #endregion recipeShape
+
+recsh:Recipe-totalTime a sh:PropertyShape ;
+    sh:path schema:totalTime ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:datatype xsd:dayTimeDuration ;
+    sh:message "Use exactly one totalTime of type xsd:dayTimeDuration, e.g. \"PT30M\"^^xsd:dayTimeDuration."@en,
+        "Genau eine totalTime vom Typ xsd:dayTimeDuration, z. B. \"PT30M\"^^xsd:dayTimeDuration."@de .
+# #endregion recipeShapes
 
 recsh:Recipe-name a sh:PropertyShape ;
     sh:path schema:name ;
@@ -51,16 +59,6 @@ recsh:Recipe-author a sh:PropertyShape ;
     sh:severity sh:Warning ;
     sh:message "Add an author: a schema:Person, e.g. person:anna-keller."@en .
 # #endregion author
-
-# #region totalTime
-recsh:Recipe-totalTime a sh:PropertyShape ;
-    sh:path schema:totalTime ;
-    sh:minCount 1 ;
-    sh:maxCount 1 ;
-    sh:datatype xsd:dayTimeDuration ;
-    sh:message "Use exactly one totalTime of type xsd:dayTimeDuration, e.g. \"PT30M\"^^xsd:dayTimeDuration."@en,
-        "Genau eine totalTime vom Typ xsd:dayTimeDuration, z. B. \"PT30M\"^^xsd:dayTimeDuration."@de .
-# #endregion totalTime
 
 recsh:Recipe-cuisine a sh:PropertyShape ;
     sh:path rec:cuisine ;

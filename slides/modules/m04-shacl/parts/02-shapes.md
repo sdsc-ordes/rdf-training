@@ -5,12 +5,9 @@ minutes: 3
 
 # Node shapes and property shapes
 
-<<< @/../data/shapes/recipes.shapes.ttl#recipeShape turtle {2|3-5|6-7|all}
+<<< @/../data/shapes/recipes.shapes.ttl#recipeShapes turtle {2|3-5|6-7|10|11-13|14-15|all}
 
-<<< @/../data/shapes/recipes.shapes.ttl#totalTime turtle {2|3-5|6-7|all}
-
-- The **node shape** picks the targets (every `schema:Recipe`) and lists its property shapes
-- Each **property shape** checks one property; its message tells people and LLMs how to fix it
+- **Node shape:** which things get checked · **Property shape:** what one property must look like
 
 <!--
 Node shape: sh:targetClass = which things get checked; sh:property = which property shapes apply;
