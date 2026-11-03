@@ -16,3 +16,4 @@ hero:
 | Format | Slides |
 |---|---|
 | 2 h interactive workshop | [Open](/decks/workshop-2h/){target="_self"} |
+| 1-day course (6 h) | [Open](/decks/full-day/){target="_self"} |

@@ -10,7 +10,7 @@ Formats: 2 h workshop · 2×3 h afternoons · 6 h day — assembled from the sam
 ```sh
 nix develop          # or: direnv allow  (Node 24, uv, Chromium)
 npm ci
-npm run dev -- slides/workshop-2h.md   # live slides
+npm run dev -- slides/workshop-2h.md   # live slides (or slides/full-day.md)
 npm run build                          # site + decks → _site/
 npm run export                         # PDFs → _site/pdf/
 ```
