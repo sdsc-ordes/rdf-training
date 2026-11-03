@@ -8,12 +8,17 @@
   "scripts": {
     "dev": "slidev",
     "build": "bash scripts/build-site.sh",
-    "export": "bash scripts/export-decks.sh"
+    "export": "bash scripts/export-decks.sh",
+    "cross-check": "node scripts/js/cross-check.mjs"
   },
   "devDependencies": {
+    "@comunica/query-sparql": "5.4.1",
     "@slidev/cli": "53.0.0",
     "@slidev/theme-default": "0.25.0",
+    "@zazuko/env-node": "3.1.0",
+    "n3": "2.13.12",
     "playwright-chromium": "1.64.1",
+    "rdf-validate-shacl": "0.6.5",
     "vitepress": "2.0.0-alpha.21"
   }
 }
