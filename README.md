@@ -1,1 +1,26 @@
-This repository is a place for hosting some training materials and exercises related to RDF. Currently a glorified dropbox, it may be expanded in the future to be more domain agnostic and host tools that make learning RDF easier.
+# Knowledge graphs course
+
+Slides, hands-on material and checks for an introductory course on RDF knowledge graphs:
+triples, SHACL, SPARQL, LLM-assisted KG building and graph RAG, using a recipe knowledge graph.
+
+Formats: 2 h workshop · 2×3 h afternoons · 6 h day — assembled from the same slide modules.
+
+## Quickstart
+
+```sh
+nix develop          # or: direnv allow  (Node 24, uv, Chromium)
+npm ci
+npm run dev -- slides/workshop-2h.md   # live slides
+npm run build                          # site + decks → _site/
+npm run export                         # PDFs → _site/pdf/
+```
+
+## Layout
+
+| Path | Contents |
+|---|---|
+| `slides/` | Slidev decks (one `.md` per format) and `modules/` |
+| `site/` | VitePress course hub |
+| `vendor/sdsc-slides/` | SDSC slide kit (theme: `uv run scripts/update-sdsc-kit.py`) |
+| `course-design/` | curriculum, agendas, errata |
+| `legacy/` | previous material |
