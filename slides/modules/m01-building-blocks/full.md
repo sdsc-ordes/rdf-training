@@ -15,5 +15,13 @@ src: ./parts/04-turtle.md
 ---
 
 ---
+src: ./parts/06-linked-data.md
+---
+
+---
+src: ./parts/07-merging.md
+---
+
+---
 src: ./parts/05-in-the-wild.md
 ---
