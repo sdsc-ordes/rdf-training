@@ -1,5 +1,5 @@
 ---
-minutes: 4
+minutes: 3
 ---
 
 # One fact, one triple

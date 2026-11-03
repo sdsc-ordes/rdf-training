@@ -23,6 +23,10 @@ From triples to grounded LLMs
 <div class="sdsc-meta">Robin Franken · Swiss Data Science Center · Interactive workshop</div>
 
 ---
+src: ./modules/m00-why-now/core.md
+---
+
+---
 layout: section
 ---
 

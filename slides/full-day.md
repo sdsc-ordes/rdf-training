@@ -65,6 +65,10 @@ Use the answers to pitch the day: many SQL users → lean on comparisons; many L
 -->
 
 ---
+src: ./modules/m00-why-now/full.md
+---
+
+---
 layout: section
 ---
 
