@@ -43,12 +43,14 @@ recsh:Recipe-description a sh:PropertyShape ;
     sh:severity sh:Info ;
     sh:message "Add a short description with a language tag."@en .
 
+# #region author
 recsh:Recipe-author a sh:PropertyShape ;
     sh:path schema:author ;
     sh:minCount 1 ;
     sh:class schema:Person ;
     sh:severity sh:Warning ;
     sh:message "Add an author: a schema:Person, e.g. person:anna-keller."@en .
+# #endregion author
 
 # #region totalTime
 recsh:Recipe-totalTime a sh:PropertyShape ;
@@ -105,6 +107,7 @@ recsh:CourseConcept a sh:NodeShape ;
 
 # --- Diet claims must match the ingredients (also inside products) ----------
 
+# #region veganRule
 recsh:VeganRecipeShape a sh:NodeShape ;
     sh:targetClass schema:Recipe ;
     sh:or (
@@ -112,7 +115,8 @@ recsh:VeganRecipeShape a sh:NodeShape ;
         [ sh:path ( rec:hasIngredient [ sh:zeroOrMorePath rec:containsIngredient ] ) ;
           sh:not [ sh:class rec:AnimalProduct ] ]
     ) ;
-    sh:message "A recipe marked schema:VeganDiet must not contain animal products, also not inside products like pesto."@en .
+    sh:message "A vegan recipe must not contain animal products, not even inside products like pesto."@en .
+# #endregion veganRule
 
 recsh:VegetarianRecipeShape a sh:NodeShape ;
     sh:targetClass schema:Recipe ;
@@ -121,7 +125,7 @@ recsh:VegetarianRecipeShape a sh:NodeShape ;
         [ sh:path ( rec:hasIngredient [ sh:zeroOrMorePath rec:containsIngredient ] ) ;
           sh:not [ sh:class rec:MeatOrFish ] ]
     ) ;
-    sh:message "A recipe marked schema:VegetarianDiet must not contain meat or fish, also not inside products like Worcestershire sauce."@en .
+    sh:message "A vegetarian recipe must not contain meat or fish, not even inside products like Worcestershire sauce."@en .
 
 recsh:GlutenFreeRecipeShape a sh:NodeShape ;
     sh:targetClass schema:Recipe ;
@@ -130,7 +134,7 @@ recsh:GlutenFreeRecipeShape a sh:NodeShape ;
         [ sh:path ( rec:hasIngredient [ sh:zeroOrMorePath rec:containsIngredient ] ) ;
           sh:not [ sh:path rec:hasAllergen ; sh:hasValue allergen:gluten ] ]
     ) ;
-    sh:message "A recipe marked schema:GlutenFreeDiet must not contain gluten, also not inside products like soy sauce."@en .
+    sh:message "A gluten-free recipe must not contain gluten, not even inside products like soy sauce."@en .
 
 # --- Ingredient usage (quantity + unit) -------------------------------------
 

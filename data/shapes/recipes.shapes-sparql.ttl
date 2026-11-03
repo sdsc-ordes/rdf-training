@@ -8,6 +8,7 @@
 # The vegan rule as SHACL-SPARQL, for comparison with the SHACL Core version.
 # Needs a SHACL-SPARQL engine (pySHACL, TopBraid, EU ITB validator).
 
+# #region veganSparql
 recsh:VeganRecipeSparqlShape a sh:NodeShape ;
     sh:targetClass schema:Recipe ;
     sh:sparql [
@@ -22,6 +23,7 @@ recsh:VeganRecipeSparqlShape a sh:NodeShape ;
             }
         """
     ] .
+# #endregion veganSparql
 
 recsh:prefixes
     sh:declare [ sh:prefix "rdfs" ; sh:namespace "http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI ] ,

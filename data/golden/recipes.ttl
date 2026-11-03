@@ -20,7 +20,13 @@ recipe:rosti a schema:Recipe ;
     schema:recipeIngredient "800 g potatoes, grated", "40 g butter", "1 tsp salt" ;
     rec:hasIngredientUsage recipe:rosti-u1, recipe:rosti-u2, recipe:rosti-u3 .
 
-recipe:rosti-u1 a rec:IngredientUsage ; rec:food food:potato ; rec:quantity 800.0 ; rec:unit unit:GM ; rec:preparation "grated"@en .
+# #region rostiUsage
+recipe:rosti-u1 a rec:IngredientUsage ;
+    rec:food food:potato ;
+    rec:quantity 800.0 ;
+    rec:unit unit:GM ;
+    rec:preparation "grated"@en .
+# #endregion rostiUsage
 recipe:rosti-u2 a rec:IngredientUsage ; rec:food food:butter ; rec:quantity 40.0 ; rec:unit unit:GM .
 recipe:rosti-u3 a rec:IngredientUsage ; rec:food food:salt ; rec:quantity 1.0 ; rec:unit unit:TSP .
 
