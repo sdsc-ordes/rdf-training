@@ -1,5 +1,5 @@
 ---
-minutes: 3
+minutes: 2
 ---
 
 # Turtle in 30 seconds

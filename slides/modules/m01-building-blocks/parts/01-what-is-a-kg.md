@@ -1,6 +1,6 @@
 ---
 layout: two-cols-header
-minutes: 3
+minutes: 2
 ---
 
 # What is a knowledge graph?

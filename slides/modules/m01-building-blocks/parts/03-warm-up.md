@@ -14,9 +14,15 @@ minutes: 4
   <span><b>Pairs · 4 min</b> · one triple per sticky note</span>
 </div>
 
+<div v-click class="sdsc-takeaway"><b>New sentence:</b> Robin also likes pears, grown in Valais. What changes in your triples? What would change in a database?</div>
+
 <!--
-Debrief questions: Is "Fuji" a thing or a value? Is "loves" the same relation as "favourite"?
-How do you write the date so a computer can compare it? Who is the subject of "teaches"?
+Reveal the new sentence after about 3 minutes.
+Longer formats: let half the pairs design database tables instead of triples, then reveal the new sentence.
+Table designs typically break twice: a favourite_food column can't hold a second food,
+and a grown_in table that points to countries can't hold a canton.
+Debrief: Is "Fuji" a thing or a value? Is "loves" the same relation as "favourite"?
+How do you write the date so a computer can compare it?
 -->
 
 ---
