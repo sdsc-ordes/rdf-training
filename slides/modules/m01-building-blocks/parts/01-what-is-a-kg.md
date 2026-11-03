@@ -1,11 +1,29 @@
 ---
-minutes: 5
+layout: two-cols-header
+minutes: 3
 ---
 
 # What is a knowledge graph?
 
-- Things are **nodes**
-- Relations are **edges**
-- Every node and edge has a global identifier
+::left::
 
-<div class="sdsc-takeaway">A knowledge graph is a set of simple statements that can be merged.</div>
+- **Nodes** are things: a recipe, an apple, a country
+- **Edges** are named relations between them
+- Every node and edge has a **global identifier**
+
+<div class="sdsc-takeaway">Facts become data you can merge, check and query.</div>
+
+::right::
+
+```mermaid
+graph LR
+  T([Apple tart]) -- has ingredient --> A([Fuji apple])
+  A -- grown in --> S([Spain])
+  A -- grown in --> F([France])
+  T -- cuisine --> C([Swiss])
+```
+
+<!--
+Poll: who has met "knowledge graph" at work? Web search, Wikidata, enterprise data catalogues.
+Everything today uses one example: a recipe knowledge graph.
+-->
