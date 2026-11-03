@@ -137,3 +137,8 @@ def test_workshop_uses_core_modules_only():
     for fm in slides(SLIDES / "workshop-2h.md"):
         if "src" in fm:
             assert fm["src"].endswith("/core.md"), fm["src"]
+
+
+def test_slide_prefixes_match_data_prefixes():
+    ts = (SLIDES / "setup" / "prefixes.ts").read_text()
+    assert dict(re.findall(r"^\s*(\w+): '([^']+)',", ts, re.M)) == dict(re.findall(r"@prefix (\w+):\s*<([^>]+)>", PREFIXES))
