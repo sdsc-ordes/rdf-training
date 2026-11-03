@@ -1,0 +1,13 @@
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix course: <https://sdsc-ordes.github.io/rdf-training/id/course/> .
+
+course:scheme a skos:ConceptScheme ; skos:prefLabel "Courses"@en, "Gänge"@de .
+
+course:starter a skos:Concept ; skos:inScheme course:scheme ; skos:topConceptOf course:scheme ;
+    skos:prefLabel "Starter"@en, "Vorspeise"@de .
+course:main a skos:Concept ; skos:inScheme course:scheme ; skos:topConceptOf course:scheme ;
+    skos:prefLabel "Main"@en, "Hauptgang"@de .
+course:side a skos:Concept ; skos:inScheme course:scheme ; skos:topConceptOf course:scheme ;
+    skos:prefLabel "Side"@en, "Beilage"@de .
+course:dessert a skos:Concept ; skos:inScheme course:scheme ; skos:topConceptOf course:scheme ;
+    skos:prefLabel "Dessert"@en, "Dessert"@de .

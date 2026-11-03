@@ -1,0 +1,36 @@
+@prefix skos:     <http://www.w3.org/2004/02/skos/core#> .
+@prefix allergen: <https://sdsc-ordes.github.io/rdf-training/id/allergen/> .
+
+# The 14 allergens of EU Regulation 1169/2011, Annex II.
+
+allergen:scheme a skos:ConceptScheme ;
+    skos:prefLabel "EU allergens"@en, "EU-Allergene"@de, "Allergènes UE"@fr, "Allergeni UE"@it .
+
+allergen:gluten a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Cereals containing gluten"@en, "Glutenhaltiges Getreide"@de, "Céréales contenant du gluten"@fr, "Cereali contenenti glutine"@it .
+allergen:crustaceans a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Crustaceans"@en, "Krebstiere"@de, "Crustacés"@fr, "Crostacei"@it .
+allergen:eggs a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Eggs"@en, "Eier"@de, "Œufs"@fr, "Uova"@it .
+allergen:fish a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Fish"@en, "Fisch"@de, "Poisson"@fr, "Pesce"@it .
+allergen:peanuts a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Peanuts"@en, "Erdnüsse"@de, "Arachides"@fr, "Arachidi"@it .
+allergen:soybeans a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Soybeans"@en, "Soja"@de, "Soja"@fr, "Soia"@it .
+allergen:milk a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Milk"@en, "Milch"@de, "Lait"@fr, "Latte"@it .
+allergen:nuts a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Nuts"@en, "Schalenfrüchte"@de, "Fruits à coque"@fr, "Frutta a guscio"@it .
+allergen:celery a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Celery"@en, "Sellerie"@de, "Céleri"@fr, "Sedano"@it .
+allergen:mustard a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Mustard"@en, "Senf"@de, "Moutarde"@fr, "Senape"@it .
+allergen:sesame a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Sesame seeds"@en, "Sesamsamen"@de, "Graines de sésame"@fr, "Semi di sesamo"@it .
+allergen:sulphites a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Sulphur dioxide and sulphites"@en, "Schwefeldioxid und Sulphite"@de, "Anhydride sulfureux et sulfites"@fr, "Anidride solforosa e solfiti"@it .
+allergen:lupin a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Lupin"@en, "Lupinen"@de, "Lupin"@fr, "Lupini"@it .
+allergen:molluscs a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Molluscs"@en, "Weichtiere"@de, "Mollusques"@fr, "Molluschi"@it .

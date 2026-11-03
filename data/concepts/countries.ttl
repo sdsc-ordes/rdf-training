@@ -1,0 +1,14 @@
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix wd:     <http://www.wikidata.org/entity/> .
+
+# Local labels for the Wikidata countries we link to (IDs checked against Wikidata).
+
+wd:Q29  a schema:Country ; rdfs:label "Spain"@en, "Spanien"@de .
+wd:Q142 a schema:Country ; rdfs:label "France"@en, "Frankreich"@de .
+wd:Q39  a schema:Country ; rdfs:label "Switzerland"@en, "Schweiz"@de .
+wd:Q38  a schema:Country ; rdfs:label "Italy"@en, "Italien"@de .
+wd:Q869 a schema:Country ; rdfs:label "Thailand"@en, "Thailand"@de .
+wd:Q668 a schema:Country ; rdfs:label "India"@en, "Indien"@de .
+wd:Q30  a schema:Country ; rdfs:label "United States"@en, "Vereinigte Staaten"@de .
+wd:Q17  a schema:Country ; rdfs:label "Japan"@en, "Japan"@de .
