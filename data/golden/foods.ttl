@@ -1,0 +1,77 @@
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix wd:       <http://www.wikidata.org/entity/> .
+@prefix rec:      <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#> .
+@prefix food:     <https://sdsc-ordes.github.io/rdf-training/id/food/> .
+@prefix allergen: <https://sdsc-ordes.github.io/rdf-training/id/allergen/> .
+
+# Basic foods
+
+food:potato a rec:Vegetable ; rdfs:label "potato"@en .
+food:garlic a rec:Vegetable ; rdfs:label "garlic"@en .
+food:onion a rec:Vegetable ; rdfs:label "onion"@en .
+food:tomato a rec:Vegetable ; rdfs:label "tomato"@en .
+food:romaine-lettuce a rec:Vegetable ; rdfs:label "romaine lettuce"@en .
+food:bean-sprouts a rec:Vegetable ; rdfs:label "bean sprouts"@en .
+food:spring-onion a rec:Vegetable ; rdfs:label "spring onion"@en .
+
+food:fuji-apple a rec:Fruit ; rdfs:label "Fuji apple"@en ; rec:grownIn wd:Q29, wd:Q142, wd:Q17 .
+food:lemon a rec:Fruit ; rdfs:label "lemon"@en ; rec:grownIn wd:Q29, wd:Q38 .
+food:lime a rec:Fruit ; rdfs:label "lime"@en .
+food:tamarind a rec:Fruit ; rdfs:label "tamarind"@en ; rec:grownIn wd:Q668, wd:Q869 .
+
+food:wheat a rec:Grain ; rdfs:label "wheat"@en ; rec:hasAllergen allergen:gluten .
+food:wheat-flour a rec:Grain ; rdfs:label "wheat flour"@en ; rec:hasAllergen allergen:gluten .
+food:durum-wheat a rec:Grain ; rdfs:label "durum wheat"@en ; rec:hasAllergen allergen:gluten .
+food:rice a rec:Grain ; rdfs:label "rice"@en ; rec:grownIn wd:Q869, wd:Q668 .
+food:cornstarch a rec:Grain ; rdfs:label "cornstarch"@en .
+
+food:chickpea a rec:Legume ; rdfs:label "chickpea"@en ; rec:grownIn wd:Q668 .
+food:peanut a rec:Legume ; rdfs:label "peanut"@en ; rec:hasAllergen allergen:peanuts .
+food:soybean a rec:Legume ; rdfs:label "soybean"@en ; rec:hasAllergen allergen:soybeans .
+food:pine-nut a rec:NutOrSeed ; rdfs:label "pine nut"@en .
+
+food:basil a rec:HerbOrSpice ; rdfs:label "basil"@en .
+food:ginger a rec:HerbOrSpice ; rdfs:label "ginger"@en ; rec:grownIn wd:Q668 .
+food:garam-masala a rec:HerbOrSpice ; rdfs:label "garam masala"@en .
+food:black-pepper a rec:HerbOrSpice ; rdfs:label "black pepper"@en ; rec:grownIn wd:Q668 .
+
+food:olive-oil a rec:Oil ; rdfs:label "olive oil"@en ; rec:grownIn wd:Q29, wd:Q38 .
+food:sunflower-oil a rec:Oil ; rdfs:label "sunflower oil"@en .
+food:salt a rec:Seasoning ; rdfs:label "salt"@en .
+food:vinegar a rec:Seasoning ; rdfs:label "vinegar"@en .
+food:sugar a rec:Sweetener ; rdfs:label "sugar"@en .
+food:white-wine a rec:Beverage ; rdfs:label "white wine"@en ; rec:hasAllergen allergen:sulphites .
+food:kirsch a rec:Beverage ; rdfs:label "kirsch"@en .
+
+food:butter a rec:DairyProduct ; rdfs:label "butter"@en ; rec:hasAllergen allergen:milk .
+food:vacherin-fribourgeois a rec:Cheese ; rdfs:label "Vacherin Fribourgeois"@en ; rec:hasAllergen allergen:milk .
+food:gruyere a rec:HardCheese ; rdfs:label "Gruyère"@en ; rec:hasAllergen allergen:milk .
+food:parmesan a rec:HardCheese ; rdfs:label "Parmesan"@en ; rec:hasAllergen allergen:milk .
+food:egg a rec:Egg ; rdfs:label "egg"@en ; rec:hasAllergen allergen:eggs .
+food:anchovy a rec:FishOrSeafood ; rdfs:label "anchovy"@en ; rec:hasAllergen allergen:fish .
+
+# Products: what they contain is only stated here, not in the recipes
+
+food:worcestershire-sauce a rec:Product ; rdfs:label "Worcestershire sauce"@en ;
+    rec:containsIngredient food:anchovy, food:vinegar, food:sugar, food:tamarind ;
+    rec:hasAllergen allergen:fish .
+food:soy-sauce a rec:Product ; rdfs:label "soy sauce"@en ;
+    rec:containsIngredient food:soybean, food:wheat, food:salt ;
+    rec:hasAllergen allergen:soybeans, allergen:gluten .
+food:fish-sauce a rec:Product ; rdfs:label "fish sauce"@en ;
+    rec:containsIngredient food:anchovy, food:salt ;
+    rec:hasAllergen allergen:fish .
+food:pesto a rec:Product ; rdfs:label "pesto"@en ;
+    rec:containsIngredient food:basil, food:pine-nut, food:parmesan, food:olive-oil, food:garlic ;
+    rec:hasAllergen allergen:milk .
+food:croutons a rec:Product ; rdfs:label "croutons"@en ;
+    rec:containsIngredient food:wheat-flour, food:olive-oil, food:salt ;
+    rec:hasAllergen allergen:gluten .
+food:rice-noodles a rec:Product ; rdfs:label "rice noodles"@en ;
+    rec:containsIngredient food:rice .
+food:spaghetti a rec:Product ; rdfs:label "spaghetti"@en ;
+    rec:containsIngredient food:durum-wheat ;
+    rec:hasAllergen allergen:gluten .
+food:tofu a rec:Product ; rdfs:label "tofu"@en ;
+    rec:containsIngredient food:soybean ;
+    rec:hasAllergen allergen:soybeans .

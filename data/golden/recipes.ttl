@@ -1,0 +1,86 @@
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema:  <https://schema.org/> .
+@prefix unit:    <http://qudt.org/vocab/unit/> .
+@prefix rec:     <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#> .
+@prefix recipe:  <https://sdsc-ordes.github.io/rdf-training/id/recipe/> .
+@prefix food:    <https://sdsc-ordes.github.io/rdf-training/id/food/> .
+@prefix cuisine: <https://sdsc-ordes.github.io/rdf-training/id/cuisine/> .
+@prefix course:  <https://sdsc-ordes.github.io/rdf-training/id/course/> .
+@prefix person:  <https://sdsc-ordes.github.io/rdf-training/id/person/> .
+
+recipe:rosti a schema:Recipe ;
+    schema:name "Rösti"@de, "Rösti"@en ;
+    schema:description "Crispy grated potato cake from German-speaking Switzerland."@en ;
+    schema:author person:anna-keller ;
+    schema:totalTime "PT40M"^^xsd:dayTimeDuration ;
+    rec:cuisine cuisine:swiss ;
+    rec:course course:side ;
+    schema:suitableForDiet schema:VegetarianDiet, schema:GlutenFreeDiet ;
+    rec:hasIngredient food:potato, food:butter, food:salt ;
+    schema:recipeIngredient "800 g potatoes, grated", "40 g butter", "1 tsp salt" ;
+    rec:hasIngredientUsage recipe:rosti-u1, recipe:rosti-u2, recipe:rosti-u3 .
+
+recipe:rosti-u1 a rec:IngredientUsage ; rec:food food:potato ; rec:quantity 800.0 ; rec:unit unit:GM ; rec:preparation "grated"@en .
+recipe:rosti-u2 a rec:IngredientUsage ; rec:food food:butter ; rec:quantity 40.0 ; rec:unit unit:GM .
+recipe:rosti-u3 a rec:IngredientUsage ; rec:food food:salt ; rec:quantity 1.0 ; rec:unit unit:TSP .
+
+recipe:fondue-moitie-moitie a schema:Recipe ;
+    schema:name "Fondue moitié-moitié"@fr, "Fondue moitié-moitié"@de, "Half-and-half fondue"@en ;
+    schema:description "Gruyère and Vacherin melted in white wine, from Fribourg."@en ;
+    schema:author person:chloe-dubois ;
+    schema:totalTime "PT30M"^^xsd:dayTimeDuration ;
+    rec:cuisine cuisine:swiss ;
+    rec:course course:main ;
+    schema:suitableForDiet schema:VegetarianDiet, schema:GlutenFreeDiet ;
+    rec:hasIngredient food:gruyere, food:vacherin-fribourgeois, food:white-wine, food:garlic, food:cornstarch, food:kirsch .
+
+recipe:caesar-salad a schema:Recipe ;
+    schema:name "Caesar salad"@en, "Caesar-Salat"@de ;
+    schema:description "Romaine lettuce with croutons, Parmesan and a creamy dressing."@en ;
+    schema:author person:luca-bernasconi ;
+    schema:totalTime "PT20M"^^xsd:dayTimeDuration ;
+    rec:cuisine cuisine:american ;
+    rec:course course:starter ;
+    rec:hasIngredient food:romaine-lettuce, food:parmesan, food:egg, food:worcestershire-sauce,
+        food:croutons, food:olive-oil, food:lemon, food:garlic, food:black-pepper .
+
+recipe:pad-thai a schema:Recipe ;
+    schema:name "Pad Thai"@en, "Pad Thai"@de ;
+    schema:description "Stir-fried rice noodles with tofu, egg, peanuts and tamarind."@en ;
+    schema:author person:luca-bernasconi ;
+    schema:totalTime "PT30M"^^xsd:dayTimeDuration ;
+    rec:cuisine cuisine:thai ;
+    rec:course course:main ;
+    rec:hasIngredient food:rice-noodles, food:tofu, food:egg, food:fish-sauce, food:soy-sauce,
+        food:peanut, food:bean-sprouts, food:lime, food:tamarind, food:sugar, food:spring-onion .
+
+recipe:spaghetti-al-pesto a schema:Recipe ;
+    schema:name "Spaghetti al pesto"@it, "Spaghetti with pesto"@en ;
+    schema:description "Spaghetti tossed with basil pesto."@en ;
+    schema:author person:chloe-dubois ;
+    schema:totalTime "PT15M"^^xsd:dayTimeDuration ;
+    rec:cuisine cuisine:italian ;
+    rec:course course:main ;
+    schema:suitableForDiet schema:VegetarianDiet ;
+    rec:hasIngredient food:spaghetti, food:pesto, food:salt .
+
+recipe:apple-tart a schema:Recipe ;
+    schema:name "Apfelwähe"@de, "Apple tart"@en, "Tarte aux pommes"@fr ;
+    schema:description "Swiss open apple tart."@en ;
+    schema:author person:anna-keller ;
+    schema:totalTime "PT1H10M"^^xsd:dayTimeDuration ;
+    rec:cuisine cuisine:swiss ;
+    rec:course course:dessert ;
+    schema:suitableForDiet schema:VegetarianDiet ;
+    rec:hasIngredient food:fuji-apple, food:wheat-flour, food:butter, food:sugar, food:egg .
+
+recipe:chana-masala a schema:Recipe ;
+    schema:name "Chana masala"@en ;
+    schema:description "Chickpeas simmered in a spiced tomato and onion sauce."@en ;
+    schema:author person:chloe-dubois ;
+    schema:totalTime "PT45M"^^xsd:dayTimeDuration ;
+    rec:cuisine cuisine:indian ;
+    rec:course course:main ;
+    schema:suitableForDiet schema:VeganDiet, schema:VegetarianDiet, schema:GlutenFreeDiet ;
+    rec:hasIngredient food:chickpea, food:tomato, food:onion, food:garlic, food:ginger,
+        food:garam-masala, food:sunflower-oil, food:salt .
