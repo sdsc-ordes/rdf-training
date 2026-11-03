@@ -42,6 +42,6 @@ def validate(data: Graph, shapes: Graph | None = None, inference: str = "none",
             component=_name(report, report.value(r, SH.sourceConstraintComponent)),
             severity=_name(report, report.value(r, SH.resultSeverity)),
         )
-        for r in report.subjects(SH.resultSeverity, None)
+        for r in report.objects(None, SH.result)  # top-level results, not sh:detail
     }
     return not any(r.severity == "sh:Violation" for r in results), results
