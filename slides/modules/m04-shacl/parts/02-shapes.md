@@ -3,16 +3,20 @@ class: code-small
 minutes: 3
 ---
 
-# A shape for recipe times
+# Node shapes and property shapes
 
-<<< @/../data/shapes/recipes.shapes.ttl#totalTime turtle {2|3-5|6|7|all}
+<<< @/../data/shapes/recipes.shapes.ttl#recipeShape turtle {2|3-5|6-7|all}
 
-- Targets every `schema:Recipe` (set on the recipe shape)
-- The message is written for people, and for LLMs that repair data
+<<< @/../data/shapes/recipes.shapes.ttl#totalTime turtle {2|3-5|6-7|all}
+
+- The **node shape** picks the targets (every `schema:Recipe`) and lists its property shapes
+- Each **property shape** checks one property; its message tells people and LLMs how to fix it
 
 <!--
-Walk through: path = which property; minCount/maxCount = how many; datatype = what kind of value.
-This is the real shape the hands-on uses (data/shapes/recipes.shapes.ttl).
+Node shape: sh:targetClass = which things get checked; sh:property = which property shapes apply;
+sh:closed = no properties beyond the listed ones, which catches typos like rec:hasIngrediant.
+Property shape: path = which property; minCount/maxCount = how many; datatype = what kind of value.
+These are the real shapes the hands-on uses (data/shapes/recipes.shapes.ttl).
 -->
 
 ---

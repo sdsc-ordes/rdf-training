@@ -17,6 +17,7 @@
 
 # --- Recipe ----------------------------------------------------------------
 
+# #region recipeShape
 recsh:RecipeShape a sh:NodeShape ;
     sh:targetClass schema:Recipe ;
     sh:property recsh:Recipe-name, recsh:Recipe-description, recsh:Recipe-author,
@@ -24,6 +25,7 @@ recsh:RecipeShape a sh:NodeShape ;
         recsh:Recipe-hasIngredient, recsh:Recipe-recipeIngredient, recsh:Recipe-usage ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) .
+# #endregion recipeShape
 
 recsh:Recipe-name a sh:PropertyShape ;
     sh:path schema:name ;
