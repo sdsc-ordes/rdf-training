@@ -19,6 +19,8 @@ person:alice ex:rated recipe:rosti
 
 Statements about statements are new in RDF 1.2.
 
+<p class="fine">Few triplestores and tools support RDF 1.2 yet, so for now property graphs have a slight <em>edge</em> here.</p>
+
 ::right::
 
 ## Property graph (Cypher)
@@ -33,6 +35,7 @@ Properties on edges are built in.
 
 <!--
 Before RDF 1.2 you needed reification or an extra node for the rating.
+RDF 1.2 is still a Candidate Recommendation: check your triplestore's support before relying on it.
 Labels in a property graph are node or relationship types (Person, RATED), not edge properties.
 -->
 
