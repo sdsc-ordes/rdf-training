@@ -1,0 +1,12 @@
+?name	?diet
+"Apple tart"@en	<https://schema.org/VegetarianDiet>
+"Caesar salad"@en	
+"Chana masala"@en	<https://schema.org/GlutenFreeDiet>
+"Chana masala"@en	<https://schema.org/VeganDiet>
+"Chana masala"@en	<https://schema.org/VegetarianDiet>
+"Half-and-half fondue"@en	<https://schema.org/GlutenFreeDiet>
+"Half-and-half fondue"@en	<https://schema.org/VegetarianDiet>
+"Pad Thai"@en	
+"Rösti"@en	<https://schema.org/GlutenFreeDiet>
+"Rösti"@en	<https://schema.org/VegetarianDiet>
+"Spaghetti with pesto"@en	<https://schema.org/VegetarianDiet>
