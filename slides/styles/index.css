@@ -36,3 +36,13 @@
 
 /* Per-slide option (frontmatter `class: code-small`) for wide listings. */
 .slidev-layout.code-small pre { font-size: 0.64rem; }
+
+/* Diagram legend: swatch + label. */
+.legend { display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; margin-top: 0.4rem; font-size: 0.72rem; }
+.lg::before {
+  content: ""; display: inline-block; width: 0.85rem; height: 0.85rem; margin-right: 0.4rem;
+  vertical-align: -0.12rem; border: 1.5px solid var(--sdsc-primary); background: var(--sdsc-background);
+}
+.lg-ours::before { background: var(--sdsc-secondary); border-color: var(--sdsc-secondary); }
+.lg-reused::before { background: var(--sdsc-light-blue-bg); }
+.lg-external::before { border-style: dashed; }
