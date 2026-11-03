@@ -11,10 +11,10 @@
       devShells = forAll (pkgs: {
         default = pkgs.mkShell {
           packages = [ pkgs.nodejs_24 pkgs.uv pkgs.git ]
-            ++ pkgs.lib.optional pkgs.stdenv.isLinux pkgs.chromium;
+            ++ pkgs.lib.optional pkgs.stdenv.hostPlatform.isLinux pkgs.chromium;
           shellHook = ''
             export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
-          '' + pkgs.lib.optionalString pkgs.stdenv.isLinux ''
+          '' + pkgs.lib.optionalString pkgs.stdenv.hostPlatform.isLinux ''
             export SLIDEV_CHROMIUM=${pkgs.chromium}/bin/chromium
           '';
         };
