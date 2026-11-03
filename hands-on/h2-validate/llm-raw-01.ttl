@@ -1,0 +1,9 @@
+Here is your recipe in Turtle format:
+
+@prefix schema: <https://schema.org/> .
+@prefix rec:    <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#> .
+
+recipe:quiche-lorraine a schema:Recipe ;
+    schema:name "Quiche "Lorraine""@fr ;
+    schema:totalTime "PT1H"^^xsd:dayTimeDuration ;
+    rec:hasIngredient food:egg, food:butter, food:wheat-flour .
