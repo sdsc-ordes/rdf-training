@@ -1,0 +1,32 @@
+/* Course additions. Namespaced classes only; SDSC rules live in ../style.css. */
+
+/* Triples: subject pill, predicate arrow, object pill, literal dashed box. */
+.spo { display: flex; align-items: center; margin: 0.7rem 0; font-family: var(--sdsc-font-mono); font-size: 0.85rem; }
+.spo-s, .spo-o, .spo-l { padding: 0.3rem 0.9rem; white-space: nowrap; }
+.spo-s { background: var(--sdsc-secondary); color: var(--sdsc-text-on-dark); border-radius: 999px; }
+.spo-o { background: var(--sdsc-light-blue-bg); color: var(--sdsc-content-heading); border-radius: 999px; }
+.spo-l { background: var(--sdsc-background-alt); border: 1.5px dashed var(--sdsc-primary); color: var(--sdsc-text); }
+.spo-p {
+  position: relative; margin: 0 0.6rem; padding: 0 1.1rem 0.3rem 0.4rem;
+  border-bottom: 2px solid var(--sdsc-primary); color: var(--sdsc-primary);
+}
+.spo-p::after {
+  content: ""; position: absolute; right: -2px; bottom: -6px;
+  border-left: 9px solid var(--sdsc-primary); border-top: 5px solid transparent; border-bottom: 5px solid transparent;
+}
+
+/* Layered stack diagram. */
+.stack { display: grid; gap: 0.35rem; margin-top: 1rem; }
+.stack > div { display: grid; grid-template-columns: 9rem 1fr; align-items: center; padding: 0.45rem 0.9rem; background: var(--sdsc-background-alt); border-left: 0.22rem solid var(--sdsc-primary); }
+.stack b { font-family: var(--sdsc-font-heading); color: var(--sdsc-content-heading); font-weight: 600; }
+.stack .stack-core { border-left-color: var(--sdsc-secondary); background: var(--sdsc-light-blue-bg); }
+
+/* Small print: sources, status notes. */
+.fine { font-size: 0.7rem; color: var(--sdsc-text-grey); margin-top: 0.8rem; }
+
+/* Exercise slides: timer + link line. */
+.exercise-meta { display: flex; gap: 2rem; align-items: center; margin-top: 1.2rem; font-size: 0.9rem; }
+.exercise-meta img { height: 7rem; }
+
+/* Compact tables. */
+.slidev-layout table.compact { font-size: 0.8rem; }
