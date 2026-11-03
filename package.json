@@ -9,7 +9,8 @@
     "dev": "slidev",
     "build": "bash scripts/build-site.sh",
     "export": "bash scripts/export-decks.sh",
-    "cross-check": "node scripts/js/cross-check.mjs"
+    "cross-check": "node scripts/js/cross-check.mjs",
+    "check:slides": "node scripts/js/check-overflow.mjs"
   },
   "devDependencies": {
     "@comunica/query-sparql": "5.4.1",
