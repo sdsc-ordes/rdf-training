@@ -8,12 +8,13 @@ Formats: 2 h workshop · 2×3 h afternoons · 6 h day — assembled from the sam
 ## Quickstart
 
 ```sh
-nix develop          # or: direnv allow  (Node 24, uv, Chromium)
-npm ci
+nix develop          # or: direnv allow  (Node 24, uv, just, Chromium)
+just setup                             # uv sync + npm ci
 npm run dev -- slides/workshop-2h.md   # live slides (or slides/full-day.md)
-npm run build                          # site + decks → _site/
+just build                             # site + decks → _site/
 npm run export                         # PDFs → _site/pdf/
-uv run python -m kgcourse.refs         # after editing slides/references.toml or Sources lines
+just refs                              # after editing slides/references.toml or Sources lines
+just check                             # everything CI runs; `just` lists the recipes
 ```
 
 ## Layout

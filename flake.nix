@@ -10,7 +10,7 @@
     in {
       devShells = forAll (pkgs: {
         default = pkgs.mkShell {
-          packages = [ pkgs.nodejs_24 pkgs.uv pkgs.python313 pkgs.git ]
+          packages = [ pkgs.nodejs_24 pkgs.uv pkgs.python313 pkgs.git pkgs.just ]
             ++ pkgs.lib.optional pkgs.stdenv.hostPlatform.isLinux pkgs.chromium;
           shellHook = ''
             export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
