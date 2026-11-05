@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import NamedTuple
 
+from pyshacl import shacl_rules
 from pyshacl import validate as pyshacl_validate
 from rdflib import BNode, Graph
 from rdflib.namespace import SH
@@ -45,3 +46,8 @@ def validate(data: Graph, shapes: Graph | None = None, inference: str = "none",
         for r in report.objects(None, SH.result)  # top-level results, not sh:detail
     }
     return not any(r.severity == "sh:Violation" for r in results), results
+
+
+def infer(data: Graph, rules: Graph) -> Graph:
+    """Apply the SHACL rules in `rules` to `data` until nothing new is inferred; return the result."""
+    return shacl_rules(data, shacl_graph=rules, advanced=True, iterate_rules=True)

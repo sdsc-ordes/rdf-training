@@ -1,6 +1,8 @@
 import csv
 
 import pytest
+from pyshacl.entrypoints import meta_validate
+from rdflib import RDF, Namespace
 
 from kgcourse import rdf, shacl
 
@@ -24,6 +26,14 @@ def test_golden_data_passes_sparql_shapes():
     assert conforms, results
 
 
+def test_cheese_dish_rule_matches_query():
+    rec = Namespace("https://sdsc-ordes.github.io/rdf-training/vocab/recipes#")
+    out = shacl.infer(rdf.kg(), rdf.load(rdf.DATA / "shapes" / "recipes.rules.ttl"))
+    query = "SELECT ?r WHERE { ?r a schema:Recipe ; rec:hasIngredient/a/rdfs:subClassOf* rec:Cheese }"
+    expected = {row.r for row in rdf.kg().query(query)}
+    assert len(expected) == 2 and set(out.subjects(RDF.type, rec.CheeseDish)) == expected
+
+
 @pytest.mark.parametrize("name", sorted(EXPECTED))
 def test_buggy_file_gives_expected_results(name):
     g = rdf.context()
@@ -41,3 +51,9 @@ def test_usages_match_ingredients():
     ask = """ASK { ?r rec:hasIngredientUsage/rec:food ?f .
                    FILTER NOT EXISTS { ?r rec:hasIngredient ?f } }"""
     assert not rdf.kg().query(ask).askAnswer
+
+
+@pytest.mark.parametrize("path", sorted((rdf.DATA / "shapes").glob("*.ttl")), ids=lambda p: p.name)
+def test_shapes_pass_shacl_shacl(path):
+    conforms, _, text = meta_validate(rdf.load(path))
+    assert conforms, text
