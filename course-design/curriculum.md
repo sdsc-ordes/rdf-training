@@ -9,6 +9,9 @@ Formats: 6 h day, 2×3 h afternoons, 2 h workshop — all built from the same mo
 - Every task has a *minimum* step (copy/edit) and a *stretch* step (from scratch / Python).
 - Predict, then reveal: audience guesses before every query, validation or demo run.
 - Slides are `core` (also in 2 h) or `ext`; one idea per slide, ≤5 bullets, one takeaway per module.
+- Plain statements, no slogans (tricolons, mirrored clauses, "X, not Y", colon punchlines, idioms, puns).
+- Green takeaway boxes only for exercise answers and prompts, definitions or concrete examples; never to restate the slide.
+- Every claim from outside the course gets `<p class="fine">Sources: …</p>`; entries live in `slides/references.toml`.
 
 ## Running example
 
@@ -20,7 +23,7 @@ Formats: 6 h day, 2×3 h afternoons, 2 h workshop — all built from the same mo
   1. Recipes under 30 minutes?
   2. Recipes for a vegetarian, gluten-free guest?
   3. Recipes using ingredients grown in Spain?
-  4. Which ingredients hide allergens?
+  4. Which recipes contain fish?
   5. Which cuisine has the most vegan recipes?
 
 ## Modules
@@ -52,9 +55,9 @@ Minutes = core / full.
 - Checkpoint: everyone continues with the reference vocabulary + shapes
 - Takeaway: *There's no single right model, but there is one that answers your questions.*
 
-### M04 Validation with SHACL (10 / 25)
+### M04 Validation with SHACL (10 / 31)
 - Core: why validate; OWA vs CWA (once); 5-line RecipeShape; report anatomy (focusNode, resultPath, value, message); spot-the-violation quiz
-- Ext: node vs property shapes, targets; key constraint components + `sh:in`, `sh:node`, `sh:closed`; exact datatype matching (`450` ≠ `xsd:decimal`); severities + `sh:message` written for humans and LLMs; vegan rule (SHACL Core and SHACL-SPARQL); SHACL in CI; engines; SHACL 1.2 WDs; shapes as LLM schema docs; stretch: Bedretto bugs
+- Ext: node vs property shapes, targets; key constraint components + `sh:in`, `sh:node`, `sh:closed`; exact datatype matching (`450` ≠ `xsd:decimal`); severities + `sh:message` written for humans and LLMs; vegan rule (SHACL Core and SHACL-SPARQL); SHACL in CI; engines; SHACL rules vs OWL (cheese-dish rule, task table); SHACL 1.2 WDs; shapes as LLM schema docs; stretch: bugs in a legacy shapes file
 - Micro-exercise: predict → validate in Zazuko → fix one → revalidate
 - Takeaway: *Ontologies say what may be true; shapes say what your data must contain.*
 
@@ -76,7 +79,7 @@ Minutes = core / full.
 | 9 | code | SHACL report fed back; `sh:message` an LLM can act on |
 | 10 | two-cols | Wikidata linking: candidates → LLM picks → confirm; never trust Q-ids from memory (Fuji, rocket) |
 | 11 (C) | features (4) | Identifier failures: invented terms, undeclared prefixes, http/https, IRI drift (`food:tomato`/`food:Tomatoes`) |
-| 12 | features (4) | Literal/fact failures: decimal/double/integer, "30 min", missing language tags, plausible-but-wrong (Bedretto coordinates) |
+| 12 | features (4) | Literal/fact failures: decimal/double/integer, "30 min", missing language tags, plausible-but-wrong (coordinates in the wrong country) |
 | 13 | content | Review + provenance: named graph per batch, `prov:wasGeneratedBy`, privacy |
 | 14 | content | Tools: any chat LLM, OntoGPT, LinkML, OpenRefine, pySHACL, Zazuko; Text2KGBench |
 
@@ -106,9 +109,9 @@ Minutes = core / full.
 - Interaction: "view source" on a recipe site to find `"@type": "Recipe"`; pairs place 8 component cards on layers
 - Takeaway: *A KG is a pipeline, not a database; graph RAG is one more consumer.*
 
-### M08 Use cases and tooling (0 / 15)
-- 8 case cards, dot-vote, zoom into top 2; one-page tooling map by stage (model, map, validate, store, query, LLM), marked no-code or code
-- Takeaway: *Successful KGs reuse the same building blocks; governance and scale are what differ.*
+### M08 Use cases and tooling (0 / 31)
+- 8 case cards, dot-vote; one slide each for Google, IKEA, Zalando, Netflix UDA, BBC World Cup 2010, BenevolentAI (baricitinib), Genomics England (HPO + Exomiser), DeepRare; what they share; one-page tooling map by stage (model, map, validate, store, query, LLM), marked no-code or code
+- Takeaway: *Shared identifiers, shared vocabularies, checked data and named owners.*
 
 Card template: problem · what the KG holds · stack · access · what worked / trade-off · 2026 LLM angle · try-it link · module link
 
@@ -119,7 +122,6 @@ Card template: problem · what the KG holds · stack · access · what worked / 
 5. **Brick / 223P / RealEstateCore**: shared building ontology + SHACL; property paths ("sensors downstream of AHU-1")
 6. **FIBO + GLEIF LEI**: heavyweight OWL, teams adopt slices; ontology as grounding glossary
 7. **schema.org Recipe**: most-deployed RDF, JSON-LD in pages; loose semantics; read by AI search
-8. **Bedretto / SDSC**: start small; units and coordinates are where errors hide
 
 ### M09 Graph RAG (15 / 35)
 - Storyline: fluent ≠ grounded → vector RAG retrieves similar text → some questions need joins, counts, constraints, global views, fact checks → three graph families → demo → evidence and costs → decision guide
@@ -208,6 +210,8 @@ Never cut: H2 validation loop, M09 Q2/Q5, H1 core.
 RDF 1.2 (CR) / SPARQL 1.2 (WD) / SHACL 1.2 (WD) status · WDQS → QLever cutover · TopBraid Composer status · GraphDB 11 MCP · UniProt/Wikidata sizes · exact titles of 2026 agentic GraphRAG survey, SEMANTiCS 2026 SPARQL-MCP, WU "Agentic SPARQL"
 
 ## Sources
+
+Everything cited on slides is in `slides/references.toml` (bibliography slides are generated from it). Research notes:
 
 - Lewis et al. 2020, RAG — arXiv 2005.11401
 - Edge et al. 2024, GraphRAG — arXiv 2404.16130; LazyGraphRAG (Microsoft Research blog, 2024)
