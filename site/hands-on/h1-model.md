@@ -7,7 +7,7 @@ Sketch the classes and properties a recipe knowledge graph needs to answer five 
 1. Which recipes take less than 30 minutes?
 2. What can I cook for a vegetarian, gluten-free guest?
 3. Which recipes use ingredients grown in Spain?
-4. Which ingredients hide allergens?
+4. Which recipes contain fish?
 5. Which cuisine has the most vegan recipes?
 
 ## Steps
