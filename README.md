@@ -13,6 +13,7 @@ npm ci
 npm run dev -- slides/workshop-2h.md   # live slides (or slides/full-day.md)
 npm run build                          # site + decks → _site/
 npm run export                         # PDFs → _site/pdf/
+uv run python -m kgcourse.refs         # after editing slides/references.toml or Sources lines
 ```
 
 ## Layout

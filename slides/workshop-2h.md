@@ -18,7 +18,7 @@ exportFilename: kg-workshop-2h
 
 # Knowledge Graphs in 2 Hours
 
-From triples to grounded LLMs
+RDF, SHACL, SPARQL and graph RAG
 
 <div class="sdsc-meta">Robin Franken · Swiss Data Science Center · Interactive workshop</div>
 
@@ -48,7 +48,7 @@ layout: section
 
 # RDF and property graphs
 
-The W3C stack and its alternative
+The W3C stack and labelled property graphs
 
 ---
 src: ./modules/m02-stack-vs-lpg/core.md
@@ -62,7 +62,7 @@ layout: section
 
 # Modelling a domain
 
-From questions to classes and properties
+Competency questions, classes and properties
 
 ---
 src: ./modules/m03-modelling/core.md
@@ -80,7 +80,7 @@ layout: section
 
 # Validating data
 
-Shapes, reports and the closed world
+SHACL
 
 ---
 src: ./modules/m04-shacl/core.md
@@ -179,3 +179,7 @@ layout: cover
   <img src="/partners/EPFL_logo_white.png" alt="EPFL" />
   <img src="/partners/PSI_logo_white.png" alt="PSI" />
 </div>
+
+---
+src: ./references/workshop-2h.md
+---

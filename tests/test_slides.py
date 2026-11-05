@@ -1,4 +1,4 @@
-"""Code shown on slides and worksheets parses; deck imports and timings add up."""
+"""Code shown on slides and worksheets parses; deck imports, timings and bibliographies add up."""
 
 import re
 from pathlib import Path
@@ -7,7 +7,7 @@ import pytest
 from rdflib import Graph
 from rdflib.plugins.sparql import prepareQuery
 
-from kgcourse import rdf
+from kgcourse import rdf, refs
 
 SLIDES = rdf.ROOT / "slides"
 SITE = rdf.ROOT / "site"
@@ -135,8 +135,22 @@ def test_module_parts_are_all_used(module):
 
 def test_workshop_uses_core_modules_only():
     for fm in slides(SLIDES / "workshop-2h.md"):
-        if "src" in fm:
+        if fm.get("src", "").startswith("./modules/"):
             assert fm["src"].endswith("/core.md"), fm["src"]
+
+
+@pytest.mark.parametrize("deck", DECKS, ids=lambda p: p.name)
+def test_bibliography_is_current(deck):
+    assert (refs.OUT / deck.name).read_text() == refs.render(deck), "run: uv run python -m kgcourse.refs"
+
+
+def test_source_links_are_current():
+    assert refs.URLS.read_text() == refs.urls(), "run: uv run python -m kgcourse.refs"
+
+
+def test_every_reference_is_cited():
+    labels = {label for path in SLIDES.rglob("*.md") for label in refs.cited(path)}
+    assert set(refs.references()) <= labels
 
 
 def test_slide_prefixes_match_data_prefixes():

@@ -18,7 +18,7 @@ exportFilename: kg-full-day
 
 # Knowledge Graphs in a Day
 
-From triples to grounded LLMs
+RDF, SHACL, SPARQL and graph RAG
 
 <div class="sdsc-meta">Robin Franken · Swiss Data Science Center · 1-day course</div>
 
@@ -58,7 +58,7 @@ Hands up if you have…
 - written a SQL query
 - used an LLM this week
 - heard of RDF before today
-- had to combine data from another organisation
+- had to combine data from multiple sources
 
 <!--
 Use the answers to pitch the day: many SQL users → lean on comparisons; many LLM users → tease module 5 and 9.
@@ -90,7 +90,7 @@ layout: section
 
 # RDF and property graphs
 
-The W3C stack and its alternative
+The W3C stack and labelled property graphs
 
 ---
 src: ./modules/m02-stack-vs-lpg/full.md
@@ -104,7 +104,7 @@ layout: section
 
 # Modelling a domain
 
-From questions to classes and properties
+Competency questions, classes and properties
 
 ---
 src: ./modules/m03-modelling/full.md
@@ -131,7 +131,7 @@ layout: section
 
 # Validating data
 
-Shapes, reports and the closed world
+SHACL
 
 ---
 src: ./modules/m04-shacl/full.md
@@ -198,7 +198,7 @@ layout: section
 
 # Architectures
 
-From sources to applications
+Mapping, storage and access
 
 ---
 src: ./modules/m07-architectures/full.md
@@ -212,7 +212,7 @@ layout: section
 
 # Use cases and tools
 
-Who uses knowledge graphs, and with what
+Industry, health and public-sector cases; tools
 
 ---
 src: ./modules/m08-use-cases/full.md
@@ -268,3 +268,7 @@ layout: cover
   <img src="/partners/EPFL_logo_white.png" alt="EPFL" />
   <img src="/partners/PSI_logo_white.png" alt="PSI" />
 </div>
+
+---
+src: ./references/full-day.md
+---
