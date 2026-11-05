@@ -5,12 +5,12 @@
 node_modules/
 dist/
 .slidev/
-site/.vitepress/cache/
-site/.vitepress/dist/
+src/site/.vitepress/cache/
+src/site/.vitepress/dist/
 
 # build output
 _site/
-data/build/
+src/data/build/
 
 # python
 .venv/

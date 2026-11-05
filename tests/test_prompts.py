@@ -1,6 +1,6 @@
 from kgcourse import rdf, shacl
 
-PROMPT = (rdf.ROOT / "hands-on" / "h2-validate" / "prompt-generate.md").read_text()
+PROMPT = (rdf.HANDS_ON / "h2-validate" / "prompt-generate.md").read_text()
 
 
 def test_prompt_example_is_valid():

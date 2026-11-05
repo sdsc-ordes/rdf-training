@@ -7,7 +7,11 @@ from pathlib import Path
 from rdflib import Graph
 
 ROOT = Path(__file__).resolve().parents[2]
-DATA = ROOT / "data"
+SRC = ROOT / "src"
+DATA = SRC / "data"
+HANDS_ON = SRC / "hands-on"
+SLIDES = SRC / "slides"
+SITE = SRC / "site"
 PREFIXES = DATA / "prefixes.ttl"
 SHAPES = DATA / "shapes" / "recipes.shapes.ttl"
 

@@ -9,8 +9,8 @@ from rdflib.plugins.sparql import prepareQuery
 
 from kgcourse import rdf, refs
 
-SLIDES = rdf.ROOT / "slides"
-SITE = rdf.ROOT / "site"
+SLIDES = rdf.SLIDES
+SITE = rdf.SITE
 DOCS = sorted([*SLIDES.rglob("*.md"), *SITE.glob("**/*.md")])
 PREFIXES = rdf.PREFIXES.read_text()
 NAMESPACES = dict(Graph().parse(rdf.PREFIXES).namespaces())

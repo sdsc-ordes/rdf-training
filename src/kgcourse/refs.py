@@ -2,9 +2,9 @@
 
 Slides cite with one line, labels separated by " · ":
     <p class="fine">Sources: Berners-Lee 2006 · W3C RDF 1.2</p>
-Full entries live in slides/references.toml, keyed by label.
+Full entries live in src/slides/references.toml, keyed by label.
 
-    uv run python -m kgcourse.refs   # rewrite slides/references/<deck>.md and urls.json
+    uv run python -m kgcourse.refs   # rewrite src/slides/references/<deck>.md and urls.json
 
 setup/preparser.ts reads urls.json to link each label on the slides to its source.
 """
@@ -20,7 +20,7 @@ from pathlib import Path
 
 from . import rdf
 
-SLIDES = rdf.ROOT / "slides"
+SLIDES = rdf.SLIDES
 REFERENCES = SLIDES / "references.toml"
 OUT = SLIDES / "references"
 URLS = OUT / "urls.json"
@@ -69,7 +69,7 @@ def render(deck: Path) -> str:
                 f"  <li><b>{html.escape(label)}</b> · {html.escape(ref['text'])} "
                 f'<a href="{url}">{url.removeprefix("https://").removeprefix("http://")}</a></li>'
             )
-        note = "\n\n<!--\nGenerated from slides/references.toml: uv run python -m kgcourse.refs\n-->" if n == 1 else ""
+        note = "\n\n<!--\nGenerated from src/slides/references.toml: just refs\n-->" if n == 1 else ""
         slides.append(
             f'---\nclass: references\n---\n\n# {title}\n\n<ul class="refs">\n' + "\n".join(items) + f"\n</ul>{note}\n"
         )

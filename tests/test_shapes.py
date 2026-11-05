@@ -6,7 +6,7 @@ from rdflib import RDF, Namespace
 
 from kgcourse import rdf, shacl
 
-H2 = rdf.ROOT / "hands-on" / "h2-validate"
+H2 = rdf.HANDS_ON / "h2-validate"
 EXPECTED: dict[str, set[shacl.Result]] = {}
 with open(H2 / "expected.tsv", newline="") as fh:
     for row in csv.DictReader(fh, delimiter="\t"):

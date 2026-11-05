@@ -17,7 +17,7 @@ testpaths = ["tests"]
 
 [tool.ruff]
 line-length = 120
-src = ["src", "tests", "scripts"]
+src = ["src", "tests", "tools/scripts"]
 
 [tool.ruff.lint]
 # Default rules, plus docstrings on public modules, classes and functions, in the imperative mood.

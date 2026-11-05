@@ -8,21 +8,25 @@ Formats: 2 h workshop · 2×3 h afternoons · 6 h day — assembled from the sam
 ## Quickstart
 
 ```sh
-nix develop          # or: direnv allow  (Node 24, uv, just, Chromium)
-just setup                             # uv sync + npm ci
-npm run dev -- slides/workshop-2h.md   # live slides (or slides/full-day.md)
-just build                             # site + decks → _site/
-npm run export                         # PDFs → _site/pdf/
-just refs                              # after editing slides/references.toml or Sources lines
-just check                             # everything CI runs; `just` lists the recipes
+direnv allow         # or: just shell  (nix dev shell: Node 24, uv, just, Chromium)
+just setup           # uv sync + npm ci
+just dev             # live slides (or: just dev src/slides/full-day.md)
+just build           # site + decks → _site/
+just export          # PDFs → _site/pdf/
+just refs            # after editing src/slides/references.toml or Sources lines
+just check           # everything CI runs; `just` lists the recipes
 ```
 
 ## Layout
 
 | Path | Contents |
 |---|---|
-| `slides/` | Slidev decks (one `.md` per format) and `modules/` |
-| `site/` | VitePress course hub |
-| `vendor/sdsc-slides/` | SDSC slide kit (theme: `uv run scripts/update-sdsc-kit.py`) |
-| `course-design/` | curriculum, agendas, errata |
-| `legacy/` | previous material |
+| `src/slides/` | Slidev decks (one `.md` per format) and `modules/` |
+| `src/site/` | VitePress course hub with the hands-on worksheets |
+| `src/hands-on/` | exercise files: starter model, buggy data, queries |
+| `src/data/` | recipe knowledge graph, vocabulary and shapes |
+| `src/kgcourse/` | Python helpers behind the tests and generators |
+| `tests/` | checks for data, shapes, queries, slide code and bibliographies |
+| `docs/` | `course-design/` (curriculum, agendas, errata), `legacy/` (previous material) |
+| `external/sdsc-slides/` | SDSC slide kit (update: `uv run tools/scripts/update-sdsc-kit.py`) |
+| `tools/` | `nix/` dev shell, `scripts/` build, export and slide checks |

@@ -13,8 +13,8 @@ from pyoxigraph import QueryBoolean, QueryResultsFormat, RdfFormat, Store
 
 from . import rdf
 
-QUERIES = rdf.ROOT / "hands-on" / "h3-query" / "queries"
-EXPECTED = rdf.ROOT / "hands-on" / "h3-query" / "expected"
+QUERIES = rdf.HANDS_ON / "h3-query" / "queries"
+EXPECTED = rdf.HANDS_ON / "h3-query" / "expected"
 
 
 @cache
