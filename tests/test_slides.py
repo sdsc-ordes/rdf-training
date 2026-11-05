@@ -39,8 +39,9 @@ def code_blocks(path: Path):
 BLOCKS = [(p, *b) for p in DOCS for b in code_blocks(p)]
 
 
-@pytest.mark.parametrize("path,lang,code,line", BLOCKS,
-                         ids=[f"{p.relative_to(rdf.ROOT)}:{line}" for p, _, _, line in BLOCKS])
+@pytest.mark.parametrize(
+    "path,lang,code,line", BLOCKS, ids=[f"{p.relative_to(rdf.ROOT)}:{line}" for p, _, _, line in BLOCKS]
+)
 def test_code_block_parses(path, lang, code, line):
     if lang == "turtle":
         Graph().parse(data=PREFIXES + code, format="turtle")
@@ -51,9 +52,9 @@ def test_code_block_parses(path, lang, code, line):
 @pytest.mark.parametrize("path", DOCS, ids=lambda p: str(p.relative_to(rdf.ROOT)))
 def test_fences_and_includes(path):
     text = path.read_text()
-    assert not re.search(r"^\s*`{3,}(ttl|rq|shacl)\b", text, re.M), "use ```turtle or ```sparql"
+    assert not re.search(r"^\s*`{3,}(ttl|rq|shacl)\b", text, re.MULTILINE), "use ```turtle or ```sparql"
     root = SLIDES if SLIDES in path.parents else SITE
-    for m in re.finditer(r"^<<< @/(\S+?)(?:#([\w-]+))?(?=[\s{]|$)(.*)$", text, re.M):
+    for m in re.finditer(r"^<<< @/(\S+?)(?:#([\w-]+))?(?=[\s{]|$)(.*)$", text, re.MULTILINE):
         target = root / m.group(1)
         assert target.exists(), target
         if m.group(2):
@@ -155,4 +156,6 @@ def test_every_reference_is_cited():
 
 def test_slide_prefixes_match_data_prefixes():
     ts = (SLIDES / "setup" / "prefixes.ts").read_text()
-    assert dict(re.findall(r"^\s*(\w+): '([^']+)',", ts, re.M)) == dict(re.findall(r"@prefix (\w+):\s*<([^>]+)>", PREFIXES))
+    assert dict(re.findall(r"^\s*(\w+): '([^']+)',", ts, re.MULTILINE)) == dict(
+        re.findall(r"@prefix (\w+):\s*<([^>]+)>", PREFIXES)
+    )

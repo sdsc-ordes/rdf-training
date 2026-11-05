@@ -13,6 +13,8 @@ from . import rdf
 
 
 class Result(NamedTuple):
+    """One validation result, with terms written as prefixed names so results compare as plain tuples."""
+
     focus: str
     path: str | None
     shape: str
@@ -28,12 +30,12 @@ def _name(g: Graph, node) -> str | None:
     return node.n3(g.namespace_manager)
 
 
-def validate(data: Graph, shapes: Graph | None = None, inference: str = "none",
-             advanced: bool = False) -> tuple[bool, set[Result]]:
+def validate(
+    data: Graph, shapes: Graph | None = None, inference: str = "none", advanced: bool = False
+) -> tuple[bool, set[Result]]:
     """Validate `data`; conforms means no sh:Violation (warnings and info are allowed)."""
     shapes = shapes if shapes is not None else rdf.load(rdf.SHAPES)
-    _, report, _ = pyshacl_validate(data, shacl_graph=shapes, inference=inference,
-                                    advanced=advanced)
+    _, report, _ = pyshacl_validate(data, shacl_graph=shapes, inference=inference, advanced=advanced)
     report.namespace_manager = data.namespace_manager
     results = {
         Result(

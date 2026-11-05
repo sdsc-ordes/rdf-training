@@ -4,8 +4,8 @@
 # ///
 """Refresh the vendored SDSC slide kit and re-theme slides/ from its tokens.
 
-    uv run scripts/update-sdsc-kit.py            # download, replace vendor/, install theme
-    uv run scripts/update-sdsc-kit.py --no-fetch # only re-install theme from vendor/
+uv run scripts/update-sdsc-kit.py            # download, replace vendor/, install theme
+uv run scripts/update-sdsc-kit.py --no-fetch # only re-install theme from vendor/
 """
 
 from __future__ import annotations
@@ -29,6 +29,7 @@ LOGOS = ["SDSC_Logo_RGB.png", "SDSC_Logo_White.png", "SDSC_logo_horizontal_rgb_w
 
 
 def fetch() -> None:
+    """Download the SDSC slide kit into vendor/ and record where and when it came from."""
     with tempfile.TemporaryDirectory() as tmp:
         zpath = Path(tmp) / "kit.zip"
         with urllib.request.urlopen(URL) as resp:
@@ -42,8 +43,10 @@ def fetch() -> None:
         zipfile.ZipFile(zpath).extractall(KIT.parent)
         sha = hashlib.sha256(zpath.read_bytes()).hexdigest()
     lines = [
-        f"- Last-Modified: {modified} · sha256 `{sha}`" if l.startswith("- Last-Modified")
-        else f"- Retrieved: {date.today()}" if l.startswith("- Retrieved")
+        f"- Last-Modified: {modified} · sha256 `{sha}`"
+        if l.startswith("- Last-Modified")
+        else f"- Retrieved: {date.today()}"
+        if l.startswith("- Retrieved")
         else l
         for l in provenance.splitlines()
     ]
@@ -51,6 +54,7 @@ def fetch() -> None:
 
 
 def install() -> None:
+    """Generate the slide theme from the kit and copy its footer and logos into slides/."""
     py = sys.executable
     subprocess.run([py, KIT / "scripts/build_slidev_theme.py", "-o", SLIDES / "style.css"], check=True)
     shutil.copy(KIT / "assets/slidev/global-bottom.vue", SLIDES / "global-bottom.vue")

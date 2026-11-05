@@ -32,9 +32,10 @@ def load(*paths: Path | str) -> Graph:
 
 
 def context() -> Graph:
+    """Load the vocabulary and reference data the recipes depend on."""
     return load(*CONTEXT)
 
 
 def kg() -> Graph:
-    """The full recipe knowledge graph."""
+    """Load the full recipe knowledge graph."""
     return load(*CONTEXT, RECIPES)

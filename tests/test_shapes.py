@@ -10,8 +10,9 @@ H2 = rdf.ROOT / "hands-on" / "h2-validate"
 EXPECTED: dict[str, set[shacl.Result]] = {}
 with open(H2 / "expected.tsv", newline="") as fh:
     for row in csv.DictReader(fh, delimiter="\t"):
-        EXPECTED.setdefault(row["file"], set()).add(shacl.Result(
-            row["focus"], row["path"] or None, row["shape"], row["component"], row["severity"]))
+        EXPECTED.setdefault(row["file"], set()).add(
+            shacl.Result(row["focus"], row["path"] or None, row["shape"], row["component"], row["severity"])
+        )
 
 
 @pytest.mark.parametrize("inference", ["none", "rdfs"])
