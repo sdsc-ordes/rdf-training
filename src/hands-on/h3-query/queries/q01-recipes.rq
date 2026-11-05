@@ -1,0 +1,9 @@
+# q01 · Which recipes are there? (English names)
+PREFIX schema: <https://schema.org/>
+
+SELECT ?recipe ?name WHERE {
+  ?recipe a schema:Recipe ;
+          schema:name ?name .
+  FILTER(lang(?name) = "en")
+}
+ORDER BY ?name

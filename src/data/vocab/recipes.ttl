@@ -1,0 +1,82 @@
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <https://schema.org/> .
+@prefix qudt:   <http://qudt.org/schema/qudt/> .
+@prefix rec:    <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#> .
+
+# Recipe vocabulary. Reuses schema.org for recipes (schema:Recipe, schema:name,
+# schema:author, schema:totalTime, schema:suitableForDiet) and adds what it lacks.
+
+<https://sdsc-ordes.github.io/rdf-training/vocab/recipes> a owl:Ontology ;
+    rdfs:label "Recipe vocabulary"@en ;
+    owl:versionInfo "0.1" .
+
+# --- Food taxonomy ---------------------------------------------------------
+
+rec:Food a rdfs:Class ; rdfs:label "Food"@en ;
+    rdfs:comment "Anything used as an ingredient."@en .
+rec:Product a rdfs:Class ; rdfs:subClassOf rec:Food ; rdfs:label "Product"@en ;
+    rdfs:comment "A prepared food with ingredients of its own, e.g. soy sauce."@en .
+
+rec:AnimalProduct a rdfs:Class ; rdfs:subClassOf rec:Food ; rdfs:label "Animal product"@en .
+rec:MeatOrFish a rdfs:Class ; rdfs:subClassOf rec:AnimalProduct ; rdfs:label "Meat or fish"@en .
+rec:Meat a rdfs:Class ; rdfs:subClassOf rec:MeatOrFish ; rdfs:label "Meat"@en .
+rec:FishOrSeafood a rdfs:Class ; rdfs:subClassOf rec:MeatOrFish ; rdfs:label "Fish or seafood"@en .
+rec:DairyProduct a rdfs:Class ; rdfs:subClassOf rec:AnimalProduct ; rdfs:label "Dairy product"@en .
+rec:Cheese a rdfs:Class ; rdfs:subClassOf rec:DairyProduct ; rdfs:label "Cheese"@en .
+rec:HardCheese a rdfs:Class ; rdfs:subClassOf rec:Cheese ; rdfs:label "Hard cheese"@en .
+rec:Egg a rdfs:Class ; rdfs:subClassOf rec:AnimalProduct ; rdfs:label "Egg"@en .
+rec:Honey a rdfs:Class ; rdfs:subClassOf rec:AnimalProduct, rec:Sweetener ; rdfs:label "Honey"@en .
+
+rec:PlantFood a rdfs:Class ; rdfs:subClassOf rec:Food ; rdfs:label "Plant food"@en .
+rec:Vegetable a rdfs:Class ; rdfs:subClassOf rec:PlantFood ; rdfs:label "Vegetable"@en .
+rec:Fruit a rdfs:Class ; rdfs:subClassOf rec:PlantFood ; rdfs:label "Fruit"@en .
+rec:Grain a rdfs:Class ; rdfs:subClassOf rec:PlantFood ; rdfs:label "Grain"@en .
+rec:Legume a rdfs:Class ; rdfs:subClassOf rec:PlantFood ; rdfs:label "Legume"@en .
+rec:NutOrSeed a rdfs:Class ; rdfs:subClassOf rec:PlantFood ; rdfs:label "Nut or seed"@en .
+rec:HerbOrSpice a rdfs:Class ; rdfs:subClassOf rec:PlantFood ; rdfs:label "Herb or spice"@en .
+rec:Oil a rdfs:Class ; rdfs:subClassOf rec:PlantFood ; rdfs:label "Oil"@en .
+
+rec:Seasoning a rdfs:Class ; rdfs:subClassOf rec:Food ; rdfs:label "Seasoning"@en .
+rec:Sweetener a rdfs:Class ; rdfs:subClassOf rec:Food ; rdfs:label "Sweetener"@en .
+rec:Beverage a rdfs:Class ; rdfs:subClassOf rec:Food ; rdfs:label "Beverage"@en .
+
+# --- Properties ------------------------------------------------------------
+
+rec:hasIngredient a rdf:Property ; rdfs:label "has ingredient"@en ;
+    rdfs:domain schema:Recipe ; rdfs:range rec:Food .
+rec:containsIngredient a rdf:Property ; rdfs:label "contains ingredient"@en ;
+    rdfs:comment "What a product is made of."@en ;
+    rdfs:domain rec:Product ; rdfs:range rec:Food .
+rec:hasAllergen a rdf:Property ; rdfs:label "has allergen"@en ;
+    rdfs:comment "An allergen from the EU allergen scheme."@en ;
+    rdfs:domain rec:Food ; rdfs:range skos:Concept .
+rec:grownIn a rdf:Property ; rdfs:label "grown in"@en ;
+    rdfs:comment "A country (Wikidata item) where the food is grown."@en ;
+    rdfs:domain rec:Food .
+rec:cuisine a rdf:Property ; rdfs:label "cuisine"@en ;
+    rdfs:domain schema:Recipe ; rdfs:range skos:Concept .
+rec:course a rdf:Property ; rdfs:label "course"@en ;
+    rdfs:comment "Starter, main or dessert."@en ;
+    rdfs:domain schema:Recipe ; rdfs:range skos:Concept .
+
+# --- Qualified ingredient use (quantity + unit) ----------------------------
+
+rec:IngredientUsage a rdfs:Class ; rdfs:label "Ingredient usage"@en ;
+    rdfs:comment "How much of a food a recipe uses."@en .
+rec:hasIngredientUsage a rdf:Property ; rdfs:label "has ingredient usage"@en ;
+    rdfs:domain schema:Recipe ; rdfs:range rec:IngredientUsage .
+rec:food a rdf:Property ; rdfs:label "food"@en ;
+    rdfs:domain rec:IngredientUsage ; rdfs:range rec:Food .
+rec:quantity a rdf:Property ; rdfs:label "quantity"@en ;
+    rdfs:domain rec:IngredientUsage ; rdfs:range xsd:decimal .
+rec:unit a rdf:Property ; rdfs:label "unit"@en ;
+    rdfs:domain rec:IngredientUsage ; rdfs:range qudt:Unit .
+rec:preparation a rdf:Property ; rdfs:label "preparation"@en ;
+    rdfs:domain rec:IngredientUsage .
+
+rec:Pinch a qudt:Unit ; rdfs:label "pinch"@en ;
+    rdfs:comment "Not in QUDT, so defined here."@en .

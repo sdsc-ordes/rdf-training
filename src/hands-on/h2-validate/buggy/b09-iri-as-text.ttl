@@ -1,0 +1,15 @@
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema:   <https://schema.org/> .
+@prefix unit:     <http://qudt.org/vocab/unit/> .
+@prefix rec:      <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#> .
+@prefix recipe:   <https://sdsc-ordes.github.io/rdf-training/id/recipe/> .
+@prefix food:     <https://sdsc-ordes.github.io/rdf-training/id/food/> .
+@prefix allergen: <https://sdsc-ordes.github.io/rdf-training/id/allergen/> .
+@prefix cuisine:  <https://sdsc-ordes.github.io/rdf-training/id/cuisine/> .
+@prefix course:   <https://sdsc-ordes.github.io/rdf-training/id/course/> .
+@prefix person:   <https://sdsc-ordes.github.io/rdf-training/id/person/> .
+
+food:arborio-rice a rec:Grain ;
+    rdfs:label "Arborio rice"@en ;
+    rec:grownIn "http://www.wikidata.org/entity/Q38" .

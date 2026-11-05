@@ -1,0 +1,16 @@
+# q06 · Which recipes use ingredients grown in Spain? (CQ3)
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <https://schema.org/>
+PREFIX wd:     <http://www.wikidata.org/entity/>
+PREFIX rec:    <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#>
+
+# #region query
+SELECT DISTINCT ?name ?food WHERE {
+  ?recipe schema:name ?name ;
+          rec:hasIngredient/rec:containsIngredient* ?f .
+  ?f rec:grownIn wd:Q29 ;
+     rdfs:label ?food .
+  FILTER(lang(?name) = "en")
+}
+ORDER BY ?name ?food
+# #endregion query

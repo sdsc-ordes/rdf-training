@@ -1,0 +1,20 @@
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema:   <https://schema.org/> .
+@prefix unit:     <http://qudt.org/vocab/unit/> .
+@prefix rec:      <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#> .
+@prefix recipe:   <https://sdsc-ordes.github.io/rdf-training/id/recipe/> .
+@prefix food:     <https://sdsc-ordes.github.io/rdf-training/id/food/> .
+@prefix allergen: <https://sdsc-ordes.github.io/rdf-training/id/allergen/> .
+@prefix cuisine:  <https://sdsc-ordes.github.io/rdf-training/id/cuisine/> .
+@prefix course:   <https://sdsc-ordes.github.io/rdf-training/id/course/> .
+@prefix person:   <https://sdsc-ordes.github.io/rdf-training/id/person/> .
+
+recipe:risotto-bianco a schema:Recipe ;
+    schema:description "Rice cooked slowly in white wine and butter, finished with Parmesan."@en ;
+    schema:author person:luca-bernasconi ;
+    schema:totalTime "PT35M"^^xsd:dayTimeDuration ;
+    rec:cuisine cuisine:italian ;
+    rec:course course:main ;
+    schema:suitableForDiet schema:VegetarianDiet, schema:GlutenFreeDiet ;
+    rec:hasIngredient food:rice, food:onion, food:butter, food:parmesan, food:white-wine .

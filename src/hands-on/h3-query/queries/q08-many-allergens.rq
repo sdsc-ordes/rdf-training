@@ -1,0 +1,12 @@
+# q08 · Which recipes involve at least three different allergens?
+PREFIX schema: <https://schema.org/>
+PREFIX rec:    <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#>
+
+SELECT ?name (COUNT(DISTINCT ?allergen) AS ?allergens) WHERE {
+  ?recipe schema:name ?name ;
+          rec:hasIngredient/rec:containsIngredient*/rec:hasAllergen ?allergen .
+  FILTER(lang(?name) = "en")
+}
+GROUP BY ?name
+HAVING (COUNT(DISTINCT ?allergen) >= 3)
+ORDER BY DESC(?allergens) ?name

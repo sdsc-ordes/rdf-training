@@ -1,0 +1,19 @@
+# q09 · What can I cook for a vegetarian, gluten-free guest? (CQ2)
+PREFIX rdfs:     <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema:   <https://schema.org/>
+PREFIX rec:      <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#>
+PREFIX allergen: <https://sdsc-ordes.github.io/rdf-training/id/allergen/>
+
+SELECT ?name ?time WHERE {
+  ?recipe a schema:Recipe ;
+          schema:name ?name ;
+          schema:totalTime ?time .
+  FILTER(lang(?name) = "en")
+  FILTER NOT EXISTS {
+    ?recipe rec:hasIngredient/rec:containsIngredient* ?i .
+    { ?i a/rdfs:subClassOf* rec:MeatOrFish }
+    UNION
+    { ?i rec:hasAllergen allergen:gluten }
+  }
+}
+ORDER BY ?time ?name

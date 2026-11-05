@@ -1,0 +1,201 @@
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:     <http://www.w3.org/2004/02/skos/core#> .
+@prefix sh:       <http://www.w3.org/ns/shacl#> .
+@prefix schema:   <https://schema.org/> .
+@prefix unit:     <http://qudt.org/vocab/unit/> .
+@prefix rec:      <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#> .
+@prefix recsh:    <https://sdsc-ordes.github.io/rdf-training/vocab/recipes-shapes#> .
+@prefix allergen: <https://sdsc-ordes.github.io/rdf-training/id/allergen/> .
+@prefix cuisine:  <https://sdsc-ordes.github.io/rdf-training/id/cuisine/> .
+@prefix course:   <https://sdsc-ordes.github.io/rdf-training/id/course/> .
+
+# Shapes for the recipe KG. SHACL Core only, so they run in browser validators.
+# Validate together with the vocabulary, concepts and foods: sh:class and the
+# diet rules follow rdfs:subClassOf triples that must be in the data graph.
+
+# --- Recipe ----------------------------------------------------------------
+
+# #region recipeShapes
+recsh:RecipeShape a sh:NodeShape ;
+    sh:targetClass schema:Recipe ;
+    sh:property recsh:Recipe-name, recsh:Recipe-description, recsh:Recipe-author,
+        recsh:Recipe-totalTime, recsh:Recipe-cuisine, recsh:Recipe-course, recsh:Recipe-diet,
+        recsh:Recipe-hasIngredient, recsh:Recipe-recipeIngredient, recsh:Recipe-usage ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) .
+
+recsh:Recipe-totalTime a sh:PropertyShape ;
+    sh:path schema:totalTime ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:datatype xsd:dayTimeDuration ;
+    sh:message "Use exactly one totalTime of type xsd:dayTimeDuration, e.g. \"PT30M\"^^xsd:dayTimeDuration."@en,
+        "Genau eine totalTime vom Typ xsd:dayTimeDuration, z. B. \"PT30M\"^^xsd:dayTimeDuration."@de .
+# #endregion recipeShapes
+
+recsh:Recipe-name a sh:PropertyShape ;
+    sh:path schema:name ;
+    sh:minCount 1 ;
+    sh:datatype rdf:langString ;
+    sh:uniqueLang true ;
+    sh:languageIn ( "en" "de" "fr" "it" ) ;
+    sh:message "Each recipe needs a name with a language tag (en, de, fr or it), at most one per language, e.g. \"Rösti\"@de."@en,
+        "Jedes Rezept braucht einen Namen mit Sprach-Tag (en, de, fr oder it), höchstens einen pro Sprache, z. B. \"Rösti\"@de."@de .
+
+recsh:Recipe-description a sh:PropertyShape ;
+    sh:path schema:description ;
+    sh:minCount 1 ;
+    sh:datatype rdf:langString ;
+    sh:severity sh:Info ;
+    sh:message "Add a short description with a language tag."@en .
+
+# #region author
+recsh:Recipe-author a sh:PropertyShape ;
+    sh:path schema:author ;
+    sh:minCount 1 ;
+    sh:class schema:Person ;
+    sh:severity sh:Warning ;
+    sh:message "Add an author: a schema:Person, e.g. person:anna-keller."@en .
+# #endregion author
+
+recsh:Recipe-cuisine a sh:PropertyShape ;
+    sh:path rec:cuisine ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:node recsh:CuisineConcept ;
+    sh:message "Each recipe needs one cuisine from the cuisine scheme, e.g. cuisine:swiss."@en .
+
+recsh:Recipe-course a sh:PropertyShape ;
+    sh:path rec:course ;
+    sh:maxCount 1 ;
+    sh:node recsh:CourseConcept ;
+    sh:message "The course must come from the course scheme, e.g. course:main."@en .
+
+recsh:Recipe-diet a sh:PropertyShape ;
+    sh:path schema:suitableForDiet ;
+    sh:in ( schema:DiabeticDiet schema:GlutenFreeDiet schema:HalalDiet schema:HinduDiet
+        schema:KosherDiet schema:LowCalorieDiet schema:LowFatDiet schema:LowLactoseDiet
+        schema:LowSaltDiet schema:VeganDiet schema:VegetarianDiet ) ;
+    sh:message "Diets must be schema.org RestrictedDiet values, e.g. schema:VeganDiet."@en .
+
+recsh:Recipe-hasIngredient a sh:PropertyShape ;
+    sh:path rec:hasIngredient ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:class rec:Food ;
+    sh:message "Each recipe needs at least one ingredient: the IRI of a known food, e.g. food:potato."@en,
+        "Jedes Rezept braucht mindestens eine Zutat: die IRI eines bekannten Lebensmittels, z. B. food:potato."@de .
+
+recsh:Recipe-recipeIngredient a sh:PropertyShape ;
+    sh:path schema:recipeIngredient ;
+    sh:datatype xsd:string .
+
+recsh:Recipe-usage a sh:PropertyShape ;
+    sh:path rec:hasIngredientUsage ;
+    sh:nodeKind sh:IRI ;
+    sh:class rec:IngredientUsage .
+
+recsh:CuisineConcept a sh:NodeShape ;
+    sh:property [ sh:path skos:inScheme ; sh:hasValue cuisine:scheme ] .
+
+recsh:CourseConcept a sh:NodeShape ;
+    sh:property [ sh:path skos:inScheme ; sh:hasValue course:scheme ] .
+
+# --- Diet claims must match the ingredients (also inside products) ----------
+
+# #region veganRule
+recsh:VeganRecipeShape a sh:NodeShape ;
+    sh:targetClass schema:Recipe ;
+    sh:or (
+        [ sh:not [ sh:path schema:suitableForDiet ; sh:hasValue schema:VeganDiet ] ]
+        [ sh:path ( rec:hasIngredient [ sh:zeroOrMorePath rec:containsIngredient ] ) ;
+          sh:not [ sh:class rec:AnimalProduct ] ]
+    ) ;
+    sh:message "A vegan recipe must not contain animal products, not even inside products like pesto."@en .
+# #endregion veganRule
+
+recsh:VegetarianRecipeShape a sh:NodeShape ;
+    sh:targetClass schema:Recipe ;
+    sh:or (
+        [ sh:not [ sh:path schema:suitableForDiet ; sh:hasValue schema:VegetarianDiet ] ]
+        [ sh:path ( rec:hasIngredient [ sh:zeroOrMorePath rec:containsIngredient ] ) ;
+          sh:not [ sh:class rec:MeatOrFish ] ]
+    ) ;
+    sh:message "A vegetarian recipe must not contain meat or fish, not even inside products like Worcestershire sauce."@en .
+
+recsh:GlutenFreeRecipeShape a sh:NodeShape ;
+    sh:targetClass schema:Recipe ;
+    sh:or (
+        [ sh:not [ sh:path schema:suitableForDiet ; sh:hasValue schema:GlutenFreeDiet ] ]
+        [ sh:path ( rec:hasIngredient [ sh:zeroOrMorePath rec:containsIngredient ] ) ;
+          sh:not [ sh:path rec:hasAllergen ; sh:hasValue allergen:gluten ] ]
+    ) ;
+    sh:message "A gluten-free recipe must not contain gluten, not even inside products like soy sauce."@en .
+
+# --- Ingredient usage (quantity + unit) -------------------------------------
+
+recsh:UsageShape a sh:NodeShape ;
+    sh:targetClass rec:IngredientUsage ;
+    sh:property recsh:Usage-food, recsh:Usage-quantity, recsh:Usage-unit .
+
+recsh:Usage-food a sh:PropertyShape ;
+    sh:path rec:food ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:class rec:Food ;
+    sh:message "An ingredient usage needs exactly one food, e.g. food:potato."@en .
+
+recsh:Usage-quantity a sh:PropertyShape ;
+    sh:path rec:quantity ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:datatype xsd:decimal ;
+    sh:minExclusive 0 ;
+    sh:message "An ingredient usage needs one positive decimal quantity, e.g. 250.0."@en .
+
+recsh:Usage-unit a sh:PropertyShape ;
+    sh:path rec:unit ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:in ( unit:GM unit:KiloGM unit:MilliL unit:L unit:TSP unit:TBSP unit:CUP unit:NUM rec:Pinch ) ;
+    sh:message "Use one of the allowed units: unit:GM, unit:KiloGM, unit:MilliL, unit:L, unit:TSP, unit:TBSP, unit:CUP, unit:NUM or rec:Pinch."@en .
+
+# --- Food ------------------------------------------------------------------
+
+recsh:FoodShape a sh:NodeShape ;
+    sh:targetClass rec:Food ;
+    sh:property recsh:Food-label, recsh:Food-allergen, recsh:Food-contains,
+        recsh:Food-grownIn, recsh:Food-exactMatch .
+
+recsh:Food-label a sh:PropertyShape ;
+    sh:path rdfs:label ;
+    sh:minCount 1 ;
+    sh:datatype rdf:langString ;
+    sh:message "Each food needs a label with a language tag, e.g. \"potato\"@en."@en .
+
+recsh:Food-allergen a sh:PropertyShape ;
+    sh:path rec:hasAllergen ;
+    sh:node recsh:AllergenConcept ;
+    sh:message "Allergens must come from the EU allergen scheme, e.g. allergen:gluten."@en .
+
+recsh:Food-contains a sh:PropertyShape ;
+    sh:path rec:containsIngredient ;
+    sh:class rec:Food ;
+    sh:message "A product can only contain known foods."@en .
+
+recsh:Food-grownIn a sh:PropertyShape ;
+    sh:path rec:grownIn ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "^http://www\\.wikidata\\.org/entity/Q[0-9]+$" ;
+    sh:message "grownIn must be a Wikidata item IRI, e.g. wd:Q29 (Spain)."@en .
+
+recsh:Food-exactMatch a sh:PropertyShape ;
+    sh:path skos:exactMatch ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "^http://www\\.wikidata\\.org/entity/Q[0-9]+$" ;
+    sh:message "exactMatch must be a Wikidata item IRI (http://www.wikidata.org/entity/Q…), not a string or a /wiki/ page."@en .
+
+recsh:AllergenConcept a sh:NodeShape ;
+    sh:property [ sh:path skos:inScheme ; sh:hasValue allergen:scheme ] .

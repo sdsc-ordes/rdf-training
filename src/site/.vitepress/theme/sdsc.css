@@ -1,0 +1,23 @@
+/* Map VitePress theme variables onto the generated SDSC tokens (src/slides/style.css). */
+:root {
+  --vp-c-brand-1: var(--sdsc-content-heading);
+  --vp-c-brand-2: var(--sdsc-primary);
+  --vp-c-brand-3: var(--sdsc-primary);
+  --vp-c-brand-soft: var(--sdsc-light-blue-bg);
+  --vp-font-family-base: var(--sdsc-font-body);
+  --vp-font-family-mono: var(--sdsc-font-mono);
+  --vp-home-hero-name-color: var(--sdsc-content-heading);
+}
+
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.VPHero .name,
+.VPHero .text {
+  font-family: var(--sdsc-font-heading);
+}
+
+/* Copyable prompts wrap instead of scrolling. */
+.vp-doc .prompt code {
+  white-space: pre-wrap;
+}

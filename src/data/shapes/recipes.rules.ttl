@@ -1,0 +1,30 @@
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix schema: <https://schema.org/> .
+@prefix rec:    <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#> .
+@prefix recsh:  <https://sdsc-ordes.github.io/rdf-training/vocab/recipes-shapes#> .
+
+# A SHACL rule (SHACL Advanced Features, 2017): a recipe with a cheese ingredient is a cheese dish.
+# Infers the same types as the OWL definition
+#   rec:CheeseDish owl:equivalentClass [ a owl:Restriction ;
+#       owl:onProperty rec:hasIngredient ; owl:someValuesFrom rec:Cheese ] .
+# Run with pySHACL: shacl_rules(data, shacl_graph=rules, advanced=True, iterate_rules=True)
+
+rec:CheeseDish a rdfs:Class ; rdfs:label "cheese dish"@en ;
+    rdfs:comment "Only used by the SHACL rules example."@en ;
+    rdfs:subClassOf schema:Recipe .
+
+# #region cheeseDishRule
+recsh:CheeseDishRule a sh:NodeShape ;
+    sh:targetClass schema:Recipe ;
+    sh:rule [
+        a sh:TripleRule ;
+        sh:subject sh:this ;
+        sh:predicate rdf:type ;
+        sh:object rec:CheeseDish ;
+        sh:condition [ sh:property [
+            sh:path rec:hasIngredient ;
+            sh:qualifiedValueShape [ sh:class rec:Cheese ] ;
+            sh:qualifiedMinCount 1 ] ] ] .
+# #endregion cheeseDishRule

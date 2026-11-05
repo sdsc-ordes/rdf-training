@@ -1,0 +1,33 @@
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema:   <https://schema.org/> .
+@prefix unit:     <http://qudt.org/vocab/unit/> .
+@prefix rec:      <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#> .
+@prefix recipe:   <https://sdsc-ordes.github.io/rdf-training/id/recipe/> .
+@prefix food:     <https://sdsc-ordes.github.io/rdf-training/id/food/> .
+@prefix allergen: <https://sdsc-ordes.github.io/rdf-training/id/allergen/> .
+@prefix cuisine:  <https://sdsc-ordes.github.io/rdf-training/id/cuisine/> .
+@prefix course:   <https://sdsc-ordes.github.io/rdf-training/id/course/> .
+@prefix person:   <https://sdsc-ordes.github.io/rdf-training/id/person/> .
+
+# #region pizza
+recipe:pizza-margherita a schema:Recipe ;
+    schema:name "Pizza Margherita" ;
+    schema:description "Classic Neapolitan pizza with tomato, mozzarella and basil."@en ;
+    schema:author person:luca-bernasconi ;
+    schema:totalTime "25 min" ;
+    rec:cuisine cuisine:italian ;
+    rec:course course:main ;
+    schema:suitableForDiet schema:VegetarianDiet ;
+    rec:hasIngredient food:wheat-flour, food:tomato, food:mozzarella, food:basil, food:olive-oil .
+# #endregion pizza
+
+recipe:gazpacho a schema:Recipe ;
+    schema:name "Gazpacho"@es ;
+    schema:description "Cold Andalusian tomato soup."@en ;
+    schema:author person:anna-keller ;
+    schema:totalTime "PT20M"^^xsd:dayTimeDuration ;
+    rec:cuisine cuisine:spanish ;
+    rec:course course:starter ;
+    schema:suitableForDiet schema:VeganDiet, schema:PescatarianDiet ;
+    rec:hasIngredients food:tomato, food:onion, food:garlic, food:olive-oil, food:vinegar .

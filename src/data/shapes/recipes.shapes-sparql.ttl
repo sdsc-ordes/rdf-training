@@ -1,0 +1,31 @@
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix schema: <https://schema.org/> .
+@prefix rec:    <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#> .
+@prefix recsh:  <https://sdsc-ordes.github.io/rdf-training/vocab/recipes-shapes#> .
+
+# The vegan rule as SHACL-SPARQL, for comparison with the SHACL Core version.
+# Needs a SHACL-SPARQL engine (pySHACL, TopBraid, EU ITB validator).
+
+# #region veganSparql
+recsh:VeganRecipeSparqlShape a sh:NodeShape ;
+    sh:targetClass schema:Recipe ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "Vegan recipe uses animal product {?value}."@en ;
+        sh:prefixes recsh:prefixes ;
+        sh:select """
+            SELECT $this ?value WHERE {
+                $this schema:suitableForDiet schema:VeganDiet ;
+                      rec:hasIngredient/rec:containsIngredient* ?value .
+                ?value a/rdfs:subClassOf* rec:AnimalProduct .
+            }
+        """
+    ] .
+# #endregion veganSparql
+
+recsh:prefixes
+    sh:declare [ sh:prefix "rdfs" ; sh:namespace "http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI ] ,
+        [ sh:prefix "schema" ; sh:namespace "https://schema.org/"^^xsd:anyURI ] ,
+        [ sh:prefix "rec" ; sh:namespace "https://sdsc-ordes.github.io/rdf-training/vocab/recipes#"^^xsd:anyURI ] .

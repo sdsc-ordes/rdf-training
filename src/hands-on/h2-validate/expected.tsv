@@ -1,0 +1,22 @@
+file	bug	focus	path	shape	component	severity
+b01-missing-name.ttl	name missing	recipe:risotto-bianco	schema:name	recsh:Recipe-name	sh:MinCountConstraintComponent	sh:Violation
+b02-time-as-text.ttl	time is a plain string	recipe:risotto-bianco	schema:totalTime	recsh:Recipe-totalTime	sh:DatatypeConstraintComponent	sh:Violation
+b03-name-without-language.ttl	name has no language tag	recipe:risotto-bianco	schema:name	recsh:Recipe-name	sh:DatatypeConstraintComponent	sh:Violation
+b03-name-without-language.ttl	name has no language tag	recipe:risotto-bianco	schema:name	recsh:Recipe-name	sh:LanguageInConstraintComponent	sh:Violation
+b04-unknown-allergen.ttl	allergen not in EU scheme	food:cream	rec:hasAllergen	recsh:Food-allergen	sh:NodeConstraintComponent	sh:Violation
+b05-vegan-with-butter.ttl	vegan claim but butter and Parmesan	recipe:risotto-bianco		recsh:VeganRecipeShape	sh:OrConstraintComponent	sh:Violation
+b06-negative-quantity.ttl	negative quantity	recipe:risotto-bianco-u1	rec:quantity	recsh:Usage-quantity	sh:MinExclusiveConstraintComponent	sh:Violation
+b07-unknown-unit.ttl	unit not allowed (ounces)	recipe:risotto-bianco-u1	rec:unit	recsh:Usage-unit	sh:InConstraintComponent	sh:Violation
+b08-misspelt-property.ttl	misspelt property	recipe:risotto-bianco	rec:hasIngrediant	recsh:RecipeShape	sh:ClosedConstraintComponent	sh:Violation
+b08-misspelt-property.ttl	misspelt property	recipe:risotto-bianco	rec:hasIngredient	recsh:Recipe-hasIngredient	sh:MinCountConstraintComponent	sh:Violation
+b09-iri-as-text.ttl	Wikidata IRI written as a string	food:arborio-rice	rec:grownIn	recsh:Food-grownIn	sh:NodeKindConstraintComponent	sh:Violation
+b10-two-times.ttl	two total times	recipe:risotto-bianco	schema:totalTime	recsh:Recipe-totalTime	sh:MaxCountConstraintComponent	sh:Violation
+b11-llm-first-attempt.ttl	name has no language tag	recipe:pizza-margherita	schema:name	recsh:Recipe-name	sh:DatatypeConstraintComponent	sh:Violation
+b11-llm-first-attempt.ttl	name has no language tag	recipe:pizza-margherita	schema:name	recsh:Recipe-name	sh:LanguageInConstraintComponent	sh:Violation
+b11-llm-first-attempt.ttl	time is a plain string	recipe:pizza-margherita	schema:totalTime	recsh:Recipe-totalTime	sh:DatatypeConstraintComponent	sh:Violation
+b11-llm-first-attempt.ttl	food:mozzarella is not a known food	recipe:pizza-margherita	rec:hasIngredient	recsh:Recipe-hasIngredient	sh:ClassConstraintComponent	sh:Violation
+b11-llm-first-attempt.ttl	language es not allowed	recipe:gazpacho	schema:name	recsh:Recipe-name	sh:LanguageInConstraintComponent	sh:Violation
+b11-llm-first-attempt.ttl	cuisine:spanish is not in the cuisine scheme	recipe:gazpacho	rec:cuisine	recsh:Recipe-cuisine	sh:NodeConstraintComponent	sh:Violation
+b11-llm-first-attempt.ttl	invented diet schema:PescatarianDiet	recipe:gazpacho	schema:suitableForDiet	recsh:Recipe-diet	sh:InConstraintComponent	sh:Violation
+b11-llm-first-attempt.ttl	misspelt property	recipe:gazpacho	rec:hasIngredients	recsh:RecipeShape	sh:ClosedConstraintComponent	sh:Violation
+b11-llm-first-attempt.ttl	misspelt property	recipe:gazpacho	rec:hasIngredient	recsh:Recipe-hasIngredient	sh:MinCountConstraintComponent	sh:Violation

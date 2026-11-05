@@ -1,0 +1,4 @@
+?name	?time
+"Half-and-half fondue"@en	"PT30M"^^<http://www.w3.org/2001/XMLSchema#dayTimeDuration>
+"Rösti"@en	"PT40M"^^<http://www.w3.org/2001/XMLSchema#dayTimeDuration>
+"Chana masala"@en	"PT45M"^^<http://www.w3.org/2001/XMLSchema#dayTimeDuration>

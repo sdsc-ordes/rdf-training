@@ -1,0 +1,331 @@
+# SDSC Slides — design tokens (SINGLE SOURCE OF TRUTH)
+# =============================================================================
+# Designers: this is the only file you normally edit. Change a value here and
+# re-theme BOTH outputs by re-running the two builders from the skill root:
+#
+#     uv run scripts/build_pptx.py          # -> a PowerPoint .pptx template
+#     uv run scripts/build_slidev_theme.py  # -> a Slidev style.css theme
+#
+# Then check that every text/background pairing still meets WCAG AA contrast:
+#
+#     uv run scripts/verify_tokens.py       # no dependencies; gates on contrast
+#
+# Values are taken from the SDSC Design System (SDSC_Design_System.pdf, June
+# 2026) and kept consistent with the sdsc-ui-kit skill. Slide colours are the
+# UI-kit *brand* colours (a deck is interface chrome, not data) — for charts
+# placed on a slide use the sdsc-plotting palette instead.
+# =============================================================================
+
+[meta]
+name = "SDSC Slides"
+# 16:9 widescreen is the SDSC default. In inches (EMU-friendly for python-pptx).
+aspect_ratio = "16:9"
+slide_width_in = 13.333
+slide_height_in = 7.5
+
+[fonts]
+# Space Grotesk (headings) + Switzer (body) is the SDSC type pairing.
+# Install both locally for PowerPoint to render them (python-pptx cannot embed
+# fonts); Slidev loads Space Grotesk from Google Fonts and Switzer from
+# Fontshare. Fira Code (mono) styles code blocks. The *_fallback names are safe
+# substitutes when the brand fonts are missing on a viewer's machine.
+heading = "Space Grotesk"
+body = "Switzer"
+mono = "Fira Code"
+heading_fallback = "Arial"
+body_fallback = "Calibri"
+mono_fallback = "Consolas"
+
+[colors]
+# Brand — authoritative (PDF §2). Names mirror the sdsc-ui-kit tokens.
+primary = "#5561A6"          # links, feature icons, bullet markers, accents
+primary_light = "#8A94C9"    # big section number, cover tagline (decorative)
+secondary = "#26235C"        # title/closing gradient, headings, KPI numbers
+background = "#FFFFFF"        # default content-slide background
+background_alt = "#F4F3F8"   # quote / takeaway / code-block fill (lavender-grey)
+background_dark = "#101010"  # full-dark background option
+text = "#000000"             # body text
+text_grey = "#848484"        # captions, footer, secondary text
+text_on_dark = "#FFFFFF"     # text on secondary/gradient backgrounds (constant)
+text_on_dark_muted = "#C2C5E0"  # muted text on the gradient (cover meta, contact)
+border = "#C9C9C9"           # dividers, feature-card outline, table lines
+accent_green = "#90CA42"     # KPI top rule + key-takeaway band edge (use sparingly)
+light_blue_bg = "#DDDEEC"    # section background, CTA banner fill, inline-code chip
+content_heading = "#26235C"  # heading colour on a CONTENT slide (= secondary in
+                             # light; the dark theme overrides this so headings
+                             # stay legible — secondary stays dark for the
+                             # title/closing gradient, so it can't double here)
+
+# Background gradient for the title + closing slides (light theme). The dark
+# theme overrides these in [dark.gradient]. angle_deg is the gradient direction.
+[gradient]
+start = "#26235C"
+end = "#3B3A7A"
+angle_deg = 135
+
+# -----------------------------------------------------------------------------
+# Type scale — POINTS (slides are read from across a room, so sizes are far
+# larger than the web scale). `font` references a [fonts] key; `color`
+# references a [colors] key; `weight` is "bold" or "regular".
+# -----------------------------------------------------------------------------
+[type.title]            # cover / closing headline
+size = 40
+weight = "bold"
+font = "heading"
+color = "text_on_dark"
+
+[type.subtitle]         # cover tagline (periwinkle on the gradient)
+size = 20
+weight = "regular"
+font = "body"
+color = "primary_light"
+
+[type.meta]             # cover author · date · venue, closing contact
+size = 13
+weight = "regular"
+font = "body"
+color = "text_on_dark_muted"
+
+[type.section_number]   # the big "01" on a section divider
+size = 72
+weight = "bold"
+font = "heading"
+color = "primary_light"
+
+[type.section_title]    # section divider title (dark on lavender)
+size = 36
+weight = "bold"
+font = "heading"
+color = "content_heading"
+
+[type.section_desc]     # one-line section description under the title
+size = 16
+weight = "regular"
+font = "body"
+color = "text_grey"
+
+[type.heading]          # content-slide title
+size = 28
+weight = "bold"
+font = "heading"
+color = "content_heading"
+
+[type.body]
+size = 18
+weight = "regular"
+font = "body"
+color = "text"
+
+[type.bullet]
+size = 18
+weight = "regular"
+font = "body"
+color = "text"
+
+[type.column_head]      # two-column sub-head
+size = 20
+weight = "bold"
+font = "heading"
+color = "content_heading"
+
+[type.feature_title]    # feature-grid card title
+size = 17
+weight = "bold"
+font = "heading"
+color = "content_heading"
+
+[type.feature_desc]     # feature-grid card body
+size = 14
+weight = "regular"
+font = "body"
+color = "text"
+
+[type.kpi_number]       # headline statistic (dark on white, green rule above)
+size = 56
+weight = "bold"
+font = "heading"
+color = "content_heading"
+
+[type.kpi_label]
+size = 16
+weight = "regular"
+font = "body"
+color = "text_grey"
+
+[type.quote]            # pull-quote text
+size = 24
+weight = "regular"
+font = "heading"
+color = "content_heading"
+
+[type.quote_attr]       # quote attribution line
+size = 14
+weight = "regular"
+font = "body"
+color = "text_grey"
+
+[type.banner_title]     # CTA / key-message banner heading
+size = 24
+weight = "bold"
+font = "heading"
+color = "content_heading"
+
+[type.banner_text]      # CTA / key-message banner body
+size = 16
+weight = "regular"
+font = "body"
+color = "text"
+
+[type.takeaway]         # key-takeaway highlight band text
+size = 16
+weight = "regular"
+font = "body"
+color = "text"
+
+[type.code]             # code block / inline code
+size = 13
+weight = "regular"
+font = "mono"
+color = "content_heading"
+
+[type.caption]
+size = 12
+weight = "regular"
+font = "body"
+color = "text_grey"
+
+[type.footer]
+size = 10
+weight = "regular"
+font = "body"
+color = "text_grey"
+
+# -----------------------------------------------------------------------------
+# Layout — inches. The content area is the slide minus these margins; the footer
+# (SDSC logo + centred deck name + page number, no divider line) sits inside
+# footer_height at the bottom.
+# -----------------------------------------------------------------------------
+[layout]
+margin_x_in = 0.92          # left/right safe margin
+margin_top_in = 0.7         # top safe margin on content slides
+footer_height_in = 0.55     # reserved band at the bottom of content slides
+logo_height_in = 0.3        # footer logo height
+rule_height_in = 0.04       # KPI / feature top rule thickness
+title_logo_height_in = 0.24 # horizontal logo height on title/closing slides
+
+# -----------------------------------------------------------------------------
+# Contrast gate. verify_tokens.py checks each pair below meets WCAG AA for the
+# given role: "text" needs >= 4.5:1, "large" (>= 18pt bold / 24pt) needs >= 3:1.
+# fg/bg reference [colors] keys. Edit when you add a new text-on-background
+# combination so the gate keeps the deck legible. Set `advisory = true` on a
+# pair to surface it as a WARNING instead of failing the gate — reserved for
+# brand-mandated or purely decorative colours (e.g. the big lavender section
+# number on the lavender panel, or the SDSC grey #848484 at ~3.7:1 on white).
+# -----------------------------------------------------------------------------
+[[contrast_pairs]]
+name = "Body on white"
+fg = "text"
+bg = "background"
+role = "text"
+
+[[contrast_pairs]]
+name = "Body on alt background"
+fg = "text"
+bg = "background_alt"
+role = "text"
+
+[[contrast_pairs]]
+name = "Caption/footer grey on white"
+fg = "text_grey"
+bg = "background"
+role = "text"
+advisory = true  # SDSC brand grey ~3.7:1 — keep captions/footers short & large
+
+[[contrast_pairs]]
+name = "Content heading on background"
+fg = "content_heading"
+bg = "background"
+role = "large"
+
+[[contrast_pairs]]
+name = "Title text on gradient"
+fg = "text_on_dark"
+bg = "secondary"
+role = "large"
+
+[[contrast_pairs]]
+name = "Cover tagline on gradient"
+fg = "primary_light"
+bg = "secondary"
+role = "text"
+
+[[contrast_pairs]]
+name = "Cover meta on gradient"
+fg = "text_on_dark_muted"
+bg = "secondary"
+role = "text"
+
+[[contrast_pairs]]
+name = "Section title on section panel"
+fg = "content_heading"
+bg = "light_blue_bg"
+role = "large"
+
+[[contrast_pairs]]
+name = "Section description on section panel"
+fg = "text_grey"
+bg = "light_blue_bg"
+role = "text"
+advisory = true  # grey on lavender ~3.x:1 — short one-line description only
+
+[[contrast_pairs]]
+name = "Section number on section panel"
+fg = "primary_light"
+bg = "light_blue_bg"
+role = "large"
+advisory = true  # big decorative numeral — never the only signal
+
+[[contrast_pairs]]
+name = "KPI number on white"
+fg = "content_heading"
+bg = "background"
+role = "large"
+
+[[contrast_pairs]]
+name = "Banner title on banner fill"
+fg = "content_heading"
+bg = "light_blue_bg"
+role = "large"
+
+[[contrast_pairs]]
+name = "Link/primary on white"
+fg = "primary"
+bg = "background"
+role = "text"
+
+# =============================================================================
+# DARK THEME
+# Colour overrides applied when building the dark variant (build_pptx.py --dark,
+# or Slidev's html.dark). Only keys that change between themes are listed; every
+# other colour is inherited from [colors] above. `secondary` and `text_on_dark`
+# are intentionally NOT overridden — the title/closing slides stay deep brand
+# blue with white type in both themes. `light_blue_bg` darkens to a deep indigo
+# so the section divider and CTA banner read as panels in dark mode while the
+# lavender number/heading stay legible. verify_tokens.py checks the contrast
+# pairs above against BOTH the light and dark palettes.
+# =============================================================================
+[dark]
+background = "#1A1A1A"        # content-slide background
+background_alt = "#2D2D2D"    # quote / takeaway / code-block fill
+text = "#FFFFFF"              # body text
+text_grey = "#B0B0B0"         # captions/footer (advisory pair)
+content_heading = "#8A94C9"   # light brand lavender — legible on dark
+primary = "#8A94C9"           # links / feature icons lightened for dark
+primary_light = "#A9B1DC"     # section number a touch lighter on dark panels
+light_blue_bg = "#242241"     # section / banner panel in dark mode
+border = "#404040"            # footer rule / card outline / table lines
+
+[dark.gradient]
+start = "#101010"
+end = "#26235C"
+angle_deg = 135

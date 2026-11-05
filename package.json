@@ -1,0 +1,25 @@
+{
+  "name": "rdf-training",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "dev": "slidev",
+    "build": "bash tools/scripts/build-site.sh",
+    "export": "bash tools/scripts/export-decks.sh",
+    "cross-check": "node tools/scripts/js/cross-check.mjs",
+    "check:slides": "node tools/scripts/js/check-overflow.mjs"
+  },
+  "devDependencies": {
+    "@comunica/query-sparql": "5.4.1",
+    "@slidev/cli": "53.0.0",
+    "@slidev/theme-default": "0.25.0",
+    "@zazuko/env-node": "3.1.0",
+    "n3": "2.13.12",
+    "playwright-chromium": "1.64.1",
+    "rdf-validate-shacl": "0.6.5",
+    "vitepress": "2.0.0-alpha.21"
+  }
+}

@@ -1,0 +1,8 @@
+@prefix schema: <https://schema.org/> .
+@prefix person: <https://sdsc-ordes.github.io/rdf-training/id/person/> .
+
+# Fictional recipe authors.
+
+person:anna-keller a schema:Person ; schema:name "Anna Keller" .
+person:luca-bernasconi a schema:Person ; schema:name "Luca Bernasconi" .
+person:chloe-dubois a schema:Person ; schema:name "Chloé Dubois" .

@@ -1,0 +1,10 @@
+# q03 · Recipes and the diets they claim to suit (if any)
+PREFIX schema: <https://schema.org/>
+
+SELECT ?name ?diet WHERE {
+  ?recipe a schema:Recipe ;
+          schema:name ?name .
+  FILTER(lang(?name) = "en")
+  OPTIONAL { ?recipe schema:suitableForDiet ?diet }
+}
+ORDER BY ?name ?diet

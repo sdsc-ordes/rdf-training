@@ -1,0 +1,24 @@
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema:  <https://schema.org/> .
+@prefix wd:      <http://www.wikidata.org/entity/> .
+@prefix cuisine: <https://sdsc-ordes.github.io/rdf-training/id/cuisine/> .
+
+cuisine:scheme a skos:ConceptScheme ; skos:prefLabel "Cuisines"@en, "Küchen"@de .
+
+cuisine:european a skos:Concept ; skos:inScheme cuisine:scheme ; skos:topConceptOf cuisine:scheme ;
+    skos:prefLabel "European"@en, "Europäisch"@de .
+cuisine:asian a skos:Concept ; skos:inScheme cuisine:scheme ; skos:topConceptOf cuisine:scheme ;
+    skos:prefLabel "Asian"@en, "Asiatisch"@de .
+cuisine:american a skos:Concept ; skos:inScheme cuisine:scheme ; skos:topConceptOf cuisine:scheme ;
+    skos:prefLabel "American"@en, "Amerikanisch"@de ; schema:countryOfOrigin wd:Q30 .
+
+cuisine:swiss a skos:Concept ; skos:inScheme cuisine:scheme ; skos:broader cuisine:european ;
+    skos:prefLabel "Swiss"@en, "Schweizerisch"@de ; schema:countryOfOrigin wd:Q39 .
+cuisine:italian a skos:Concept ; skos:inScheme cuisine:scheme ; skos:broader cuisine:european ;
+    skos:prefLabel "Italian"@en, "Italienisch"@de ; schema:countryOfOrigin wd:Q38 .
+cuisine:french a skos:Concept ; skos:inScheme cuisine:scheme ; skos:broader cuisine:european ;
+    skos:prefLabel "French"@en, "Französisch"@de ; schema:countryOfOrigin wd:Q142 .
+cuisine:thai a skos:Concept ; skos:inScheme cuisine:scheme ; skos:broader cuisine:asian ;
+    skos:prefLabel "Thai"@en, "Thailändisch"@de ; schema:countryOfOrigin wd:Q869 .
+cuisine:indian a skos:Concept ; skos:inScheme cuisine:scheme ; skos:broader cuisine:asian ;
+    skos:prefLabel "Indian"@en, "Indisch"@de ; schema:countryOfOrigin wd:Q668 .
