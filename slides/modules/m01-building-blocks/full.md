@@ -3,6 +3,10 @@ src: ./parts/01-what-is-a-kg.md
 ---
 
 ---
+src: ./parts/09-terms.md
+---
+
+---
 src: ./parts/02-triples.md
 ---
 
