@@ -189,7 +189,7 @@ Decision guide: single-hop doc lookups → vector RAG · joins/counts/constraint
 - `sh:resultMessage` is optional unless `sh:message` is set; severity defaults to Violation; prefixes are case-sensitive
 - `sh:TripleRule` casing; pin the Imaging Plaza link to a commit; recreate the Figma diagram in the repo
 
-**Repo data**: see `docs/legacy/README.md`; warm-up date becomes `"2025-03-12"^^xsd:date`.
+**Repo data**: warm-up date becomes `"2025-03-12"^^xsd:date`.
 
 ## Risks
 

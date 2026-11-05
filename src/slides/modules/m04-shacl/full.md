@@ -41,7 +41,3 @@ src: ./parts/08-engines.md
 ---
 src: ./parts/12-writing-shapes.md
 ---
-
----
-src: ./parts/09-stretch.md
----

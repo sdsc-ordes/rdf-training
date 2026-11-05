@@ -75,7 +75,7 @@ OWL also has no arithmetic: a SPARQL rule can count ingredients or add up cookin
 OWL is still the tool for checking that an ontology is consistent and for reasoning about things the data mentions but does not name.
 SHACL-SHACL (appendix C of the SHACL spec, prefix shsh:) is a shapes graph that checks shapes graphs, so any SHACL engine can check your shapes. In pySHACL: pyshacl -m (--metashacl).
 It checks the values of SHACL's own properties, e.g. sh:minCount "1" (a string) or sh:datatype "xsd:string" (a literal). A misspelled property such as sh:mincount passes unnoticed.
-Our three shapes files pass (tests/test_shapes.py). On the stretch exercise file it finds the shape that mixes up sh:node and sh:path.
+Our three shapes files pass (tests/test_shapes.py).
 OWL has no such check written in OWL. The OWL 2 Conformance spec defines when a file is an OWL 2 DL, EL, QL or RL ontology, and tools check this: robot validate-profile --profile DL --input onto.owl --output report.txt.
 OWL could not express these checks itself: in an open world, a missing value is not an error.
 OWL 2 RL rules have names like prp-inv1 (inverse), prp-trp (transitive) and prp-spo2 (property chains).
