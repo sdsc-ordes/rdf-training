@@ -12,12 +12,12 @@ Who has a friend older than 30?
 ```turtle
 @prefix ex: <http://example.com/> .
 
-ex:alice a ex:Person ; ex:name "Alice" ; ex:age 25 ;
-    ex:hasFriend ex:bob .
-ex:bob a ex:Person ; ex:name "Bob" ; ex:age 30 ;
-    ex:hasFriend ex:alice, ex:charlie .
-ex:charlie a ex:Person ; ex:name "Charlie" ; ex:age 35 ;
-    ex:hasFriend ex:bob .
+ex:alice a ex:Person ; ex:name "Alice" ;
+    ex:age 25 ; ex:hasFriend ex:bob .
+ex:bob a ex:Person ; ex:name "Bob" ;
+    ex:age 30 ; ex:hasFriend ex:alice, ex:charlie .
+ex:charlie a ex:Person ; ex:name "Charlie" ;
+    ex:age 35 ; ex:hasFriend ex:bob .
 ```
 
 ::right::

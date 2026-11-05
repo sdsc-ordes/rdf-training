@@ -23,7 +23,9 @@ Good for describing and inferring.
 
 Good for checking data before you use it.
 
-<div class="sdsc-takeaway">Ontologies say what may be true; shapes say what your data must contain.</div>
+::bottom::
+
+<p class="fine">Sources: W3C SHACL · W3C OWL 2 Overview</p>
 
 <!--
 Data arrives from people, scripts and now LLMs. SHACL (W3C, 2017) checks it; shapes are RDF too.

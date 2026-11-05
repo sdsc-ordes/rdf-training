@@ -14,8 +14,6 @@ graph LR
   H --> K[(Knowledge graph)]
 ```
 
-<div class="sdsc-takeaway">LLMs draft, SHACL checks, humans decide.</div>
-
 <!--
 The same loop works for ontology drafting, entity extraction from text and synthetic test data.
 Cap the retries; if it still fails, a person looks at it. Label synthetic data as synthetic.

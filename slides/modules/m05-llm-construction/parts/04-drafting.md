@@ -9,7 +9,9 @@ minutes: 3
 - Ask for a table of classes and properties first, Turtle second
 - Review the draft like a colleague's pull request
 
-<p class="fine">Research on LLM-drafted ontologies from competency questions finds usable first drafts that still need expert review, e.g. Lippolis et al., ESWC 2025 (arXiv 2503.05388).</p>
+<p class="fine">Studies of LLM-drafted ontologies find usable first drafts that still need expert review.</p>
+
+<p class="fine">Sources: Lippolis et al. 2025</p>
 
 <!--
 Typical problems in drafts: domain and range used as if they were constraints, duplicate classes,

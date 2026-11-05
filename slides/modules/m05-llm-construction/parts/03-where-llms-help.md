@@ -23,6 +23,8 @@ minutes: 2
   </div>
 </div>
 
+<p class="fine">Sources: Pan et al. 2024</p>
+
 <!--
 Querying with LLMs (text-to-SPARQL) comes in the graph RAG module.
 In every case the LLM is a fast but unreliable junior colleague: useful, never unchecked.

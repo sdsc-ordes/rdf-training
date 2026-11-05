@@ -2,7 +2,7 @@
 minutes: 3
 ---
 
-# What the evidence says, and what it costs
+# Evidence and costs
 
 > Graph-based RAG does better on multi-hop and aggregation questions; vector RAG stays strong on single-hop detail. The two are complementary.
 >
@@ -12,6 +12,8 @@ minutes: 3
 - **Text-to-SPARQL:** a schema description, examples and a retry loop
 - **Agents:** several LLM calls per question, so more latency
 - **Curated KG:** the modelling and data work up front: this course
+
+<p class="fine">Sources: Han et al. 2025</p>
 
 <!--
 Fill in figures from your own run of notebook 03 (tokens to index, calls and seconds per answer).

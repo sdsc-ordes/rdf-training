@@ -23,8 +23,6 @@ minutes: 5
   </div>
 </div>
 
-<div class="sdsc-takeaway">Validation turns plausible LLM output into loadable data, but valid is not the same as true.</div>
-
 <!--
 Map the board tally onto these four. Facts need sources, review or cross-checks against other data.
 -->

@@ -11,8 +11,6 @@ minutes: 3
 - "Fuji": apple variety, mountain or company?
 - "Rocket": salad or spacecraft?
 
-<div class="sdsc-takeaway">Never accept an identifier an LLM writes from memory: look it up.</div>
-
 <!--
 LLMs produce plausible but wrong Wikidata Q-IDs. This course checks every Wikidata ID it uses
 against the Wikidata API.

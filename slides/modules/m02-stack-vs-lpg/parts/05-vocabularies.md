@@ -29,6 +29,10 @@ Reuse them for your data:
 - **QUDT**: units and quantities
 - **Wikidata**: identifiers for almost anything
 
+::bottom::
+
+<p class="fine">Sources: W3C TR · schema.org · DCMI Terms · W3C DCAT 3 · W3C PROV-O · QUDT · Vrandečić & Krötzsch 2014</p>
+
 <!--
 Old slides listed SHACL and XSD next to FOAF and schema.org; they are different kinds of thing.
 "Ontology" and "vocabulary" are used loosely; ontologies usually carry more logic.

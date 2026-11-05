@@ -8,7 +8,7 @@ minutes: 5
 - Why did Caesar salad and Pad Thai drop out of q09?
 - Which question could you not answer with our model?
 
-<div v-click class="sdsc-takeaway">Worcestershire sauce contains anchovies; soy sauce contains wheat. The recipes never say so; the product data does.</div>
+<div v-click class="sdsc-takeaway">Worcestershire sauce contains anchovies and soy sauce contains wheat. Both facts come from the product data.</div>
 
 <!--
 This sets up graph RAG: the same multi-hop facts are what text retrieval misses.

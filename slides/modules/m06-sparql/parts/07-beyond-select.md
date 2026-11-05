@@ -18,6 +18,8 @@ minutes: 2
 - Endpoints speak the SPARQL protocol over HTTP; results come as JSON, XML, CSV or TSV
 - LLMs write plausible SPARQL: run it, check the result, read the query
 
+<p class="fine">Sources: W3C SPARQL 1.1 · W3C SPARQL 1.2</p>
+
 <!--
 SPARQL 1.2 is a W3C Working Draft (2026); 1.1 (2013) is the current Recommendation.
 -->

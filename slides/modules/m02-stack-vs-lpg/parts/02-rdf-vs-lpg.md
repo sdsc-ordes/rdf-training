@@ -3,7 +3,7 @@ layout: two-cols-header
 minutes: 2
 ---
 
-# One fact, two graph models
+# The same fact in two graph models
 
 "Alice rated Rösti 5 stars, with 80 % confidence."
 
@@ -19,7 +19,7 @@ person:alice ex:rated recipe:rosti
 
 Statements about statements are new in RDF 1.2.
 
-<p class="fine">Few triplestores and tools support RDF 1.2 yet, so for now property graphs have a slight <em>edge</em> here.</p>
+<p class="fine">Few triplestores and tools support RDF 1.2 yet.</p>
 
 ::right::
 
@@ -32,6 +32,10 @@ Statements about statements are new in RDF 1.2.
 ```
 
 Properties on edges are built in.
+
+::bottom::
+
+<p class="fine">Sources: W3C RDF 1.2 · Neo4j Cypher 25</p>
 
 <!--
 Before RDF 1.2 you needed reification or an extra node for the rating.
@@ -56,7 +60,9 @@ minutes: 2
   </tbody>
 </table>
 
-<div class="sdsc-takeaway">RDF is built for shared meaning, property graphs for traversal inside one application. The gap is narrowing.</div>
+
+
+<p class="fine">Sources: W3C RDF 1.2 · W3C SPARQL 1.1 · ISO GQL 2024</p>
 
 <!--
 GQL = ISO/IEC 39075:2024. Neo4j's Cypher 25 is converging on it.

@@ -2,7 +2,7 @@
 minutes: 4
 ---
 
-# Copy, map or ask?
+# Materialised, virtual or federated
 
 <table class="compact">
   <thead><tr><th></th><th>Materialised</th><th>Virtual</th><th>Federated</th></tr></thead>
@@ -14,7 +14,7 @@ minutes: 4
   </tbody>
 </table>
 
-<div class="sdsc-takeaway">Federation is a blessing and a curse: no copies, but someone else's outage is your outage.</div>
+<p class="fine">Sources: Calvanese et al. 2017 · W3C SPARQL 1.1</p>
 
 <!--
 Most systems mix the three: materialise your core data, federate for reference data like Wikidata.

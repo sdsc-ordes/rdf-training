@@ -2,23 +2,22 @@
 minutes: 3
 ---
 
-# Domain and range infer, they don't check
+# Domain and range add types
 
-From our old project data:
+Someone records an allergen on a recipe instead of on a food:
 
 ```turtle
-@prefix ui: <http://example.org/underground_infra#> .
+rec:hasAllergen rdfs:domain rec:Food .
+recipe:caesar-salad rec:hasAllergen allergen:fish .
 
-ui:name rdfs:domain ui:Borehole .
-ui:Zurich ui:name "Zurich" .
-
-# An RDFS reasoner concludes: ui:Zurich a ui:Borehole .
+# An RDFS reasoner concludes: recipe:caesar-salad a rec:Food .
 ```
 
 - `rdfs:domain` and `rdfs:range` add types, they never reject data
 - To say what values a property may have, write a SHACL shape
 
+<p class="fine">Sources: W3C RDF Schema 1.1</p>
+
 <!--
 A classic surprise for people coming from databases or object-oriented code.
-The full example is in legacy/bedretto/simple-taxonomy.ttl.
 -->

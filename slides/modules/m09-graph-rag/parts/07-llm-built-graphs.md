@@ -18,6 +18,8 @@ graph LR
 - Answers "what are the main themes?" over a large pile of text
 - Costs many LLM calls to build, and again when the text changes
 
+<p class="fine">Sources: Edge et al. 2024 · Guo et al. 2024 · Gutiérrez et al. 2025</p>
+
 <!--
 GraphRAG: arXiv 2404.16130. LightRAG: arXiv 2410.05779 (dual-level retrieval, incremental updates).
 HippoRAG: arXiv 2405.14831, HippoRAG 2: arXiv 2502.14802 (personalised PageRank over the graph).

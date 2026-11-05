@@ -11,6 +11,8 @@ minutes: 2
 
 <div class="sdsc-takeaway">Retrieval-augmented generation (RAG): fetch relevant facts first, then let the LLM answer from them.</div>
 
+<p class="fine">Sources: Ji et al. 2023 · Lewis et al. 2020</p>
+
 <!--
 RAG: Lewis et al. 2020 (arXiv 2005.11401). Everything in this module is a variant of "what do we retrieve, and how?"
 -->

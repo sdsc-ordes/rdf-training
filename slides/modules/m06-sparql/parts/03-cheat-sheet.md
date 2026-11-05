@@ -31,6 +31,10 @@ minutes: 3
   </tbody>
 </table>
 
+::bottom::
+
+<p class="fine">Sources: W3C SPARQL 1.1</p>
+
 <!--
 Only the triple patterns borrow Turtle syntax; a SPARQL query as a whole is not valid Turtle.
 -->

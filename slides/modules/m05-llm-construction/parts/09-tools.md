@@ -16,6 +16,8 @@ minutes: 2
   </tbody>
 </table>
 
+<p class="fine">Sources: Caufield et al. 2024 · LinkML · OpenRefine · pySHACL · Mihindukulasooriya et al. 2023</p>
+
 <!--
 Research community: the LLMs4KGOE workshop (ESWC 2026) on LLM-driven KG and ontology engineering.
 -->

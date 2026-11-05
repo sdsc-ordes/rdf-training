@@ -17,6 +17,8 @@ minutes: 3
   </tbody>
 </table>
 
+<p class="fine">Sources: W3C SHACL</p>
+
 <!--
 Property shapes constrain the values reached through a path from each focus node.
 Paths can be sequences, inverses or repeats, as in the vegan rule.

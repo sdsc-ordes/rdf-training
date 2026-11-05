@@ -17,7 +17,9 @@ minutes: 3
   </tbody>
 </table>
 
-<div class="sdsc-takeaway">Mature, stable standards, with a 1.2 generation on the way.</div>
+
+
+<p class="fine">Sources: W3C TR</p>
 
 <!--
 Re-check the 1.2 status before each delivery: https://www.w3.org/TR/

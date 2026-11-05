@@ -18,6 +18,8 @@ minutes: 4
   </tbody>
 </table>
 
+<p class="fine">Sources: Graphwise GraphDB 11 · Bast & Buchhold 2017 · Lehmann et al. 2015</p>
+
 <!--
 Pick by scale, reasoning needs, licence and operations. Blazegraph, which powered Wikidata for years,
 is no longer maintained; Wikidata is moving to QLever.

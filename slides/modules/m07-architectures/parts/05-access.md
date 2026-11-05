@@ -9,7 +9,9 @@ minutes: 2
 - **MCP servers:** give LLM agents tools to query the graph
 - **Dashboards and search:** for everyone else
 
-<div class="sdsc-takeaway">Different users, different doors, one graph behind them.</div>
+
+
+<p class="fine">Sources: W3C SPARQL 1.1 · Anthropic 2024 · Graphwise GraphDB 11</p>
 
 <!--
 MCP (Model Context Protocol) is an open protocol for connecting LLM applications to tools and data.

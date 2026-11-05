@@ -4,7 +4,7 @@ class: code-small
 minutes: 2
 ---
 
-# Merging is free
+# Merging two graphs
 
 ::left::
 

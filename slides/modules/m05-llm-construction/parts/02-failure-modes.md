@@ -19,11 +19,12 @@ minutes: 2
   </div>
   <div class="sdsc-feature">
     <h3>Plausible but false</h3>
-    <p>Swiss boreholes with coordinates in San Francisco. Only domain rules catch this.</p>
+    <p>Coordinates for a site in Switzerland that point to San Francisco. Only checks that know the domain catch this.</p>
   </div>
 </div>
 
+<p class="fine">Sources: schema.org</p>
+
 <!--
-The last two examples come from a real project dataset (legacy/bedretto in the repo).
 Never trust Wikidata IDs an LLM writes from memory: look them up.
 -->

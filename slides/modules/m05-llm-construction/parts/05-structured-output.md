@@ -2,7 +2,7 @@
 minutes: 3
 ---
 
-# Let the LLM fill JSON, let code write RDF
+# Structured output and JSON-LD
 
 ```json
 {
@@ -19,6 +19,8 @@ minutes: 3
 - A JSON Schema constrains what the LLM may output (structured output)
 - A JSON-LD `@context` turns plain JSON into triples
 - Tools that do this: LinkML, OntoGPT (SPIRES)
+
+<p class="fine">Sources: W3C JSON-LD 1.1 · JSON Schema · LinkML · Caufield et al. 2024</p>
 
 <!--
 Asking an LLM for Turtle directly works for a workshop; in production, structured JSON plus a

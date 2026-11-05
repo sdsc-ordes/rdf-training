@@ -13,6 +13,8 @@ minutes: 2
   </tbody>
 </table>
 
+<p class="fine">Sources: schema.org · W3C SKOS · W3C SHACL</p>
+
 <!--
 The 14 EU allergens are a SKOS scheme with labels in en, de, fr and it.
 Cuisines use skos:broader: Swiss is narrower than European.

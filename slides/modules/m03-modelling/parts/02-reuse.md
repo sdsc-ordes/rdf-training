@@ -2,7 +2,7 @@
 minutes: 2
 ---
 
-# Reuse before you invent
+# Reusing vocabularies
 
 <table class="compact">
   <thead><tr><th>Need</th><th>Reused</th></tr></thead>
@@ -15,7 +15,7 @@ minutes: 2
   </tbody>
 </table>
 
-<div class="sdsc-takeaway">Start from your questions, reuse before you invent, and turn strings you need to query into things.</div>
+<p class="fine">Sources: schema.org Recipe · W3C SKOS · QUDT · Vrandečić & Krötzsch 2014</p>
 
 <!--
 Why our own rec:hasIngredient? schema:recipeIngredient is plain text ("400 g Gruyère, grated"):

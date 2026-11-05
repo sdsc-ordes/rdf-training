@@ -23,6 +23,8 @@ minutes: 3
   </div>
 </div>
 
+<p class="fine">Sources: Emonet et al. 2024 · Touré et al. 2023 · Vrandečić & Krötzsch 2014 · LINDAS</p>
+
 <!--
 Dot vote: which case is closest to your work? Zoom into the top two.
 SIB's assistant: Emonet et al. 2024, LLM-based SPARQL generation over federated KGs (arXiv 2410.06062).
@@ -48,13 +50,10 @@ minutes: 3
     <h3>Finance</h3>
     <p>FIBO, from the EDM Council, defines financial concepts in OWL; banks adopt the parts they need.</p>
   </div>
-  <div class="sdsc-feature">
-    <h3>Research data</h3>
-    <p>Bedretto Underground Lab (ETH Zurich): boreholes, instruments and experiments in one graph.</p>
-  </div>
 </div>
 
+<p class="fine">Sources: Europeana · Linked Art · Balaji et al. 2016 · EDM Council FIBO</p>
+
 <!--
-Bedretto lesson: units and coordinates are where errors hide (see the legacy data in the repo).
 Brick: property paths answer "which sensors are downstream of air handler 1?".
 -->

@@ -20,7 +20,11 @@ Vector RAG can only count the chunks it retrieved. The graph counts everything:
 
 No single document answers this. An LLM-built graph with community summaries (Family A) does better than vector RAG here.
 
-A curated KG gives you statistics, not themes: each family has its strengths.
+A curated KG gives counts and statistics, not themes.
+
+::bottom::
+
+<p class="fine">Sources: Edge et al. 2024</p>
 
 <!--
 Run in notebook 03 (replay mode). Keep the comparison fair: a vector RAG with metadata filters or a

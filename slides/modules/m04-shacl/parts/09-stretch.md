@@ -4,7 +4,7 @@ minutes: 2
 
 # Stretch: find the bugs
 
-Our old borehole shapes (`legacy/bedretto/ontology.ttl`) contain at least four mistakes.
+The shapes file `legacy/bedretto/ontology.ttl` in the course repository contains at least four mistakes.
 
 <v-clicks>
 

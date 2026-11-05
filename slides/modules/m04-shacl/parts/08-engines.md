@@ -14,7 +14,9 @@ minutes: 2
   </tbody>
 </table>
 
-<p class="fine">SHACL 1.2 (Working Drafts, 2026) adds rules, which derive new triples, and node expressions.</p>
+<p class="fine">SHACL 1.2 (Working Drafts, 2026) adds node expressions and a separate rules specification.</p>
+
+<p class="fine">Sources: W3C SHACL 1.2 · pySHACL</p>
 
 <!--
 Engines differ on SHACL-SPARQL support and on edge cases; our repo cross-checks pySHACL against the

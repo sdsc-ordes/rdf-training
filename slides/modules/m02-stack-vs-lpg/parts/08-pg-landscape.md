@@ -9,7 +9,7 @@ minutes: 3
 - **Bridges:** Neo4j's neosemantics plugin imports and exports RDF
 - **Watch the ecosystem:** Kùzu, a popular embedded graph database, was archived in October 2025
 
-<div class="sdsc-takeaway">Choose a store for your access pattern, and check that the project is healthy.</div>
+<p class="fine">Sources: ISO GQL 2024 · Neo4j Cypher 25 · Neo4j neosemantics · Kùzu repository</p>
 
 <!--
 GQL portability is still limited in practice: vendors use "compatible" loosely.

@@ -17,6 +17,8 @@ recipe:apple-tart a schema:Recipe ;
 - `;` repeats the subject, `,` repeats subject and predicate
 - `.` ends the statement
 
+<p class="fine">Sources: W3C RDF 1.1 Turtle</p>
+
 <!--
 Turtle is one of several formats for the same triples; JSON-LD is another, popular on the web.
 Count the triples on this slide: 1 type + 2 names + 2 ingredients = 5.

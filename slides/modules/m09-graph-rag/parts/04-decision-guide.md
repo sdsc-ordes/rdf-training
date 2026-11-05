@@ -10,7 +10,7 @@ minutes: 2
 - Answers you must audit → **KG with provenance**
 - In practice: a **hybrid**
 
-<div class="sdsc-takeaway">Use the graph for what text retrieval can't do (joins, counts, constraints, fact-checks) and vectors for the rest.</div>
+<p class="fine">Sources: Han et al. 2025</p>
 
 <!--
 Evidence: Han et al. 2025 (arXiv 2502.11371) find graph-based RAG helps multi-hop and

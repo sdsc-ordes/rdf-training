@@ -11,9 +11,8 @@ minutes: 6
 <Triple s="group A" p="uses" o="food:tomato" />
 <Triple s="group B" p="uses" o="food:Tomatoes" />
 
-<div class="sdsc-takeaway">Same thing, two IRIs: the merge silently keeps both. Agreeing on identifiers is the real work.</div>
-
 <!--
+Two IRIs for the same food stay two separate things after the merge.
 Merge with kgcourse or by concatenating Turtle; load into the local Oxigraph or validate the union.
 The prompt listed allowed food IRIs: who stuck to it, and did the validator catch those who didn't?
 -->

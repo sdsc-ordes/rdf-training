@@ -8,7 +8,7 @@ minutes: 2
 - **MCP** (Model Context Protocol) servers expose a SPARQL endpoint as tools: list classes, run a query
 - Shapes make good tool documentation: they say what exists and how it connects
 
-<div class="sdsc-takeaway">The same SHACL shapes that check your data can explain it to an LLM.</div>
+<p class="fine">Sources: Anthropic 2024 · Graphwise GraphDB 11</p>
 
 <!--
 Triplestore vendors (e.g. GraphDB 11) and open-source projects offer SPARQL MCP servers;

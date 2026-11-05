@@ -14,8 +14,6 @@ graph LR
   W[(Wikidata,<br/>other endpoints)] -. federation .-> A
 ```
 
-<div class="sdsc-takeaway">Map, validate, store, serve. Graph RAG is just one more consumer.</div>
-
 <!--
 Example: a canteen allergen graph built from supplier CSV files (RML), recipe pages (JSON-LD),
 recipe PDFs (LLM extraction) and Wikidata (federation), checked with SHACL, served to a menu app and a chatbot.

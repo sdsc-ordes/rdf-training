@@ -23,6 +23,8 @@ minutes: 1
   </div>
 </div>
 
+<p class="fine">Sources: Vrandečić & Krötzsch 2014 · schema.org Recipe · Touré et al. 2023 · LINDAS</p>
+
 <!--
 More in the use-case module (full formats). Ask the room for one more example.
 -->

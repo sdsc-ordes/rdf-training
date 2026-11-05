@@ -33,6 +33,8 @@ minutes: 1
   </tbody>
 </table>
 
+<p class="fine">Sources: W3C SHACL</p>
+
 <!--
 The report is RDF as well: you can store and query it. Severity defaults to sh:Violation.
 -->

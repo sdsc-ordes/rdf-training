@@ -6,9 +6,9 @@ minutes: 2
 
 Romaine lettuce, croutons, Parmesan, egg, lemon, olive oil, garlic, Worcestershire sauce.
 
-<div v-click class="sdsc-takeaway">Worcestershire sauce contains anchovies. The recipe never says so; the product label does.</div>
+<div v-click class="sdsc-takeaway">Worcestershire sauce contains anchovies, which only the product data for the sauce lists.</div>
 
 <!--
 Show of hands: yes / no. Optionally ask a chatbot live with only the recipe text.
-Fluent is not the same as grounded: the answer depends on a fact two hops away.
+The answer depends on a fact two hops away, in the product data for the sauce.
 -->

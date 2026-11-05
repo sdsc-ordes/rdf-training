@@ -17,6 +17,8 @@ graph LR
 - Answers are exact and traceable: every fact is a triple you can show
 - Fragile when the LLM guesses IRIs or prefixes: give examples, and retry
 
+<p class="fine">Sources: Emonet et al. 2024</p>
+
 <!--
 Our q01–q11 queries double as examples for few-shot prompting.
 SIB's federated assistant (arXiv 2410.06062) checks generated queries against dataset descriptions before running them.

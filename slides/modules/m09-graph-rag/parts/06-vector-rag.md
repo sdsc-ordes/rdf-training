@@ -16,6 +16,8 @@ graph LR
 - Good at: "what does the text say about X?"
 - Blind to: facts spread over several documents, totals, strict rules
 
+<p class="fine">Sources: Lewis et al. 2020</p>
+
 <!--
 Chunk, embed, retrieve the top-k most similar chunks, paste them into the prompt.
 It stays the right tool for single-hop lookups in text, and it is cheap to set up.

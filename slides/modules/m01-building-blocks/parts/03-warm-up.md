@@ -14,7 +14,7 @@ minutes: 4
   <span><b>Pairs · 4 min</b> · one triple per sticky note</span>
 </div>
 
-<div v-click class="sdsc-takeaway"><b>New sentence:</b> Robin also likes pears, grown in Valais. What changes in your triples? What would change in a database?</div>
+<div v-click class="sdsc-takeaway"><b>New sentence:</b> Robin also likes pears, grown in Valais. What changes in your triples? What would change in a traditional relational database?</div>
 
 <!--
 Reveal the new sentence after about 3 minutes.

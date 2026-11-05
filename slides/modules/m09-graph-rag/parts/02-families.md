@@ -51,6 +51,8 @@ minutes: 2
   </div>
 </div>
 
+<p class="fine">Sources: Edge et al. 2024 · Guo et al. 2024 · Pan et al. 2024</p>
+
 <!--
 A suits large unstructured corpora and "global" questions, at a high indexing cost.
 B suits structured, governed data: answers can cite IRIs. Shapes (SHACL) describe the schema to the LLM.

@@ -11,8 +11,6 @@ minutes: 2
 - **Edges** are named relations between them
 - Every node and edge has a **global identifier**
 
-<div class="sdsc-takeaway">Facts become data you can merge, check and query.</div>
-
 ::right::
 
 ```mermaid
@@ -22,6 +20,10 @@ graph LR
   A -- grown in --> F([France])
   T -- cuisine --> C([Swiss])
 ```
+
+::bottom::
+
+<p class="fine">Sources: Hogan et al. 2021</p>
 
 <!--
 Poll: who has met "knowledge graph" at work? Web search, Wikidata, enterprise data catalogues.

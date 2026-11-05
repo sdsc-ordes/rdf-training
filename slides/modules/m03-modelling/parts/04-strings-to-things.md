@@ -4,7 +4,7 @@ class: code-small
 minutes: 3
 ---
 
-# From strings to things
+# Ingredients as strings or as things
 
 ::left::
 
@@ -24,6 +24,10 @@ Fine for display and search engines. You can't ask "which recipes use potatoes?"
 <<< @/../data/golden/recipes.ttl#rostiUsage turtle
 
 Food, amount and unit are each queryable and checkable.
+
+::bottom::
+
+<p class="fine">Sources: schema.org Recipe</p>
 
 <!--
 Lesson from SPHN: objectification pays off for anything you want to query or reuse (units, codes),

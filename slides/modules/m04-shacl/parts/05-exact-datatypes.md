@@ -14,9 +14,10 @@ minutes: 2
   </tbody>
 </table>
 
-<div class="sdsc-takeaway">Our old borehole data wrote coordinates like <code>-122.4194</code> but its shapes required <code>xsd:double</code>: every coordinate would fail.</div>
+<p class="fine">Sources: W3C SHACL</p>
 
 <!--
 SHACL compares the datatype IRI exactly; xsd:integer being "derived from" xsd:decimal does not count.
 Pick datatypes that match how people and LLMs will actually write the values.
+A common case: coordinates written like -122.4194 are xsd:decimal, so shapes that require xsd:double reject all of them.
 -->
