@@ -7,6 +7,10 @@ src: ./parts/11-this-is-fine.md
 ---
 
 ---
+src: ./parts/13-closed-world.md
+---
+
+---
 src: ./parts/02-shapes.md
 ---
 

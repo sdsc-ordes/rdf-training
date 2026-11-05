@@ -5,7 +5,7 @@ minutes: 1
 
 # Open world: this is fine
 
-Alice may have at most one mother, and the data names two.
+What happens when you encounter data that doesn't match your expectations?
 
 <div class="grid grid-cols-2 gap-6">
 <div class="min-w-0">
@@ -15,9 +15,9 @@ Alice may have at most one mother, and the data names two.
 ```turtle
 @prefix ex: <http://example.org/> .
 
-ex:Person rdfs:subClassOf [
+ex:Town rdfs:subClassOf [
     a owl:Restriction ;
-    owl:onProperty ex:mother ;
+    owl:onProperty ex:officialLanguage ;
     owl:maxCardinality 1
 ] .
 ```
@@ -30,10 +30,10 @@ ex:Person rdfs:subClassOf [
 ```turtle
 @prefix ex: <http://example.org/> .
 
-ex:alice a ex:Person ;
-    ex:mother ex:carol, ex:diane .
+ex:biel-bienne a ex:Town ;
+    ex:officialLanguage ex:german, ex:french .
 
-# Inferred: ex:carol owl:sameAs ex:diane .
+# Inferred: ex:german owl:sameAs ex:french .
 ```
 
 </div>
@@ -42,7 +42,8 @@ ex:alice a ex:Person ;
 <p class="fine">Sources: Green 2013 · W3C OWL 2 Profiles</p>
 
 <!--
-No error: with at most one mother and two names for her, the reasoner concludes that Carol and Diane are the same person under two IRIs.
-OWL makes no unique name assumption. It only reports a problem if the data also says ex:carol owl:differentFrom ex:diane.
-Checked with owlrl (OWL 2 RL rule cls-maxc2). A SHACL shape with sh:maxCount 1 on ex:mother reports a violation instead.
+The rule says a town has at most one official language. Biel/Bienne is officially bilingual, German and French.
+No error: the reasoner concludes that German and French are the same language under two IRIs.
+OWL makes no unique name assumption. It only reports a problem if the data also says ex:german owl:differentFrom ex:french.
+Checked with owlrl (OWL 2 RL rule cls-maxc2). The next slide checks the same data with SHACL.
 -->
