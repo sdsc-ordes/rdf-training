@@ -156,8 +156,8 @@ minutes: 5
 - Judge when graph RAG is worth it
 
 <div class="exercise-meta">
-  <img src="/qr/site.svg" alt="QR code to the course site" />
-  <span>Slides, worksheets and data<br /><b>sdsc-ordes.github.io/rdf-training</b></span>
+  <img src="/qr/site.svg" alt="QR code to the course repository" />
+  <span>Slides, worksheets and data<br /><b>github.com/sdsc-ordes/rdf-training</b></span>
 </div>
 
 ---

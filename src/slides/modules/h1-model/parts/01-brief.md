@@ -10,7 +10,7 @@ minutes: 12
 
 <div class="exercise-meta">
   <img src="/qr/h1.svg" alt="QR code to the hands-on 1 worksheet" />
-  <span><b>Pairs · 12 min</b><br />Worksheet: sdsc-ordes.github.io/rdf-training</span>
+  <span><b>Pairs · 12 min</b><br />Worksheet: github.com/sdsc-ordes/rdf-training</span>
 </div>
 
 <!--
