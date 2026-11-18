@@ -136,7 +136,7 @@ Card template: problem · what the KG holds · stack · access · what worked / 
 | 5 (C) | features (4) | Where vector RAG breaks: multi-hop, aggregation, hard constraints, global questions |
 | 6 (C) | features (3) | A: LLM-built graph · B: curated KG as source of truth · C: hybrid |
 | 7 | content | Family A: Microsoft GraphRAG (communities, local/global search), LightRAG, HippoRAG 2 |
-| 8 | code | Family B: text-to-SPARQL (schema card from SHACL + prefixes + examples → query → run → cite IRIs; repair on error) |
+| 8 | code | Family B: text-to-SPARQL (shapes + defined classes and properties + prefixes + examples → query → run → cite IRIs; repair on error) |
 | 9 | two-cols | KG as agent tool: MCP SPARQL servers (GraphDB 11, LINDAS MCP, SHACL-described servers) / shapes as tool docs |
 | 10 | content | Demo setup: same LLM, same corpus, fair baseline |
 | 11 (C) | two-cols | Q1 control + Q2 multi-hop: vector vs KG answer with "why excluded" path |

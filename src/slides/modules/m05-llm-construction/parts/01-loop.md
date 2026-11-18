@@ -6,7 +6,7 @@ minutes: 3
 
 ```mermaid
 graph LR
-  P[Prompt with<br/>schema card] --> L[LLM writes Turtle]
+  P[Prompt with<br/>shapes + defined<br/>classes and properties] --> L[LLM writes Turtle]
   L --> V{Valid?<br/>SHACL}
   V -- "no · max 3 rounds" --> R[Send the report back]
   R --> L

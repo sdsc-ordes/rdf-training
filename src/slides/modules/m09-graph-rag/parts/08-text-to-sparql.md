@@ -6,14 +6,13 @@ minutes: 3
 
 ```mermaid {scale: 0.68}
 graph LR
-  Q[Question] --> P[Prompt:<br/>schema card + prefixes<br/>+ example queries]
+  Q[Question] --> P[Prompt:<br/>shapes + defined classes<br/>and properties + prefixes<br/>+ example queries]
   P --> L[LLM writes SPARQL]
   L --> R{Runs?<br/>Results?}
   R -- "error or empty" --> L
   R -- yes --> A[Answer citing IRIs]
 ```
 
-- The schema card can be generated from your SHACL shapes
 - Answers are exact and traceable: every fact is a triple you can show
 - Fragile when the LLM guesses IRIs or prefixes: give examples, and retry
 
