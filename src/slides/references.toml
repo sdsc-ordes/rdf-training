@@ -49,6 +49,10 @@ url = "https://www.dublincore.org/specifications/dublin-core/dcmi-terms/"
 text = "DCMI. DC Tabular Application Profiles (DCTAP), 2023. Converter to SHACL: tap2shacl (P. Barker, beta)."
 url = "https://www.dublincore.org/specifications/dctap/"
 
+["DemocraSci 2024"]
+text = "L. Brandenberger, J. Minder, L. Salamanca et al. DemocraSci: a parliamentary knowledge graph (4 legislative periods). Zenodo, version 0.9.0, 2024."
+url = "https://doi.org/10.5281/zenodo.13920293"
+
 ["Edge et al. 2024"]
 text = "D. Edge et al. From local to global: a Graph RAG approach to query-focused summarization. arXiv:2404.16130, 2024."
 url = "https://arxiv.org/abs/2404.16130"
@@ -216,6 +220,10 @@ url = "https://doi.org/10.1145/2757001.2757003"
 ["Neo4j Cypher 25"]
 text = "Neo4j. Cypher Manual 25: GQL conformance."
 url = "https://neo4j.com/docs/cypher-manual/25/appendix/gql-conformance/"
+
+["Neo4j GDS"]
+text = "Neo4j. Graph Data Science Library manual."
+url = "https://neo4j.com/docs/graph-data-science/current/"
 
 ["Neo4j neosemantics"]
 text = "Neo4j Labs. neosemantics (n10s): RDF and linked data in Neo4j."
@@ -452,3 +460,35 @@ url = "https://doi.org/10.1038/s41586-025-10097-9"
 ["Zheng et al. 2023"]
 text = "L. Zheng et al. Judging LLM-as-a-judge with MT-Bench and Chatbot Arena. NeurIPS 2023."
 url = "https://arxiv.org/abs/2306.05685"
+
+["Jena licence"]
+text = "Apache Software Foundation. Apache Jena, Apache License 2.0."
+url = "https://github.com/apache/jena/blob/HEAD/LICENSE"
+
+["Oxigraph licence"]
+text = "Oxigraph developers. Oxigraph repository, MIT or Apache-2.0 licence."
+url = "https://github.com/oxigraph/oxigraph"
+
+["Virtuoso licence"]
+text = "OpenLink Software. Virtuoso Open-Source Edition, GNU GPL version 2."
+url = "https://github.com/openlink/virtuoso-opensource/blob/HEAD/LICENSE"
+
+["Neo4j licence"]
+text = "Neo4j. Community edition licence, GNU GPL version 3."
+url = "https://github.com/neo4j/neo4j/blob/HEAD/LICENSE.txt"
+
+["Memgraph licence"]
+text = "Memgraph. Source code under the Business Source License 1.1 and the Memgraph Enterprise License."
+url = "https://github.com/memgraph/memgraph"
+
+["JanusGraph licence"]
+text = "JanusGraph. Apache Software License 2.0."
+url = "https://github.com/JanusGraph/janusgraph/blob/HEAD/LICENSE.txt"
+
+["GraphDB"]
+text = "Graphwise. GraphDB documentation: commercial product with a free edition."
+url = "https://graphdb.ontotext.com/documentation/"
+
+["Neptune"]
+text = "Amazon Web Services. Amazon Neptune product page."
+url = "https://aws.amazon.com/neptune/"

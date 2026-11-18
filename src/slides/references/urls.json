@@ -111,5 +111,13 @@
   "Wikidata WDQS 2026": "https://www.wikidata.org/wiki/Wikidata:SPARQL_query_service/WDQS_backend_update/Backend_Replacement",
   "Winston et al. 1987": "https://doi.org/10.1207/s15516709cog1104_2",
   "Zhao et al. 2026": "https://doi.org/10.1038/s41586-025-10097-9",
-  "Zheng et al. 2023": "https://arxiv.org/abs/2306.05685"
+  "Zheng et al. 2023": "https://arxiv.org/abs/2306.05685",
+  "Jena licence": "https://github.com/apache/jena/blob/HEAD/LICENSE",
+  "Oxigraph licence": "https://github.com/oxigraph/oxigraph",
+  "Virtuoso licence": "https://github.com/openlink/virtuoso-opensource/blob/HEAD/LICENSE",
+  "Neo4j licence": "https://github.com/neo4j/neo4j/blob/HEAD/LICENSE.txt",
+  "Memgraph licence": "https://github.com/memgraph/memgraph",
+  "JanusGraph licence": "https://github.com/JanusGraph/janusgraph/blob/HEAD/LICENSE.txt",
+  "GraphDB": "https://graphdb.ontotext.com/documentation/",
+  "Neptune": "https://aws.amazon.com/neptune/"
 }
