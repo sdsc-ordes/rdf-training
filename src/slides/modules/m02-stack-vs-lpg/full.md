@@ -29,3 +29,7 @@ src: ./parts/08-pg-landscape.md
 ---
 src: ./parts/03-vote.md
 ---
+
+---
+src: ./parts/09-democrasci.md
+---
