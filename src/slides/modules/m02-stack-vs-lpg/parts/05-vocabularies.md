@@ -26,7 +26,7 @@ Reuse them for your data:
 - **schema.org**: things on the web, recipes included
 - **Dublin Core**, **DCAT**: documents and datasets
 - **PROV-O**: who made what, how
-- **QUDT**: units and quantities
+- **<a href="https://nssdc.gsfc.nasa.gov/planetary/text/mco_pr_19991110.txt" target="_blank" rel="noopener">QUDT</a>**: units and quantities
 - **Wikidata**: identifiers for almost anything
 
 ::bottom::
@@ -36,4 +36,6 @@ Reuse them for your data:
 <!--
 Old slides listed SHACL and XSD next to FOAF and schema.org; they are different kinds of thing.
 "Ontology" and "vocabulary" are used loosely; ontologies usually carry more logic.
+The QUDT link opens NASA's 1999 press release on the Mars Climate Orbiter: ground software produced thrust data in pound-force seconds where newton-seconds were expected, and the orbiter was lost.
+QUDT itself started in NASA's NExIOM project at Ames Research Center. The crash shows what a shared unit vocabulary is for; no source says it triggered QUDT.
 -->
