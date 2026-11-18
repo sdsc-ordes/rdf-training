@@ -2,7 +2,7 @@
 minutes: 4
 ---
 
-# Your turn: sentences to triples
+# Sentences to triples
 
 > Robin is a data engineer who loves apples, especially Fuji.
 >

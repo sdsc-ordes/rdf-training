@@ -9,7 +9,8 @@ minutes: 2
 
 - **Nodes** are things: a recipe, an apple, a country
 - **Edges** are named relations between them
-- Every node and edge has a **global identifier**
+- **Literals** are values: text, numbers, dates such as "70 minutes"
+- Every node and edge has a **global identifier**; a literal does not
 
 ::right::
 
