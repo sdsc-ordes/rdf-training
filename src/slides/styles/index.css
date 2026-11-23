@@ -72,6 +72,15 @@ html.dark .caveat { background: #3A1E1E; border-left-color: #E57373; }
 .slidev-layout .side-quest pre { padding: 0.5rem 0.7rem !important; }
 .slidev-layout .side-quest .code-prefixes { display: none; }
 
+/* Code popup over the lower part of a slide, shown on click (e.g. the N-Triples form of a Turtle example).
+   Long lines wrap so the listing stays inside the slide. */
+.code-popup { position: absolute; left: 3.4rem; right: 3.4rem; bottom: 3.6rem; --slidev-code-font-size: 0.56rem; --slidev-code-margin: 0.4rem 0 0; }
+.code-popup p { margin: 0; }
+.slidev-layout .code-popup pre { padding: 0.5rem 0.7rem !important; }
+.slidev-layout .code-popup :is(pre, code) { white-space: pre-wrap; overflow-wrap: anywhere; }
+.slidev-layout .code-popup .line { display: inline-block; vertical-align: top; padding-left: 2em; text-indent: -2em; }
+.slidev-layout .code-popup .line > span { white-space: nowrap; }
+
 /* Comic panels next to code. */
 .comic { height: 8rem; width: 8rem; object-fit: contain; margin-bottom: 0.6rem; }
 
