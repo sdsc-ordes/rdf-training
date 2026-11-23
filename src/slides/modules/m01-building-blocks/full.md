@@ -19,15 +19,15 @@ src: ./parts/10-iris.md
 ---
 
 ---
+src: ./parts/04-turtle.md
+---
+
+---
 src: ./parts/03-warm-up.md
 ---
 
 ---
 src: ./parts/08-relational.md
----
-
----
-src: ./parts/04-turtle.md
 ---
 
 ---
