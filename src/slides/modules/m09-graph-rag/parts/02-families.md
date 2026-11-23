@@ -61,12 +61,12 @@ minutes: 2
   </div>
   <div class="sdsc-feature">
     <h3>C · Hybrid</h3>
-    <p>Vectors find the entry points, the graph expands and checks them.</p>
+    <p>Vector search finds the entities or passages the question is about. The graph then follows their links to related facts.</p>
     <div class="flow">
       <span class="fn">Question</span><span class="fa"></span>
-      <span class="fn fn-vec">Vector search finds entry points</span><span class="fa"></span>
-      <span class="fn fn-graph">Graph expands and checks them</span><span class="fa"></span>
-      <span class="fn fn-llm">LLM answers</span>
+      <span class="fn fn-vec">Vector search finds matching entities or text passages</span><span class="fa"></span>
+      <span class="fn fn-graph">Graph follows their links to related nodes and edges</span><span class="fa"></span>
+      <span class="fn fn-llm">LLM answers from the vector matches plus the nodes and edges found</span>
     </div>
   </div>
 </div>
@@ -85,5 +85,6 @@ B suits structured, governed data: answers can cite IRIs. Shapes (SHACL) describ
 C is what most production systems end up with.
 Steps are coloured by what does the work: graph, vectors or the LLM. All three end with the LLM answering; what differs is where its context comes from.
 A answers in two ways: local search around one entity, or global search over the community summaries.
+C: the papers call the vector matches entry points. Vector search runs over entity labels and descriptions, or over text chunks linked to entities. The graph then expands from those nodes along their edges, with a hop limit or a query. The prompt gets the question, the matched text and the nodes and edges found, usually written out as triples.
 B gives the LLM the shapes, classes, properties and example queries, and retries when a query fails or returns nothing. Variant: an agent calls graph tools over MCP.
 -->
