@@ -134,6 +134,19 @@ html.dark .fn.bb { outline-color: #E57373; }
 .slidev-layout table.compact { font-size: 0.8rem; }
 .slidev-layout table.tight :is(th, td) { padding-top: 0.3rem; padding-bottom: 0.3rem; }
 
+/* Agenda (full-day agenda slides): time, session title with one line of description, format chip.
+   Breaks and welcome/wrap-up rows are greyed (tr.pause). */
+.slidev-layout table.agenda { width: 100%; border-collapse: collapse; font-size: 0.76rem; line-height: 1.25; }
+.slidev-layout table.agenda th { background: var(--sdsc-secondary); color: var(--sdsc-text-on-dark); text-align: left; font-weight: 600; padding: 0.3rem 0.8rem; border: 0; }
+.slidev-layout table.agenda td { padding: 0.32rem 0.8rem; border: 0; border-bottom: 1px solid var(--sdsc-border); vertical-align: middle; }
+.slidev-layout table.agenda :is(th, td):first-child { width: 17%; white-space: nowrap; }
+.slidev-layout table.agenda :is(th, td):last-child { width: 18%; text-align: center; }
+.slidev-layout table.agenda tr.pause td { background: var(--sdsc-background-alt); color: var(--sdsc-text-grey); padding-top: 0.15rem; padding-bottom: 0.15rem; }
+.slidev-layout table.agenda td b { display: block; color: var(--sdsc-content-heading); font-size: 1.12em; }
+.slidev-layout table.agenda td small { color: var(--sdsc-text-grey); font-size: 0.92em; }
+.slidev-layout table.agenda .fmt { display: inline-block; width: 100%; padding: 0.1rem 0.4rem; font-weight: 600; background: var(--sdsc-light-blue-bg); color: var(--sdsc-secondary); }
+.slidev-layout table.agenda .fmt-hands-on { background: var(--sdsc-primary); color: var(--sdsc-text-on-dark); }
+
 /* Show code exactly as typed: no ligatures (e.g. {| |} and -> in Fira Code). */
 .slidev-layout pre code { font-variant-ligatures: none; }
 

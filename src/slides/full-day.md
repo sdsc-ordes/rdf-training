@@ -23,29 +23,51 @@ RDF, SHACL, SPARQL and graph RAG
 <div class="sdsc-meta">Robin Franken · Swiss Data Science Center · 1-day course</div>
 
 ---
-minutes: 5
+minutes: 2
 ---
 
-# Today
+# Agenda — morning
 
-<table class="compact">
+<table class="agenda">
+  <thead><tr><th>Time</th><th>Session</th><th>Format</th></tr></thead>
   <tbody>
-    <tr><td>09:00</td><td>Welcome</td></tr>
-    <tr><td>09:10</td><td>Building blocks · RDF and property graphs · Modelling</td></tr>
-    <tr><td>10:20</td><td><i>Break</i></td></tr>
-    <tr><td>10:35</td><td>Hands-on 1: model · Validating data · LLMs build graphs</td></tr>
-    <tr><td>12:00</td><td><i>Lunch</i></td></tr>
-    <tr><td>13:00</td><td>Hands-on 2: generate and validate · SPARQL · Hands-on 3: query</td></tr>
-    <tr><td>14:30</td><td><i>Break</i></td></tr>
-    <tr><td>14:45</td><td>Architectures · Use cases and tools · Graph RAG</td></tr>
-    <tr><td>15:55</td><td>Wrap-up</td></tr>
+    <tr class="pause"><td>09:00–09:10</td><td>Welcome and introduction</td><td></td></tr>
+    <tr><td>09:10–09:30</td><td><b>Building blocks: nodes, edges, triples and IRIs</b><small>How facts become subject–predicate–object statements, and why global identifiers matter.</small></td><td><span class="fmt">Lecture &amp; Q&amp;A</span></td></tr>
+    <tr><td>09:30–10:00</td><td><b>RDF and property graphs</b><small>The W3C stack (RDF, RDFS, OWL, SKOS, SHACL, SPARQL) and when a property graph suits the data better.</small></td><td><span class="fmt">Lecture &amp; Q&amp;A</span></td></tr>
+    <tr><td>10:00–10:25</td><td><b>Modelling a domain: from questions to classes and properties</b><small>Competency questions, schema design, SKOS lists and reuse of existing vocabularies.</small></td><td><span class="fmt">Lecture &amp; Q&amp;A</span></td></tr>
+    <tr class="pause"><td>10:25–10:40</td><td>Coffee break</td><td></td></tr>
+    <tr><td>10:40–11:15</td><td><b>Hands-on 1: model the recipe domain</b><small>Turn five competency questions into classes and properties, then compare the groups' models.</small></td><td><span class="fmt fmt-hands-on">Hands-on</span></td></tr>
+    <tr><td>11:15–11:50</td><td><b>Validating data with SHACL</b><small>Shapes and constraints that catch inconsistent data before it reaches applications.</small></td><td><span class="fmt">Lecture &amp; Q&amp;A</span></td></tr>
+    <tr><td>11:50–12:15</td><td><b>How LLMs can help build knowledge graphs</b><small>Ontology drafting, entity and relation extraction, triple generation and validation in the loop.</small></td><td><span class="fmt">Lecture &amp; Q&amp;A</span></td></tr>
+    <tr class="pause"><td>12:15–13:15</td><td>Lunch</td><td></td></tr>
   </tbody>
 </table>
 
 <!--
-Adjust the times per event. One running example all day: a recipe knowledge graph.
+Times are the slide minutes added up per session and rounded to 5 minutes; adjust them per event.
+One running example all day: a recipe knowledge graph.
 Everything hands-on runs in the browser; the worksheets are on the course site.
 -->
+
+---
+minutes: 1
+---
+
+# Agenda — afternoon
+
+<table class="agenda">
+  <thead><tr><th>Time</th><th>Session</th><th>Format</th></tr></thead>
+  <tbody>
+    <tr><td>13:15–13:50</td><td><b>Hands-on 2: generate, validate, repair</b><small>Validate LLM-written recipe data with SHACL and send the report back, at most three rounds.</small></td><td><span class="fmt fmt-hands-on">Hands-on</span></td></tr>
+    <tr><td>13:50–14:10</td><td><b>Asking questions with SPARQL</b><small>Graph patterns, filters, aggregates and queries across federated endpoints.</small></td><td><span class="fmt">Lecture &amp; Q&amp;A</span></td></tr>
+    <tr><td>14:10–14:40</td><td><b>Hands-on 3: query the recipe graph</b><small>Run and change the SPARQL queries that answer the competency questions.</small></td><td><span class="fmt fmt-hands-on">Hands-on</span></td></tr>
+    <tr class="pause"><td>14:40–14:55</td><td>Coffee break</td><td></td></tr>
+    <tr><td>14:55–15:15</td><td><b>Knowledge graph architectures: from sources to applications</b><small>Mapping and ETL, triplestores, federated SPARQL endpoints and ways to serve the graph.</small></td><td><span class="fmt">Lecture &amp; Q&amp;A</span></td></tr>
+    <tr><td>15:15–15:50</td><td><b>Graph RAG: grounding LLMs in knowledge graphs</b><small>Retrieval over entities and relations to give LLM answers context and traceable sources.</small></td><td><span class="fmt">Lecture &amp; Q&amp;A</span></td></tr>
+    <tr><td>15:50–16:10</td><td><b>Use cases and tools</b><small>How knowledge graphs are used across domains, and the tooling that supports them.</small></td><td><span class="fmt">Lecture &amp; Q&amp;A</span></td></tr>
+    <tr class="pause"><td>16:10–16:40</td><td>Wrap-up and questions</td><td></td></tr>
+  </tbody>
+</table>
 
 ---
 minutes: 5
@@ -117,7 +139,7 @@ minutes: 15
 
 # Coffee break
 
-Back at 10:35 for hands-on 1
+Back at 10:40 for hands-on 1
 
 ---
 src: ./modules/h1-model/full.md
@@ -157,7 +179,7 @@ layout: section
 
 # Lunch
 
-Back at 13:00 for hands-on 2
+Back at 13:15 for hands-on 2
 
 ---
 src: ./modules/h2-generate-validate/full.md
@@ -188,7 +210,7 @@ minutes: 15
 
 # Coffee break
 
-Back at 14:45
+Back at 14:55
 
 ---
 layout: section
@@ -250,6 +272,7 @@ minutes: 5
 
 ---
 layout: cover
+minutes: 25
 ---
 
 <img class="sdsc-cover-logo" src="/SDSC_logo_horizontal_rgb_white.png" alt="Swiss Data Science Center" />
