@@ -66,6 +66,12 @@ html.dark .caveat { background: #3A1E1E; border-left-color: #E57373; }
 .mini-example { display: flex; align-items: center; gap: 0.8rem; margin-top: 0.6rem; font-size: 0.85rem; }
 .mini-example .spo { margin: 0; font-size: 0.7rem; }
 
+/* Side quest: a .popup beside a code listing, shown on click. The listing above it already shows the prefixes. */
+.side-quest { position: absolute; top: 5.4rem; right: 3.4rem; width: 21rem; --slidev-code-font-size: 0.62rem; --slidev-code-margin: 0.3rem 0; }
+.side-quest p { margin: 0.3rem 0; }
+.slidev-layout .side-quest pre { padding: 0.5rem 0.7rem !important; }
+.slidev-layout .side-quest .code-prefixes { display: none; }
+
 /* Comic panels next to code. */
 .comic { height: 8rem; width: 8rem; object-fit: contain; margin-bottom: 0.6rem; }
 
