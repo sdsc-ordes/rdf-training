@@ -238,10 +238,10 @@ minutes: 5
 
 # What you can do now
 
-- Read and write triples in Turtle
+- Read and write triples in Turtle, and choose between RDF and a property graph
 - Model a domain from questions, and validate data with SHACL
 - Let an LLM build data, and keep it in check
-- Ask a knowledge graph questions with SPARQL
+- Ask a knowledge graph questions with SPARQL, and sketch the pipeline that serves it
 - Judge when a graph helps an LLM, and when it doesn't
 
 <div class="exercise-meta">
