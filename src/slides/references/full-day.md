@@ -125,7 +125,7 @@ class: references
   <li><b>OpenRefine</b> · OpenRefine documentation: reconciling. <a href="https://openrefine.org/docs/manual/reconciling">openrefine.org/docs/manual/reconciling</a></li>
   <li><b>Oxigraph licence</b> · Oxigraph developers. Oxigraph repository, MIT or Apache-2.0 licence. <a href="https://github.com/oxigraph/oxigraph">github.com/oxigraph/oxigraph</a></li>
   <li><b>Pan et al. 2024</b> · S. Pan et al. Unifying large language models and knowledge graphs: a roadmap. IEEE TKDE 36(7), 2024. <a href="https://arxiv.org/abs/2306.08302">arxiv.org/abs/2306.08302</a></li>
-  <li><b>PoolParty</b> · Graphwise. Graph Modeling (formerly PoolParty): taxonomy and thesaurus management built on SKOS. <a href="https://graphwise.ai/components/graph-modeling/">graphwise.ai/components/graph-modeling/</a></li>
+  <li><b>Peng et al. 2024</b> · B. Peng et al. Graph retrieval-augmented generation: a survey. arXiv:2408.08921, 2024. <a href="https://arxiv.org/abs/2408.08921">arxiv.org/abs/2408.08921</a></li>
 </ul>
 
 ---
@@ -135,6 +135,7 @@ class: references
 # References (7/11)
 
 <ul class="refs">
+  <li><b>PoolParty</b> · Graphwise. Graph Modeling (formerly PoolParty): taxonomy and thesaurus management built on SKOS. <a href="https://graphwise.ai/components/graph-modeling/">graphwise.ai/components/graph-modeling/</a></li>
   <li><b>pySHACL</b> · pySHACL: a Python validator for SHACL. <a href="https://github.com/RDFLib/pySHACL">github.com/RDFLib/pySHACL</a></li>
   <li><b>QUDT</b> · QUDT: Quantities, Units, Dimensions and Types. <a href="https://qudt.org/">qudt.org/</a></li>
   <li><b>Rabbani et al. 2023</b> · K. Rabbani, M. Lissandrini, K. Hose. Extraction of validating shapes from very large knowledge graphs (QSE). PVLDB 16(5), 2023. <a href="https://doi.org/10.14778/3579075.3579078">doi.org/10.14778/3579075.3579078</a></li>
@@ -144,9 +145,8 @@ class: references
   <li><b>RFC 3987</b> · M. Duerst, M. Suignard. Internationalized Resource Identifiers (IRIs). IETF RFC 3987, 2005. <a href="https://www.rfc-editor.org/rfc/rfc3987">www.rfc-editor.org/rfc/rfc3987</a></li>
   <li><b>Richardson et al. 2020</b> · P. Richardson et al. Baricitinib as potential treatment for 2019-nCoV acute respiratory disease. The Lancet 395(10223), 2020. <a href="https://doi.org/10.1016/S0140-6736(20)30304-4">doi.org/10.1016/S0140-6736(20)30304-4</a></li>
   <li><b>ROBOT</b> · ROBOT, a command-line tool for OWL ontologies. Documentation of the validate-profile command. <a href="http://robot.obolibrary.org/validate-profile">robot.obolibrary.org/validate-profile</a></li>
+  <li><b>Sarmah et al. 2024</b> · B. Sarmah et al. HybridRAG: integrating knowledge graphs and vector retrieval augmented generation for efficient information extraction. arXiv:2408.04948, 2024. <a href="https://arxiv.org/abs/2408.04948">arxiv.org/abs/2408.04948</a></li>
   <li><b>Savelchev &amp; Guillermin 2019</b> · U. Savelchev, M. Guillermin. Using Amazon Neptune to build a fashion knowledge graph. AWS Finland meetup, September 2019 (slides). <a href="https://www.slideshare.net/alterrebe/aws-finland-september-meetup-using-amazon-neptune-to-build-fashion-knowledge-graph">www.slideshare.net/alterrebe/aws-finland-september-meetup-using-amazon-neptune-to-build-fashion-knowledge-graph</a></li>
-  <li><b>schema.org</b> · schema.org vocabulary, including RestrictedDiet values such as VeganDiet. <a href="https://schema.org/RestrictedDiet">schema.org/RestrictedDiet</a></li>
-  <li><b>schema.org Recipe</b> · schema.org. Recipe type. <a href="https://schema.org/Recipe">schema.org/Recipe</a></li>
 </ul>
 
 ---
@@ -156,6 +156,8 @@ class: references
 # References (8/11)
 
 <ul class="refs">
+  <li><b>schema.org</b> · schema.org vocabulary, including RestrictedDiet values such as VeganDiet. <a href="https://schema.org/RestrictedDiet">schema.org/RestrictedDiet</a></li>
+  <li><b>schema.org Recipe</b> · schema.org. Recipe type. <a href="https://schema.org/Recipe">schema.org/Recipe</a></li>
   <li><b>Sequeda et al. 2023</b> · J. Sequeda, D. Allemang, B. Jacob. A benchmark to understand the role of knowledge graphs on large language model&#x27;s accuracy for question answering on enterprise SQL databases. arXiv:2311.07509, 2023. <a href="https://arxiv.org/abs/2311.07509">arxiv.org/abs/2311.07509</a></li>
   <li><b>SHACL Play!</b> · Sparna. SHACL Play!: free, open-source SHACL tools (Excel to SHACL, shapes from data, documentation, UML diagrams). <a href="https://shacl-play.sparna.fr/play/">shacl-play.sparna.fr/play/</a></li>
   <li><b>shacl-form</b> · ULB Darmstadt. shacl-form: HTML input forms generated from SHACL shapes. <a href="https://github.com/ULB-Darmstadt/shacl-form">github.com/ULB-Darmstadt/shacl-form</a></li>
@@ -166,8 +168,6 @@ class: references
   <li><b>Stellato et al. 2020</b> · A. Stellato et al. VocBench 3: a collaborative Semantic Web editor for ontologies, thesauri and lexicons. Semantic Web 11(5), 2020. <a href="https://doi.org/10.3233/SW-200370">doi.org/10.3233/SW-200370</a></li>
   <li><b>Sullivan 2020</b> · D. Sullivan. A reintroduction to our Knowledge Graph and knowledge panels. Google blog, 20 May 2020. <a href="https://blog.google/products/search/about-knowledge-graph-and-knowledge-panels/">blog.google/products/search/about-knowledge-graph-and-knowledge-panels/</a></li>
   <li><b>TopBraid EDG</b> · TopQuadrant. TQ Data Foundation (formerly TopBraid EDG) 9.2 documentation: ontology how-to guidance. <a href="https://docs.topquadrant.com/9.2/user_guide/guidance_specific_to_asset_collection_type/working_with_ontologies/ontology_how_to_guidance.html">docs.topquadrant.com/9.2/user_guide/guidance_specific_to_asset_collection_type/working_with_ontologies/ontology_how_to_guidance.html</a></li>
-  <li><b>Touré et al. 2023</b> · V. Touré et al. FAIRification of health-related data using semantic web technologies in the Swiss Personalized Health Network. Scientific Data 10, 2023. <a href="https://doi.org/10.1038/s41597-023-02028-y">doi.org/10.1038/s41597-023-02028-y</a></li>
-  <li><b>Tudorache et al. 2013</b> · T. Tudorache, C. Nyulas, N. F. Noy, M. A. Musen. WebProtégé: a collaborative ontology editor and knowledge acquisition tool for the Web. Semantic Web 4(1), 2013. <a href="https://doi.org/10.3233/SW-2012-0057">doi.org/10.3233/SW-2012-0057</a></li>
 </ul>
 
 ---
@@ -177,6 +177,8 @@ class: references
 # References (9/11)
 
 <ul class="refs">
+  <li><b>Touré et al. 2023</b> · V. Touré et al. FAIRification of health-related data using semantic web technologies in the Swiss Personalized Health Network. Scientific Data 10, 2023. <a href="https://doi.org/10.1038/s41597-023-02028-y">doi.org/10.1038/s41597-023-02028-y</a></li>
+  <li><b>Tudorache et al. 2013</b> · T. Tudorache, C. Nyulas, N. F. Noy, M. A. Musen. WebProtégé: a collaborative ontology editor and knowledge acquisition tool for the Web. Semantic Web 4(1), 2013. <a href="https://doi.org/10.3233/SW-2012-0057">doi.org/10.3233/SW-2012-0057</a></li>
   <li><b>Virtuoso licence</b> · OpenLink Software. Virtuoso Open-Source Edition, GNU GPL version 2. <a href="https://github.com/openlink/virtuoso-opensource/blob/HEAD/LICENSE">github.com/openlink/virtuoso-opensource/blob/HEAD/LICENSE</a></li>
   <li><b>Vrandečić &amp; Krötzsch 2014</b> · D. Vrandečić, M. Krötzsch. Wikidata: a free collaborative knowledgebase. Communications of the ACM 57(10), 2014. <a href="https://doi.org/10.1145/2629489">doi.org/10.1145/2629489</a></li>
   <li><b>W3C Cool URIs 2008</b> · L. Sauermann, R. Cyganiak. Cool URIs for the Semantic Web. W3C Interest Group Note, 2008. <a href="https://www.w3.org/TR/cooluris/">www.w3.org/TR/cooluris/</a></li>
@@ -187,8 +189,6 @@ class: references
   <li><b>W3C OWL 2 Overview</b> · OWL 2 Web Ontology Language document overview (second edition). W3C Recommendation, 2012. <a href="https://www.w3.org/TR/owl2-overview/">www.w3.org/TR/owl2-overview/</a></li>
   <li><b>W3C OWL 2 Profiles</b> · OWL 2 Web Ontology Language Profiles (second edition). W3C Recommendation, 2012. Section 4.3: reasoning in OWL 2 RL using rules. <a href="https://www.w3.org/TR/owl2-profiles/">www.w3.org/TR/owl2-profiles/</a></li>
   <li><b>W3C PROV-O</b> · PROV-O: the PROV Ontology. W3C Recommendation, 2013. <a href="https://www.w3.org/TR/prov-o/">www.w3.org/TR/prov-o/</a></li>
-  <li><b>W3C RDF 1.1 Concepts</b> · RDF 1.1 Concepts and Abstract Syntax. W3C Recommendation, 2014. <a href="https://www.w3.org/TR/rdf11-concepts/">www.w3.org/TR/rdf11-concepts/</a></li>
-  <li><b>W3C RDF 1.1 Semantics</b> · RDF 1.1 Semantics. W3C Recommendation, 2014. <a href="https://www.w3.org/TR/rdf11-mt/">www.w3.org/TR/rdf11-mt/</a></li>
 </ul>
 
 ---
@@ -198,6 +198,8 @@ class: references
 # References (10/11)
 
 <ul class="refs">
+  <li><b>W3C RDF 1.1 Concepts</b> · RDF 1.1 Concepts and Abstract Syntax. W3C Recommendation, 2014. <a href="https://www.w3.org/TR/rdf11-concepts/">www.w3.org/TR/rdf11-concepts/</a></li>
+  <li><b>W3C RDF 1.1 Semantics</b> · RDF 1.1 Semantics. W3C Recommendation, 2014. <a href="https://www.w3.org/TR/rdf11-mt/">www.w3.org/TR/rdf11-mt/</a></li>
   <li><b>W3C RDF 1.1 Turtle</b> · RDF 1.1 Turtle. W3C Recommendation, 2014. <a href="https://www.w3.org/TR/turtle/">www.w3.org/TR/turtle/</a></li>
   <li><b>W3C RDF 1.2</b> · RDF 1.2 Concepts and Abstract Data Model. W3C Candidate Recommendation Snapshot, 7 April 2026. <a href="https://www.w3.org/TR/rdf12-concepts/">www.w3.org/TR/rdf12-concepts/</a></li>
   <li><b>W3C RDF Schema 1.1</b> · RDF Schema 1.1. W3C Recommendation, 2014. <a href="https://www.w3.org/TR/rdf-schema/">www.w3.org/TR/rdf-schema/</a></li>
@@ -208,8 +210,6 @@ class: references
   <li><b>W3C SKOS</b> · SKOS Simple Knowledge Organization System Reference. W3C Recommendation, 2009. <a href="https://www.w3.org/TR/skos-reference/">www.w3.org/TR/skos-reference/</a></li>
   <li><b>W3C SPARQL 1.1</b> · SPARQL 1.1 Query Language, Federated Query and Protocol. W3C Recommendations, 2013. <a href="https://www.w3.org/TR/sparql11-overview/">www.w3.org/TR/sparql11-overview/</a></li>
   <li><b>W3C SPARQL 1.2</b> · SPARQL 1.2 Query Language. W3C Working Draft, 1 November 2026. <a href="https://www.w3.org/TR/sparql12-query/">www.w3.org/TR/sparql12-query/</a></li>
-  <li><b>W3C SPARQL 1.2 RL</b> · SPARQL 1.2 RL: a Datalog-style rules language for RDF. W3C Working Draft, 31 October 2026. <a href="https://www.w3.org/TR/sparql12-rl/">www.w3.org/TR/sparql12-rl/</a></li>
-  <li><b>W3C TR</b> · W3C. Standards and drafts: status and history of RDF, RDFS, OWL, SKOS, SPARQL, JSON-LD and SHACL. <a href="https://www.w3.org/TR/">www.w3.org/TR/</a></li>
 </ul>
 
 ---
@@ -219,6 +219,8 @@ class: references
 # References (11/11)
 
 <ul class="refs">
+  <li><b>W3C SPARQL 1.2 RL</b> · SPARQL 1.2 RL: a Datalog-style rules language for RDF. W3C Working Draft, 31 October 2026. <a href="https://www.w3.org/TR/sparql12-rl/">www.w3.org/TR/sparql12-rl/</a></li>
+  <li><b>W3C TR</b> · W3C. Standards and drafts: status and history of RDF, RDFS, OWL, SKOS, SPARQL, JSON-LD and SHACL. <a href="https://www.w3.org/TR/">www.w3.org/TR/</a></li>
   <li><b>w3id.org</b> · W3C Permanent Identifier Community Group. w3id.org: permanent identifiers for the web. <a href="https://w3id.org/">w3id.org/</a></li>
   <li><b>WHO 2022</b> · World Health Organization. WHO recommends two new drugs to treat COVID-19. 14 January 2022. <a href="https://www.who.int/news/item/14-01-2022-who-recommends-two-new-drugs-to-treat-covid-19">www.who.int/news/item/14-01-2022-who-recommends-two-new-drugs-to-treat-covid-19</a></li>
   <li><b>Wikidata WDQS 2026</b> · Wikidata. WDQS backend update: replacing Blazegraph with QLever. 2026. <a href="https://www.wikidata.org/wiki/Wikidata:SPARQL_query_service/WDQS_backend_update/Backend_Replacement">www.wikidata.org/wiki/Wikidata:SPARQL_query_service/WDQS_backend_update/Backend_Replacement</a></li>

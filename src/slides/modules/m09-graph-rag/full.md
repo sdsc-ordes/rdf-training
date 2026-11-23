@@ -23,6 +23,10 @@ src: ./parts/09-agents.md
 ---
 
 ---
+src: ./parts/13-hybrid.md
+---
+
+---
 src: ./parts/03-demo.md
 ---
 

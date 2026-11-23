@@ -257,6 +257,10 @@ url = "https://openrefine.org/docs/manual/reconciling"
 text = "S. Pan et al. Unifying large language models and knowledge graphs: a roadmap. IEEE TKDE 36(7), 2024."
 url = "https://arxiv.org/abs/2306.08302"
 
+["Peng et al. 2024"]
+text = "B. Peng et al. Graph retrieval-augmented generation: a survey. arXiv:2408.08921, 2024."
+url = "https://arxiv.org/abs/2408.08921"
+
 ["PoolParty"]
 text = "Graphwise. Graph Modeling (formerly PoolParty): taxonomy and thesaurus management built on SKOS."
 url = "https://graphwise.ai/components/graph-modeling/"
@@ -296,6 +300,10 @@ url = "https://doi.org/10.1016/S0140-6736(20)30304-4"
 ["ROBOT"]
 text = "ROBOT, a command-line tool for OWL ontologies. Documentation of the validate-profile command."
 url = "http://robot.obolibrary.org/validate-profile"
+
+["Sarmah et al. 2024"]
+text = "B. Sarmah et al. HybridRAG: integrating knowledge graphs and vector retrieval augmented generation for efficient information extraction. arXiv:2408.04948, 2024."
+url = "https://arxiv.org/abs/2408.04948"
 
 ["Savelchev & Guillermin 2019"]
 text = "U. Savelchev, M. Guillermin. Using Amazon Neptune to build a fashion knowledge graph. AWS Finland meetup, September 2019 (slides)."
