@@ -152,3 +152,12 @@ def test_slide_prefixes_match_data_prefixes():
     assert dict(re.findall(r"^\s*(\w+): '([^']+)',", ts, re.MULTILINE)) == dict(
         re.findall(r"@prefix (\w+):\s*<([^>]+)>", PREFIXES)
     )
+
+
+def test_spot_the_violation_starts_from_the_buggy_file():
+    """Keep the first magic-move step equal to the file the validator results come from."""
+    slide = (SLIDES / "modules" / "m04-shacl" / "parts" / "03-spot-the-violation.md").read_text()
+    first_step = slide.split("````md magic-move", 1)[1].split("```turtle\n", 1)[1].split("\n```", 1)[0]
+    buggy = (rdf.HANDS_ON / "h2-validate" / "buggy" / "b11-llm-first-attempt.ttl").read_text()
+    region = buggy.split("# #region pizza\n", 1)[1].split("# #endregion pizza", 1)[0].rstrip("\n")
+    assert first_step == region

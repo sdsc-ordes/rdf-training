@@ -83,6 +83,13 @@ html.dark .caveat { background: #3A1E1E; border-left-color: #E57373; }
 
 /* Per-slide option (frontmatter `class: no-prefixes`): hide the added prefix lines when two listings must fit. */
 .slidev-layout.no-prefixes .code-prefixes { display: none; }
+/* Two listings side by side under a main listing (shapes next to a validation report entry), in a smaller font. */
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: start; --slidev-code-font-size: 0.58rem; --slidev-code-margin: 0.25rem 0 0; }
+.slidev-layout .compare pre { padding: 0.5rem 0.7rem !important; }
+/* Children share one grid cell, so click-range items replace each other in place. */
+.swap { display: grid; }
+.swap > * { grid-area: 1 / 1; }
+.result-label { margin: 0.6rem 0 0; font-size: 0.85rem; }
 /* Caption above a code listing. */
 .code-label { margin: 0.6rem 0 0; font-size: 0.75rem; color: var(--sdsc-text-grey); }
 
