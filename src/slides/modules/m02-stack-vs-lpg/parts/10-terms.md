@@ -53,8 +53,8 @@ minutes: 2
 Logos are trademarks of their owners, shown as examples only. FOSS = free and open-source software licence.
 Logos, left to right: Apache Jena, Graphwise GraphDB, Amazon Neptune, Virtuoso, Oxigraph (triplestores); Neo4j, Memgraph, Amazon Neptune, JanusGraph (property graph databases). Neptune serves both models, so it appears in both boxes. FOSS badges: Jena, Virtuoso, Oxigraph, JanusGraph are open source; Neo4j is open source only in its Community edition; GraphDB, Neptune and Memgraph are not (Memgraph's BSL is source-available).
 People use these words interchangeably; the boxes separate them. On the left, a box inside a box is a kind of it. On the right, it is a part of it. The arrow is the only "stores".
-A knowledge graph does not need a triplestore: it can also be Turtle files, or a virtual graph over a SQL database (Ontop, R2RML; the benchmark on slide 4).
+A knowledge graph does not need a triplestore: it can also be Turtle files, or a virtual graph over a SQL database (Ontop, R2RML; the benchmark on "Why this course now?").
 The vocabulary names the terms (classes, properties); the taxonomy defines the hierarchy between them; the ontology holds both. Some people call a whole ontology a vocabulary: schema.org calls itself one. Fixed lists such as cuisines and allergens (SKOS) are also part of the schema.
-Meronomy (part-of, slide 29) is not in the schema: "pesto contains basil" is instance data. Only the property rec:containsIngredient is defined in the ontology.
+Meronomy (part-of, "Taxonomy and meronomy", full day only) is not in the schema: "pesto contains basil" is instance data. Only the property rec:containsIngredient is defined in the ontology.
 Because the schema is triples, one SPARQL query can ask about data and schema at once, e.g. ?food a/rdfs:subClassOf* rec:AnimalProduct.
 -->

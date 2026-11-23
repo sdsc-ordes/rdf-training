@@ -1,4 +1,8 @@
 ---
+src: ./parts/10-terms.md
+---
+
+---
 src: ./parts/01-stack.md
 ---
 
