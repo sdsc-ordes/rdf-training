@@ -130,7 +130,7 @@ Card template: problem · what the KG holds · stack · access · what worked / 
 | # | Layout | Slide |
 |---|---|---|
 | 1 | section | Graph RAG: grounding LLMs in KGs |
-| 2 (C) | content + takeaway | Hook: "Can I serve this Caesar salad to my vegetarian friend?" — LLM says yes |
+| 2 (C) | two cards | Hook: "Which of our dishes can a vegetarian, gluten-free guest eat?" — the LLM knows the general rule, not your menu or the labels of what you buy |
 | 3 | content | Why ground: hallucination, stale/private knowledge, no provenance, can't count |
 | 4 | two-cols | Vector RAG in one picture / what it's good at |
 | 5 (C) | features (4) | Where vector RAG breaks: multi-hop, aggregation, hard constraints, global questions |

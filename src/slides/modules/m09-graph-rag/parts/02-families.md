@@ -4,24 +4,24 @@ minutes: 2
 
 # Where text retrieval breaks
 
-Vector RAG finds passages that *look like* the question. Some questions need more.
+Vector RAG puts the few passages most similar to the question into the prompt. Four kinds of question need more.
 
 <div class="sdsc-features">
   <div class="sdsc-feature">
     <h3>Multi-hop</h3>
-    <p>Vegetarian? Recipe → sauce → anchovy.</p>
+    <p>The answer is two links away: dish → sauce → ingredient. The sauce's label never mentions the dish.</p>
   </div>
   <div class="sdsc-feature">
-    <h3>Counting</h3>
-    <p>How many recipes use Spanish ingredients?</p>
+    <h3>Lists and counts</h3>
+    <p>"Which dishes" or "how many" needs every match. Retrieval returns the top 5 or 10 passages.</p>
   </div>
   <div class="sdsc-feature">
     <h3>Hard constraints</h3>
-    <p>No gluten at all, not "probably none".</p>
+    <p>A guest with coeliac disease needs "no gluten", not "probably none". Similarity gives a ranking, not a yes or no.</p>
   </div>
   <div class="sdsc-feature">
     <h3>Whole corpus</h3>
-    <p>What are the main themes of this cookbook?</p>
+    <p>What are the main themes of this cookbook? No single passage says.</p>
   </div>
 </div>
 
