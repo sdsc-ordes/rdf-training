@@ -102,6 +102,10 @@ html.dark .caveat { background: #3A1E1E; border-left-color: #E57373; }
 /* Per-slide option (frontmatter `class: code-small`) for wide listings. */
 .slidev-layout.code-small pre { font-size: 0.64rem; }
 
+/* Competency questions a diagram answers, in one row under the title; numbers match "Start from the questions". */
+.cq-strip { display: flex; flex-wrap: wrap; gap: 0.3rem 2rem; margin: 0 0 0.4rem; font-size: 0.85rem; }
+.cq-strip b { display: inline-block; min-width: 1.3rem; padding: 0 0.3rem; margin-right: 0.4rem; text-align: center; border-radius: 0.25rem; background: var(--sdsc-secondary); color: var(--sdsc-text-on-dark); }
+
 /* Diagram legend: swatch + label. */
 .legend { display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; margin-top: 0.4rem; font-size: 0.72rem; }
 .lg::before {
