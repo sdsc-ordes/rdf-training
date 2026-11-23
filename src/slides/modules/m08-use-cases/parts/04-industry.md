@@ -1,0 +1,164 @@
+---
+minutes: 2
+---
+
+# Google Knowledge Graph
+
+<div class="sdsc-features">
+  <div class="sdsc-feature">
+    <h3>Problem</h3>
+    <p>Search matched keywords. Google wanted it to know which person, place or film a query is about.</p>
+  </div>
+  <div class="sdsc-feature">
+    <h3>The graph</h3>
+    <p>500 million entities and 3.5 billion facts at launch in 2012; 500 billion facts about 5 billion entities in 2020. Sources include Freebase, Wikipedia, licensed data and website markup.</p>
+  </div>
+  <div class="sdsc-feature">
+    <h3>Stack</h3>
+    <p>The internal storage is not public. Websites feed it schema.org markup, preferably JSON-LD; the Search API returns JSON-LD.</p>
+  </div>
+  <div class="sdsc-feature">
+    <h3>Used for</h3>
+    <p>Knowledge panels and direct answers in Search. Google says its AI Mode (2025) also draws on the graph.</p>
+  </div>
+</div>
+
+<p class="fine">Sources: Singhal 2012 · Sullivan 2020 · Google Search Central · Google KG Search API · Stein 2025</p>
+
+<!--
+Freebase came with the Metaweb acquisition (2010) and closed in 2015; its data moved to Wikidata. Freebase dumps were N-Triples.
+schema.org was founded in 2011 by Google, Bing and Yahoo; Yandex joined the same year.
+Figures like "1.6 trillion facts" online are third-party estimates; Google's own latest figure is from 2020.
+Ask: who has added schema.org markup to a website? They have contributed to this graph.
+-->
+
+---
+minutes: 2
+---
+
+# IKEA: product recommendations
+
+<div class="sdsc-features">
+  <div class="sdsc-feature">
+    <h3>Problem</h3>
+    <p>IKEA.com has 1,587 sofas with 10 accessories each: 15,870 pairs to curate. Recommendations from customer behaviour cannot explain themselves and lose data when people decline cookies.</p>
+  </div>
+  <div class="sdsc-feature">
+    <h3>The graph</h3>
+    <p>Three layers: an ontology owned by a central team, taxonomies owned by domain experts, and product facts generated from source data.</p>
+  </div>
+  <div class="sdsc-feature">
+    <h3>How it works</h3>
+    <p>Interior designers write general rules, such as "an indoor cushion makes an indoor sofa comfortable". The graph applies each rule to every matching pair of products.</p>
+  </div>
+  <div class="sdsc-feature">
+    <h3>Stack and result</h3>
+    <p>Turtle files in Git, SHACL checks, a triplestore, and a property graph for path queries. Used for recommendations on IKEA.com; no metrics published.</p>
+  </div>
+</div>
+
+<p class="fine">Sources: Kari 2023a · Kari 2023b · Maignan 2025</p>
+
+<!--
+The graph belongs to Inter IKEA Systems (the franchisor). Katariina Kari built it as lead ontologist from 2021, after Zalando.
+Domain experts are trained as "knowledge modellers". Next target: EU Digital Product Passports.
+A 2023 talk asked whether LLMs could suggest connections for experts to validate; nothing has been published on that since.
+-->
+
+---
+minutes: 2
+---
+
+# Zalando: fashion search
+
+<div class="sdsc-features">
+  <div class="sdsc-feature">
+    <h3>Problem</h3>
+    <p>Search needed facts that product data does not state. "Beyonce" was a failing query until the graph recorded that she designs the Ivy Park label.</p>
+  </div>
+  <div class="sdsc-feature">
+    <h3>The graph</h3>
+    <p>Fashion concepts with IRIs, linked to schema.org: 560,261 triples in 2019. Products stay outside the graph; services tag them with concept IDs.</p>
+  </div>
+  <div class="sdsc-feature">
+    <h3>Stack</h3>
+    <p>Modelled by hand, each change reviewed by two people in a GitHub pull request. RDF and SPARQL on Amazon Neptune.</p>
+  </div>
+  <div class="sdsc-feature">
+    <h3>Result</h3>
+    <p>Zalando reported better search but published no numbers. Long SPARQL queries were slow, so the team wrote its own inference rules.</p>
+  </div>
+</div>
+
+<p class="fine">Sources: Kari 2018a · Kari 2018b · Savelchev & Guillermin 2019</p>
+
+<!--
+Another example from the 2018 blog: product data lists materials such as wool or leather, but never says "vegan".
+The team found RDF and SPARQL easy to learn; modelling and query speed took the effort.
+Neptune lessons (2019): slow restores and costly test environments. Nothing public on the graph after 2021.
+-->
+
+---
+minutes: 2
+---
+
+# Netflix: Unified Data Architecture
+
+<div class="sdsc-features">
+  <div class="sdsc-feature">
+    <h3>Problem</h3>
+    <p>Teams modelled the same business concepts separately in GraphQL, Avro, SQL and Java, and wrote translations between their systems.</p>
+  </div>
+  <div class="sdsc-feature">
+    <h3>The graph</h3>
+    <p>Domain models, descriptions of data stores, and mappings between them, in named graphs owned by teams.</p>
+  </div>
+  <div class="sdsc-feature">
+    <h3>Stack</h3>
+    <p>RDF. Teams model in Upper, a metamodel built on SHACL. GraphQL schemas, Avro, Iceberg tables, SQL and Java are generated from the model.</p>
+  </div>
+  <div class="sdsc-feature">
+    <h3>Result</h3>
+    <p>Netflix describes tools built on it, for example SQL reports generated by walking the graph. Announced 2025; no metrics published.</p>
+  </div>
+</div>
+
+<p class="fine">Sources: Netflix 2025 · Bertails 2025 · Netflix UDA repository</p>
+
+<!--
+Netflix tried plain SHACL as the modelling language first and found it awkward; Upper is a layer on top that generates SHACL.
+Example Turtle models are public in the Netflix-Skunkworks/uda repository on GitHub.
+Compare with LinkML (module 3): one model, many generated formats.
+-->
+
+---
+minutes: 2
+---
+
+# BBC: World Cup 2010 website
+
+<div class="sdsc-features">
+  <div class="sdsc-feature">
+    <h3>Problem</h3>
+    <p>A page for every team, group and player, kept up to date during the tournament: more than journalists could build by hand.</p>
+  </div>
+  <div class="sdsc-feature">
+    <h3>The graph</h3>
+    <p>Teams, groups, players and matches, linked to the articles journalists tagged.</p>
+  </div>
+  <div class="sdsc-feature">
+    <h3>Stack</h3>
+    <p>RDF in BigOWLIM (now GraphDB) with OWL reasoning. SPARQL queries assemble the pages.</p>
+  </div>
+  <div class="sdsc-feature">
+    <h3>Result</h3>
+    <p>More than 700 generated pages, millions of page requests a day, and about a million SPARQL queries a day.</p>
+  </div>
+</div>
+
+<p class="fine">Sources: Rayfield 2010 · Kiryakov et al. 2010</p>
+
+<!--
+Inference spreads tags: a story tagged "Frank Lampard" is inferred to be about "England Squad", "Group C" and "FIFA World Cup 2010".
+The BBC planned the same approach for more than 12,000 athlete and index pages at the London 2012 Olympics.
+-->
