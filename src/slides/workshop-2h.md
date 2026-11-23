@@ -39,7 +39,7 @@ RDF, SHACL, SPARQL and graph RAG
 </table>
 
 <!--
-Adjust the times per event. Slide minutes add up to 120; the break has none, like lunch in the full day.
+Adjust the times per event.
 -->
 
 ---
