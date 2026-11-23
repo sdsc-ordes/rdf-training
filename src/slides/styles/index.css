@@ -35,14 +35,14 @@ html.dark .caveat { background: #3A1E1E; border-left-color: #E57373; }
 .terms-arrow { align-self: start; margin-top: 6rem; padding: 0 0.9rem 0.25rem 0.2rem; position: relative; border-bottom: 2px solid var(--sdsc-primary); color: var(--sdsc-primary); }
 .terms-arrow::after { content: ""; position: absolute; right: -2px; bottom: -6px; border-left: 9px solid var(--sdsc-primary); border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
 .terms-row { display: grid; grid-template-columns: 2fr 3fr; gap: 0.5rem; align-items: start; }
-.tbox { padding: 0.4rem 0.6rem 0.5rem; margin-top: 0.4rem; border-radius: 0.35rem; line-height: 1.3; }
+.tbox { padding: 0.3rem 0.6rem 0.4rem; margin-top: 0.3rem; border-radius: 0.35rem; line-height: 1.3; }
 .tbox b { font-family: var(--sdsc-font-heading); font-weight: 600; color: var(--sdsc-content-heading); }
 .tbox small { display: block; color: var(--sdsc-text-grey); font-size: 0.72rem; }
 .tbox-1 { border: 2px solid var(--sdsc-secondary); background: var(--sdsc-background); }
 .tbox-2 { border: 1px solid var(--sdsc-primary); background: var(--sdsc-light-blue-bg); }
 .tbox-3 { border: 1px solid var(--sdsc-primary); background: var(--sdsc-background); }
 .tbox-4 { border: 1px dashed var(--sdsc-primary); background: var(--sdsc-background-alt); }
-.terms-note { margin: 0.6rem 0 0; font-size: 0.8rem; }
+.terms-note { margin: 0.4rem 0 0; font-size: 0.8rem; }
 .tbox-logos { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin-top: 0.35rem; }
 .tbox-logos { gap: 0.35rem; }
 .tlogo { display: inline-flex; flex-direction: column; align-items: center; gap: 0.15rem; }
