@@ -11,6 +11,10 @@ src: ./parts/07-fixed-lists.md
 ---
 
 ---
+src: ./parts/11-skos.md
+---
+
+---
 src: ./parts/04-strings-to-things.md
 ---
 
