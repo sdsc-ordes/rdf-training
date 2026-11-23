@@ -27,6 +27,10 @@ src: ./parts/07-statements-about-statements.md
 ---
 
 ---
+src: ./parts/11-trade-offs.md
+---
+
+---
 src: ./parts/08-pg-landscape.md
 ---
 
