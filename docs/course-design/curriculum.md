@@ -109,8 +109,8 @@ Minutes = core / full. In the full day M09 runs before M08, so the day closes wi
 - Interaction: "view source" on a recipe site to find `"@type": "Recipe"`; pairs place 8 component cards on layers
 - Takeaway: *A KG is a pipeline, not a database; graph RAG is one more consumer.*
 
-### M08 Use cases and tooling (0 / 21)
-- 7 case cards, dot-vote; one slide each for BenevolentAI (baricitinib), Genomics England (HPO + Exomiser), DeepRare; what they share; one-page tooling map by stage (model, map, validate, store, query, LLM), marked no-code or code
+### M08 Use cases and tooling (0 / 31)
+- 8 case cards, dot-vote; one slide each for Google, IKEA, Zalando, Netflix UDA, BBC World Cup 2010, BenevolentAI (baricitinib), Genomics England (HPO + Exomiser), DeepRare; what they share; one-page tooling map by stage (model, map, validate, store, query, LLM), marked no-code or code
 - Takeaway: *Shared identifiers, shared vocabularies, checked data and named owners.*
 
 Card template: problem · what the KG holds · stack · access · what worked / trade-off · 2026 LLM angle · try-it link · module link
