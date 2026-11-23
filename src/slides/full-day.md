@@ -245,8 +245,7 @@ minutes: 5
 - Judge when a graph helps an LLM, and when it doesn't
 
 <div class="exercise-meta">
-  <img src="/qr/site.svg" alt="QR code to the course repository" />
-  <span>Slides, worksheets and data<br /><b>github.com/sdsc-ordes/rdf-training</b></span>
+  <span>Slides, worksheets and data: <b>github.com/sdsc-ordes/rdf-training</b></span>
 </div>
 
 ---

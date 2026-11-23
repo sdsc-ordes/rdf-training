@@ -9,11 +9,11 @@ minutes: 26
 3. **Repair · 10 min:** send the errors back, at most 3 rounds; note each error type
 
 <div class="exercise-meta">
-  <img src="/qr/h2.svg" alt="QR code to the hands-on 2 worksheet" />
-  <span><b>Pairs · 26 min</b><br />No LLM? The worksheet has an LLM's first attempt to fix by hand.</span>
+  <span><b>Pairs · 26 min</b><br /><b>Worksheet</b> (link to follow): the prompt, a validator with the shapes filled in, and an LLM's first attempt to fix by hand if you have no LLM.</span>
 </div>
 
 <!--
 Assign cuisines: Swiss, Italian, French, Thai, Indian, American.
+The worksheet link is a placeholder: the course site is not published yet. Share the link in the event chat.
 Tally error types and rounds on the board as groups go. Stretch tasks are on the worksheet.
 -->
