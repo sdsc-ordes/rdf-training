@@ -19,10 +19,6 @@ src: ./parts/06-repair.md
 ---
 
 ---
-src: ./parts/02-failure-modes.md
----
-
----
 src: ./parts/07-entity-linking.md
 ---
 
