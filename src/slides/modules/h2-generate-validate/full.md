@@ -7,9 +7,5 @@ src: ./parts/02-debrief.md
 ---
 
 ---
-src: ./parts/05-error-types.md
----
-
----
 src: ./parts/04-merge.md
 ---
