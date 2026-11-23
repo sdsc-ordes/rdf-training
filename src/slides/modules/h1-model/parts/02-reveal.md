@@ -4,9 +4,10 @@ minutes: 3
 
 # One model that could work
 
-```mermaid {scale: 0.75}
+```mermaid {scale: 0.65}
 graph LR
   R["Recipe<br/>schema:Recipe"]:::reused -- rec:hasIngredient --> F["Food<br/>rec:Food"]:::ours
+  R -- schema:recipeIngredient --> L["Ingredient lines<br/>#quot;40 g butter#quot;"]:::literal
   F -- rec:containsIngredient --> F
   F -. subclasses .-> T["Food types<br/>rec:DairyProduct …"]:::ours
   F -- rec:hasAllergen --> A(["Allergens<br/>allergen:gluten …"]):::lists
@@ -17,6 +18,7 @@ graph LR
   classDef ours fill:#26235C,stroke:#26235C,color:#FFFFFF
   classDef reused fill:#DDDEEC,stroke:#5561A6,color:#26235C
   classDef lists fill:#FFFFFF,stroke:#5561A6,color:#26235C
+  classDef literal fill:#F4F3F8,stroke:#5561A6,stroke-dasharray:4 3,color:#26235C
   %% external is a rect rounded with rx/ry (half its height): a stadium's outline is drawn in short pieces, which breaks the dashes
   classDef external fill:#FFFFFF,stroke:#5561A6,stroke-dasharray:4 3,color:#26235C,rx:36px,ry:36px
 ```
@@ -26,12 +28,14 @@ graph LR
   <span class="lg lg-reused">reused from schema.org</span>
   <span class="lg lg-lists">our own lists, written with SKOS</span>
   <span class="lg lg-external">external data: Wikidata</span>
+  <span class="lg lg-literal">text value</span>
 </div>
 
 <!--
 Other models can work too; check yours against the five competency questions.
 Boxes are classes; rounded nodes are fixed lists of values, shown with an example IRI.
 SKOS is not a source but a vocabulary for writing such lists (concepts, labels, broader/narrower).
+Two ingredient edges: schema:recipeIngredient holds the recipe's text lines as written; schema.org expects plain text there, so links to Food things use our own rec:hasIngredient.
 Point out containsIngredient: products like Worcestershire sauce have ingredients of their own.
 That is where hidden anchovies and gluten live. Full model: src/data/vocab/recipes.ttl.
 -->

@@ -111,6 +111,7 @@ html.dark .caveat { background: #3A1E1E; border-left-color: #E57373; }
 .lg-ours::before { background: var(--sdsc-secondary); border-color: var(--sdsc-secondary); }
 .lg-reused::before { background: var(--sdsc-light-blue-bg); }
 .lg-external::before { border-style: dashed; }
+.lg-literal::before { border-style: dashed; background: var(--sdsc-background-alt); }
 
 /* Prefix declarations (added by setup/shiki.ts or written in the code): greyed, still readable and linked. */
 .slidev-layout .code-prefixes { opacity: 0.45; margin-bottom: 0.3em; font-size: 0.85em; line-height: 1.4; }
