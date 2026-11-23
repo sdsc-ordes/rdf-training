@@ -16,7 +16,6 @@ recipe:pizza-margherita a schema:Recipe ;
     schema:description "Classic Neapolitan pizza with tomato, mozzarella and basil."@en ;
     schema:author person:luca-bernasconi ;
     schema:totalTime "25 min" ;
-    rec:cuisine cuisine:italian ;
     rec:course course:main ;
     schema:suitableForDiet schema:VegetarianDiet ;
     rec:hasIngredient food:wheat-flour, food:tomato, food:mozzarella, food:basil, food:olive-oil .

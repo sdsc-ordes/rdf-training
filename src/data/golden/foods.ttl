@@ -45,6 +45,7 @@ food:kirsch a rec:Beverage ; rdfs:label "kirsch"@en .
 
 food:butter a rec:DairyProduct ; rdfs:label "butter"@en ; rec:hasAllergen allergen:milk .
 food:vacherin-fribourgeois a rec:Cheese ; rdfs:label "Vacherin Fribourgeois"@en ; rec:hasAllergen allergen:milk .
+food:mozzarella a rec:Cheese ; rdfs:label "mozzarella"@en ; rec:hasAllergen allergen:milk .
 food:gruyere a rec:HardCheese ; rdfs:label "Gruyère"@en ; rec:hasAllergen allergen:milk .
 food:parmesan a rec:HardCheese ; rdfs:label "Parmesan"@en ; rec:hasAllergen allergen:milk .
 food:egg a rec:Egg ; rdfs:label "egg"@en ; rec:hasAllergen allergen:eggs .

@@ -81,6 +81,11 @@ html.dark .caveat { background: #3A1E1E; border-left-color: #E57373; }
 .slidev-layout .code-popup .line { display: inline-block; vertical-align: top; padding-left: 2em; text-indent: -2em; }
 .slidev-layout .code-popup .line > span { white-space: nowrap; }
 
+/* Per-slide option (frontmatter `class: no-prefixes`): hide the added prefix lines when two listings must fit. */
+.slidev-layout.no-prefixes .code-prefixes { display: none; }
+/* Caption above a code listing. */
+.code-label { margin: 0.6rem 0 0; font-size: 0.75rem; color: var(--sdsc-text-grey); }
+
 /* Comic panels next to code. */
 .comic { height: 8rem; width: 8rem; object-fit: contain; margin-bottom: 0.6rem; }
 
