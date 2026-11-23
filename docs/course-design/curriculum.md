@@ -130,23 +130,22 @@ Card template: problem · what the KG holds · stack · access · what worked / 
 | # | Layout | Slide |
 |---|---|---|
 | 1 | section | Graph RAG: grounding LLMs in KGs |
-| 2 (C) | two cards | Hook: "Which of our dishes can a vegetarian, gluten-free guest eat?" — the LLM knows the general rule, not your menu or the labels of what you buy |
-| 3 | content | Why ground: hallucination, stale/private knowledge, no provenance, can't count |
-| 4 | two-cols | Vector RAG in one picture / what it's good at |
-| 5 (C) | features (4) | Where vector RAG breaks: multi-hop, aggregation, hard constraints, global questions |
-| 6 (C) | features (3) | A: LLM-built graph · B: curated KG as source of truth · C: hybrid |
-| 7 | content | Family A: Microsoft GraphRAG (communities, local/global search), LightRAG, HippoRAG 2 |
-| 8 | code | Family B: text-to-SPARQL (shapes + defined classes and properties + prefixes + examples → query → run → cite IRIs; repair on error) |
-| 9 | two-cols | KG as agent tool: MCP SPARQL servers (GraphDB 11, LINDAS MCP, SHACL-described servers) / shapes as tool docs |
-| 10 | content | Demo setup: same LLM, same corpus, fair baseline |
-| 11 (C) | two-cols | Q1 control + Q2 multi-hop: vector vs KG answer with "why excluded" path |
-| 12 | key numbers | Q3 aggregation: true count vs vector count, tokens |
-| 13 | two-cols | Q4 global themes: vector vs community summaries |
-| 14 (C) | code | Q5 fact-check: claim → ASK → supported / contradicted / unknown |
-| 15 | quote | Evidence: Han et al. 2502.11371; GraphRAG-Bench (ICLR 2026) |
-| 16 | key numbers | Cost: indexing tokens, latency, LLM calls per answer |
-| 17 | content | Limits: indexing cost, garbage in, fragile text-to-SPARQL, latency, open-world "unknown", prompt injection |
-| 18 (C) | content + takeaway | Decision guide |
+| 2 | content | Why ground: hallucination, stale/private knowledge, no provenance, can't count |
+| 3 | two-cols | Vector RAG in one picture / what it's good at |
+| 4 (C) | features (4) | Where vector RAG breaks: multi-hop, aggregation, hard constraints, global questions |
+| 5 (C) | features (3) | A: LLM-built graph · B: curated KG as source of truth · C: hybrid |
+| 6 | content | Family A: Microsoft GraphRAG (communities, local/global search), LightRAG, HippoRAG 2 |
+| 7 | code | Family B: text-to-SPARQL (shapes + defined classes and properties + prefixes + examples → query → run → cite IRIs; repair on error) |
+| 8 | two-cols | KG as agent tool: MCP SPARQL servers (GraphDB 11, LINDAS MCP, SHACL-described servers) / shapes as tool docs |
+| 9 | content | Demo setup: same LLM, same corpus, fair baseline |
+| 10 (C) | two-cols | Q1 control + Q2 multi-hop: vector vs KG answer with "why excluded" path |
+| 11 | key numbers | Q3 aggregation: true count vs vector count, tokens |
+| 12 | two-cols | Q4 global themes: vector vs community summaries |
+| 13 (C) | code | Q5 fact-check: claim → ASK → supported / contradicted / unknown |
+| 14 | quote | Evidence: Han et al. 2502.11371; GraphRAG-Bench (ICLR 2026) |
+| 15 | key numbers | Cost: indexing tokens, latency, LLM calls per answer |
+| 16 | content | Limits: indexing cost, garbage in, fragile text-to-SPARQL, latency, open-world "unknown", prompt injection |
+| 17 (C) | content + takeaway | Decision guide |
 
 Demo questions (same corpus, same LLM, cached):
 - **Q1 control**: "How long should the focaccia dough rise?" — both right, vector cheaper
