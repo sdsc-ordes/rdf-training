@@ -23,6 +23,8 @@ minutes: 3
   </div>
 </div>
 
+<p class="fine">Sources: Vrandečić & Krötzsch 2014 · Gargano et al. 2024 · Google Search Central · Kari 2018a · Kari 2018b · Kari 2023a · Kari 2023b · Maignan 2025 · Netflix 2025 · Touré et al. 2023</p>
+
 <!--
 Ask: in the case you picked, who decides on new terms? Who fixes broken data?
 Most of the companies published no metrics; their claims come from their own blogs and talks.

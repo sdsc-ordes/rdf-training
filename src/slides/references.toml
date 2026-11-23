@@ -21,10 +21,6 @@ url = "https://www.w3.org/Provider/Style/URI"
 text = "T. Berners-Lee. Linked Data. Design Issues, W3C, 2006."
 url = "https://www.w3.org/DesignIssues/LinkedData.html"
 
-["Bertails 2025"]
-text = "A. Bertails (Netflix). UDA, Upper and SHACL. W3C public-shacl mailing list, June 2025."
-url = "https://lists.w3.org/Archives/Public/public-shacl/2025Jun/0027.html"
-
 ["Calvanese et al. 2017"]
 text = "D. Calvanese et al. Ontop: answering SPARQL queries over relational databases. Semantic Web 8(3), 2017."
 url = "https://doi.org/10.3233/SW-160217"
@@ -84,10 +80,6 @@ url = "https://doi.org/10.1007/978-3-319-68204-4_9"
 ["Genomics England 2024"]
 text = "Genomics England. Exomiser. Research Environment documentation, 2024."
 url = "https://re-docs.genomicsengland.co.uk/exomiser/"
-
-["Google KG Search API"]
-text = "Google. Knowledge Graph Search API. Google for Developers."
-url = "https://developers.google.com/knowledge-graph"
 
 ["Google Search Central"]
 text = "Google. Introduction to structured data markup in Google Search. Google Search Central."
@@ -161,10 +153,6 @@ url = "https://zenodo.org/records/7867348"
 text = "K. Kari. The three layers of a knowledge graph and what it means for authoring, storage, governance and data quality. 2023 (slides)."
 url = "https://www.slideshare.net/slideshow/the-three-layers-of-a-knowledge-graph-and-what-it-means-for-authoring-storage-governance-and-data-quality-of-the-knowledge-graph/256594708"
 
-["Kiryakov et al. 2010"]
-text = "A. Kiryakov et al. The features of BigOWLIM that enabled the BBC's World Cup website. SemData workshop at VLDB 2010."
-url = "https://www.comp.nus.edu.sg/~vldb2010/proceedings/files/vldb_2010_workshop/SemData_2010/IndustryPositionPapers/KiryakovEtAl_OWLIM.pdf"
-
 ["Kùzu repository"]
 text = "kuzudb/kuzu on GitHub, archived October 2025."
 url = "https://github.com/kuzudb/kuzu"
@@ -237,10 +225,6 @@ url = "https://neo4j.com/labs/neosemantics/"
 text = "Netflix Technology Blog. Model once, represent everywhere: UDA (Unified Data Architecture) at Netflix. June 2025."
 url = "https://netflixtechblog.com/uda-unified-data-architecture-6a6aee261d8d"
 
-["Netflix UDA repository"]
-text = "Netflix-Skunkworks/uda on GitHub: example Upper models in Turtle."
-url = "https://github.com/Netflix-Skunkworks/uda"
-
 ["Noy & McGuinness 2001"]
 text = "N. F. Noy, D. L. McGuinness. Ontology Development 101: a guide to creating your first ontology. Stanford KSL-01-05, 2001."
 url = "https://protege.stanford.edu/publications/ontology_development/ontology101.pdf"
@@ -277,10 +261,6 @@ url = "https://qudt.org/"
 text = "K. Rabbani, M. Lissandrini, K. Hose. Extraction of validating shapes from very large knowledge graphs (QSE). PVLDB 16(5), 2023."
 url = "https://doi.org/10.14778/3579075.3579078"
 
-["Rayfield 2010"]
-text = "J. Rayfield. BBC World Cup 2010 dynamic semantic publishing. BBC Internet Blog, 12 July 2010."
-url = "https://www.bbc.co.uk/blogs/bbcinternet/2010/07/bbc_world_cup_2010_dynamic_sem.html"
-
 ["RECOVERY 2022"]
 text = "RECOVERY Collaborative Group. Baricitinib in patients admitted to hospital with COVID-19 (RECOVERY). The Lancet 400(10349), 2022."
 url = "https://doi.org/10.1016/S0140-6736(22)01109-6"
@@ -305,10 +285,6 @@ url = "http://robot.obolibrary.org/validate-profile"
 text = "B. Sarmah et al. HybridRAG: integrating knowledge graphs and vector retrieval augmented generation for efficient information extraction. arXiv:2408.04948, 2024."
 url = "https://arxiv.org/abs/2408.04948"
 
-["Savelchev & Guillermin 2019"]
-text = "U. Savelchev, M. Guillermin. Using Amazon Neptune to build a fashion knowledge graph. AWS Finland meetup, September 2019 (slides)."
-url = "https://www.slideshare.net/alterrebe/aws-finland-september-meetup-using-amazon-neptune-to-build-fashion-knowledge-graph"
-
 ["schema.org"]
 text = "schema.org vocabulary, including RestrictedDiet values such as VeganDiet."
 url = "https://schema.org/RestrictedDiet"
@@ -329,10 +305,6 @@ url = "https://shacl-play.sparna.fr/play/"
 text = "ULB Darmstadt. shacl-form: HTML input forms generated from SHACL shapes."
 url = "https://github.com/ULB-Darmstadt/shacl-form"
 
-["Singhal 2012"]
-text = "A. Singhal. Introducing the Knowledge Graph: things, not strings. Google blog, 16 May 2012."
-url = "https://blog.google/products/search/introducing-knowledge-graph-things-not/"
-
 ["Smedley et al. 2021"]
 text = "100,000 Genomes Project Pilot Investigators (D. Smedley et al.). 100,000 Genomes pilot on rare-disease diagnosis in health care: preliminary report. NEJM 385, 2021."
 url = "https://doi.org/10.1056/NEJMoa2035790"
@@ -341,17 +313,9 @@ url = "https://doi.org/10.1056/NEJMoa2035790"
 text = "D. P. Smith et al. Expert-augmented computational drug repurposing identified baricitinib as a treatment for COVID-19. Frontiers in Pharmacology 12, 2021."
 url = "https://doi.org/10.3389/fphar.2021.709856"
 
-["Stein 2025"]
-text = "R. Stein. Expanding AI Overviews and introducing AI Mode. Google blog, 5 March 2025."
-url = "https://blog.google/products/search/ai-mode-search/"
-
 ["Stellato et al. 2020"]
 text = "A. Stellato et al. VocBench 3: a collaborative Semantic Web editor for ontologies, thesauri and lexicons. Semantic Web 11(5), 2020."
 url = "https://doi.org/10.3233/SW-200370"
-
-["Sullivan 2020"]
-text = "D. Sullivan. A reintroduction to our Knowledge Graph and knowledge panels. Google blog, 20 May 2020."
-url = "https://blog.google/products/search/about-knowledge-graph-and-knowledge-panels/"
 
 ["TopBraid EDG"]
 text = "TopQuadrant. TQ Data Foundation (formerly TopBraid EDG) 9.2 documentation: ontology how-to guidance."
