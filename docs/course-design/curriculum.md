@@ -28,16 +28,16 @@ Formats: 6 h day, 2×3 h afternoons, 2 h workshop — all built from the same mo
 
 ## Modules
 
-Minutes = core / full.
+Minutes = core / full. In the full day M09 runs before M08, so the day closes with the use cases (first to cut when late), then 30 min for wrap-up and questions.
 
 ### M01 KG building blocks (15 / 20)
-- Core: what a KG is; the triple; IRIs vs literals; prefixes; warm-up (apples sentences → triples); Turtle reveal; "where KGs run today" teaser
+- Core: what a KG is; the triple; IRIs vs literals; prefixes; Turtle; warm-up (apples sentences → triples) with a Turtle answer; "where KGs run today" teaser
 - Ext: history (corrected); Linked Data principles + live Wikidata dereference; blank nodes; datatypes and language tags; merging graphs
 - Interaction: pairs write triples in a text editor; "same sentence, different triples?"
 - Takeaway: *A KG is a set of simple statements with global identifiers — that's what makes data mergeable.*
 
 ### M02 W3C stack vs property graphs (10 / 25)
-- Core: one redrawn stack (model / syntax / semantics / validation / query); same fact in Turtle and Cypher; 5-row trade-off table; scenario vote
+- Core: where the terms fit (graph database vs knowledge graph contents); one redrawn stack (model / syntax / semantics / validation / query); same fact in Turtle and Cypher; 5-row trade-off table; scenario vote
 - Ext: timeline (RDF 1999 → 1.1 2014 → 1.2 CR 2026; RDFS 2004; OWL 2004/2009; SPARQL 2008/2013/1.2 WD; SKOS 2009; SHACL 2017/1.2 WD; JSON-LD 1.1 2020); RDF 1.2 triple terms + annotation syntax; named graphs; RDFS entailment; GQL (ISO/IEC 39075:2024), Cypher 25; ecosystem (Kuzu archived 2025, Memgraph, FalkorDB, Spanner Graph); RDF↔LPG bridges
 - Example: "Alice rated Rösti 5 stars (source, confidence)" as Cypher edge property, RDF 1.2 annotation, RDF 1.1 n-ary
 - Vote: supplier allergen merge → RDF; in-app recommendations → LPG; open nutrition data → RDF/JSON-LD
@@ -45,7 +45,7 @@ Minutes = core / full.
 
 ### M03 Modelling and reuse (5 / 25)
 - Core: CQs → nouns/verbs → classes/properties; class/property/individual/literal; reuse first (schema.org, Wikidata, QUDT, SKOS); schema vs instance layer; steps 0–4 (step 0: write CQs)
-- Ext: taxonomy vs meronomy; enumerations (RestrictedDiet, SKOS, `sh:in`); strings → things (`schema:recipeIngredient` is text); n-ary `rec:IngredientUsage`; blank vs named nodes; IRI strategy; language tags; domain/range infer, they don't constrain; synonyms (rocket/arugula); class or individual (Fuji); when OWL pays off
+- Ext: taxonomy vs meronomy; enumerations (RestrictedDiet, SKOS, `sh:in`); SKOS next to the ontology and shapes (concepts are individuals, `skos:broader` is not `rdfs:subClassOf`, shapes check `skos:inScheme`); strings → things (`schema:recipeIngredient` is text); n-ary `rec:IngredientUsage`; blank vs named nodes; IRI strategy; language tags; domain/range infer, they don't constrain; synonyms (rocket/arugula); class or individual (Fuji); when OWL pays off
 - Interaction: sort Fuji, apple, vegan, "30 minutes", Spain, contains, Rösti, gluten, Robin, grams into class/property/individual/literal
 - Takeaway: *Start from your questions, reuse before you invent, turn queryable strings into things.*
 
@@ -83,12 +83,12 @@ Minutes = core / full.
 | 13 | content | Review + provenance: named graph per batch, `prov:wasGeneratedBy`, privacy |
 | 14 | content | Tools: any chat LLM, OntoGPT, LinkML, OpenRefine, pySHACL, Zazuko; Text2KGBench |
 
-### H2 Generate → validate → repair → populate (20 / 40)
+### H2 Generate → validate → repair → populate (20 / 35)
 1. Paste prompt pack (vocabulary + shapes + allowed food IRIs + assigned cuisine) into own LLM → 5 recipes in Turtle (8)
 2. Validate in Zazuko (8)
 3. Paste report back, "fix only the violations", max 3 rounds; log error types on shared board (10)
-4. Submit to shared pad; instructor merges the class graph; IRI clashes become visible (6)
-5. Debrief: failure-mode taxonomy, "would you load this?" (8)
+4. Debrief: map the error tally onto the M05 failure modes, "would you load this?" (3)
+5. Submit to shared pad; instructor merges the class graph; IRI clashes become visible (6)
 - Core: steps 1–3, one repair round, 5 min debrief. Fallback: buggy files for anyone without an LLM.
 - Takeaway: *Validation turns plausible LLM output into loadable data.*
 
@@ -109,8 +109,8 @@ Minutes = core / full.
 - Interaction: "view source" on a recipe site to find `"@type": "Recipe"`; pairs place 8 component cards on layers
 - Takeaway: *A KG is a pipeline, not a database; graph RAG is one more consumer.*
 
-### M08 Use cases and tooling (0 / 31)
-- 8 case cards, dot-vote; one slide each for Google, IKEA, Zalando, Netflix UDA, BBC World Cup 2010, BenevolentAI (baricitinib), Genomics England (HPO + Exomiser), DeepRare; what they share; one-page tooling map by stage (model, map, validate, store, query, LLM), marked no-code or code
+### M08 Use cases and tooling (0 / 21)
+- 7 case cards, dot-vote; one slide each for BenevolentAI (baricitinib), Genomics England (HPO + Exomiser), DeepRare; what they share; one-page tooling map by stage (model, map, validate, store, query, LLM), marked no-code or code
 - Takeaway: *Shared identifiers, shared vocabularies, checked data and named owners.*
 
 Card template: problem · what the KG holds · stack · access · what worked / trade-off · 2026 LLM angle · try-it link · module link
@@ -137,15 +137,16 @@ Card template: problem · what the KG holds · stack · access · what worked / 
 | 6 | content | Family A: Microsoft GraphRAG (communities, local/global search), LightRAG, HippoRAG 2 |
 | 7 | code | Family B: text-to-SPARQL (shapes + defined classes and properties + prefixes + examples → query → run → cite IRIs; repair on error) |
 | 8 | two-cols | KG as agent tool: MCP SPARQL servers (GraphDB 11, LINDAS MCP, SHACL-described servers) / shapes as tool docs |
-| 9 | content | Demo setup: same LLM, same corpus, fair baseline |
-| 10 (C) | two-cols | Q1 control + Q2 multi-hop: vector vs KG answer with "why excluded" path |
-| 11 | key numbers | Q3 aggregation: true count vs vector count, tokens |
-| 12 | two-cols | Q4 global themes: vector vs community summaries |
-| 13 (C) | code | Q5 fact-check: claim → ASK → supported / contradicted / unknown |
-| 14 | quote | Evidence: Han et al. 2502.11371; GraphRAG-Bench (ICLR 2026) |
-| 15 | key numbers | Cost: indexing tokens, latency, LLM calls per answer |
-| 16 | content | Limits: indexing cost, garbage in, fragile text-to-SPARQL, latency, open-world "unknown", prompt injection |
-| 17 (C) | content + takeaway | Decision guide |
+| 9 | content | Family C: hybrid (vector search finds entry points, the graph expands; HybridRAG) |
+| 10 | content | Demo setup: same LLM, same corpus, fair baseline |
+| 11 (C) | two-cols | Q1 control + Q2 multi-hop: vector vs KG answer with "why excluded" path |
+| 12 | key numbers | Q3 aggregation: true count vs vector count, tokens |
+| 13 | two-cols | Q4 global themes: vector vs community summaries |
+| 14 (C) | code | Q5 fact-check: claim → ASK → supported / contradicted / unknown |
+| 15 | quote | Evidence: Han et al. 2502.11371; GraphRAG-Bench (ICLR 2026) |
+| 16 | key numbers | Cost: indexing tokens, latency, LLM calls per answer |
+| 17 | content | Limits: indexing cost, garbage in, fragile text-to-SPARQL, latency, open-world "unknown", prompt injection |
+| 18 (C) | content + takeaway | Decision guide |
 
 Demo questions (same corpus, same LLM, cached):
 - **Q1 control**: "How long should the focaccia dough rise?" — both right, vector cheaper
