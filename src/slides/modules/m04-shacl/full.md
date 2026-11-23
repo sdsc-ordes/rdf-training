@@ -15,6 +15,10 @@ src: ./parts/02-shapes.md
 ---
 
 ---
+src: ./parts/07-severity.md
+---
+
+---
 src: ./parts/04-toolbox.md
 ---
 
@@ -28,10 +32,6 @@ src: ./parts/03-spot-the-violation.md
 
 ---
 src: ./parts/06-diet-rule.md
----
-
----
-src: ./parts/07-severity.md
 ---
 
 ---
