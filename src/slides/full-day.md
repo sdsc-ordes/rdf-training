@@ -61,7 +61,7 @@ Hands up if you have…
 - had to combine data from multiple sources
 
 <!--
-Use the answers to pitch the day: many SQL users → lean on comparisons; many LLM users → tease module 5 and 9.
+Use the answers to pitch the day: many SQL users → lean on comparisons; many LLM users → tease module 5 and 8.
 -->
 
 ---
@@ -210,12 +210,12 @@ layout: section
 
 <div class="sdsc-section-num">08</div>
 
-# Use cases and tools
+# Graphs ground LLMs
 
-Industry, health and public-sector cases; tools
+Graph RAG
 
 ---
-src: ./modules/m08-use-cases/full.md
+src: ./modules/m09-graph-rag/full.md
 ---
 
 ---
@@ -224,12 +224,12 @@ layout: section
 
 <div class="sdsc-section-num">09</div>
 
-# Graphs ground LLMs
+# Use cases and tools
 
-Graph RAG
+Industry, health and public-sector cases; tools
 
 ---
-src: ./modules/m09-graph-rag/full.md
+src: ./modules/m08-use-cases/full.md
 ---
 
 ---
