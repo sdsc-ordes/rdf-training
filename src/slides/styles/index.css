@@ -111,6 +111,10 @@ html.dark { --step-graph: #AAB2E6; --step-graph-bg: #262B4B; --step-vec: #EDB459
 .fn-llm { border-color: var(--step-llm); background: var(--step-llm-bg); }
 .fa { display: block; position: relative; height: 0.75rem; margin-left: 1rem; border-left: 2px solid var(--sdsc-text-grey); }
 .fa::after { content: ""; position: absolute; left: -6px; bottom: -1px; border-top: 5px solid var(--sdsc-text-grey); border-left: 5px solid transparent; border-right: 5px solid transparent; }
+/* Black-box step: output varies between runs or cannot be traced. Red as in .caveat. */
+.fn.bb { outline: 2px dashed #C62828; outline-offset: 2px; }
+html.dark .fn.bb { outline-color: #E57373; }
+.lg.lg-bb::before { border: 2px dashed #C62828; background: var(--sdsc-background); border-radius: 0.2rem; }
 .lg.lg-step-graph::before { border-color: var(--step-graph); background: var(--step-graph-bg); border-radius: 0.2rem; }
 .lg.lg-step-vec::before { border-color: var(--step-vec); background: var(--step-vec-bg); border-radius: 0.2rem; }
 .lg.lg-step-llm::before { border-color: var(--step-llm); background: var(--step-llm-bg); border-radius: 0.2rem; }
