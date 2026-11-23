@@ -103,8 +103,8 @@ class: references
   <li><b>metaphactory</b> · metaphacts. metaphactory: visual modelling that produces OWL and SHACL. <a href="https://metaphactory.com/metaphactory">metaphactory.com/metaphactory</a></li>
   <li><b>Mihindukulasooriya et al. 2023</b> · N. Mihindukulasooriya et al. Text2KGBench: a benchmark for ontology-driven knowledge graph generation from text. ISWC 2023. <a href="https://arxiv.org/abs/2308.02357">arxiv.org/abs/2308.02357</a></li>
   <li><b>Musen 2015</b> · M. A. Musen. The Protégé project: a look back and a look forward. AI Matters 1(4), 2015. <a href="https://doi.org/10.1145/2757001.2757003">doi.org/10.1145/2757001.2757003</a></li>
+  <li><b>NASA 1999</b> · NASA. Mars Climate Orbiter failure board releases report, numerous NASA actions underway in response. Press release 99-134, 10 November 1999. <a href="https://nssdc.gsfc.nasa.gov/planetary/text/mco_pr_19991110.txt">nssdc.gsfc.nasa.gov/planetary/text/mco_pr_19991110.txt</a></li>
   <li><b>Neo4j Cypher 25</b> · Neo4j. Cypher Manual 25: GQL conformance. <a href="https://neo4j.com/docs/cypher-manual/25/appendix/gql-conformance/">neo4j.com/docs/cypher-manual/25/appendix/gql-conformance/</a></li>
-  <li><b>Neo4j GDS</b> · Neo4j. Graph Data Science Library manual. <a href="https://neo4j.com/docs/graph-data-science/current/">neo4j.com/docs/graph-data-science/current/</a></li>
 </ul>
 
 ---
@@ -114,6 +114,7 @@ class: references
 # References (6/11)
 
 <ul class="refs">
+  <li><b>Neo4j GDS</b> · Neo4j. Graph Data Science Library manual. <a href="https://neo4j.com/docs/graph-data-science/current/">neo4j.com/docs/graph-data-science/current/</a></li>
   <li><b>Neo4j licence</b> · Neo4j. Community edition licence, GNU GPL version 3. <a href="https://github.com/neo4j/neo4j/blob/HEAD/LICENSE.txt">github.com/neo4j/neo4j/blob/HEAD/LICENSE.txt</a></li>
   <li><b>Neo4j neosemantics</b> · Neo4j Labs. neosemantics (n10s): RDF and linked data in Neo4j. <a href="https://neo4j.com/labs/neosemantics/">neo4j.com/labs/neosemantics/</a></li>
   <li><b>Neptune</b> · Amazon Web Services. Amazon Neptune product page. <a href="https://aws.amazon.com/neptune/">aws.amazon.com/neptune/</a></li>
@@ -125,7 +126,6 @@ class: references
   <li><b>Oxigraph licence</b> · Oxigraph developers. Oxigraph repository, MIT or Apache-2.0 licence. <a href="https://github.com/oxigraph/oxigraph">github.com/oxigraph/oxigraph</a></li>
   <li><b>Pan et al. 2024</b> · S. Pan et al. Unifying large language models and knowledge graphs: a roadmap. IEEE TKDE 36(7), 2024. <a href="https://arxiv.org/abs/2306.08302">arxiv.org/abs/2306.08302</a></li>
   <li><b>PoolParty</b> · Graphwise. Graph Modeling (formerly PoolParty): taxonomy and thesaurus management built on SKOS. <a href="https://graphwise.ai/components/graph-modeling/">graphwise.ai/components/graph-modeling/</a></li>
-  <li><b>pySHACL</b> · pySHACL: a Python validator for SHACL. <a href="https://github.com/RDFLib/pySHACL">github.com/RDFLib/pySHACL</a></li>
 </ul>
 
 ---
@@ -135,6 +135,7 @@ class: references
 # References (7/11)
 
 <ul class="refs">
+  <li><b>pySHACL</b> · pySHACL: a Python validator for SHACL. <a href="https://github.com/RDFLib/pySHACL">github.com/RDFLib/pySHACL</a></li>
   <li><b>QUDT</b> · QUDT: Quantities, Units, Dimensions and Types. <a href="https://qudt.org/">qudt.org/</a></li>
   <li><b>Rabbani et al. 2023</b> · K. Rabbani, M. Lissandrini, K. Hose. Extraction of validating shapes from very large knowledge graphs (QSE). PVLDB 16(5), 2023. <a href="https://doi.org/10.14778/3579075.3579078">doi.org/10.14778/3579075.3579078</a></li>
   <li><b>Rayfield 2010</b> · J. Rayfield. BBC World Cup 2010 dynamic semantic publishing. BBC Internet Blog, 12 July 2010. <a href="https://www.bbc.co.uk/blogs/bbcinternet/2010/07/bbc_world_cup_2010_dynamic_sem.html">www.bbc.co.uk/blogs/bbcinternet/2010/07/bbc_world_cup_2010_dynamic_sem.html</a></li>
@@ -146,7 +147,6 @@ class: references
   <li><b>schema.org Recipe</b> · schema.org. Recipe type. <a href="https://schema.org/Recipe">schema.org/Recipe</a></li>
   <li><b>Sequeda et al. 2023</b> · J. Sequeda, D. Allemang, B. Jacob. A benchmark to understand the role of knowledge graphs on large language model&#x27;s accuracy for question answering on enterprise SQL databases. arXiv:2311.07509, 2023. <a href="https://arxiv.org/abs/2311.07509">arxiv.org/abs/2311.07509</a></li>
   <li><b>SHACL Play!</b> · Sparna. SHACL Play!: free, open-source SHACL tools (Excel to SHACL, shapes from data, documentation, UML diagrams). <a href="https://shacl-play.sparna.fr/play/">shacl-play.sparna.fr/play/</a></li>
-  <li><b>shacl-form</b> · ULB Darmstadt. shacl-form: HTML input forms generated from SHACL shapes. <a href="https://github.com/ULB-Darmstadt/shacl-form">github.com/ULB-Darmstadt/shacl-form</a></li>
 </ul>
 
 ---
@@ -156,6 +156,7 @@ class: references
 # References (8/11)
 
 <ul class="refs">
+  <li><b>shacl-form</b> · ULB Darmstadt. shacl-form: HTML input forms generated from SHACL shapes. <a href="https://github.com/ULB-Darmstadt/shacl-form">github.com/ULB-Darmstadt/shacl-form</a></li>
   <li><b>Singhal 2012</b> · A. Singhal. Introducing the Knowledge Graph: things, not strings. Google blog, 16 May 2012. <a href="https://blog.google/products/search/introducing-knowledge-graph-things-not/">blog.google/products/search/introducing-knowledge-graph-things-not/</a></li>
   <li><b>Smedley et al. 2021</b> · 100,000 Genomes Project Pilot Investigators (D. Smedley et al.). 100,000 Genomes pilot on rare-disease diagnosis in health care: preliminary report. NEJM 385, 2021. <a href="https://doi.org/10.1056/NEJMoa2035790">doi.org/10.1056/NEJMoa2035790</a></li>
   <li><b>Smith et al. 2021</b> · D. P. Smith et al. Expert-augmented computational drug repurposing identified baricitinib as a treatment for COVID-19. Frontiers in Pharmacology 12, 2021. <a href="https://doi.org/10.3389/fphar.2021.709856">doi.org/10.3389/fphar.2021.709856</a></li>
@@ -167,7 +168,6 @@ class: references
   <li><b>Tudorache et al. 2013</b> · T. Tudorache, C. Nyulas, N. F. Noy, M. A. Musen. WebProtégé: a collaborative ontology editor and knowledge acquisition tool for the Web. Semantic Web 4(1), 2013. <a href="https://doi.org/10.3233/SW-2012-0057">doi.org/10.3233/SW-2012-0057</a></li>
   <li><b>Virtuoso licence</b> · OpenLink Software. Virtuoso Open-Source Edition, GNU GPL version 2. <a href="https://github.com/openlink/virtuoso-opensource/blob/HEAD/LICENSE">github.com/openlink/virtuoso-opensource/blob/HEAD/LICENSE</a></li>
   <li><b>Vrandečić &amp; Krötzsch 2014</b> · D. Vrandečić, M. Krötzsch. Wikidata: a free collaborative knowledgebase. Communications of the ACM 57(10), 2014. <a href="https://doi.org/10.1145/2629489">doi.org/10.1145/2629489</a></li>
-  <li><b>W3C Cool URIs 2008</b> · L. Sauermann, R. Cyganiak. Cool URIs for the Semantic Web. W3C Interest Group Note, 2008. <a href="https://www.w3.org/TR/cooluris/">www.w3.org/TR/cooluris/</a></li>
 </ul>
 
 ---
@@ -177,6 +177,7 @@ class: references
 # References (9/11)
 
 <ul class="refs">
+  <li><b>W3C Cool URIs 2008</b> · L. Sauermann, R. Cyganiak. Cool URIs for the Semantic Web. W3C Interest Group Note, 2008. <a href="https://www.w3.org/TR/cooluris/">www.w3.org/TR/cooluris/</a></li>
   <li><b>W3C DCAT 3</b> · Data Catalog Vocabulary (DCAT) Version 3. W3C Recommendation, 2024. <a href="https://www.w3.org/TR/vocab-dcat-3/">www.w3.org/TR/vocab-dcat-3/</a></li>
   <li><b>W3C JSON-LD 1.1</b> · JSON-LD 1.1, and JSON-LD 1.1 Processing Algorithms and API. W3C Recommendations, 2020. <a href="https://www.w3.org/TR/json-ld11/">www.w3.org/TR/json-ld11/</a></li>
   <li><b>W3C KGC RML</b> · RML-Core: the RDF Mapping Language. W3C Knowledge Graph Construction Community Group report. <a href="https://w3id.org/rml/core/spec">w3id.org/rml/core/spec</a></li>
@@ -188,7 +189,6 @@ class: references
   <li><b>W3C RDF 1.1 Semantics</b> · RDF 1.1 Semantics. W3C Recommendation, 2014. <a href="https://www.w3.org/TR/rdf11-mt/">www.w3.org/TR/rdf11-mt/</a></li>
   <li><b>W3C RDF 1.1 Turtle</b> · RDF 1.1 Turtle. W3C Recommendation, 2014. <a href="https://www.w3.org/TR/turtle/">www.w3.org/TR/turtle/</a></li>
   <li><b>W3C RDF 1.2</b> · RDF 1.2 Concepts and Abstract Data Model. W3C Candidate Recommendation Snapshot, 7 April 2026. <a href="https://www.w3.org/TR/rdf12-concepts/">www.w3.org/TR/rdf12-concepts/</a></li>
-  <li><b>W3C RDF Schema 1.1</b> · RDF Schema 1.1. W3C Recommendation, 2014. <a href="https://www.w3.org/TR/rdf-schema/">www.w3.org/TR/rdf-schema/</a></li>
 </ul>
 
 ---
@@ -198,6 +198,7 @@ class: references
 # References (10/11)
 
 <ul class="refs">
+  <li><b>W3C RDF Schema 1.1</b> · RDF Schema 1.1. W3C Recommendation, 2014. <a href="https://www.w3.org/TR/rdf-schema/">www.w3.org/TR/rdf-schema/</a></li>
   <li><b>W3C SHACL</b> · Shapes Constraint Language (SHACL). W3C Recommendation, 2017. <a href="https://www.w3.org/TR/shacl/">www.w3.org/TR/shacl/</a></li>
   <li><b>W3C SHACL 1.2</b> · SHACL 1.2 Core. W3C Working Draft, 2 November 2026. <a href="https://www.w3.org/TR/shacl12-core/">www.w3.org/TR/shacl12-core/</a></li>
   <li><b>W3C SHACL 1.2 Inference Rules</b> · SHACL 1.2 Inference Rules. W3C Working Draft, 28 October 2026. <a href="https://www.w3.org/TR/shacl12-inference-rules/">www.w3.org/TR/shacl12-inference-rules/</a></li>
@@ -209,7 +210,6 @@ class: references
   <li><b>W3C TR</b> · W3C. Standards and drafts: status and history of RDF, RDFS, OWL, SKOS, SPARQL, JSON-LD and SHACL. <a href="https://www.w3.org/TR/">www.w3.org/TR/</a></li>
   <li><b>w3id.org</b> · W3C Permanent Identifier Community Group. w3id.org: permanent identifiers for the web. <a href="https://w3id.org/">w3id.org/</a></li>
   <li><b>WHO 2022</b> · World Health Organization. WHO recommends two new drugs to treat COVID-19. 14 January 2022. <a href="https://www.who.int/news/item/14-01-2022-who-recommends-two-new-drugs-to-treat-covid-19">www.who.int/news/item/14-01-2022-who-recommends-two-new-drugs-to-treat-covid-19</a></li>
-  <li><b>Wikidata WDQS 2026</b> · Wikidata. WDQS backend update: replacing Blazegraph with QLever. 2026. <a href="https://www.wikidata.org/wiki/Wikidata:SPARQL_query_service/WDQS_backend_update/Backend_Replacement">www.wikidata.org/wiki/Wikidata:SPARQL_query_service/WDQS_backend_update/Backend_Replacement</a></li>
 </ul>
 
 ---
@@ -219,6 +219,7 @@ class: references
 # References (11/11)
 
 <ul class="refs">
+  <li><b>Wikidata WDQS 2026</b> · Wikidata. WDQS backend update: replacing Blazegraph with QLever. 2026. <a href="https://www.wikidata.org/wiki/Wikidata:SPARQL_query_service/WDQS_backend_update/Backend_Replacement">www.wikidata.org/wiki/Wikidata:SPARQL_query_service/WDQS_backend_update/Backend_Replacement</a></li>
   <li><b>Winston et al. 1987</b> · M. E. Winston, R. Chaffin, D. Herrmann. A taxonomy of part-whole relations. Cognitive Science 11(4), 1987. <a href="https://doi.org/10.1207/s15516709cog1104_2">doi.org/10.1207/s15516709cog1104_2</a></li>
   <li><b>Zhao et al. 2026</b> · W. Zhao et al. An agentic system for rare disease diagnosis with traceable reasoning (DeepRare). Nature, 2026. <a href="https://doi.org/10.1038/s41586-025-10097-9">doi.org/10.1038/s41586-025-10097-9</a></li>
   <li><b>Zheng et al. 2023</b> · L. Zheng et al. Judging LLM-as-a-judge with MT-Bench and Chatbot Arena. NeurIPS 2023. <a href="https://arxiv.org/abs/2306.05685">arxiv.org/abs/2306.05685</a></li>

@@ -24,6 +24,11 @@
 /* Small print: sources, status notes. */
 .fine { font-size: 0.7rem; color: var(--sdsc-text-grey); margin-top: 0.8rem; }
 
+/* Quote box over the whole slide, shown for one click with v-click="[1, 2]". The wide shadow dims
+   the slide behind it without growing the box, so the overflow check still measures the box only. */
+.quote-overlay { position: absolute; z-index: 10; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 42rem; padding: 0.4rem 1.2rem 0.6rem; background: var(--sdsc-background); border: 1px solid var(--sdsc-border); border-radius: 0.35rem; box-shadow: 0 0 0 100rem color-mix(in srgb, var(--sdsc-background) 80%, transparent); }
+.quote-overlay blockquote p { font-size: 1.05rem; }
+
 /* Caveat band: a drawback the audience should not miss (the SDSC palette has no red). */
 .caveat { background: #FDECEA; border-left: 0.22rem solid #C62828; padding: 0.5rem 0.9rem; margin: 0.8rem 0; font-size: 0.85rem; }
 html.dark .caveat { background: #3A1E1E; border-left-color: #E57373; }
