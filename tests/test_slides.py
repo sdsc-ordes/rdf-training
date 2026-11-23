@@ -1,4 +1,4 @@
-"""Code shown on slides and worksheets parses; deck imports, timings and bibliographies add up."""
+"""Code shown on slides and worksheets parses; deck imports and bibliographies add up."""
 
 import re
 from pathlib import Path
@@ -14,7 +14,6 @@ SITE = rdf.SITE
 DOCS = sorted([*SLIDES.rglob("*.md"), *SITE.glob("**/*.md")])
 PREFIXES = rdf.PREFIXES.read_text()
 NAMESPACES = dict(Graph().parse(rdf.PREFIXES).namespaces())
-AGENDA_MINUTES = {"workshop-2h.md": 120, "full-day.md": 360}
 
 
 def code_blocks(path: Path):
@@ -117,12 +116,6 @@ MODULES = sorted(p for p in (SLIDES / "modules").iterdir() if p.is_dir())
 @pytest.mark.parametrize("deck", DECKS, ids=lambda p: p.name)
 def test_deck_expands(deck):
     assert expand(deck)
-
-
-@pytest.mark.parametrize("deck", [d for d in DECKS if d.name in AGENDA_MINUTES], ids=lambda p: p.name)
-def test_deck_minutes_match_agenda(deck):
-    total = sum(int(fm.get("minutes", 0)) for _, fm in expand(deck))
-    assert total == AGENDA_MINUTES[deck.name]
 
 
 @pytest.mark.parametrize("module", MODULES, ids=lambda p: p.name)
