@@ -41,7 +41,7 @@ class: references
   <li><b>Oxigraph licence</b> · Oxigraph developers. Oxigraph repository, MIT or Apache-2.0 licence. <a href="https://github.com/oxigraph/oxigraph">github.com/oxigraph/oxigraph</a></li>
   <li><b>Pan et al. 2024</b> · S. Pan et al. Unifying large language models and knowledge graphs: a roadmap. IEEE TKDE 36(7), 2024. <a href="https://arxiv.org/abs/2306.08302">arxiv.org/abs/2306.08302</a></li>
   <li><b>QUDT</b> · QUDT: Quantities, Units, Dimensions and Types. <a href="https://qudt.org/">qudt.org/</a></li>
-  <li><b>schema.org</b> · schema.org vocabulary, including RestrictedDiet values such as VeganDiet. <a href="https://schema.org/RestrictedDiet">schema.org/RestrictedDiet</a></li>
+  <li><b>RFC 3986</b> · T. Berners-Lee, R. Fielding, L. Masinter. Uniform Resource Identifier (URI): Generic Syntax. IETF RFC 3986, 2005. <a href="https://www.rfc-editor.org/rfc/rfc3986">www.rfc-editor.org/rfc/rfc3986</a></li>
 </ul>
 
 ---
@@ -51,6 +51,8 @@ class: references
 # References (3/4)
 
 <ul class="refs">
+  <li><b>RFC 3987</b> · M. Duerst, M. Suignard. Internationalized Resource Identifiers (IRIs). IETF RFC 3987, 2005. <a href="https://www.rfc-editor.org/rfc/rfc3987">www.rfc-editor.org/rfc/rfc3987</a></li>
+  <li><b>schema.org</b> · schema.org vocabulary, including RestrictedDiet values such as VeganDiet. <a href="https://schema.org/RestrictedDiet">schema.org/RestrictedDiet</a></li>
   <li><b>schema.org Recipe</b> · schema.org. Recipe type. <a href="https://schema.org/Recipe">schema.org/Recipe</a></li>
   <li><b>Sequeda et al. 2023</b> · J. Sequeda, D. Allemang, B. Jacob. A benchmark to understand the role of knowledge graphs on large language model&#x27;s accuracy for question answering on enterprise SQL databases. arXiv:2311.07509, 2023. <a href="https://arxiv.org/abs/2311.07509">arxiv.org/abs/2311.07509</a></li>
   <li><b>Touré et al. 2023</b> · V. Touré et al. FAIRification of health-related data using semantic web technologies in the Swiss Personalized Health Network. Scientific Data 10, 2023. <a href="https://doi.org/10.1038/s41597-023-02028-y">doi.org/10.1038/s41597-023-02028-y</a></li>
@@ -61,8 +63,6 @@ class: references
   <li><b>W3C RDF 1.1 Concepts</b> · RDF 1.1 Concepts and Abstract Syntax. W3C Recommendation, 2014. <a href="https://www.w3.org/TR/rdf11-concepts/">www.w3.org/TR/rdf11-concepts/</a></li>
   <li><b>W3C RDF 1.1 Turtle</b> · RDF 1.1 Turtle. W3C Recommendation, 2014. <a href="https://www.w3.org/TR/turtle/">www.w3.org/TR/turtle/</a></li>
   <li><b>W3C RDF 1.2</b> · RDF 1.2 Concepts and Abstract Data Model. W3C Candidate Recommendation Snapshot, 7 April 2026. <a href="https://www.w3.org/TR/rdf12-concepts/">www.w3.org/TR/rdf12-concepts/</a></li>
-  <li><b>W3C RDF Schema 1.1</b> · RDF Schema 1.1. W3C Recommendation, 2014. <a href="https://www.w3.org/TR/rdf-schema/">www.w3.org/TR/rdf-schema/</a></li>
-  <li><b>W3C SHACL</b> · Shapes Constraint Language (SHACL). W3C Recommendation, 2017. <a href="https://www.w3.org/TR/shacl/">www.w3.org/TR/shacl/</a></li>
 </ul>
 
 ---
@@ -72,6 +72,8 @@ class: references
 # References (4/4)
 
 <ul class="refs">
+  <li><b>W3C RDF Schema 1.1</b> · RDF Schema 1.1. W3C Recommendation, 2014. <a href="https://www.w3.org/TR/rdf-schema/">www.w3.org/TR/rdf-schema/</a></li>
+  <li><b>W3C SHACL</b> · Shapes Constraint Language (SHACL). W3C Recommendation, 2017. <a href="https://www.w3.org/TR/shacl/">www.w3.org/TR/shacl/</a></li>
   <li><b>W3C SHACL 1.2</b> · SHACL 1.2 Core. W3C Working Draft, 2 November 2026. <a href="https://www.w3.org/TR/shacl12-core/">www.w3.org/TR/shacl12-core/</a></li>
   <li><b>W3C SKOS</b> · SKOS Simple Knowledge Organization System Reference. W3C Recommendation, 2009. <a href="https://www.w3.org/TR/skos-reference/">www.w3.org/TR/skos-reference/</a></li>
   <li><b>W3C SPARQL 1.1</b> · SPARQL 1.1 Query Language, Federated Query and Protocol. W3C Recommendations, 2013. <a href="https://www.w3.org/TR/sparql11-overview/">www.w3.org/TR/sparql11-overview/</a></li>

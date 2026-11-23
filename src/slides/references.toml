@@ -281,6 +281,14 @@ url = "https://www.bbc.co.uk/blogs/bbcinternet/2010/07/bbc_world_cup_2010_dynami
 text = "RECOVERY Collaborative Group. Baricitinib in patients admitted to hospital with COVID-19 (RECOVERY). The Lancet 400(10349), 2022."
 url = "https://doi.org/10.1016/S0140-6736(22)01109-6"
 
+["RFC 3986"]
+text = "T. Berners-Lee, R. Fielding, L. Masinter. Uniform Resource Identifier (URI): Generic Syntax. IETF RFC 3986, 2005."
+url = "https://www.rfc-editor.org/rfc/rfc3986"
+
+["RFC 3987"]
+text = "M. Duerst, M. Suignard. Internationalized Resource Identifiers (IRIs). IETF RFC 3987, 2005."
+url = "https://www.rfc-editor.org/rfc/rfc3987"
+
 ["Richardson et al. 2020"]
 text = "P. Richardson et al. Baricitinib as potential treatment for 2019-nCoV acute respiratory disease. The Lancet 395(10223), 2020."
 url = "https://doi.org/10.1016/S0140-6736(20)30304-4"

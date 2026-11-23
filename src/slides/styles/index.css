@@ -56,6 +56,12 @@ html.dark .caveat { background: #3A1E1E; border-left-color: #E57373; }
 .lic-foss { color: #1d6b3a; background: #fff; }
 .lic-closed { color: #6b2a2a; background: #fff; }
 
+/* IRI / URI / URL sets: nested .tbox boxes (above), each box label on one line. */
+.uri-sets { margin-top: 0.8rem; font-size: 0.85rem; }
+.uri-sets .tbox small { display: inline; margin: 0 0.5rem; }
+.uri-sets code { font-size: 0.68rem; }
+.uri-row { display: grid; grid-template-columns: 3fr 2fr; gap: 0.5rem; }
+
 /* Comic panels next to code. */
 .comic { height: 8rem; width: 8rem; object-fit: contain; margin-bottom: 0.6rem; }
 
