@@ -44,7 +44,7 @@ minutes: 2
 </table>
 
 <!--
-Times are the slide minutes added up per session and rounded to 5 minutes; adjust them per event.
+Times are rough estimates per session; adjust them per event.
 One running example all day: a recipe knowledge graph.
 Everything hands-on runs in the browser; the worksheets are on the course site.
 -->
@@ -64,8 +64,8 @@ minutes: 1
     <tr class="pause"><td>14:40–14:55</td><td>Coffee break</td><td></td></tr>
     <tr><td>14:55–15:15</td><td><b>Knowledge graph architectures: from sources to applications</b><small>Mapping and ETL, triplestores, federated SPARQL endpoints and ways to serve the graph.</small></td><td><span class="fmt">Lecture &amp; Q&amp;A</span></td></tr>
     <tr><td>15:15–15:50</td><td><b>Graph RAG: grounding LLMs in knowledge graphs</b><small>Retrieval over entities and relations to give LLM answers context and traceable sources.</small></td><td><span class="fmt">Lecture &amp; Q&amp;A</span></td></tr>
-    <tr><td>15:50–16:10</td><td><b>Use cases and tools</b><small>How knowledge graphs are used across domains, and the tooling that supports them.</small></td><td><span class="fmt">Lecture &amp; Q&amp;A</span></td></tr>
-    <tr class="pause"><td>16:10–16:40</td><td>Wrap-up and questions</td><td></td></tr>
+    <tr><td>15:50–16:20</td><td><b>Use cases and tools</b><small>How knowledge graphs are used across domains, and the tooling that supports them.</small></td><td><span class="fmt">Lecture &amp; Q&amp;A</span></td></tr>
+    <tr class="pause"><td>16:20–16:50</td><td>Wrap-up and questions</td><td></td></tr>
   </tbody>
 </table>
 
