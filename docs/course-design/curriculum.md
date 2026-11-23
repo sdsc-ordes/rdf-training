@@ -33,7 +33,7 @@ Minutes = core / full.
 ### M01 KG building blocks (15 / 20)
 - Core: what a KG is; the triple; IRIs vs literals; prefixes; warm-up (apples sentences → triples); Turtle reveal; "where KGs run today" teaser
 - Ext: history (corrected); Linked Data principles + live Wikidata dereference; blank nodes; datatypes and language tags; merging graphs
-- Interaction: pairs write triples on sticky notes; "same sentence, different triples?"
+- Interaction: pairs write triples in a text editor; "same sentence, different triples?"
 - Takeaway: *A KG is a set of simple statements with global identifiers — that's what makes data mergeable.*
 
 ### M02 W3C stack vs property graphs (10 / 25)

@@ -10,8 +10,10 @@ minutes: 4
 >
 > Robin teaches an RDF course in Zurich on 12 March 2025.
 
+<div class="mini-example">Example: "Rösti comes from Switzerland." <Triple s="Rösti" p="comes from" o="Switzerland" /></div>
+
 <div class="exercise-meta">
-  <span><b>Pairs · 4 min</b> · one triple per sticky note</span>
+  <span><b>Pairs · 4 min</b> · write your triples in any text editor</span>
 </div>
 
 <div v-click class="sdsc-takeaway"><b>New sentence:</b> Robin also likes pears, grown in Valais. What changes in your triples? What would change in a traditional relational database?</div>
