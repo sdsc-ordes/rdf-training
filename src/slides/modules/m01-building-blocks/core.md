@@ -11,6 +11,14 @@ src: ./parts/02-triples.md
 ---
 
 ---
+src: ./parts/06-linked-data.md
+---
+
+---
+src: ./parts/10-iris.md
+---
+
+---
 src: ./parts/03-warm-up.md
 ---
 

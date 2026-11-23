@@ -6,6 +6,7 @@ class: references
 
 <ul class="refs">
   <li><b>Anthropic 2024</b> · Anthropic. Introducing the Model Context Protocol. 25 November 2024. <a href="https://www.anthropic.com/news/model-context-protocol">www.anthropic.com/news/model-context-protocol</a></li>
+  <li><b>Berners-Lee 2006</b> · T. Berners-Lee. Linked Data. Design Issues, W3C, 2006. <a href="https://www.w3.org/DesignIssues/LinkedData.html">www.w3.org/DesignIssues/LinkedData.html</a></li>
   <li><b>DemocraSci 2024</b> · L. Brandenberger, J. Minder, L. Salamanca et al. DemocraSci: a parliamentary knowledge graph (4 legislative periods). Zenodo, version 0.9.0, 2024. <a href="https://doi.org/10.5281/zenodo.13920293">doi.org/10.5281/zenodo.13920293</a></li>
   <li><b>Edge et al. 2024</b> · D. Edge et al. From local to global: a Graph RAG approach to query-focused summarization. arXiv:2404.16130, 2024. <a href="https://arxiv.org/abs/2404.16130">arxiv.org/abs/2404.16130</a></li>
   <li><b>GraphDB</b> · Graphwise. GraphDB documentation: commercial product with a free edition. <a href="https://graphdb.ontotext.com/documentation/">graphdb.ontotext.com/documentation/</a></li>
@@ -16,7 +17,6 @@ class: references
   <li><b>JanusGraph licence</b> · JanusGraph. Apache Software License 2.0. <a href="https://github.com/JanusGraph/janusgraph/blob/HEAD/LICENSE.txt">github.com/JanusGraph/janusgraph/blob/HEAD/LICENSE.txt</a></li>
   <li><b>Jena licence</b> · Apache Software Foundation. Apache Jena, Apache License 2.0. <a href="https://github.com/apache/jena/blob/HEAD/LICENSE">github.com/apache/jena/blob/HEAD/LICENSE</a></li>
   <li><b>LINDAS</b> · Swiss Federal Archives. LINDAS: Linked Data Service of the Swiss federal administration. <a href="https://lindas.admin.ch/">lindas.admin.ch/</a></li>
-  <li><b>Lippolis et al. 2025</b> · A. S. Lippolis et al. Ontology generation using large language models. ESWC 2025. arXiv:2503.05388. <a href="https://arxiv.org/abs/2503.05388">arxiv.org/abs/2503.05388</a></li>
 </ul>
 
 <!--
@@ -30,6 +30,7 @@ class: references
 # References (2/4)
 
 <ul class="refs">
+  <li><b>Lippolis et al. 2025</b> · A. S. Lippolis et al. Ontology generation using large language models. ESWC 2025. arXiv:2503.05388. <a href="https://arxiv.org/abs/2503.05388">arxiv.org/abs/2503.05388</a></li>
   <li><b>Memgraph licence</b> · Memgraph. Source code under the Business Source License 1.1 and the Memgraph Enterprise License. <a href="https://github.com/memgraph/memgraph">github.com/memgraph/memgraph</a></li>
   <li><b>NASA 1999</b> · NASA. Mars Climate Orbiter failure board releases report, numerous NASA actions underway in response. Press release 99-134, 10 November 1999. <a href="https://nssdc.gsfc.nasa.gov/planetary/text/mco_pr_19991110.txt">nssdc.gsfc.nasa.gov/planetary/text/mco_pr_19991110.txt</a></li>
   <li><b>Neo4j Cypher 25</b> · Neo4j. Cypher Manual 25: GQL conformance. <a href="https://neo4j.com/docs/cypher-manual/25/appendix/gql-conformance/">neo4j.com/docs/cypher-manual/25/appendix/gql-conformance/</a></li>
@@ -41,7 +42,6 @@ class: references
   <li><b>Pan et al. 2024</b> · S. Pan et al. Unifying large language models and knowledge graphs: a roadmap. IEEE TKDE 36(7), 2024. <a href="https://arxiv.org/abs/2306.08302">arxiv.org/abs/2306.08302</a></li>
   <li><b>QUDT</b> · QUDT: Quantities, Units, Dimensions and Types. <a href="https://qudt.org/">qudt.org/</a></li>
   <li><b>schema.org</b> · schema.org vocabulary, including RestrictedDiet values such as VeganDiet. <a href="https://schema.org/RestrictedDiet">schema.org/RestrictedDiet</a></li>
-  <li><b>schema.org Recipe</b> · schema.org. Recipe type. <a href="https://schema.org/Recipe">schema.org/Recipe</a></li>
 </ul>
 
 ---
@@ -51,6 +51,7 @@ class: references
 # References (3/4)
 
 <ul class="refs">
+  <li><b>schema.org Recipe</b> · schema.org. Recipe type. <a href="https://schema.org/Recipe">schema.org/Recipe</a></li>
   <li><b>Sequeda et al. 2023</b> · J. Sequeda, D. Allemang, B. Jacob. A benchmark to understand the role of knowledge graphs on large language model&#x27;s accuracy for question answering on enterprise SQL databases. arXiv:2311.07509, 2023. <a href="https://arxiv.org/abs/2311.07509">arxiv.org/abs/2311.07509</a></li>
   <li><b>Touré et al. 2023</b> · V. Touré et al. FAIRification of health-related data using semantic web technologies in the Swiss Personalized Health Network. Scientific Data 10, 2023. <a href="https://doi.org/10.1038/s41597-023-02028-y">doi.org/10.1038/s41597-023-02028-y</a></li>
   <li><b>Virtuoso licence</b> · OpenLink Software. Virtuoso Open-Source Edition, GNU GPL version 2. <a href="https://github.com/openlink/virtuoso-opensource/blob/HEAD/LICENSE">github.com/openlink/virtuoso-opensource/blob/HEAD/LICENSE</a></li>
@@ -62,7 +63,6 @@ class: references
   <li><b>W3C RDF 1.2</b> · RDF 1.2 Concepts and Abstract Data Model. W3C Candidate Recommendation Snapshot, 7 April 2026. <a href="https://www.w3.org/TR/rdf12-concepts/">www.w3.org/TR/rdf12-concepts/</a></li>
   <li><b>W3C RDF Schema 1.1</b> · RDF Schema 1.1. W3C Recommendation, 2014. <a href="https://www.w3.org/TR/rdf-schema/">www.w3.org/TR/rdf-schema/</a></li>
   <li><b>W3C SHACL</b> · Shapes Constraint Language (SHACL). W3C Recommendation, 2017. <a href="https://www.w3.org/TR/shacl/">www.w3.org/TR/shacl/</a></li>
-  <li><b>W3C SHACL 1.2</b> · SHACL 1.2 Core. W3C Working Draft, 2 November 2026. <a href="https://www.w3.org/TR/shacl12-core/">www.w3.org/TR/shacl12-core/</a></li>
 </ul>
 
 ---
@@ -72,6 +72,7 @@ class: references
 # References (4/4)
 
 <ul class="refs">
+  <li><b>W3C SHACL 1.2</b> · SHACL 1.2 Core. W3C Working Draft, 2 November 2026. <a href="https://www.w3.org/TR/shacl12-core/">www.w3.org/TR/shacl12-core/</a></li>
   <li><b>W3C SKOS</b> · SKOS Simple Knowledge Organization System Reference. W3C Recommendation, 2009. <a href="https://www.w3.org/TR/skos-reference/">www.w3.org/TR/skos-reference/</a></li>
   <li><b>W3C SPARQL 1.1</b> · SPARQL 1.1 Query Language, Federated Query and Protocol. W3C Recommendations, 2013. <a href="https://www.w3.org/TR/sparql11-overview/">www.w3.org/TR/sparql11-overview/</a></li>
   <li><b>W3C SPARQL 1.2</b> · SPARQL 1.2 Query Language. W3C Working Draft, 1 November 2026. <a href="https://www.w3.org/TR/sparql12-query/">www.w3.org/TR/sparql12-query/</a></li>
