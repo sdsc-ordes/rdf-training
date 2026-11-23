@@ -98,18 +98,22 @@ html.dark .caveat { background: #3A1E1E; border-left-color: #E57373; }
 .cq-box ol { margin: 0; }
 .cq-box li { margin: 0.1rem 0; }
 
-/* Small vertical data flows inside feature cards: nodes (.fn) joined by labelled arrows (.fe).
-   Text is dashed, graphs navy, vector indexes light blue, the LLM step green-edged. */
+/* Small vertical pipelines inside feature cards: steps (.fn) joined by arrows (.fa), coloured by what does
+   the work (graph, vectors, LLM), as in the course's GraphRAG primer. */
+:root { --step-graph: #4A5598; --step-graph-bg: #E7E8F5; --step-vec: #94560A; --step-vec-bg: #FBEFD9; --step-llm: #2F6B2A; --step-llm-bg: #E8F3DC; }
+html.dark { --step-graph: #AAB2E6; --step-graph-bg: #262B4B; --step-vec: #EDB459; --step-vec-bg: #3B2C12; --step-llm: #A9D77F; --step-llm-bg: #233419; }
 /* Cards are equal height; pushing the flow down lines up the shared last step across cards. */
 .sdsc-feature:has(> .flow) { display: flex; flex-direction: column; }
 .flow { margin-top: auto; padding-top: 0.8rem; }
-.fn { display: block; width: fit-content; padding: 0.15rem 0.7rem; border-radius: 999px; font-size: 0.72rem; line-height: 1.4; }
-.fn-text { background: var(--sdsc-background-alt); border: 1.5px dashed var(--sdsc-primary); border-radius: 0.2rem; color: var(--sdsc-text); }
-.fn-graph { background: var(--sdsc-secondary); color: var(--sdsc-text-on-dark); }
-.fn-vec { background: var(--sdsc-light-blue-bg); color: var(--sdsc-content-heading); }
-.fn-llm { background: var(--sdsc-background); border: 1.5px solid var(--sdsc-accent-green); color: var(--sdsc-content-heading); }
-.fe { display: block; position: relative; margin-left: 1rem; padding: 0.3rem 0 0.4rem 0.8rem; border-left: 2px solid var(--sdsc-primary); font-size: 0.62rem; line-height: 1.3; color: var(--sdsc-text-grey); }
-.fe::after { content: ""; position: absolute; left: -6px; bottom: -1px; border-top: 6px solid var(--sdsc-primary); border-left: 5px solid transparent; border-right: 5px solid transparent; }
+.fn { display: block; width: fit-content; padding: 0.15rem 0.55rem; border: 1.5px solid var(--sdsc-border); border-radius: 0.35rem; background: var(--sdsc-background); font-size: 0.68rem; line-height: 1.35; color: var(--sdsc-text); }
+.fn-graph { border-color: var(--step-graph); background: var(--step-graph-bg); }
+.fn-vec { border-color: var(--step-vec); background: var(--step-vec-bg); }
+.fn-llm { border-color: var(--step-llm); background: var(--step-llm-bg); }
+.fa { display: block; position: relative; height: 0.75rem; margin-left: 1rem; border-left: 2px solid var(--sdsc-text-grey); }
+.fa::after { content: ""; position: absolute; left: -6px; bottom: -1px; border-top: 5px solid var(--sdsc-text-grey); border-left: 5px solid transparent; border-right: 5px solid transparent; }
+.lg.lg-step-graph::before { border-color: var(--step-graph); background: var(--step-graph-bg); border-radius: 0.2rem; }
+.lg.lg-step-vec::before { border-color: var(--step-vec); background: var(--step-vec-bg); border-radius: 0.2rem; }
+.lg.lg-step-llm::before { border-color: var(--step-llm); background: var(--step-llm-bg); border-radius: 0.2rem; }
 
 /* Comic panels next to code. */
 .comic { height: 8rem; width: 8rem; object-fit: contain; margin-bottom: 0.6rem; }
