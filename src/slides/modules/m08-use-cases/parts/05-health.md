@@ -93,7 +93,7 @@ minutes: 2
 
 <!--
 The physicians could use search engines but no AI tools.
-The standard identifiers (HPO, Orphanet, OMIM) are what make its evidence checkable: compare with module 9.
+The standard identifiers (HPO, Orphanet, OMIM) are what make its evidence checkable: compare with the graph RAG module (08).
 A graph RAG example from the same field: KG-RAG over the SPOKE biomedical graph (Soman et al., Bioinformatics 2024)
 raised Llama-2-13B's accuracy on multiple-choice questions from 0.31 to 0.53.
 -->

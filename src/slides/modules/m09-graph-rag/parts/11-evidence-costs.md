@@ -11,6 +11,7 @@ minutes: 3
 - **LLM-built graphs:** LLM calls for every chunk to index, and again when text changes
 - **Text-to-SPARQL:** a schema description, examples and a retry loop
 - **Agents:** several LLM calls per question, so more latency
+- **Hybrid:** an embedding index next to the graph, both updated when the data changes
 - **Curated KG:** the modelling and data work up front: this course
 
 <p class="fine">Sources: Han et al. 2025</p>

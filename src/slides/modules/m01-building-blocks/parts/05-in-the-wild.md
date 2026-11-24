@@ -23,7 +23,7 @@ minutes: 1
   </div>
 </div>
 
-<p class="fine">Sources: <a href="https://doi.org/10.1145/2629489" target="_blank" rel="noopener">Vrandečić & Krötzsch 2014</a> · <a href="https://schema.org/Recipe" target="_blank" rel="noopener">schema.org Recipe</a> · <a href="https://doi.org/10.1038/s41597-023-02028-y" target="_blank" rel="noopener">Touré et al. 2023</a> · <a href="https://lindas.admin.ch/" target="_blank" rel="noopener">LINDAS</a></p>
+<p class="fine">Sources: Vrandečić & Krötzsch 2014 · schema.org Recipe · Touré et al. 2023 · LINDAS</p>
 
 <!--
 More in the use-case module (full formats). Ask the room for one more example.

@@ -18,13 +18,22 @@ recipe:caesar-salad schema:totalTime
 
 ## Pattern
 
+````md magic-move {at: 1}
 ```sparql
 SELECT ?recipe ?time WHERE {
   ?recipe schema:totalTime ?time .
 }
 ```
+```sparql
+SELECT ?zorg ?plimf WHERE {
+  ?zorg schema:totalTime ?plimf .
+}
+```
+````
 
 The engine returns every way the pattern fits the data.
+
+<p v-click="1">With these names the query returns the same results.</p>
 
 ::bottom::
 
@@ -32,6 +41,7 @@ The engine returns every way the pattern fits the data.
 
 <!--
 Variables start with ?. The WHERE block uses the same triple syntax as Turtle.
+Click: the variables get meaningless names. The engine matches by position in the pattern, so ?zorg still binds the recipe and ?plimf the time.
 -->
 
 ---

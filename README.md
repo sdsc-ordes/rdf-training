@@ -27,6 +27,6 @@ just check           # everything CI runs; `just` lists the recipes
 | `src/data/` | recipe knowledge graph, vocabulary and shapes |
 | `src/kgcourse/` | Python helpers behind the tests and generators |
 | `tests/` | checks for data, shapes, queries, slide code and bibliographies |
-| `docs/course-design/` | curriculum, agendas, errata |
+| `docs/course-design/` | course design brief: modules, minutes per format, errata |
 | `external/sdsc-slides/` | SDSC slide kit (update: `uv run tools/scripts/update-sdsc-kit.py`) |
 | `tools/` | `nix/` dev shell, `scripts/` build, export and slide checks |

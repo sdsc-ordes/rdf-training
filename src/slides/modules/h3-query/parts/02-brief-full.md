@@ -11,10 +11,10 @@ minutes: 25
 5. **Counting:** q07 and q08 · **Bonus:** q10 ASK, q11 Wikidata
 
 <div class="exercise-meta">
-  <img src="/qr/h3.svg" alt="QR code to the hands-on 3 worksheet" />
-  <span><b>Pairs · 25 min</b><br />Non-coders: change the filters. Coders: write each query yourself before opening ours.</span>
+  <span><b>Pairs · 25 min</b> · <b>RETE</b> (link to follow): one HTML file with the recipe data and a SPARQL endpoint<br />Non-coders: change the filters. Coders: write each query yourself before opening ours.</span>
 </div>
 
 <!--
-Every query opens in the Comunica web client. Fallback: AtomGraph SPARQL Playground with kg.ttl pasted in.
+Queries run in RETE: one HTML file with the data and a SPARQL endpoint that works in any browser.
+RETE is a placeholder: the file is not built yet. Until then the worksheet's Comunica links still work.
 -->

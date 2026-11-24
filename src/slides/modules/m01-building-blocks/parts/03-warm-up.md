@@ -10,8 +10,10 @@ minutes: 4
 >
 > Robin teaches an RDF course in Zurich on 12 March 2025.
 
+<div class="mini-example">Example: "Rösti comes from Switzerland." <Triple s="Rösti" p="comes from" o="Switzerland" /></div>
+
 <div class="exercise-meta">
-  <span><b>Pairs · 4 min</b> · one triple per sticky note</span>
+  <span><b>Pairs · 4 min</b> · write your triples in any text editor</span>
 </div>
 
 <div v-click class="sdsc-takeaway"><b>New sentence:</b> Robin also likes pears, grown in Valais. What changes in your triples? What would change in a traditional relational database?</div>
@@ -46,6 +48,34 @@ ex:rdf-course a schema:Course ;
     schema:startDate "2025-03-12"^^xsd:date .
 ```
 
+<div v-click class="popup side-quest">
+
+<b>Side quest</b>
+
+Link the two foods with <code>rdfs:subClassOf</code> and drop <code>food:apple</code> from the likes list:
+
+```turtle
+food:fuji-apple rdfs:subClassOf food:apple .
+food:apple rdfs:subClassOf rec:Fruit .
+```
+
+Which fruits does Robin like?
+
+```sparql
+PREFIX ex: <http://example.org/>
+SELECT ?food WHERE {
+  person:robin ex:likes ?food .
+  ?food rdfs:subClassOf* rec:Fruit .
+}
+```
+
+Answer: <code>food:fuji-apple</code>, two subclass steps below <code>rec:Fruit</code>.
+
+</div>
+
 <!--
 No single right answer. Note what we reused (schema.org, Wikidata) and what we invented (ex:likes).
+Side quest (click): rdfs:subClassOf* follows the hierarchy any number of steps, so the same query also finds pears or lemons once they sit under rec:Fruit.
+Discussion point: liking Fuji apples does not mean liking every apple. Keep ex:likes food:apple if the sentence ("loves apples") matters.
+In the course graph food:fuji-apple is one food item typed rec:Fruit, so the hands-on queries use a/rdfs:subClassOf*. Both readings work: a variety can be a class of apples or a single food item.
 -->

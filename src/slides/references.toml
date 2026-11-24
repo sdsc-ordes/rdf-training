@@ -217,6 +217,10 @@ url = "https://arxiv.org/abs/2308.02357"
 text = "M. A. Musen. The Protégé project: a look back and a look forward. AI Matters 1(4), 2015."
 url = "https://doi.org/10.1145/2757001.2757003"
 
+["NASA 1999"]
+text = "NASA. Mars Climate Orbiter failure board releases report, numerous NASA actions underway in response. Press release 99-134, 10 November 1999."
+url = "https://nssdc.gsfc.nasa.gov/planetary/text/mco_pr_19991110.txt"
+
 ["Neo4j Cypher 25"]
 text = "Neo4j. Cypher Manual 25: GQL conformance."
 url = "https://neo4j.com/docs/cypher-manual/25/appendix/gql-conformance/"
@@ -253,6 +257,10 @@ url = "https://openrefine.org/docs/manual/reconciling"
 text = "S. Pan et al. Unifying large language models and knowledge graphs: a roadmap. IEEE TKDE 36(7), 2024."
 url = "https://arxiv.org/abs/2306.08302"
 
+["Peng et al. 2024"]
+text = "B. Peng et al. Graph retrieval-augmented generation: a survey. arXiv:2408.08921, 2024."
+url = "https://arxiv.org/abs/2408.08921"
+
 ["PoolParty"]
 text = "Graphwise. Graph Modeling (formerly PoolParty): taxonomy and thesaurus management built on SKOS."
 url = "https://graphwise.ai/components/graph-modeling/"
@@ -277,6 +285,14 @@ url = "https://www.bbc.co.uk/blogs/bbcinternet/2010/07/bbc_world_cup_2010_dynami
 text = "RECOVERY Collaborative Group. Baricitinib in patients admitted to hospital with COVID-19 (RECOVERY). The Lancet 400(10349), 2022."
 url = "https://doi.org/10.1016/S0140-6736(22)01109-6"
 
+["RFC 3986"]
+text = "T. Berners-Lee, R. Fielding, L. Masinter. Uniform Resource Identifier (URI): Generic Syntax. IETF RFC 3986, 2005."
+url = "https://www.rfc-editor.org/rfc/rfc3986"
+
+["RFC 3987"]
+text = "M. Duerst, M. Suignard. Internationalized Resource Identifiers (IRIs). IETF RFC 3987, 2005."
+url = "https://www.rfc-editor.org/rfc/rfc3987"
+
 ["Richardson et al. 2020"]
 text = "P. Richardson et al. Baricitinib as potential treatment for 2019-nCoV acute respiratory disease. The Lancet 395(10223), 2020."
 url = "https://doi.org/10.1016/S0140-6736(20)30304-4"
@@ -284,6 +300,10 @@ url = "https://doi.org/10.1016/S0140-6736(20)30304-4"
 ["ROBOT"]
 text = "ROBOT, a command-line tool for OWL ontologies. Documentation of the validate-profile command."
 url = "http://robot.obolibrary.org/validate-profile"
+
+["Sarmah et al. 2024"]
+text = "B. Sarmah et al. HybridRAG: integrating knowledge graphs and vector retrieval augmented generation for efficient information extraction. arXiv:2408.04948, 2024."
+url = "https://arxiv.org/abs/2408.04948"
 
 ["Savelchev & Guillermin 2019"]
 text = "U. Savelchev, M. Guillermin. Using Amazon Neptune to build a fashion knowledge graph. AWS Finland meetup, September 2019 (slides)."

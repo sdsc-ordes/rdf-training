@@ -7,15 +7,15 @@ minutes: 2
 <div class="sdsc-features">
   <div class="sdsc-feature">
     <h3>Invented terms</h3>
-    <p><code>schema:PescatarianDiet</code> sounds right but does not exist.</p>
+    <p><code>schema:PescatarianDiet</code> sounds right but does not exist. Closed shapes and lists of allowed values catch it.</p>
   </div>
   <div class="sdsc-feature">
     <h3>Broken syntax</h3>
-    <p>Undeclared prefixes and unescaped quotes: the file does not even parse.</p>
+    <p>Undeclared prefixes and unescaped quotes: the file does not even parse. The parser stops it before validation.</p>
   </div>
   <div class="sdsc-feature">
     <h3>Wrong datatypes</h3>
-    <p><code>"25 min"</code> instead of a duration; <code>30.5</code> is a decimal, not a double.</p>
+    <p><code>"25 min"</code> instead of a duration; <code>30.5</code> is a decimal, not a double. <code>sh:datatype</code> catches both.</p>
   </div>
   <div class="sdsc-feature">
     <h3>Plausible but false</h3>

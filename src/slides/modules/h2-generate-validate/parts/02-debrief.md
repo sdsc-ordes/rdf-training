@@ -11,5 +11,6 @@ minutes: 3
 
 <!--
 Collect error types: language tags, durations, invented foods or diets, misspelt properties.
-Point out: validation passing does not mean the facts are true (a valid recipe can still be wrong).
+Map the board tally onto the four kinds on "How LLMs get RDF wrong": syntax, invented terms, datatypes, plausible but false.
+Point out: validation passing does not mean the facts are true (a valid recipe can still be wrong). Facts need sources, review or cross-checks against other data.
 -->

@@ -9,11 +9,11 @@ minutes: 10
 3. Change one filter: a different time, diet or allergen
 
 <div class="exercise-meta">
-  <img src="/qr/h3.svg" alt="QR code to the hands-on 3 worksheet" />
-  <span><b>Pairs · 10 min</b><br />Every query opens in the browser, nothing to install.</span>
+  <span><b>Pairs · 10 min</b><br /><b>RETE</b> (link to follow): one HTML file with the recipe data and a SPARQL endpoint. Open it in any browser, nothing to install.</span>
 </div>
 
 <!--
+RETE is a placeholder: the HTML file with the data, the queries and a SPARQL endpoint is not built yet.
 q09 surprises people: Caesar salad and Pad Thai drop out because of what is inside their sauces.
 Stretch: q05 (hidden dairy), q07 (per cuisine), q11 (Wikidata federation).
 -->

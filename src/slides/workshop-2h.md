@@ -23,6 +23,26 @@ RDF, SHACL, SPARQL and graph RAG
 <div class="sdsc-meta">Robin Franken · Swiss Data Science Center · Interactive workshop</div>
 
 ---
+
+# Today
+
+<table class="compact">
+  <tbody>
+    <tr><td>14:00</td><td>Welcome · Building blocks · RDF and property graphs</td></tr>
+    <tr><td>14:30</td><td>Modelling · Hands-on 1: model · Validating data</td></tr>
+    <tr><td>15:00</td><td><i>Break</i></td></tr>
+    <tr><td>15:40</td><td>LLMs build graphs · Hands-on 2: generate and validate</td></tr>
+    <tr><td>16:05</td><td>SPARQL · Hands-on 3: query · Graph RAG</td></tr>
+    <tr><td>16:35</td><td>Wrap-up and questions</td></tr>
+    <tr><td>16:45</td><td>End</td></tr>
+  </tbody>
+</table>
+
+<!--
+Adjust the times per event.
+-->
+
+---
 src: ./modules/m00-why-now/core.md
 ---
 
@@ -88,10 +108,9 @@ src: ./modules/m04-shacl/core.md
 
 ---
 layout: section
-minutes: 5
 ---
 
-# Five-minute break
+# Break
 
 ---
 layout: section
@@ -156,8 +175,7 @@ minutes: 5
 - Judge when graph RAG is worth it
 
 <div class="exercise-meta">
-  <img src="/qr/site.svg" alt="QR code to the course repository" />
-  <span>Slides, worksheets and data<br /><b>github.com/sdsc-ordes/rdf-training</b></span>
+  <span>Slides, worksheets and data: <b>github.com/sdsc-ordes/rdf-training</b></span>
 </div>
 
 ---

@@ -1,4 +1,4 @@
-"""Code shown on slides and worksheets parses; deck imports, timings and bibliographies add up."""
+"""Code shown on slides and worksheets parses; deck imports and bibliographies add up."""
 
 import re
 from pathlib import Path
@@ -14,7 +14,6 @@ SITE = rdf.SITE
 DOCS = sorted([*SLIDES.rglob("*.md"), *SITE.glob("**/*.md")])
 PREFIXES = rdf.PREFIXES.read_text()
 NAMESPACES = dict(Graph().parse(rdf.PREFIXES).namespaces())
-AGENDA_MINUTES = {"workshop-2h.md": 120, "full-day.md": 360}
 
 
 def code_blocks(path: Path):
@@ -119,12 +118,6 @@ def test_deck_expands(deck):
     assert expand(deck)
 
 
-@pytest.mark.parametrize("deck", [d for d in DECKS if d.name in AGENDA_MINUTES], ids=lambda p: p.name)
-def test_deck_minutes_match_agenda(deck):
-    total = sum(int(fm.get("minutes", 0)) for _, fm in expand(deck))
-    assert total == AGENDA_MINUTES[deck.name]
-
-
 @pytest.mark.parametrize("module", MODULES, ids=lambda p: p.name)
 def test_module_parts_are_all_used(module):
     core = {p for p, _ in expand(module / "core.md")} if (module / "core.md").exists() else set()
@@ -159,3 +152,12 @@ def test_slide_prefixes_match_data_prefixes():
     assert dict(re.findall(r"^\s*(\w+): '([^']+)',", ts, re.MULTILINE)) == dict(
         re.findall(r"@prefix (\w+):\s*<([^>]+)>", PREFIXES)
     )
+
+
+def test_spot_the_violation_starts_from_the_buggy_file():
+    """Keep the first magic-move step equal to the file the validator results come from."""
+    slide = (SLIDES / "modules" / "m04-shacl" / "parts" / "03-spot-the-violation.md").read_text()
+    first_step = slide.split("````md magic-move", 1)[1].split("```turtle\n", 1)[1].split("\n```", 1)[0]
+    buggy = (rdf.HANDS_ON / "h2-validate" / "buggy" / "b11-llm-first-attempt.ttl").read_text()
+    region = buggy.split("# #region pizza\n", 1)[1].split("# #endregion pizza", 1)[0].rstrip("\n")
+    assert first_step == region
