@@ -1,0 +1,15 @@
+# q18 · Which classes sit below Animal product, and how are they defined?
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rec:  <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#>
+
+# This query reads only the ontology: the class hierarchy and definitions are triples too.
+# Honey appears twice because it has two parent classes.
+SELECT ?class ?parent ?definition WHERE {
+  ?c rdfs:subClassOf+ rec:AnimalProduct ;
+     rdfs:subClassOf ?p ;
+     rdfs:label ?class ;
+     skos:definition ?definition .
+  ?p rdfs:label ?parent .
+}
+ORDER BY ?parent ?class

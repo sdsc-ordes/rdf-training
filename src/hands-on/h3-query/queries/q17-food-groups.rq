@@ -1,0 +1,14 @@
+# q17 · How many foods are in each food group, counting all its subclasses?
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rec:  <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#>
+
+# A food group is a direct subclass of rec:Food. a/rdfs:subClassOf* also finds foods typed
+# with a class further down: Gruyère is a hard cheese, so it counts as an animal product.
+# Honey has two parent classes, so it counts as an animal product and as a sweetener.
+SELECT ?group (COUNT(DISTINCT ?food) AS ?foods) WHERE {
+  ?g rdfs:subClassOf rec:Food ;
+     rdfs:label ?group .
+  ?food a/rdfs:subClassOf* ?g .
+}
+GROUP BY ?group
+ORDER BY DESC(?foods) ?group

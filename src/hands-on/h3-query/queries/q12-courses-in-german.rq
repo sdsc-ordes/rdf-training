@@ -1,0 +1,13 @@
+# q12 · How many recipes per course? Course names in German, from the course scheme.
+PREFIX skos:   <http://www.w3.org/2004/02/skos/core#>
+PREFIX schema: <https://schema.org/>
+PREFIX rec:    <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#>
+
+# Each concept has one preferred label per language: change "de" to "en" for English names.
+SELECT ?course (COUNT(?recipe) AS ?recipes) WHERE {
+  ?recipe a schema:Recipe ;
+          rec:course/skos:prefLabel ?course .
+  FILTER(lang(?course) = "de")
+}
+GROUP BY ?course
+ORDER BY DESC(?recipes) ?course

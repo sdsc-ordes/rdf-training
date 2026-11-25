@@ -1,0 +1,17 @@
+# q13 · Which recipes are European, at any level of the cuisine hierarchy?
+PREFIX skos:    <http://www.w3.org/2004/02/skos/core#>
+PREFIX schema:  <https://schema.org/>
+PREFIX rec:     <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#>
+PREFIX cuisine: <https://sdsc-ordes.github.io/rdf-training/id/cuisine/>
+
+# skos:broader is not transitive. The * follows it any number of steps,
+# so Ticinese (under Swiss, under European) counts as European too.
+SELECT ?name ?cuisine WHERE {
+  ?recipe a schema:Recipe ;
+          schema:name ?name ;
+          rec:cuisine ?c .
+  ?c skos:broader* cuisine:european ;
+     skos:prefLabel ?cuisine .
+  FILTER(lang(?name) = "en" && lang(?cuisine) = "en")
+}
+ORDER BY ?cuisine ?name

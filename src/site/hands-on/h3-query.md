@@ -73,3 +73,55 @@ Each query runs in the Comunica web client on the course KG. Predict the answer 
 <a :href="data.q11" target="_blank" rel="noopener">Run ↗</a>
 
 <<< @/../hands-on/h3-query/queries/q11-country-codes.rq{sparql}
+
+## More: value lists and the class hierarchy
+
+These queries use the SKOS value lists (`enumerations.ttl`) and the class hierarchy (`ontology.ttl`) next to the recipes.
+
+## q12 · Courses in German
+
+<a :href="data.q12" target="_blank" rel="noopener">Run ↗</a>
+
+<<< @/../hands-on/h3-query/queries/q12-courses-in-german.rq{sparql}
+
+## q13 · European, at any level
+
+<a :href="data.q13" target="_blank" rel="noopener">Run ↗</a>
+
+<<< @/../hands-on/h3-query/queries/q13-european.rq{sparql}
+
+## q14 · Cuisine tree with counts
+
+<a :href="data.q14" target="_blank" rel="noopener">Run ↗</a>
+
+<<< @/../hands-on/h3-query/queries/q14-cuisine-tree.rq{sparql}
+
+## q15 · Allergens in three languages
+
+<a :href="data.q15" target="_blank" rel="noopener">Run ↗</a>
+
+<<< @/../hands-on/h3-query/queries/q15-allergen-languages.rq{sparql}
+
+## q16 · All 14 allergens, used or not
+
+<a :href="data.q16" target="_blank" rel="noopener">Run ↗</a>
+
+<<< @/../hands-on/h3-query/queries/q16-allergen-coverage.rq{sparql}
+
+## q17 · Foods per food group
+
+<a :href="data.q17" target="_blank" rel="noopener">Run ↗</a>
+
+<<< @/../hands-on/h3-query/queries/q17-food-groups.rq{sparql}
+
+## q18 · Classes below Animal product
+
+<a :href="data.q18" target="_blank" rel="noopener">Run ↗</a>
+
+<<< @/../hands-on/h3-query/queries/q18-animal-product-classes.rq{sparql}
+
+## q19 · Animal products hidden in products
+
+<a :href="data.q19" target="_blank" rel="noopener">Run ↗</a>
+
+<<< @/../hands-on/h3-query/queries/q19-hidden-animal-products.rq{sparql}

@@ -1,0 +1,13 @@
+# q15 · Which allergens does Pad Thai contain? Names in English, French and German.
+PREFIX skos:   <http://www.w3.org/2004/02/skos/core#>
+PREFIX rec:    <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#>
+PREFIX recipe: <https://sdsc-ordes.github.io/rdf-training/id/recipe/>
+
+# Change the recipe in VALUES to look up another one, e.g. recipe:miso-soup.
+SELECT DISTINCT ?en ?fr ?de WHERE {
+  VALUES ?recipe { recipe:pad-thai }
+  ?recipe rec:hasIngredient/rec:containsIngredient*/rec:hasAllergen ?a .
+  ?a skos:prefLabel ?en, ?fr, ?de .
+  FILTER(lang(?en) = "en" && lang(?fr) = "fr" && lang(?de) = "de")
+}
+ORDER BY ?en

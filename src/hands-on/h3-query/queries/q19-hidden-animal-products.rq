@@ -1,0 +1,21 @@
+# q19 · Which animal products are hidden inside the products a recipe uses?
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <https://schema.org/>
+PREFIX rec:    <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#>
+
+# The recipe lists only the product. What the product contains is stated on the product,
+# and the class hierarchy says which of those foods are animal products.
+SELECT DISTINCT ?name ?product ?inside ?class WHERE {
+  ?recipe a schema:Recipe ;
+          schema:name ?name ;
+          rec:hasIngredient ?p .
+  ?p a rec:Product ;
+     rdfs:label ?product ;
+     rec:containsIngredient+ ?i .
+  ?i a ?c ;
+     rdfs:label ?inside .
+  ?c rdfs:subClassOf* rec:AnimalProduct ;
+     rdfs:label ?class .
+  FILTER(lang(?name) = "en")
+}
+ORDER BY ?name ?product ?inside
