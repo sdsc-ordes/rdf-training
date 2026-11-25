@@ -39,13 +39,14 @@ minutes: 2
 <div class="sdsc-features">
   <div class="sdsc-feature">
     <h3>A · LLM-built graph</h3>
-    <p>An LLM extracts entities from text, then summarises communities of related entities. Microsoft GraphRAG, LightRAG.</p>
+    <p>An LLM builds the graph from text. Microsoft GraphRAG, LightRAG.</p>
     <div class="flow">
       <span class="fn">Text chunks</span><span class="fa"></span>
       <span class="fn fn-llm bb">LLM extracts entities and relations</span><span class="fa"></span>
       <span class="fn fn-graph">Graph</span><span class="fa"></span>
       <span class="fn fn-graph">Communities</span><span class="fa"></span>
       <span class="fn fn-llm bb">LLM summarises each community</span><span class="fa"></span>
+      <span class="fn fn-vec">Entity descriptions turned into vectors</span><span class="fa"></span>
       <span class="fn fn-llm">LLM answers: local or global search</span>
     </div>
   </div>
@@ -61,12 +62,13 @@ minutes: 2
   </div>
   <div class="sdsc-feature">
     <h3>C · Hybrid</h3>
-    <p>Vector search finds the entities or passages the question is about. The graph then follows their links to related facts.</p>
+    <p>Vector search finds what the question is about, then the graph adds the facts linked to it.</p>
     <div class="flow">
-      <span class="fn">Question</span><span class="fa"></span>
-      <span class="fn fn-vec bb">Vector search finds matching entities or text passages</span><span class="fa"></span>
-      <span class="fn fn-graph">Graph follows their links to related nodes and edges</span><span class="fa"></span>
-      <span class="fn fn-llm">LLM answers from the vector matches plus the nodes and edges found</span>
+      <span class="fn fn-vec">Entities or passages turned into vectors, once</span><span class="fa"></span>
+      <span class="fn fn-vec">Question turned into a vector</span><span class="fa"></span>
+      <span class="fn fn-vec bb">Vector search finds the nearest matches</span><span class="fa"></span>
+      <span class="fn fn-graph">Graph follows their links to related facts</span><span class="fa"></span>
+      <span class="fn fn-llm">LLM answers from the facts found</span>
     </div>
   </div>
 </div>
@@ -86,7 +88,8 @@ B suits structured, governed data: answers can cite IRIs. Shapes (SHACL) describ
 C is what most production systems end up with.
 Steps are coloured by what does the work: graph, vectors or the LLM. Red dashed outline = black box: in A the graph and summaries depend on the LLM run; in C the matches come from a similarity score, not a rule you can check, and shift when the embedding model or index changes.
 The final answer is LLM-written in all three, B included, so it is not marked. B's SPARQL is LLM-written too, but you can read it and it runs the same way every time. All three end with the LLM answering; what differs is where its context comes from.
-A answers in two ways: local search around one entity, or global search over the community summaries.
+A answers in two ways: local search starts from the entities whose description vectors are nearest the question's vector; global search runs over the community summaries without vectors.
+Vector steps: a pretrained embedding model turns text into vectors. Indexing embeds every entity description or passage once; at question time the question is embedded with the same model and compared with them. Nothing is trained on your data.
 C: the papers call the vector matches entry points. Vector search runs over entity labels and descriptions, or over text chunks linked to entities. The graph then expands from those nodes along their edges, with a hop limit or a query. The prompt gets the question, the matched text and the nodes and edges found, usually written out as triples.
 B gives the LLM the shapes, classes, properties and example queries, and retries when a query fails or returns nothing. Variant: an agent calls graph tools over MCP.
 -->
