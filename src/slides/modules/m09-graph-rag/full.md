@@ -27,10 +27,6 @@ src: ./parts/13-hybrid.md
 ---
 
 ---
-src: ./parts/03-demo.md
----
-
----
 src: ./parts/10-more-questions.md
 ---
 

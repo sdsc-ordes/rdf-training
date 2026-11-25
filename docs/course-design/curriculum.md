@@ -124,7 +124,7 @@ Card template: problem · what the KG holds · stack · access · what worked / 
 7. **schema.org Recipe**: most-deployed RDF, JSON-LD in pages; loose semantics; read by AI search
 
 ### M09 Graph RAG (15 / 35)
-- Storyline: fluent ≠ grounded → vector RAG retrieves similar text → some questions need joins, counts, constraints, global views, fact checks → three graph families → demo → evidence and costs → decision guide
+- Storyline: fluent ≠ grounded → vector RAG retrieves similar text → some questions need joins, counts, constraints, global views, fact checks → three graph families (with their embedding steps) → demo (full day: counting and themes) → evidence and costs → decision guide
 - Takeaway: *Use the graph for what text retrieval can't do — joins, counts, constraints, fact-checks — and vectors for the rest.*
 
 | # | Layout | Slide |
@@ -139,14 +139,12 @@ Card template: problem · what the KG holds · stack · access · what worked / 
 | 8 | two-cols | KG as agent tool: MCP SPARQL servers (GraphDB 11, LINDAS MCP, SHACL-described servers) / shapes as tool docs |
 | 9 | content | Family C: hybrid (vector search finds entry points, the graph expands; HybridRAG) |
 | 10 | content | Demo setup: same LLM, same corpus, fair baseline |
-| 11 (C) | two-cols | Q1 control + Q2 multi-hop: vector vs KG answer with "why excluded" path |
-| 12 | key numbers | Q3 aggregation: true count vs vector count, tokens |
-| 13 | two-cols | Q4 global themes: vector vs community summaries |
-| 14 (C) | code | Q5 fact-check: claim → ASK → supported / contradicted / unknown |
-| 15 | quote | Evidence: Han et al. 2502.11371; GraphRAG-Bench (ICLR 2026) |
-| 16 | key numbers | Cost: indexing tokens, latency, LLM calls per answer |
-| 17 | content | Limits: indexing cost, garbage in, fragile text-to-SPARQL, latency, open-world "unknown", prompt injection |
-| 18 (C) | content + takeaway | Decision guide |
+| 11 | key numbers | Q3 aggregation: true count vs vector count, tokens |
+| 12 | two-cols | Q4 global themes: vector vs community summaries |
+| 13 | quote | Evidence: Han et al. 2502.11371; GraphRAG-Bench (ICLR 2026) |
+| 14 | key numbers | Cost: indexing tokens, latency, LLM calls per answer |
+| 15 | content | Limits: indexing cost, garbage in, fragile text-to-SPARQL, latency, open-world "unknown", prompt injection |
+| 16 (C) | content + takeaway | Decision guide |
 
 Demo questions (same corpus, same LLM, cached):
 - **Q1 control**: "How long should the focaccia dough rise?" — both right, vector cheaper
@@ -203,7 +201,7 @@ Decision guide: single-hop doc lookups → vector RAG · joins/counts/constraint
 | Standards drift | "Status as of" box; pre-course checklist |
 
 Cut order when late (ext only): M08 → M07 detail → M02 timeline/OWL/GQL → M03 deep-dives → H3 L5/L6 → M09 Q4 + evidence/cost.
-Never cut: H2 validation loop, M09 Q2/Q5, H1 core.
+Never cut: H2 validation loop, H1 core.
 
 ## Re-verify before each delivery
 

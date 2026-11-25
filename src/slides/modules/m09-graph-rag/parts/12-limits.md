@@ -13,5 +13,5 @@ minutes: 2
 
 <!--
 Mitigations: read-only access, timeouts, provenance, and tests with your own questions.
-Open world again: the fact-check demo's "spicy" claim was unknown, not false.
+Open world again: if the graph says nothing about spiciness, "spicy" is unknown, not false.
 -->
