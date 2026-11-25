@@ -44,6 +44,10 @@ rec:Seasoning a rdfs:Class ; rdfs:subClassOf rec:Food ; rdfs:label "Seasoning"@e
 rec:Sweetener a rdfs:Class ; rdfs:subClassOf rec:Food ; rdfs:label "Sweetener"@en .
 rec:Beverage a rdfs:Class ; rdfs:subClassOf rec:Food ; rdfs:label "Beverage"@en .
 
+# --- Recipes ----------------------------------------------------------------
+
+rec:CheeseDish a rdfs:Class ; rdfs:subClassOf schema:Recipe ; rdfs:label "cheese dish"@en .
+
 # --- Properties ------------------------------------------------------------
 
 rec:hasIngredient a rdf:Property ; rdfs:label "has ingredient"@en ;
@@ -77,6 +81,3 @@ rec:unit a rdf:Property ; rdfs:label "unit"@en ;
     rdfs:domain rec:IngredientUsage ; rdfs:range qudt:Unit .
 rec:preparation a rdf:Property ; rdfs:label "preparation"@en ;
     rdfs:domain rec:IngredientUsage .
-
-rec:Pinch a qudt:Unit ; rdfs:label "pinch"@en ;
-    rdfs:comment "Not in QUDT, so defined here."@en .

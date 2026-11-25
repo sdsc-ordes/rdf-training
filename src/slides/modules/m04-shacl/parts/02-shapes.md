@@ -5,7 +5,7 @@ minutes: 3
 
 # Node shapes and property shapes
 
-<<< @/../data/shapes/recipes.shapes.ttl#recipeShapes turtle {2|3-5|6-7|10|11-13|14-15|all}
+<<< @/../data/ontology/shapes.ttl#recipeShapes turtle {2|3-5|6-7|10|11-13|14-15|all}
 
 - **Node shape:** which things get checked · **Property shape:** what one property must look like
 
@@ -13,7 +13,7 @@ minutes: 3
 Node shape: sh:targetClass = which things get checked; sh:property = which property shapes apply;
 sh:closed = no properties beyond the listed ones, which catches typos like rec:hasIngrediant.
 Property shape: path = which property; minCount/maxCount = how many; datatype = what kind of value.
-These are the real shapes the hands-on uses (src/data/shapes/recipes.shapes.ttl).
+These are the real shapes the hands-on uses (src/data/ontology/shapes.ttl).
 -->
 
 ---

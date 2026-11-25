@@ -1,0 +1,9 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rec:  <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#> .
+
+# Units that QUDT does not define. All other units are reused from QUDT (http://qudt.org/vocab/unit/).
+
+rec:Pinch a qudt:Unit ;
+    rdfs:label "pinch"@en ;
+    rdfs:comment "As much as fits between thumb and forefinger."@en .

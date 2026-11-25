@@ -4,7 +4,7 @@ minutes: 2
 
 # Severity levels
 
-<<< @/../data/shapes/recipes.shapes.ttl#author turtle
+<<< @/../data/ontology/shapes.ttl#author turtle
 
 <table class="compact">
   <thead><tr><th>Severity</th><th>In our shapes</th></tr></thead>

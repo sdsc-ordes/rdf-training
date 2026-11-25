@@ -12,8 +12,8 @@
 @prefix course:   <https://sdsc-ordes.github.io/rdf-training/id/course/> .
 
 # Shapes for the recipe KG. SHACL Core only, so they run in browser validators.
-# Validate together with the vocabulary, concepts and foods: sh:class and the
-# diet rules follow rdfs:subClassOf triples that must be in the data graph.
+# Validate together with ontology.ttl, enumerations.ttl and the instance data: sh:class
+# and the diet rules follow rdfs:subClassOf triples that must be in the data graph.
 
 # --- Recipe ----------------------------------------------------------------
 

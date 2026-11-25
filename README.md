@@ -24,7 +24,7 @@ just check           # everything CI runs; `just` lists the recipes
 | `src/slides/` | Slidev decks (one `.md` per format) and `modules/` |
 | `src/site/` | VitePress course hub with the hands-on worksheets |
 | `src/hands-on/` | exercise files: starter model, buggy data, queries |
-| `src/data/` | recipe knowledge graph, vocabulary and shapes |
+| `src/data/` | `ontology/` (classes and properties, SKOS value lists, SHACL shapes), `golden/` instance data, `advanced/` SHACL-SPARQL and rules |
 | `src/kgcourse/` | Python helpers behind the tests and generators |
 | `tests/` | checks for data, shapes, queries, slide code and bibliographies |
 | `docs/course-design/` | course design brief: modules, minutes per format, errata |

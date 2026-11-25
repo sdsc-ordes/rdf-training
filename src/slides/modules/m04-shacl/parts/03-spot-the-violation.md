@@ -54,7 +54,7 @@ recipe:pizza-margherita a schema:Recipe ;
 <div class="compare">
 <div v-click="1">
 
-<p class="code-label">Shapes, one constraint each (from recipes.shapes.ttl)</p>
+<p class="code-label">Shapes, one constraint each (from shapes.ttl)</p>
 
 ```turtle
 recsh:Recipe-name sh:path schema:name ;
@@ -112,6 +112,6 @@ recsh:Recipe-cuisine sh:path rec:cuisine ;
 Click 1: the property shapes behind the three results, cut down to the constraint that fails. Let the room compare each line with the data.
 Clicks 2 to 4: one result each. Its validation report entry appears on the right and the data is fixed in place (highlighted line).
 The name also gets a second entry, sh:LanguageInConstraintComponent: the shape allows only en, de, fr and it.
-After the three fixes the recipe passes. The full shapes also set counts, allowed languages and messages (src/data/shapes/recipes.shapes.ttl).
+After the three fixes the recipe passes. The full shapes also set counts, allowed languages and messages (src/data/ontology/shapes.ttl).
 Prefix lines are hidden on this slide so the listings fit. These are the exact results from the real validator.
 -->

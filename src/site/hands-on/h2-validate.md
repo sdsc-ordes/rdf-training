@@ -34,5 +34,5 @@ Paste your valid Turtle into the shared pad.
 
 ::: tip Stretch
 - Remove the vocabulary from the data graph. Why does the vegan rule stop working?
-- Validate the SHACL-SPARQL version of the rule (`src/data/shapes/recipes.shapes-sparql.ttl`) in the [EU ITB validator](https://www.itb.ec.europa.eu/shacl/any/upload).
+- Validate the SHACL-SPARQL version of the rule (`src/data/advanced/recipes.shapes-sparql.ttl`) in the [EU ITB validator](https://www.itb.ec.europa.eu/shacl/any/upload).
 :::

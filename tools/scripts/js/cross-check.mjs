@@ -9,8 +9,8 @@ import { Parser, Store } from 'n3'
 
 const root = new URL('../../../src', import.meta.url).pathname
 const p = (...parts) => join(root, ...parts)
-const ttlIn = (dir) => readdirSync(p(dir)).filter((f) => f.endsWith('.ttl')).sort().map((f) => p(dir, f))
-const context = [...ttlIn('data/vocab'), ...ttlIn('data/concepts'), p('data/golden/foods.ttl'), p('data/golden/people.ttl')]
+const context = ['ontology/ontology.ttl', 'ontology/enumerations.ttl', 'golden/countries.ttl', 'golden/units.ttl', 'golden/foods.ttl', 'golden/people.ttl']
+  .map((f) => p('data', f))
 const recipes = p('data/golden/recipes.ttl')
 const h2 = p('hands-on/h2-validate')
 const h3 = p('hands-on/h3-query')
@@ -31,7 +31,7 @@ const dataset = async (files) => {
   for (const f of files) await ds.import(rdf.fromFile(f))
   return ds
 }
-const validator = new SHACLValidator(await dataset([p('data/shapes/recipes.shapes.ttl')]), { factory: rdf })
+const validator = new SHACLValidator(await dataset([p('data/ontology/shapes.ttl')]), { factory: rdf })
 const results = async (files) => {
   const report = await validator.validate(await dataset(files))
   const rows = report.results.map((r) => [r.focusNode, r.path, r.sourceShape, r.sourceConstraintComponent, r.severity]
