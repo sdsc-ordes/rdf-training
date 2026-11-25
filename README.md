@@ -5,6 +5,20 @@ triples, SHACL, SPARQL, LLM-assisted KG building and graph RAG, using a recipe k
 
 Formats: 2 h workshop · 2×3 h afternoons · 6 h day — assembled from the same slide modules.
 
+## Course contents
+
+- **Building blocks:** triples, IRIs, Turtle, Linked Data
+- **RDF and property graphs:** the W3C stack (RDFS, OWL, SKOS, SHACL, SPARQL) and when a property graph fits better
+- **Modelling:** competency questions, classes and properties, SKOS value lists, reuse of vocabularies
+- **Validation:** SHACL shapes and validation reports
+- **LLMs build graphs:** drafting, extraction, the generate–validate–repair loop
+- **Querying:** SPARQL patterns, property paths, aggregates, federation
+- **Architectures** (full day): mapping, storage, serving the graph
+- **Graph RAG:** LLM-built graphs, text-to-SPARQL, hybrid vector and graph retrieval
+- **Use cases and tools** (full day): industry, health and public-sector examples
+
+Hands-on, in the browser: model the recipe domain · generate, validate and repair data with an LLM · query the recipe graph.
+
 ## Quickstart
 
 ```sh
