@@ -20,7 +20,7 @@ rec:CheeseDish owl:equivalentClass [
 ] .
 ```
 
-Both versions classify 2 of our 7 recipes as cheese dishes: the fondue and the Caesar salad.
+Both versions classify 2 of our 11 recipes as cheese dishes: the fondue and the Caesar salad.
 
 </div>
 <div class="min-w-0">

@@ -90,3 +90,53 @@ recipe:chana-masala a schema:Recipe ;
     schema:suitableForDiet schema:VeganDiet, schema:VegetarianDiet, schema:GlutenFreeDiet ;
     rec:hasIngredient food:chickpea, food:tomato, food:onion, food:garlic, food:ginger,
         food:garam-masala, food:sunflower-oil, food:salt .
+
+recipe:quiche-lorraine a schema:Recipe ;
+    schema:name "Quiche lorraine"@fr, "Quiche Lorraine"@en ;
+    schema:description "Savoury tart with bacon, eggs and crème fraîche, from Lorraine."@en ;
+    schema:author person:chloe-dubois ;
+    schema:totalTime "PT1H15M"^^xsd:dayTimeDuration ;
+    rec:cuisine cuisine:french ;
+    rec:course course:main ;
+    rec:hasIngredient food:shortcrust-pastry, food:bacon, food:egg, food:creme-fraiche, food:nutmeg,
+        food:black-pepper, food:salt ;
+    schema:recipeIngredient "250 g shortcrust pastry", "200 g bacon, diced", "3 eggs", "200 ml crème fraîche",
+        "1 pinch nutmeg" ;
+    rec:hasIngredientUsage recipe:quiche-lorraine-u1, recipe:quiche-lorraine-u2, recipe:quiche-lorraine-u3,
+        recipe:quiche-lorraine-u4, recipe:quiche-lorraine-u5 .
+recipe:quiche-lorraine-u1 a rec:IngredientUsage ; rec:food food:shortcrust-pastry ; rec:quantity 250.0 ; rec:unit unit:GM .
+recipe:quiche-lorraine-u2 a rec:IngredientUsage ; rec:food food:bacon ; rec:quantity 200.0 ; rec:unit unit:GM ;
+    rec:preparation "diced"@en .
+recipe:quiche-lorraine-u3 a rec:IngredientUsage ; rec:food food:egg ; rec:quantity 3.0 ; rec:unit unit:NUM .
+recipe:quiche-lorraine-u4 a rec:IngredientUsage ; rec:food food:creme-fraiche ; rec:quantity 200.0 ; rec:unit unit:MilliL .
+recipe:quiche-lorraine-u5 a rec:IngredientUsage ; rec:food food:nutmeg ; rec:quantity 1.0 ; rec:unit rec:Pinch .
+
+recipe:miso-soup a schema:Recipe ;
+    schema:name "Miso soup"@en, "Misosuppe"@de ;
+    schema:description "Dashi broth with miso, tofu and spring onion."@en ;
+    schema:author person:hana-mori ;
+    schema:totalTime "PT15M"^^xsd:dayTimeDuration ;
+    rec:cuisine cuisine:japanese ;
+    rec:course course:starter ;
+    rec:hasIngredient food:dashi, food:miso, food:tofu, food:spring-onion .
+
+recipe:brasato-con-polenta a schema:Recipe ;
+    schema:name "Brasato al Merlot con polenta"@it, "Beef braised in Merlot with polenta"@en ;
+    schema:description "Beef braised in red wine with vegetables, served with polenta, from Ticino."@en ;
+    schema:author person:luca-bernasconi ;
+    schema:totalTime "PT3H"^^xsd:dayTimeDuration ;
+    rec:cuisine cuisine:ticinese ;
+    rec:course course:main ;
+    schema:suitableForDiet schema:GlutenFreeDiet ;
+    rec:hasIngredient food:beef, food:red-wine, food:onion, food:carrot, food:celery, food:polenta,
+        food:butter, food:salt .
+
+recipe:dorayaki a schema:Recipe ;
+    schema:name "Dorayaki"@en, "Dorayaki"@de ;
+    schema:description "Two small honey pancakes filled with sweet red bean paste."@en ;
+    schema:author person:hana-mori ;
+    schema:totalTime "PT45M"^^xsd:dayTimeDuration ;
+    rec:cuisine cuisine:japanese ;
+    rec:course course:dessert ;
+    schema:suitableForDiet schema:VegetarianDiet ;
+    rec:hasIngredient food:wheat-flour, food:egg, food:sugar, food:honey, food:red-bean-paste .

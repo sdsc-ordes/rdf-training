@@ -1,3 +1,4 @@
 ?name	?time
+"Miso soup"@en	"PT15M"^^<http://www.w3.org/2001/XMLSchema#dayTimeDuration>
 "Spaghetti with pesto"@en	"PT15M"^^<http://www.w3.org/2001/XMLSchema#dayTimeDuration>
 "Caesar salad"@en	"PT20M"^^<http://www.w3.org/2001/XMLSchema#dayTimeDuration>

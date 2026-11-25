@@ -63,6 +63,12 @@ cuisine:thai a skos:Concept ; skos:inScheme cuisine:scheme ; skos:broader cuisin
     skos:prefLabel "Thai"@en, "Thailändisch"@de ; schema:countryOfOrigin wd:Q869 .
 cuisine:indian a skos:Concept ; skos:inScheme cuisine:scheme ; skos:broader cuisine:asian ;
     skos:prefLabel "Indian"@en, "Indisch"@de ; schema:countryOfOrigin wd:Q668 .
+cuisine:japanese a skos:Concept ; skos:inScheme cuisine:scheme ; skos:broader cuisine:asian ;
+    skos:prefLabel "Japanese"@en, "Japanisch"@de ; schema:countryOfOrigin wd:Q17 .
+
+# Regional cuisines sit one level further down.
+cuisine:ticinese a skos:Concept ; skos:inScheme cuisine:scheme ; skos:broader cuisine:swiss ;
+    skos:prefLabel "Ticinese"@en, "Tessiner"@de ; schema:countryOfOrigin wd:Q39 .
 
 # --- Courses ----------------------------------------------------------------
 
