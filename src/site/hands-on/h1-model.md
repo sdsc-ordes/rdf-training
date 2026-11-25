@@ -30,7 +30,7 @@ Sketch the classes and properties a recipe knowledge graph needs to answer five 
 | | | | |
 
 ::: details Reference model
-<<< @/../data/vocab/recipes.ttl{turtle}
+<<< @/../data/ontology/ontology.ttl{turtle}
 :::
 
 ::: tip Stretch

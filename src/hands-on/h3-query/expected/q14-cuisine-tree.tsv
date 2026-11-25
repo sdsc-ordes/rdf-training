@@ -1,0 +1,11 @@
+?cuisine	?broader	?recipes
+"European"@en		6
+"Asian"@en		4
+"Swiss"@en	"European"@en	4
+"Japanese"@en	"Asian"@en	2
+"American"@en		1
+"French"@en	"European"@en	1
+"Indian"@en	"Asian"@en	1
+"Italian"@en	"European"@en	1
+"Thai"@en	"Asian"@en	1
+"Ticinese"@en	"Swiss"@en	1

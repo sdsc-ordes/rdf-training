@@ -45,5 +45,5 @@ Boxes are classes; rounded nodes are fixed lists of values, shown with an exampl
 SKOS is not a source but a vocabulary for writing such lists (concepts, labels, broader/narrower).
 Two ingredient edges: schema:recipeIngredient holds the recipe's text lines as written; schema.org expects plain text there, so links to Food things use our own rec:hasIngredient.
 Point out containsIngredient: products like Worcestershire sauce have ingredients of their own.
-That is where hidden anchovies and gluten live. Full model: src/data/vocab/recipes.ttl.
+That is where hidden anchovies and gluten live. Full model: src/data/ontology/ (ontology.ttl, enumerations.ttl, shapes.ttl).
 -->

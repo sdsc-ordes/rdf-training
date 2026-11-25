@@ -40,7 +40,7 @@ recsh:CuisineConcept sh:property [
 <p class="fine">Sources: W3C SKOS · W3C SHACL</p>
 
 <!--
-Cut down from three course files: src/data/concepts/cuisines.ttl, src/data/vocab/recipes.ttl and src/data/shapes/recipes.shapes.ttl.
+Cut down from the three ontology modules: src/data/ontology/enumerations.ttl, ontology.ttl and shapes.ttl.
 SKOS (W3C, 2009) writes thesauri, classification schemes and code lists as data. skos:Concept is a class; each cuisine is one instance of it.
 If cuisines were classes, every recipe would need a type such as recipe:rosti a cuisine:Swiss, and with cuisine:Swiss rdfs:subClassOf cuisine:European a reasoner would also make it a European recipe. With SKOS the recipe points to a concept and the hierarchy stays between the concepts.
 skos:broader is not transitive; skos:broaderTransitive is its transitive super-property. In SPARQL, ?recipe rec:cuisine/skos:broader* cuisine:european finds the Swiss, Italian and French recipes.

@@ -1,0 +1,84 @@
+@prefix skos:     <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema:   <https://schema.org/> .
+@prefix wd:       <http://www.wikidata.org/entity/> .
+@prefix allergen: <https://sdsc-ordes.github.io/rdf-training/id/allergen/> .
+@prefix cuisine:  <https://sdsc-ordes.github.io/rdf-training/id/cuisine/> .
+@prefix course:   <https://sdsc-ordes.github.io/rdf-training/id/course/> .
+
+# Value lists for the recipe ontology, written as SKOS concept schemes.
+# Recipes and foods point to these concepts with rec:hasAllergen, rec:cuisine and rec:course.
+
+# --- Allergens: the 14 of EU Regulation 1169/2011, Annex II ---------------
+
+allergen:scheme a skos:ConceptScheme ;
+    skos:prefLabel "EU allergens"@en, "EU-Allergene"@de, "Allergènes UE"@fr, "Allergeni UE"@it .
+
+allergen:gluten a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Cereals containing gluten"@en, "Glutenhaltiges Getreide"@de, "Céréales contenant du gluten"@fr, "Cereali contenenti glutine"@it .
+allergen:crustaceans a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Crustaceans"@en, "Krebstiere"@de, "Crustacés"@fr, "Crostacei"@it .
+allergen:eggs a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Eggs"@en, "Eier"@de, "Œufs"@fr, "Uova"@it .
+allergen:fish a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Fish"@en, "Fisch"@de, "Poisson"@fr, "Pesce"@it .
+allergen:peanuts a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Peanuts"@en, "Erdnüsse"@de, "Arachides"@fr, "Arachidi"@it .
+allergen:soybeans a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Soybeans"@en, "Soja"@de, "Soja"@fr, "Soia"@it .
+allergen:milk a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Milk"@en, "Milch"@de, "Lait"@fr, "Latte"@it .
+allergen:nuts a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Nuts"@en, "Schalenfrüchte"@de, "Fruits à coque"@fr, "Frutta a guscio"@it .
+allergen:celery a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Celery"@en, "Sellerie"@de, "Céleri"@fr, "Sedano"@it .
+allergen:mustard a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Mustard"@en, "Senf"@de, "Moutarde"@fr, "Senape"@it .
+allergen:sesame a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Sesame seeds"@en, "Sesamsamen"@de, "Graines de sésame"@fr, "Semi di sesamo"@it .
+allergen:sulphites a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Sulphur dioxide and sulphites"@en, "Schwefeldioxid und Sulphite"@de, "Anhydride sulfureux et sulfites"@fr, "Anidride solforosa e solfiti"@it .
+allergen:lupin a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Lupin"@en, "Lupinen"@de, "Lupin"@fr, "Lupini"@it .
+allergen:molluscs a skos:Concept ; skos:inScheme allergen:scheme ; skos:topConceptOf allergen:scheme ;
+    skos:prefLabel "Molluscs"@en, "Weichtiere"@de, "Mollusques"@fr, "Molluschi"@it .
+
+# --- Cuisines ---------------------------------------------------------------
+
+cuisine:scheme a skos:ConceptScheme ; skos:prefLabel "Cuisines"@en, "Küchen"@de .
+
+cuisine:european a skos:Concept ; skos:inScheme cuisine:scheme ; skos:topConceptOf cuisine:scheme ;
+    skos:prefLabel "European"@en, "Europäisch"@de .
+cuisine:asian a skos:Concept ; skos:inScheme cuisine:scheme ; skos:topConceptOf cuisine:scheme ;
+    skos:prefLabel "Asian"@en, "Asiatisch"@de .
+cuisine:american a skos:Concept ; skos:inScheme cuisine:scheme ; skos:topConceptOf cuisine:scheme ;
+    skos:prefLabel "American"@en, "Amerikanisch"@de ; schema:countryOfOrigin wd:Q30 .
+
+cuisine:swiss a skos:Concept ; skos:inScheme cuisine:scheme ; skos:broader cuisine:european ;
+    skos:prefLabel "Swiss"@en, "Schweizerisch"@de ; schema:countryOfOrigin wd:Q39 .
+cuisine:italian a skos:Concept ; skos:inScheme cuisine:scheme ; skos:broader cuisine:european ;
+    skos:prefLabel "Italian"@en, "Italienisch"@de ; schema:countryOfOrigin wd:Q38 .
+cuisine:french a skos:Concept ; skos:inScheme cuisine:scheme ; skos:broader cuisine:european ;
+    skos:prefLabel "French"@en, "Französisch"@de ; schema:countryOfOrigin wd:Q142 .
+cuisine:thai a skos:Concept ; skos:inScheme cuisine:scheme ; skos:broader cuisine:asian ;
+    skos:prefLabel "Thai"@en, "Thailändisch"@de ; schema:countryOfOrigin wd:Q869 .
+cuisine:indian a skos:Concept ; skos:inScheme cuisine:scheme ; skos:broader cuisine:asian ;
+    skos:prefLabel "Indian"@en, "Indisch"@de ; schema:countryOfOrigin wd:Q668 .
+cuisine:japanese a skos:Concept ; skos:inScheme cuisine:scheme ; skos:broader cuisine:asian ;
+    skos:prefLabel "Japanese"@en, "Japanisch"@de ; schema:countryOfOrigin wd:Q17 .
+
+# Regional cuisines sit one level further down.
+cuisine:ticinese a skos:Concept ; skos:inScheme cuisine:scheme ; skos:broader cuisine:swiss ;
+    skos:prefLabel "Ticinese"@en, "Tessiner"@de ; schema:countryOfOrigin wd:Q39 .
+
+# --- Courses ----------------------------------------------------------------
+
+course:scheme a skos:ConceptScheme ; skos:prefLabel "Courses"@en, "Gänge"@de .
+
+course:starter a skos:Concept ; skos:inScheme course:scheme ; skos:topConceptOf course:scheme ;
+    skos:prefLabel "Starter"@en, "Vorspeise"@de .
+course:main a skos:Concept ; skos:inScheme course:scheme ; skos:topConceptOf course:scheme ;
+    skos:prefLabel "Main"@en, "Hauptgang"@de .
+course:side a skos:Concept ; skos:inScheme course:scheme ; skos:topConceptOf course:scheme ;
+    skos:prefLabel "Side"@en, "Beilage"@de .
+course:dessert a skos:Concept ; skos:inScheme course:scheme ; skos:topConceptOf course:scheme ;
+    skos:prefLabel "Dessert"@en, "Dessert"@de .

@@ -12,8 +12,8 @@
 @prefix course:   <https://sdsc-ordes.github.io/rdf-training/id/course/> .
 
 # Shapes for the recipe KG. SHACL Core only, so they run in browser validators.
-# Validate together with the vocabulary, concepts and foods: sh:class and the
-# diet rules follow rdfs:subClassOf triples that must be in the data graph.
+# Validate together with ontology.ttl, enumerations.ttl and the instance data: sh:class
+# and the diet rules follow rdfs:subClassOf triples that must be in the data graph.
 
 # --- Recipe ----------------------------------------------------------------
 
@@ -199,3 +199,28 @@ recsh:Food-exactMatch a sh:PropertyShape ;
 
 recsh:AllergenConcept a sh:NodeShape ;
     sh:property [ sh:path skos:inScheme ; sh:hasValue allergen:scheme ] .
+
+# --- Concepts in the value lists (enumerations.ttl) -------------------------
+
+recsh:ConceptShape a sh:NodeShape ;
+    sh:targetClass skos:Concept ;
+    sh:property recsh:Concept-prefLabel, recsh:Concept-inScheme, recsh:Concept-broader .
+
+recsh:Concept-prefLabel a sh:PropertyShape ;
+    sh:path skos:prefLabel ;
+    sh:minCount 1 ;
+    sh:datatype rdf:langString ;
+    sh:uniqueLang true ;
+    sh:message "Each concept needs a preferred label with a language tag, at most one per language."@en .
+
+recsh:Concept-inScheme a sh:PropertyShape ;
+    sh:path skos:inScheme ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:class skos:ConceptScheme ;
+    sh:message "Each concept belongs to exactly one concept scheme."@en .
+
+recsh:Concept-broader a sh:PropertyShape ;
+    sh:path skos:broader ;
+    sh:class skos:Concept ;
+    sh:message "A broader concept must itself be a concept."@en .

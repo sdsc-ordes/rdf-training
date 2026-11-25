@@ -13,16 +13,25 @@ HANDS_ON = SRC / "hands-on"
 SLIDES = SRC / "slides"
 SITE = SRC / "site"
 PREFIXES = DATA / "prefixes.ttl"
-SHAPES = DATA / "shapes" / "recipes.shapes.ttl"
 
-# What attendees paste next to their own recipes: vocabulary, concepts, foods, people.
+# The ontology in three modules: classes and properties, SKOS value lists, SHACL Core shapes.
+ONTOLOGY = DATA / "ontology" / "ontology.ttl"
+ENUMERATIONS = DATA / "ontology" / "enumerations.ttl"
+SHAPES = DATA / "ontology" / "shapes.ttl"
+# Examples beyond SHACL Core (SHACL-SPARQL, SHACL rules).
+ADVANCED = DATA / "advanced"
+
+GOLDEN = DATA / "golden"
+# What attendees paste next to their own recipes: ontology, value lists and reference instance data.
 CONTEXT = [
-    *sorted((DATA / "vocab").glob("*.ttl")),
-    *sorted((DATA / "concepts").glob("*.ttl")),
-    DATA / "golden" / "foods.ttl",
-    DATA / "golden" / "people.ttl",
+    ONTOLOGY,
+    ENUMERATIONS,
+    GOLDEN / "countries.ttl",
+    GOLDEN / "units.ttl",
+    GOLDEN / "foods.ttl",
+    GOLDEN / "people.ttl",
 ]
-RECIPES = DATA / "golden" / "recipes.ttl"
+RECIPES = GOLDEN / "recipes.ttl"
 
 
 def load(*paths: Path | str) -> Graph:

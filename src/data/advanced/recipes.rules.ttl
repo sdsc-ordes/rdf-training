@@ -9,11 +9,8 @@
 # Infers the same types as the OWL definition
 #   rec:CheeseDish owl:equivalentClass [ a owl:Restriction ;
 #       owl:onProperty rec:hasIngredient ; owl:someValuesFrom rec:Cheese ] .
+# rec:CheeseDish is declared in ontology/ontology.ttl.
 # Run with pySHACL: shacl_rules(data, shacl_graph=rules, advanced=True, iterate_rules=True)
-
-rec:CheeseDish a rdfs:Class ; rdfs:label "cheese dish"@en ;
-    rdfs:comment "Only used by the SHACL rules example."@en ;
-    rdfs:subClassOf schema:Recipe .
 
 # #region cheeseDishRule
 recsh:CheeseDishRule a sh:NodeShape ;

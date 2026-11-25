@@ -1,0 +1,19 @@
+# q14 · How many recipes does each cuisine have, counting its narrower cuisines?
+PREFIX skos:    <http://www.w3.org/2004/02/skos/core#>
+PREFIX schema:  <https://schema.org/>
+PREFIX rec:     <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#>
+PREFIX cuisine: <https://sdsc-ordes.github.io/rdf-training/id/cuisine/>
+
+# A recipe counts for its own cuisine and every broader one: Rösti counts for Swiss and European.
+SELECT ?cuisine ?broader (COUNT(DISTINCT ?recipe) AS ?recipes) WHERE {
+  ?c skos:inScheme cuisine:scheme ;
+     skos:prefLabel ?cuisine .
+  FILTER(lang(?cuisine) = "en")
+  OPTIONAL {
+    ?c skos:broader/skos:prefLabel ?broader .
+    FILTER(lang(?broader) = "en")
+  }
+  OPTIONAL { ?recipe a schema:Recipe ; rec:cuisine/skos:broader* ?c }
+}
+GROUP BY ?cuisine ?broader
+ORDER BY DESC(?recipes) ?cuisine

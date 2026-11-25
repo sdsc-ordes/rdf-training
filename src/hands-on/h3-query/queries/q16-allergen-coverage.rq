@@ -1,0 +1,18 @@
+# q16 · How many recipes contain each EU allergen, including the allergens no recipe contains?
+PREFIX skos:     <http://www.w3.org/2004/02/skos/core#>
+PREFIX schema:   <https://schema.org/>
+PREFIX rec:      <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#>
+PREFIX allergen: <https://sdsc-ordes.github.io/rdf-training/id/allergen/>
+
+# The query starts from the concept scheme, so all 14 allergens appear, also those with 0 recipes.
+SELECT ?allergen (COUNT(DISTINCT ?recipe) AS ?recipes) WHERE {
+  ?a skos:inScheme allergen:scheme ;
+     skos:prefLabel ?allergen .
+  FILTER(lang(?allergen) = "en")
+  OPTIONAL {
+    ?recipe a schema:Recipe ;
+            rec:hasIngredient/rec:containsIngredient*/rec:hasAllergen ?a .
+  }
+}
+GROUP BY ?allergen
+ORDER BY DESC(?recipes) ?allergen

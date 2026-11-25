@@ -13,6 +13,9 @@ food:tomato a rec:Vegetable ; rdfs:label "tomato"@en .
 food:romaine-lettuce a rec:Vegetable ; rdfs:label "romaine lettuce"@en .
 food:bean-sprouts a rec:Vegetable ; rdfs:label "bean sprouts"@en .
 food:spring-onion a rec:Vegetable ; rdfs:label "spring onion"@en .
+food:carrot a rec:Vegetable ; rdfs:label "carrot"@en .
+food:celery a rec:Vegetable ; rdfs:label "celery"@en ; rec:hasAllergen allergen:celery .
+food:kombu a rec:Vegetable ; rdfs:label "kombu"@en ; rec:grownIn wd:Q17 .
 
 food:fuji-apple a rec:Fruit ; rdfs:label "Fuji apple"@en ; rec:grownIn wd:Q29, wd:Q142, wd:Q17 .
 food:lemon a rec:Fruit ; rdfs:label "lemon"@en ; rec:grownIn wd:Q29, wd:Q38 .
@@ -24,24 +27,29 @@ food:wheat-flour a rec:Grain ; rdfs:label "wheat flour"@en ; rec:hasAllergen all
 food:durum-wheat a rec:Grain ; rdfs:label "durum wheat"@en ; rec:hasAllergen allergen:gluten .
 food:rice a rec:Grain ; rdfs:label "rice"@en ; rec:grownIn wd:Q869, wd:Q668 .
 food:cornstarch a rec:Grain ; rdfs:label "cornstarch"@en .
+food:polenta a rec:Grain ; rdfs:label "polenta"@en .
 
 food:chickpea a rec:Legume ; rdfs:label "chickpea"@en ; rec:grownIn wd:Q668 .
 food:peanut a rec:Legume ; rdfs:label "peanut"@en ; rec:hasAllergen allergen:peanuts .
 food:soybean a rec:Legume ; rdfs:label "soybean"@en ; rec:hasAllergen allergen:soybeans .
+food:azuki-bean a rec:Legume ; rdfs:label "azuki bean"@en ; rec:grownIn wd:Q17 .
 food:pine-nut a rec:NutOrSeed ; rdfs:label "pine nut"@en .
 
 food:basil a rec:HerbOrSpice ; rdfs:label "basil"@en .
 food:ginger a rec:HerbOrSpice ; rdfs:label "ginger"@en ; rec:grownIn wd:Q668 .
 food:garam-masala a rec:HerbOrSpice ; rdfs:label "garam masala"@en .
 food:black-pepper a rec:HerbOrSpice ; rdfs:label "black pepper"@en ; rec:grownIn wd:Q668 .
+food:nutmeg a rec:HerbOrSpice ; rdfs:label "nutmeg"@en .
 
 food:olive-oil a rec:Oil ; rdfs:label "olive oil"@en ; rec:grownIn wd:Q29, wd:Q38 .
 food:sunflower-oil a rec:Oil ; rdfs:label "sunflower oil"@en .
 food:salt a rec:Seasoning ; rdfs:label "salt"@en .
 food:vinegar a rec:Seasoning ; rdfs:label "vinegar"@en .
 food:sugar a rec:Sweetener ; rdfs:label "sugar"@en .
+food:honey a rec:Honey ; rdfs:label "honey"@en .
 food:white-wine a rec:Beverage ; rdfs:label "white wine"@en ; rec:hasAllergen allergen:sulphites .
 food:kirsch a rec:Beverage ; rdfs:label "kirsch"@en .
+food:red-wine a rec:Beverage ; rdfs:label "red wine"@en ; rec:hasAllergen allergen:sulphites .
 
 food:butter a rec:DairyProduct ; rdfs:label "butter"@en ; rec:hasAllergen allergen:milk .
 food:vacherin-fribourgeois a rec:Cheese ; rdfs:label "Vacherin Fribourgeois"@en ; rec:hasAllergen allergen:milk .
@@ -50,6 +58,10 @@ food:gruyere a rec:HardCheese ; rdfs:label "Gruyère"@en ; rec:hasAllergen aller
 food:parmesan a rec:HardCheese ; rdfs:label "Parmesan"@en ; rec:hasAllergen allergen:milk .
 food:egg a rec:Egg ; rdfs:label "egg"@en ; rec:hasAllergen allergen:eggs .
 food:anchovy a rec:FishOrSeafood ; rdfs:label "anchovy"@en ; rec:hasAllergen allergen:fish .
+food:bonito-flakes a rec:FishOrSeafood ; rdfs:label "bonito flakes"@en ; rec:hasAllergen allergen:fish .
+food:beef a rec:Meat ; rdfs:label "beef"@en .
+food:bacon a rec:Meat ; rdfs:label "bacon"@en .
+food:creme-fraiche a rec:DairyProduct ; rdfs:label "crème fraîche"@en ; rec:hasAllergen allergen:milk .
 
 # Products: what they contain is only stated here, not in the recipes
 
@@ -76,3 +88,14 @@ food:spaghetti a rec:Product ; rdfs:label "spaghetti"@en ;
 food:tofu a rec:Product ; rdfs:label "tofu"@en ;
     rec:containsIngredient food:soybean ;
     rec:hasAllergen allergen:soybeans .
+food:shortcrust-pastry a rec:Product ; rdfs:label "shortcrust pastry"@en ;
+    rec:containsIngredient food:wheat-flour, food:butter, food:salt ;
+    rec:hasAllergen allergen:gluten, allergen:milk .
+food:dashi a rec:Product ; rdfs:label "dashi"@en ;
+    rec:containsIngredient food:kombu, food:bonito-flakes ;
+    rec:hasAllergen allergen:fish .
+food:miso a rec:Product ; rdfs:label "miso"@en ;
+    rec:containsIngredient food:soybean, food:rice, food:salt ;
+    rec:hasAllergen allergen:soybeans .
+food:red-bean-paste a rec:Product ; rdfs:label "red bean paste"@en ;
+    rec:containsIngredient food:azuki-bean, food:sugar .

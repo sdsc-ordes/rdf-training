@@ -1,0 +1,10 @@
+?class	?parent	?definition
+"Dairy product"@en	"Animal product"@en	"A food made from milk, such as butter, crème fraîche or cheese."@en
+"Egg"@en	"Animal product"@en	"A bird's egg used as food."@en
+"Honey"@en	"Animal product"@en	"A sweet substance made by bees from nectar; both an animal product and a sweetener."@en
+"Meat or fish"@en	"Animal product"@en	"The flesh of an animal, from land or water."@en
+"Hard cheese"@en	"Cheese"@en	"A cheese pressed and aged until firm, such as Gruyère or Parmesan."@en
+"Cheese"@en	"Dairy product"@en	"A dairy product made by curdling milk and separating the curds from the whey."@en
+"Fish or seafood"@en	"Meat or fish"@en	"Fish, shellfish or other animals from water, such as anchovy or bonito."@en
+"Meat"@en	"Meat or fish"@en	"The flesh of a land animal, such as beef, chicken or bacon."@en
+"Honey"@en	"Sweetener"@en	"A sweet substance made by bees from nectar; both an animal product and a sweetener."@en

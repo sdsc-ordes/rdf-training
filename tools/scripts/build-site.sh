@@ -8,9 +8,10 @@ npx vitepress build src/site
 
 files=_site/files
 mkdir -p "$files"
-cat src/data/vocab/*.ttl src/data/concepts/*.ttl src/data/golden/foods.ttl src/data/golden/people.ttl > "$files/context.ttl"
+cat src/data/ontology/ontology.ttl src/data/ontology/enumerations.ttl \
+  src/data/golden/{countries,units,foods,people}.ttl > "$files/context.ttl"
 cat "$files/context.ttl" src/data/golden/recipes.ttl > "$files/kg.ttl"
-cp src/data/shapes/*.ttl "$files/"
+cp src/data/ontology/*.ttl src/data/advanced/*.ttl "$files/"
 
 for deck in src/slides/*.md; do
   name=$(basename "$deck" .md)

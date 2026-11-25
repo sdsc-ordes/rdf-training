@@ -9,6 +9,7 @@ minutes: 25
 3. **Paths:** q05 hidden dairy, q06 grown in Spain
 4. **Negation:** q09 vegetarian and gluten-free (predict first!)
 5. **Counting:** q07 and q08 · **Bonus:** q10 ASK, q11 Wikidata
+6. **Value lists and classes:** q12–q16 SKOS lists, q17–q19 class hierarchy
 
 <div class="exercise-meta">
   <span><b>Pairs · 25 min</b> · <b>RETE</b> (link to follow): one HTML file with the recipe data and a SPARQL endpoint<br />Non-coders: change the filters. Coders: write each query yourself before opening ours.</span>

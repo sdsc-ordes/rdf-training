@@ -6,3 +6,4 @@
 person:anna-keller a schema:Person ; schema:name "Anna Keller" .
 person:luca-bernasconi a schema:Person ; schema:name "Luca Bernasconi" .
 person:chloe-dubois a schema:Person ; schema:name "Chloé Dubois" .
+person:hana-mori a schema:Person ; schema:name "Hana Mori" .

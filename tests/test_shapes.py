@@ -22,14 +22,14 @@ def test_golden_data_has_no_results(inference):
 
 
 def test_golden_data_passes_sparql_shapes():
-    shapes = rdf.load(rdf.DATA / "shapes" / "recipes.shapes-sparql.ttl")
+    shapes = rdf.load(rdf.ADVANCED / "recipes.shapes-sparql.ttl")
     conforms, results = shacl.validate(rdf.kg(), shapes=shapes, advanced=True)
     assert conforms, results
 
 
 def test_cheese_dish_rule_matches_query():
     rec = Namespace("https://sdsc-ordes.github.io/rdf-training/vocab/recipes#")
-    out = shacl.infer(rdf.kg(), rdf.load(rdf.DATA / "shapes" / "recipes.rules.ttl"))
+    out = shacl.infer(rdf.kg(), rdf.load(rdf.ADVANCED / "recipes.rules.ttl"))
     query = "SELECT ?r WHERE { ?r a schema:Recipe ; rec:hasIngredient/a/rdfs:subClassOf* rec:Cheese }"
     expected = {row.r for row in rdf.kg().query(query)}
     assert len(expected) == 2 and set(out.subjects(RDF.type, rec.CheeseDish)) == expected
@@ -54,7 +54,7 @@ def test_usages_match_ingredients():
     assert not rdf.kg().query(ask).askAnswer
 
 
-@pytest.mark.parametrize("path", sorted((rdf.DATA / "shapes").glob("*.ttl")), ids=lambda p: p.name)
+@pytest.mark.parametrize("path", [rdf.SHAPES, *sorted(rdf.ADVANCED.glob("*.ttl"))], ids=lambda p: p.name)
 def test_shapes_pass_shacl_shacl(path):
     conforms, _, text = meta_validate(rdf.load(path))
     assert conforms, text
