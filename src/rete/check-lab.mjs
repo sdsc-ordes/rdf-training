@@ -38,9 +38,14 @@ const shot = async (name) => {
 }
 const status = (id) => page.locator(`#${id}`).innerText()
 const settled = (id, kind) => page.waitForFunction(([i, k]) => document.getElementById(i).classList.contains(k), [id, kind], { timeout: 10000 })
+// Query KG and Validate KG run only when asked: the Run and Validate buttons, or Ctrl+Enter in the editor.
+const pill = (id) => page.locator(`#${id} .pill`).innerText()
+const notRun = (id) => page.waitForFunction((i) => document.querySelector(`#${i} .pill`).textContent === 'not run', id, { timeout: 10000 })
+const runQuery = async (kind = 'ok') => { await page.locator('#q-run').click(); await settled('q-status', kind) }
+const graphLoaded = () => page.waitForFunction(() => document.querySelectorAll('#datasets li').length === 1, null, { timeout: 10000 })
 
 await page.goto(pathToFileURL(join(root, 'docs/index.html')).href)
-await settled('q-status', 'ok')
+await graphLoaded()
 check((await page.locator('#datasets li').count()) === 1, 'built-in recipe graph opens from the page itself')
 check(await page.locator('#home').isVisible() && !(await page.locator('#q').isVisible()) && !(await page.locator('.side').isVisible()), 'the page opens on Welcome, without the sidebar')
 check((await page.locator('#home a[href="https://github.com/caviri/rete"]').count()) >= 1 && (await page.locator('#ver2').innerText()) !== '', 'Welcome names the rete engine, its version and its repository')
@@ -50,13 +55,14 @@ check(await page.locator('#d').isVisible() && await page.locator('.side').isVisi
 await page.locator('#mode-home').click()
 await page.locator('#go-query').click()
 check(await page.locator('#q').isVisible() && !(await page.locator('#home').isVisible()), 'and to Query KG')
+check((await pill('q-status')) === 'not run' && (await page.locator('#out .empty').innerText()).includes('Press Run'), 'Query KG runs nothing until Run is pressed')
 
 // --- worksheet queries ------------------------------------------------------
 for (const file of readdirSync(expectedDir).sort()) {
   const id = file.slice(0, 3)
   const tsv = readFileSync(join(expectedDir, file), 'utf8').trim().split('\n')
   await page.locator(`#examples button[data-id=${id}]`).click()
-  await settled('q-status', 'ok')
+  await runQuery()
   const text = await status('q-status')
   if (tsv[0] === 'ASK' || /^(true|false)$/.test(tsv[tsv.length - 1])) {
     const want = tsv[tsv.length - 1]
@@ -70,33 +76,37 @@ for (const file of readdirSync(expectedDir).sort()) {
 // --- views ------------------------------------------------------------------
 await page.locator('#examples button[data-id=q04]').click()
 await page.locator('#views [data-view=table]').click()
-await settled('q-status', 'ok')
+await runQuery()
 await shot('lab-table')
 
+const answer = await page.locator('#out').innerText()
 await page.locator('#q').fill(`${await page.locator('#q').inputValue()}\n}`)
-await settled('q-status', 'err')
-check((await status('q-status')).includes('not valid'), 'a broken query is reported while typing')
+check((await pill('q-status')) === 'not run' && (await page.locator('#out').innerText()) === answer && await page.locator('#out.stale').count() === 1, 'typing does not run the query: the last answer stays, dimmed')
+await runQuery('err')
+check((await status('q-status')).includes('not valid'), 'a broken query is reported when it is run')
 check(await page.locator('#out.stale').count() === 1, 'the last good result stays on screen, dimmed')
 await shot('lab-error')
 
 await page.locator('#examples button[data-id=q07]').click()
+check((await pill('q-status')) === 'not run' && (await page.locator('#q').inputValue()).includes('q07'), 'picking an example loads it without running it')
 await page.locator('#views [data-view=cards]').click()
-await settled('q-status', 'ok')
+await runQuery()
 check((await page.locator('#out .card').count()) > 0, 'cards view shows one card per row')
 await shot('lab-cards')
 
 await page.locator('#examples button[data-id=q20]').click()
-await settled('q-status', 'ok')
+await runQuery()
 check((await page.locator('#out svg circle').count()) === 6, 'map view places the six countries')
 await shot('lab-map')
 await page.locator('#examples button[data-id=q01]').click()
+await runQuery()
 await page.locator('#views [data-view=map]').click()
 check((await page.locator('#out .empty').innerText()).includes('?lat'), 'map view explains what it needs when there are no coordinates')
 await page.locator('#views [data-view=table]').click()
 
 // --- editor: colours, line numbers, collapsible examples ---------------------
 await page.locator('#examples button[data-id=q04]').click()
-await settled('q-status', 'ok')
+await runQuery()
 const lines = (await page.locator('#q').inputValue()).split('\n').length
 check((await page.locator('#q-ed .gutter div').count()) === lines, `the query editor numbers its ${lines} lines`)
 const kinds = await page.locator('#q-ed pre').evaluate((pre) => [...new Set([...pre.querySelectorAll('span')].map((s) => s.className))].join(' '))
@@ -106,8 +116,9 @@ const box = (sel) => page.locator(sel).evaluate((e) => { const r = document.crea
 const first = await box('#q-ed pre'), caret = await page.locator('#q').evaluate((ta) => { const b = ta.getBoundingClientRect(), c = getComputedStyle(ta); return [Math.round(b.left + parseFloat(c.paddingLeft)), Math.round(b.top + parseFloat(c.paddingTop))] })
 check(Math.abs(first[0] - caret[0]) <= 1 && Math.abs(first[1] - caret[1]) <= 3, 'the coloured text sits exactly under the caret', `${first} vs ${caret}`)
 await page.locator('#q').fill(`${await page.locator('#q').inputValue()}\n}`)
+await page.locator('#q').press('Control+Enter')
 await settled('q-status', 'err')
-check((await page.locator('#q-ed .gutter .bad').count()) === 1, 'the line of a parse error is marked in the gutter')
+check((await page.locator('#q-ed .gutter .bad').count()) === 1, 'Ctrl+Enter runs the query, and the line of a parse error is marked in the gutter')
 await page.locator('#ex-box summary').click()
 check(!(await page.locator('#examples').isVisible()), 'the example queries collapse')
 await page.locator('#ex-box summary').click()
@@ -229,6 +240,7 @@ SELECT ?name ?ingredient WHERE {
   recipe:tomato-salad schema:name ?name ; rec:hasIngredient/rdfs:label ?ingredient .
   FILTER(lang(?ingredient) = "en")
 }`)
+await runQuery()
 await page.waitForFunction(() => document.querySelectorAll('#out tbody tr').length === 4, null, { timeout: 10000 }).catch(() => {})
 check((await page.locator('#out tbody tr').count()) === 4, 'the written recipe joins the course graph: 4 labelled ingredients', await status('q-status'))
 
@@ -263,12 +275,16 @@ check((await page.locator('#d').inputValue()) === '' && await page.locator('#d-q
 
 // --- Validate KG: SHACL shapes against a graph ------------------------------------
 await page.locator('#mode-validate').click()
+check((await pill('s-status')) === 'not run' && (await page.locator('#out .empty').innerText()).includes('Press Validate'), 'Validate KG checks nothing until Validate is pressed')
+await page.locator('#s-run').click()
 await settled('s-status', 'ok')
 check(await page.locator('#side-validate').isVisible() && (await page.locator('#out .verdict').innerText()).includes('Conforms'), 'Validate KG: the recipe graph conforms to the course shapes', await status('s-status'))
 check((await page.locator('#s-ed pre .t-kw').count()) > 5 && (await page.locator('#s-ed .gutter div').count()) === (await page.locator('#s').inputValue()).split('\n').length, 'the shapes editor has colours and line numbers')
 for (const bug of await page.locator('#buggy button').all()) {
   const id = await bug.getAttribute('data-id'), want = Number(/: (\d+) expected/.exec(await bug.getAttribute('title'))[1])
   await bug.click()
+  await notRun('s-status')
+  await page.locator('#s-run').click()
   await page.waitForFunction((i) => document.getElementById('on-label').textContent.includes(`report on ${i} `), id)
   const got = await page.locator('#out tbody tr').count()
   check(got === want, `${id} gives the ${want} expected SHACL result${want === 1 ? '' : 's'}`, `got ${got}: ${await status('s-status')}`)
@@ -316,10 +332,13 @@ const report = JSON.parse(readFileSync(await reportFile.path(), 'utf8'))
 check(report.conforms === false && report.results.length === 9, 'the report downloads as JSON')
 const shapes = await page.locator('#s').inputValue()
 await page.locator('#s').fill(`${shapes}\nrecsh:Broken a sh:NodeShape ; sh:targetClass`)
+check((await pill('s-status')) === 'not run' && await page.locator('#out.stale').count() === 1, 'typing does not validate: the last report stays, dimmed')
+await page.locator('#s').press('Control+Enter')
 await settled('s-status', 'err')
 await page.waitForFunction(() => document.querySelector('#s-status .pill').textContent.includes('shapes not valid'))
 check((await page.locator('#s-ed .gutter .bad').count()) === 1 && await page.locator('#out.stale').count() === 1, 'shapes that do not parse are reported with their line')
 await page.locator('#s-minimal').click()
+await page.locator('#s-run').click()
 await page.waitForFunction(() => /result|conforms/.test(document.querySelector('#s-status .pill').textContent))
 check((await page.locator('#s').inputValue()).includes('ex:RecipeShape') && (await page.locator('#out tbody tr').count()) > 0, 'a small example shape finds the missing fields of the broken file', await status('s-status'))
 
@@ -332,8 +351,10 @@ check((await page.locator('#datasets li.on small').innerText()).includes('URL'),
 
 await page.goto('about:blank')
 await page.goto(`${pathToFileURL(join(root, 'docs/index.html')).href}#view=cards&q=${encodeURIComponent('ASK { ?s ?p ?o }')}`)
-await settled('q-status', 'ok')
-check((await page.locator('#out .bool').innerText()) === 'true', 'a link restores the query')
+await graphLoaded()
+check((await page.locator('#q').inputValue()) === 'ASK { ?s ?p ?o }' && (await pill('q-status')) === 'not run', 'a link restores the query without running it')
+await runQuery()
+check((await page.locator('#out .bool').innerText()) === 'true', 'and Run answers it')
 
 await page.locator('#mode-guide').click()
 check(await page.locator('#guide').isVisible() && !(await page.locator('.side').isVisible()) && (await page.locator('#guide h3').count()) === 5 && (await page.locator('#guide #ai').count()) === 1, 'the Guide tab holds the five exercises and the AI disclosure, in the same file')
