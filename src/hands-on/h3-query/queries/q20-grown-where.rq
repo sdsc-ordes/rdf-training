@@ -1,0 +1,16 @@
+# q20 · Where do the ingredients grow? (draw it on a map)
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX rec:  <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#>
+
+# #region query
+SELECT ?country ?lat ?long (COUNT(DISTINCT ?food) AS ?foods) WHERE {
+  ?food rec:grownIn ?c .
+  ?c rdfs:label ?country ;
+     geo:lat ?lat ;
+     geo:long ?long .
+  FILTER(lang(?country) = "en")
+}
+GROUP BY ?country ?lat ?long
+ORDER BY DESC(?foods) ?country
+# #endregion query

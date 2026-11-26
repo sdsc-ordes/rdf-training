@@ -125,3 +125,9 @@ These queries use the SKOS value lists (`enumerations.ttl`) and the class hierar
 <a :href="data.q19" target="_blank" rel="noopener">Run ↗</a>
 
 <<< @/../hands-on/h3-query/queries/q19-hidden-animal-products.rq{sparql}
+
+## q20 · Where the ingredients grow
+
+<a :href="data.q20" target="_blank" rel="noopener">Run ↗</a>
+
+<<< @/../hands-on/h3-query/queries/q20-grown-where.rq{sparql}

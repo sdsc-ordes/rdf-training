@@ -59,12 +59,14 @@ for (const f of [...context, recipes]) store.addQuads(new Parser({ baseIRI: 'fil
 const engine = new QueryEngine()
 
 const XSD_INTEGER = 'http://www.w3.org/2001/XMLSchema#integer'
+const XSD_DECIMAL = 'http://www.w3.org/2001/XMLSchema#decimal'
 const XSD_STRING = 'http://www.w3.org/2001/XMLSchema#string'
 const term = (t) => {
   if (!t) return ''
   if (t.termType === 'NamedNode') return `<${t.value}>`
   if (t.termType === 'BlankNode') return `_:${t.value}`
   if (t.datatype?.value === XSD_INTEGER && /^-?\d+$/.test(t.value)) return t.value
+  if (t.datatype?.value === XSD_DECIMAL && /^-?\d+\.\d+$/.test(t.value)) return t.value
   const v = `"${t.value.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, '\\n').replace(/\t/g, '\\t')}"`
   if (t.language) return `${v}@${t.language}`
   return t.datatype?.value === XSD_STRING ? v : `${v}^^<${t.datatype.value}>`

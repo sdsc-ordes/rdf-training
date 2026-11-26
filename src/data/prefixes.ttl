@@ -10,6 +10,7 @@
 @prefix unit:     <http://qudt.org/vocab/unit/> .
 @prefix wd:       <http://www.wikidata.org/entity/> .
 @prefix wdt:      <http://www.wikidata.org/prop/direct/> .
+@prefix geo:      <http://www.w3.org/2003/01/geo/wgs84_pos#> .
 @prefix rec:      <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#> .
 @prefix recsh:    <https://sdsc-ordes.github.io/rdf-training/vocab/recipes-shapes#> .
 @prefix recipe:   <https://sdsc-ordes.github.io/rdf-training/id/recipe/> .
