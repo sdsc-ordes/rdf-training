@@ -26,6 +26,8 @@
 * { box-sizing: border-box; }
 html, body { height: 100%; margin: 0; }
 body { font: 14px/1.45 var(--sans); color: var(--text); background: var(--bg); }
+/* beginners' view: what the exercises need; All options shows the rest */
+.simple .adv { display: none !important; }
 button, input, select, textarea { font: inherit; color: inherit; }
 button { cursor: pointer; }
 :focus-visible { outline: 2px solid var(--primary-soft); outline-offset: 1px; }
@@ -54,8 +56,8 @@ button { cursor: pointer; }
 .top nav button { background: none; border: 0; border-bottom: 3px solid transparent; border-top: 3px solid transparent; color: #C2C5E0; padding: 0 14px; font-weight: 600; }
 .top nav button:hover { color: #fff; }
 .top nav button[aria-current=page] { color: #fff; border-bottom-color: #90CA42; }
-.top .meta { margin-left: auto; color: #C2C5E0; font-size: 12px; }
-.top .meta a { color: #fff; }
+.top .opts { margin-left: auto; display: flex; align-items: center; gap: 6px; color: #C2C5E0; font-size: 12.5px; white-space: nowrap; cursor: pointer; }
+.top .opts:hover { color: #fff; }
 .pane { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
 .pane + .pane { border-left: 1px solid var(--border); }
 
@@ -313,7 +315,6 @@ a.iri:hover { text-decoration: underline; }
 
 @media (max-width: 900px) {
   .app { grid-template-columns: 1fr; grid-template-rows: none; height: auto; }
-  .top .meta { display: none; }
   .pane + .pane { border-left: 0; border-top: 1px solid var(--border); }
   .pane.side, .pane.edit, .pane.res, .pane.home { grid-column: 1; grid-row: auto; }
   .split { display: none; }
@@ -322,7 +323,7 @@ a.iri:hover { text-decoration: underline; }
 }
 </style>
 </head>
-<body>
+<body class="simple">
 <div class="app">
 
   <header class="top">
@@ -335,25 +336,25 @@ a.iri:hover { text-decoration: underline; }
       <button id="mode-query" type="button">Query KG</button>
       <button id="mode-guide" type="button">Guide</button>
     </nav>
-    <span class="meta">RDF, SHACL and SPARQL over <code>.rete</code> files, in this page</span>
+    <label class="opts" title="Show the tools beginners rarely need: other graphs, downloads, the dataset card, CSV and links"><input type="checkbox" id="all-opts"> All options</label>
   </header>
 
   <aside class="pane side" aria-label="Datasets and examples" hidden>
 
     <div id="side-create" hidden>
-      <h2>Your graph</h2>
-      <div class="mine"><b id="my-name">My graph</b><small id="my-meta">Not built yet.</small></div>
+      <h2 class="adv">Your graph</h2>
+      <div class="mine adv"><b id="my-name">My graph</b><small id="my-meta">Not built yet.</small></div>
 
       <h2>Start from</h2>
       <div class="acts">
         <button class="btn" id="d-new" type="button">New empty graph</button>
         <button class="btn" id="d-example-ttl" type="button" title="Replace the text with a recipe in Turtle">Turtle example</button>
-        <button class="btn" id="d-example" type="button" title="Replace the text with the same recipe in JSON-LD">JSON-LD example</button>
-        <button class="btn" id="d-open" type="button" title="Load a .ttl or .jsonld file into the editor">Open file…</button>
+        <button class="btn adv" id="d-example" type="button" title="Replace the text with the same recipe in JSON-LD">JSON-LD example</button>
+        <button class="btn adv" id="d-open" type="button" title="Load a .ttl or .jsonld file into the editor">Open file…</button>
       </div>
 
-      <h2>Describe it</h2>
-      <div class="acts">
+      <h2 class="adv">Describe it</h2>
+      <div class="acts adv">
         <button class="btn" id="d-card" type="button">Dataset card…</button>
         <small id="card-meta" class="wide">No card yet.</small>
       </div>
@@ -364,10 +365,10 @@ a.iri:hover { text-decoration: underline; }
       <h2>Use it</h2>
       <div class="acts">
         <button class="btn primary wide" id="d-query" type="button" disabled>Query this graph →</button>
-        <small class="wide">Download</small>
-        <button class="btn" id="d-download" type="button" disabled title="Download the graph as a .rete file, with its card">.rete</button>
-        <button class="btn" id="d-ttl" type="button" disabled title="Download the graph as Turtle">Turtle</button>
-        <button class="btn" id="d-jsonld" type="button" disabled title="Download the graph as JSON-LD">JSON-LD</button>
+        <small class="wide adv">Download</small>
+        <button class="btn adv" id="d-download" type="button" disabled title="Download the graph as a .rete file, with its card">.rete</button>
+        <button class="btn adv" id="d-ttl" type="button" disabled title="Download the graph as Turtle">Turtle</button>
+        <button class="btn adv" id="d-jsonld" type="button" disabled title="Download the graph as JSON-LD">JSON-LD</button>
       </div>
     </div>
 
@@ -379,8 +380,8 @@ a.iri:hover { text-decoration: underline; }
       <div class="acts">
         <button class="btn" id="s-course" type="button" title="The SHACL shapes of the course">Course shapes</button>
         <button class="btn" id="s-minimal" type="button" title="One short shape to start from">Small example</button>
-        <button class="btn" id="s-open" type="button" title="Load a Turtle file of shapes into the editor">Open file…</button>
-        <button class="btn" id="s-download" type="button">Download shapes</button>
+        <button class="btn adv" id="s-open" type="button" title="Load a Turtle file of shapes into the editor">Open file…</button>
+        <button class="btn adv" id="s-download" type="button">Download shapes</button>
         <input type="file" id="s-file" accept=".ttl,.shacl,.txt" hidden>
       </div>
 
@@ -394,8 +395,8 @@ a.iri:hover { text-decoration: underline; }
     <h2>Graphs in memory</h2>
     <ul class="ds" id="datasets"></ul>
 
-    <h2>Add a graph</h2>
-    <div class="add">
+    <h2 class="adv">Add a graph</h2>
+    <div class="add adv">
       <form class="row" id="url-form">
         <input type="url" id="url" placeholder="https://…/graph.rete" aria-label="URL of a .rete file" required>
         <button class="btn">Open</button>
@@ -421,56 +422,46 @@ a.iri:hover { text-decoration: underline; }
   <section class="pane home" id="home" aria-label="Welcome">
     <div class="home-in">
       <h1>Knowledge Graphs playground</h1>
-      <p class="lead">Write RDF, turn it into a graph and ask it questions with SPARQL. Everything runs in this page: nothing to install, nothing sent to a server, and it works offline.</p>
+      <p class="lead">Write RDF, check it with SHACL and ask it questions with SPARQL. Everything runs in this page; nothing is sent to a server.</p>
       <div class="modes">
         <article>
           <h2>Create KG</h2>
-          <p>Write triples in <b>Turtle</b> or <b>JSON-LD</b>. The text is checked as you type and its triples are listed next to it.</p>
-          <ul>
-            <li>Combine your data with the course's recipe graph.</li>
-            <li>Keep the result in memory as a <code>.rete</code> file, query it or download it.</li>
-          </ul>
+          <p>Write a recipe in <b>Turtle</b> and see it drawn as a graph.</p>
           <button class="go" id="go-create" type="button">Create a graph →</button>
         </article>
         <article>
           <h2>Validate KG</h2>
-          <p>Write <b>SHACL</b> shapes and check a graph against them. Press <b>Validate</b> for the report: which node breaks which rule, and why.</p>
-          <ul>
-            <li>Start from the shapes of the course.</li>
-            <li>Try them on data that is broken on purpose.</li>
-            <li>Validate the graph you created.</li>
-          </ul>
+          <p>Check a graph against <b>SHACL</b> shapes and see which rules it breaks.</p>
           <button class="go" id="go-validate" type="button">Validate a graph →</button>
         </article>
         <article>
           <h2>Query KG</h2>
-          <p>Write <b>SPARQL</b> against a graph in memory. Press <b>Run</b> for the answer; a query that does not parse is reported with its line.</p>
-          <ul>
-            <li>Start from the worksheet queries in the sidebar.</li>
-            <li>Read the answer as a table, as cards or on a map.</li>
-            <li>Open any <code>.rete</code> file by URL or from disk.</li>
-          </ul>
+          <p>Ask the recipe graph questions in <b>SPARQL</b>, starting from the worksheet queries.</p>
           <button class="go" id="go-query" type="button">Query the recipe graph →</button>
         </article>
       </div>
+      <div class="adv">
       <h2>The engine: rete</h2>
       <p><a href="https://github.com/caviri/rete" target="_blank" rel="noopener">rete</a> (Latin for “net”) stores a whole RDF graph in one immutable <code>.rete</code> file: the term dictionary, the sorted triple indexes and a dataset card. Put the file on any static host and clients run SPARQL against it where it sits, the idea of Parquet or PMTiles applied to RDF graphs.</p>
       <p>This page embeds the rete engine, version <span id="ver2"></span>, compiled to WebAssembly, together with the recipe graph of the course (<span id="kg-size"></span>). rete is experimental: the file format can change before version 1.0, so a <code>.rete</code> file must be read by the version that wrote it.</p>
       <p class="links"><a href="https://github.com/caviri/rete" target="_blank" rel="noopener">github.com/caviri/rete</a> · <a href="#tab=guide" data-go="guide">guide and exercises</a> · <a href="https://github.com/sdsc-ordes/rdf-training" target="_blank" rel="noopener">course repository</a></p>
+      </div>
     </div>
   </section>
 
   <section class="pane home guide" id="guide" aria-label="Guide" hidden>
     <div class="home-in">
 <h1>Guide</h1>
-<p class="lead">Five exercises for the hands-on parts of the course, the format of links into this page, and how it is built.</p>
+<p class="lead">Exercises for the hands-on parts of the course.</p>
 
+<div class="adv">
 <h2>What it is</h2>
 <p>
   <a href="https://github.com/caviri/rete">rete</a> stores a whole RDF graph in one immutable <code>.rete</code> file: the terms,
   the sorted triple indexes and a dataset card. This page embeds the rete engine (WebAssembly) and <code>recipes.rete</code>, the course graph of 807 triples in 48 KB. It is one HTML file: save it and it works from disk, offline. It supports the hands-on
   parts of the course: writing your own data (H1), validating it with SHACL (H2) and querying (H3).
 </p>
+</div>
 <h2>Exercises</h2>
 
 <h3>1 · Query the recipe graph <span class="time">10 min</span> <button class="go" data-go="query" type="button">Query KG →</button></h3>
@@ -488,22 +479,23 @@ a.iri:hover { text-decoration: underline; }
 <h3>3 · Write your own recipe <span class="time">15 min</span> <button class="go" data-go="create" type="button">Create KG →</button></h3>
 <ol>
   <li>Switch to <b>Create KG</b> in the top bar. A starter recipe is there; the status line tells you whether it is valid, and the right pane draws the graph as you type. <b>By class</b> shows it as one table per class, <b>Triples</b> as a plain list.</li>
-  <li>Replace it with a recipe of your own, in Turtle or JSON-LD (the format is detected; <b>Turtle example</b> and <b>JSON-LD example</b> in the sidebar show the same recipe in both). Reuse the <code>food:</code>, <code>cuisine:</code> and <code>course:</code> IRIs of the course.</li>
-  <li>Open <b>Dataset card…</b> and say what your graph is: title, description, licence, creators. Add as many creators, organizations and example queries as you need; keywords are added with Enter. The right side shows the card as a reader will see it. <b>YAML</b> holds the same card as text, and the two stay in step. The engine checks the fields, and the card is stored in the <code>.rete</code> file.</li>
+  <li>Replace it with a recipe of your own. Reuse the <code>food:</code>, <code>cuisine:</code> and <code>course:</code> IRIs of the course; <b>Turtle example</b> in the sidebar brings the starter back.</li>
+  <li class="adv">Open <b>Dataset card…</b> and say what your graph is: title, description, licence, creators. Add as many creators, organizations and example queries as you need; keywords are added with Enter. The right side shows the card as a reader will see it. <b>YAML</b> holds the same card as text, and the two stay in step. The engine checks the fields, and the card is stored in the <code>.rete</code> file.</li>
   <li>Set <b>Combine with</b> to <i>Recipes</i>. Your triples and the course graph become one <code>.rete</code> file, held in memory.</li>
   <li>Press <b>Query this graph</b> (it takes you to <b>Query KG</b>) and run <code>q01</code>, <code>q04</code> and <code>q09</code> again. Does your recipe show up where you expect it?</li>
-  <li>Write a query of your own and press <b>+ Add as example</b>. It is listed under “Your examples” and written into the card of your graph.</li>
-  <li>Back in <b>Create KG</b>, the download buttons save the graph as a <code>.rete</code> file, as Turtle or as JSON-LD. Send the <code>.rete</code> to your neighbour, who opens it in Query KG with <b>Open file…</b> and reads its <b>card</b>. Every graph in the Query KG sidebar has the same three downloads.</li>
+  <li class="adv">Write a query of your own and press <b>+ Add as example</b>. It is listed under “Your examples” and written into the card of your graph.</li>
+  <li class="adv">Back in <b>Create KG</b>, the download buttons save the graph as a <code>.rete</code> file, as Turtle or as JSON-LD. Send the <code>.rete</code> to your neighbour, who opens it in Query KG with <b>Open file…</b> and reads its <b>card</b>. Every graph in the Query KG sidebar has the same three downloads.</li>
 </ol>
 <h3>4 · Validate a graph <span class="time">10 min</span> <button class="go" data-go="validate" type="button">Validate KG →</button></h3>
 <ol>
   <li>Switch to <b>Validate KG</b>. The SHACL shapes of the course are in the editor. Press <b>Validate</b>: the recipe graph conforms to them.</li>
-  <li>Pick <code>b01</code> under <b>Broken data to try</b> and press <b>Validate</b>. The shape it breaks is highlighted in the editor, with the cursor on it. Which node breaks it, and what does the message ask for? Try <code>b08</code> and <code>b11</code>; click a row of the report to jump to its shape.</li>
+  <li>Open <b>Broken data to try</b>, pick <code>b01</code> and press <b>Validate</b>. The shape it breaks is highlighted in the editor, with the cursor on it. Which node breaks it, and what does the message ask for? Try <code>b08</code> and <code>b11</code>; click a row of the report to jump to its shape.</li>
   <li>Change a shape, for example raise <code>sh:minCount</code> of the ingredients to 3, choose <i>Recipes</i> under <b>Graph to validate</b> and validate again.</li>
   <li>Choose the graph you created under <b>Graph to validate</b> and validate it. Does your recipe conform? Repair it in Create KG until it does.</li>
 </ol>
 <div class="note">This page validates SHACL Core with the rete engine. rete 0.7.8 does not report <code>sh:not</code> applied to the values of a path, which the diet rules of the course shapes use: a vegan recipe with butter (<code>b05</code>) passes here. That file is left out of the list; use the validator of the H2 worksheet for those rules.</div>
 
+<div class="adv">
 <h3>5 · Open a graph from the web <span class="time">5 min</span> <button class="go" data-go="query" type="button">Query KG →</button></h3>
 <ol>
   <li>In <b>Query KG</b>, paste <code>https://caviri.github.io/rete/docs/plaza/data/linked-jazz.rete</code> under <b>Add a graph</b> and press <b>Open</b>.</li>
@@ -512,15 +504,18 @@ a.iri:hover { text-decoration: underline; }
   <li><b>Copy link</b> gives a URL that reopens the same graph, query and view.</li>
 </ol>
 <div class="note">A host must send CORS headers for the lab to read a <code>.rete</code> file from it. GitHub Pages does. The lab downloads the whole file, so keep to files of a few megabytes.</div>
+</div>
 
 <h2>Around the page</h2>
 <ul>
+  <li><b>All options</b> (top right) shows the tools you rarely need: other graphs, downloads, the dataset card, CSV and links.</li>
   <li><b>☰</b> in the top bar hides and shows the sidebar.</li>
   <li><b>Ctrl+Enter</b> (<b>⌘+Enter</b> on a Mac) in the editor does the same as <b>Run</b> or <b>Validate</b>.</li>
   <li>Drag the line between the editor and the results to give one of them more room; double-click it to reset. With the keyboard: focus it and use the arrow keys.</li>
   <li>A table wider than its pane has a scrollbar above and below it.</li>
 </ul>
 
+<div class="adv">
 <h2>Links that open a query</h2>
 <p>Worksheets and slides can link straight into this page. The query is loaded, not run: the reader presses <b>Run</b>. The part after <code>#</code> takes:</p>
 <table>
@@ -541,6 +536,7 @@ node src/rete/check-lab.mjs   # drive the page in a browser                  (or
   <li><code>build-lab.mjs</code> inlines the engine (<code>rete-graph</code> from npm, same version), the <code>.rete</code> file, the worksheet queries, the course shapes, the broken files of the H2 worksheet and a world outline into the template <code>src/rete/lab.html</code> and writes <code>docs/index.html</code>, this page.</li>
   <li>The file format is not stable before rete 1.0: the command-line tool and the engine in the page must be the same version. Rebuild after changing the data, the queries or either version.</li>
 </ul>
+</div>
 
 <h2 id="ai">AI disclosure</h2>
 <p>
@@ -565,11 +561,11 @@ node src/rete/check-lab.mjs   # drive the page in a browser                  (or
     <div class="bar">
       <span class="title" id="ed-title">SPARQL query</span>
       <span class="grow"></span>
-      <span id="data-tools" hidden>
+      <span id="data-tools" class="adv" hidden>
         <label>Format <select id="fmt"><option value="auto">auto</option><option value="ttl">Turtle</option><option value="jsonld">JSON-LD</option></select></label>
       </span>
       <span id="sparql-tools">
-        <button class="btn" id="add-example" type="button" title="Keep this query as an example: it is listed in the sidebar and written into the card of your graph">+ Add as example</button>
+        <button class="btn adv" id="add-example" type="button" title="Keep this query as an example: it is listed in the sidebar and written into the card of your graph">+ Add as example</button>
         <button class="btn" id="prefixes" type="button" title="Insert the course prefixes at the top">+ prefixes</button>
         <button class="btn run" id="q-run" type="button" title="Run the query (Ctrl+Enter, or ⌘+Enter on a Mac)">▶ Run</button>
       </span>
@@ -610,8 +606,8 @@ node src/rete/check-lab.mjs   # drive the page in a browser                  (or
       </div>
       <span class="grow"></span>
       <label id="on-label"></label>
-      <button class="btn" id="csv" type="button" disabled>CSV</button>
-      <button class="btn" id="share" type="button" title="Copy a link to this graph, query and view">Copy link</button>
+      <button class="btn adv" id="csv" type="button" disabled>CSV</button>
+      <button class="btn adv" id="share" type="button" title="Copy a link to this graph, query and view">Copy link</button>
     </div>
     <div class="hscroll" id="hscroll" hidden aria-hidden="true"><div></div></div>
     <div class="out" id="out"></div>
@@ -884,8 +880,8 @@ node src/rete/check-lab.mjs   # drive the page in a browser                  (or
       el("li", { class: ds.id === state.active ? "on" : "" },
         el("button", { class: "pick", title: ds.url || ds.origin, "aria-pressed": String(ds.id === state.active), onclick: () => { state.active = ds.id; renderDatasets(); if (!(state.mode in MODES)) setMode("query"); outdated("query"); syncHash(); } },
           el("b", {}, ds.name), el("small", {}, `${fmtInt(ds.quads)} triples · ${fmtSize(ds.bytes.length)} · ${ds.origin}`)),
-        ds.id === "builtin" ? el("span") : el("button", { class: "icon", title: "Remove from memory", "aria-label": `Remove ${ds.name}`, onclick: () => removeDataset(ds.id) }, "✕"),
-        el("div", { class: "dl" }, "⬇", [["rete", ".rete"], ["ttl", "Turtle"], ["jsonld", "JSON-LD"]].map(([as, label]) =>
+        ds.id === "builtin" ? el("span") : el("button", { class: "icon adv", title: "Remove from memory", "aria-label": `Remove ${ds.name}`, onclick: () => removeDataset(ds.id) }, "✕"),
+        el("div", { class: "dl adv" }, "⬇", [["rete", ".rete"], ["ttl", "Turtle"], ["jsonld", "JSON-LD"]].map(([as, label]) =>
           el("button", { "data-as": as, title: `Download ${ds.name} as ${label}`, onclick: () => download(ds, as) }, label)),
           curated(ds) ? el("button", { "data-as": "card", title: `Show the dataset card of ${ds.name}`, onclick: () => showCard(ds) }, "card") : null))));
     renderExamples();
@@ -1744,6 +1740,17 @@ node src/rete/check-lab.mjs   # drive the page in a browser                  (or
 
   // ---- wiring -------------------------------------------------------------
   $("ver2").textContent = LAB.version;
+  // All options: show the tools beginners rarely need. The choice is kept in this browser when storage is allowed.
+  const OPTS_KEY = "rete-lab-all-options";
+  function setAllOptions(on) {
+    document.body.classList.toggle("simple", !on);
+    $("all-opts").checked = on;
+    try { localStorage.setItem(OPTS_KEY, on ? "1" : "0"); } catch { /* storage blocked: the switch still works */ }
+  }
+  let allOptions = false;
+  try { allOptions = localStorage.getItem(OPTS_KEY) === "1"; } catch { /* storage blocked */ }
+  setAllOptions(allOptions);
+  $("all-opts").onchange = (e) => { setAllOptions(e.target.checked); syncScroll(); };
   renderExamples();
   $("q").addEventListener("input", () => { state.example = null; for (const b of $("examples").querySelectorAll("button.on")) b.classList.remove("on"); });
   $("q").addEventListener("input", () => { outdated("query"); syncHash(); });

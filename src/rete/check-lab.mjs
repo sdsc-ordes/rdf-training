@@ -42,6 +42,7 @@ const settled = (id, kind) => page.waitForFunction(([i, k]) => document.getEleme
 const pill = (id) => page.locator(`#${id} .pill`).innerText()
 const notRun = (id) => page.waitForFunction((i) => document.querySelector(`#${i} .pill`).textContent === 'not run', id, { timeout: 10000 })
 const runQuery = async (kind = 'ok') => { await page.locator('#q-run').click(); await settled('q-status', kind) }
+const shown = (sel) => page.locator(sel).first().isVisible()
 const graphLoaded = () => page.waitForFunction(() => document.querySelectorAll('#datasets li').length === 1, null, { timeout: 10000 })
 
 await page.goto(pathToFileURL(join(root, 'docs/index.html')).href)
@@ -56,6 +57,7 @@ await page.locator('#mode-home').click()
 await page.locator('#go-query').click()
 check(await page.locator('#q').isVisible() && !(await page.locator('#home').isVisible()), 'and to Query KG')
 check((await pill('q-status')) === 'not run' && (await page.locator('#out .empty').innerText()).includes('Press Run'), 'Query KG runs nothing until Run is pressed')
+check(!(await shown('#add-example')) && !(await shown('#url')) && !(await shown('#csv')) && !(await shown('#share')) && !(await shown('#datasets .dl')) && await shown('#q-run') && await shown('#prefixes') && await shown('#examples'), 'beginners see the examples, + prefixes and Run, not the rarer tools')
 
 // --- worksheet queries ------------------------------------------------------
 for (const file of readdirSync(expectedDir).sort()) {
@@ -132,6 +134,9 @@ check(await page.locator('#side-create').isVisible() && !(await page.locator('#e
 check((await page.locator('#out svg g.n').count()) > 5 && (await page.locator('#out svg line').count()) === 11, 'Create KG draws the graph: one link per triple')
 check((await page.locator('#d-ed pre .t-pn').count()) > 5, 'the Turtle is coloured too')
 await shot('lab-create')
+check(!(await shown('#d-card')) && !(await shown('#d-download')) && !(await shown('#d-example')) && !(await shown('#fmt')) && !(await shown('#my-name')) && await shown('#d-example-ttl') && await shown('#combine') && await shown('#d-query'), 'Create KG shows beginners the example, Combine with and Query this graph, not the rarer tools')
+await page.locator('#all-opts').check()
+check(await shown('#d-card') && await shown('#d-download') && await shown('#fmt') && await shown('#csv'), 'All options shows the rest')
 await page.locator('#views [data-view=table]').click()
 check((await page.locator('#out tbody tr').count()) === 11, 'and lists its triples')
 await page.locator('#views [data-view=classes]').click()
@@ -355,6 +360,7 @@ await page.goto('about:blank')
 await page.goto(`${pathToFileURL(join(root, 'docs/index.html')).href}#view=cards&q=${encodeURIComponent('ASK { ?s ?p ?o }')}`)
 await graphLoaded()
 check((await page.locator('#q').inputValue()) === 'ASK { ?s ?p ?o }' && (await pill('q-status')) === 'not run', 'a link restores the query without running it')
+check(await page.locator('#all-opts').isChecked() && await shown('#share'), 'All options stays on after a reload')
 await runQuery()
 check((await page.locator('#out .bool').innerText()) === 'true', 'and Run answers it')
 
