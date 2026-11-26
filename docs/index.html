@@ -48,12 +48,12 @@ footer { color: var(--muted); font-size: 13.5px; border-top: 1px solid var(--bor
 <p>
   <a href="https://github.com/caviri/rete">rete</a> stores a whole RDF graph in one immutable <code>.rete</code> file: the terms,
   the sorted triple indexes and a dataset card. The lab embeds the rete engine (WebAssembly) and
-  <a href="data/recipes.rete"><code>recipes.rete</code></a>, the course graph of 807 triples in 49 KB. It supports the hands-on
+  <a href="data/recipes.rete"><code>recipes.rete</code></a>, the course graph of 807 triples in 48 KB. It supports the hands-on
   parts of the course: querying (H3), and writing and checking your own data (H1, H2).
 </p>
 <figure>
   <img src="img/lab-table.png" width="1440" height="860" alt="The lab: a sidebar with graphs and example queries, a SPARQL editor in the middle, a results table on the right">
-  <figcaption>Left: graphs in memory and the worksheet queries. Middle: the editor. Right: the answer, as a table, cards or a map.</figcaption>
+  <figcaption>Top: <b>Create KG</b> or <b>Query KG</b>. Left: graphs in memory and the worksheet queries, which fold away. Middle: the editor, with colours and line numbers. Right: the answer, as a table, cards or a map.</figcaption>
 </figure>
 
 <h2>Exercises</h2>
@@ -62,7 +62,7 @@ footer { color: var(--muted); font-size: 13.5px; border-top: 1px solid var(--bor
 <ol>
   <li>Open the <a href="lab.html">lab</a> and pick <code>q04</code> in the sidebar. Predict the answer before you read it.</li>
   <li>Change <code>PT30M</code> to <code>PT45M</code>. There is no Run button: the answer follows your typing.</li>
-  <li>Delete the last <code>}</code>. The status line says where the query stops being valid, and the last good answer stays on screen, dimmed.</li>
+  <li>Delete the last <code>}</code>. The status line says where the query stops being valid, the line is marked in the margin, and the last good answer stays on screen, dimmed.</li>
   <li>Open <code>q09</code> and add a third diet, or remove one. Switch the answer to <b>Cards</b>.</li>
 </ol>
 <figure>
@@ -82,12 +82,16 @@ footer { color: var(--muted); font-size: 13.5px; border-top: 1px solid var(--bor
 
 <h3>3 · Write your own recipe <span class="time">15 min</span></h3>
 <ol>
-  <li>Switch the editor to <b>Data · Turtle / JSON-LD</b>. A starter recipe is there; the status line tells you whether it is valid and how many triples it holds.</li>
+  <li>Switch to <b>Create KG</b> in the top bar. A starter recipe is there; the status line tells you whether it is valid, and the right pane lists its triples as you type.</li>
   <li>Replace it with a recipe of your own, in Turtle or JSON-LD (the format is detected; <b>Load JSON-LD example</b> shows the same recipe in JSON-LD). Reuse the <code>food:</code>, <code>cuisine:</code> and <code>course:</code> IRIs of the course.</li>
   <li>Set <b>Combine with</b> to <i>Recipes</i>. Your triples and the course graph become one <code>.rete</code> file, held in memory.</li>
-  <li>Press <b>Query this graph</b> and run <code>q01</code>, <code>q04</code> and <code>q09</code> again. Does your recipe show up where you expect it?</li>
+  <li>Press <b>Query this graph</b> (it takes you to <b>Query KG</b>) and run <code>q01</code>, <code>q04</code> and <code>q09</code> again. Does your recipe show up where you expect it?</li>
   <li><b>Download .rete</b> saves the file. Send it to your neighbour, who opens it with <b>Open file…</b>.</li>
 </ol>
+<figure>
+  <img src="img/lab-create.png" width="1440" height="860" alt="Create KG: a Turtle recipe in the editor and its triples in the right pane">
+  <figcaption><b>Create KG</b>: Turtle on the left, its triples on the right, rebuilt on every keystroke.</figcaption>
+</figure>
 <figure>
   <img src="img/lab-data.png" width="1440" height="860" alt="Data tab with a JSON-LD recipe, combined with the course graph into a .rete file of 814 triples">
   <figcaption>JSON-LD, checked while typing and combined with the course graph: 7 + 807 triples.</figcaption>

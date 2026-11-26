@@ -11,6 +11,7 @@
   --bg: #FFFFFF; --bg-alt: #F4F3F8; --tint: #DDDEEC; --text: #14132B; --muted: #6B6B7B;
   --border: #D5D4E0; --ok: #4C8B12; --ok-bg: #EAF5DA; --err: #B3261E; --err-bg: #FBE9E7;
   --land: #DDDEEC; --sea: #F7F7FB; --dot: #5561A6;
+  --c-kw: #8A2DA5; --c-var: #B5480F; --c-iri: #1F6FB2; --c-str: #2E7D32; --c-num: #A8322D; --c-pn: #3F4A9A;
   --mono: ui-monospace, "SF Mono", "Fira Code", Menlo, Consolas, monospace;
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
@@ -19,6 +20,7 @@
     --primary: #8A94C9; --primary-soft: #A9B1DC; --bg: #17171C; --bg-alt: #202027; --tint: #2A2850;
     --text: #F2F2F7; --muted: #A4A4B4; --border: #3A3A48; --ok: #A5DB5E; --ok-bg: #24331A;
     --err: #FFB4AB; --err-bg: #3D1F1C; --land: #34335A; --sea: #1C1C24; --dot: #A9B1DC;
+    --c-kw: #D9A6F0; --c-var: #F5B27A; --c-iri: #8CC4F5; --c-str: #A5D6A7; --c-num: #F2A19B; --c-pn: #B7BFEA;
   }
 }
 * { box-sizing: border-box; }
@@ -28,16 +30,21 @@ button, input, select, textarea { font: inherit; color: inherit; }
 button { cursor: pointer; }
 :focus-visible { outline: 2px solid var(--primary-soft); outline-offset: 1px; }
 
-.app { display: grid; grid-template-columns: 264px minmax(300px, 1fr) minmax(340px, 1.15fr); height: 100vh; }
+.app { display: grid; grid-template-columns: 264px minmax(300px, 1fr) minmax(340px, 1.15fr); grid-template-rows: auto minmax(0, 1fr); height: 100vh; }
+.top { grid-column: 1 / -1; display: flex; align-items: center; gap: 18px; padding: 0 16px; height: 48px; background: var(--navy); color: #fff; }
+.top .name { font-weight: 700; font-size: 17px; letter-spacing: .04em; }
+.top nav { display: flex; gap: 4px; align-self: stretch; }
+.top nav button { background: none; border: 0; border-bottom: 3px solid transparent; border-top: 3px solid transparent; color: #C2C5E0; padding: 0 14px; font-weight: 600; }
+.top nav button:hover { color: #fff; }
+.top nav button[aria-current=page] { color: #fff; border-bottom-color: #90CA42; }
+.top .meta { margin-left: auto; color: #C2C5E0; font-size: 12px; }
+.top .meta a { color: #fff; }
 .pane { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
 .pane + .pane { border-left: 1px solid var(--border); }
 
 /* sidebar */
 .side { background: linear-gradient(160deg, var(--navy), var(--navy-2)); color: #fff; overflow-y: auto; }
-.brand { padding: 16px 16px 12px; }
-.brand b { font-size: 18px; letter-spacing: .04em; }
-.brand span { display: block; color: #C2C5E0; font-size: 12px; }
-.side h2 { margin: 14px 16px 6px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #C2C5E0; font-weight: 600; }
+.side h2, .side summary { margin: 14px 16px 6px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #C2C5E0; font-weight: 600; }
 .ds { list-style: none; margin: 0; padding: 0 8px; }
 .ds li { display: grid; grid-template-columns: 1fr auto auto; gap: 2px; align-items: center; border-radius: 6px; }
 .ds li.on { background: rgba(255,255,255,.14); }
@@ -53,6 +60,11 @@ button { cursor: pointer; }
 .side .btn { padding: 6px 10px; border-radius: 5px; border: 1px solid rgba(255,255,255,.3); background: rgba(255,255,255,.1); color: #fff; }
 .side .btn:hover { background: rgba(255,255,255,.2); }
 .add .msg { font-size: 12px; color: #FFD3CE; min-height: 0; overflow-wrap: anywhere; }
+.side summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 6px; }
+.side summary::-webkit-details-marker { display: none; }
+.side summary::before { content: "▸"; font-size: 12px; }
+.side details[open] > summary::before { content: "▾"; }
+.side summary:hover { color: #fff; }
 .ex { list-style: none; margin: 0; padding: 0 8px 8px; }
 .ex button { width: 100%; text-align: left; background: none; border: 0; color: #E6E7F5; padding: 5px 8px; border-radius: 5px; font-size: 13px; }
 .ex button:hover, .ex button.on { background: rgba(255,255,255,.14); color: #fff; }
@@ -71,8 +83,19 @@ button { cursor: pointer; }
 .bar select, .bar .btn { padding: 4px 8px; border: 1px solid var(--border); border-radius: 5px; background: var(--bg); }
 .bar .btn:hover { border-color: var(--primary); color: var(--primary); }
 .bar .btn:disabled { opacity: .45; cursor: default; }
-textarea.code { flex: 1; min-height: 0; width: 100%; resize: none; border: 0; padding: 12px 14px; font: 13px/1.55 var(--mono); background: var(--bg); color: var(--text); tab-size: 2; white-space: pre; overflow: auto; }
-textarea.code:focus { outline: none; }
+.bar .title { font-weight: 600; }
+/* editor: a transparent textarea over a coloured copy of its text, with a line-number gutter */
+.ed { flex: 1; min-height: 0; display: flex; overflow: hidden; background: var(--bg); font: 13px/1.55 var(--mono); }
+.gutter { flex: none; min-width: 3.4em; padding: 12px 8px 60px 8px; text-align: right; color: var(--muted); background: var(--bg-alt); border-right: 1px solid var(--border); user-select: none; overflow: hidden; }
+.gutter .bad { color: var(--err); background: var(--err-bg); font-weight: 700; margin: 0 -8px; padding: 0 8px; }
+.stack { position: relative; flex: 1; min-width: 0; }
+.stack pre, .stack textarea { position: absolute; inset: 0; margin: 0; border: 0; padding: 12px 14px; font: inherit; letter-spacing: 0; white-space: pre; tab-size: 2; }
+.stack pre { overflow: hidden; pointer-events: none; color: var(--text); padding-bottom: 60px; }
+.stack textarea { width: 100%; height: 100%; resize: none; overflow: auto; background: transparent; color: transparent; caret-color: var(--text); }
+.stack textarea:focus { outline: none; }
+.stack textarea::selection { background: rgba(85, 97, 166, .28); color: transparent; }
+.t-kw { color: var(--c-kw); font-weight: 600; } .t-var { color: var(--c-var); } .t-iri { color: var(--c-iri); }
+.t-str { color: var(--c-str); } .t-num { color: var(--c-num); } .t-pn { color: var(--c-pn); } .t-com { color: var(--muted); font-style: italic; }
 .status { display: flex; gap: 8px; align-items: flex-start; padding: 7px 10px; border-top: 1px solid var(--border); font-size: 12.5px; min-height: 34px; background: var(--bg-alt); }
 .pill { flex: none; padding: 1px 8px; border-radius: 999px; font-weight: 600; background: var(--tint); }
 .status.ok .pill { background: var(--ok-bg); color: var(--ok); }
@@ -112,7 +135,8 @@ a.iri:hover { text-decoration: underline; }
 .map .note { padding: 6px 10px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); }
 
 @media (max-width: 900px) {
-  .app { grid-template-columns: 1fr; height: auto; }
+  .app { grid-template-columns: 1fr; grid-template-rows: none; height: auto; }
+  .top .meta { display: none; }
   .pane + .pane { border-left: 0; border-top: 1px solid var(--border); }
   .pane.edit { height: 60vh; } .pane.res { height: 80vh; }
 }
@@ -121,8 +145,16 @@ a.iri:hover { text-decoration: underline; }
 <body>
 <div class="app">
 
+  <header class="top">
+    <span class="name">RETE lab</span>
+    <nav aria-label="Mode">
+      <button id="mode-create" type="button">Create KG</button>
+      <button id="mode-query" type="button" aria-current="page">Query KG</button>
+    </nav>
+    <span class="meta">SPARQL over <code>.rete</code> files, in this page · <a href="index.html">exercises</a></span>
+  </header>
+
   <aside class="pane side" aria-label="Datasets and examples">
-    <div class="brand"><b>RETE lab</b><span>SPARQL over <code>.rete</code> files, in this page</span></div>
 
     <h2>Graphs in memory</h2>
     <ul class="ds" id="datasets"></ul>
@@ -140,8 +172,10 @@ a.iri:hover { text-decoration: underline; }
       <div class="msg" id="add-msg" role="status"></div>
     </div>
 
-    <h2>Example queries</h2>
-    <ul class="ex" id="examples"></ul>
+    <details id="ex-box" open>
+      <summary>Example queries</summary>
+      <ul class="ex" id="examples"></ul>
+    </details>
 
     <div class="about">
       Engine: <a href="https://github.com/caviri/rete">rete</a> <span id="ver"></span>, compiled to WebAssembly and
@@ -152,10 +186,7 @@ a.iri:hover { text-decoration: underline; }
 
   <section class="pane edit" aria-label="Editor">
     <div class="bar">
-      <div class="tabs" role="tablist">
-        <button role="tab" id="tab-sparql" aria-selected="true">SPARQL</button>
-        <button role="tab" id="tab-data" aria-selected="false">Data · Turtle / JSON-LD</button>
-      </div>
+      <span class="title" id="ed-title">SPARQL query</span>
       <span class="grow"></span>
       <span id="data-tools" hidden>
         <label>Format <select id="fmt"><option value="auto">auto</option><option value="ttl">Turtle</option><option value="jsonld">JSON-LD</option></select></label>
@@ -166,8 +197,14 @@ a.iri:hover { text-decoration: underline; }
       </span>
     </div>
 
-    <textarea class="code" id="q" spellcheck="false" autocapitalize="off" autocomplete="off" aria-label="SPARQL query"></textarea>
-    <textarea class="code" id="d" spellcheck="false" autocapitalize="off" autocomplete="off" aria-label="RDF data" hidden></textarea>
+    <div class="ed" id="q-ed">
+      <div class="gutter" aria-hidden="true"></div>
+      <div class="stack"><pre aria-hidden="true"></pre><textarea id="q" spellcheck="false" autocapitalize="off" autocomplete="off" wrap="off" aria-label="SPARQL query"></textarea></div>
+    </div>
+    <div class="ed" id="d-ed" hidden>
+      <div class="gutter" aria-hidden="true"></div>
+      <div class="stack"><pre aria-hidden="true"></pre><textarea id="d" spellcheck="false" autocapitalize="off" autocomplete="off" wrap="off" aria-label="RDF data, Turtle or JSON-LD"></textarea></div>
+    </div>
 
     <div class="status" id="q-status" role="status"><span class="pill">…</span><span class="txt"></span></div>
     <div class="status" id="d-status" role="status" hidden>
@@ -218,7 +255,8 @@ a.iri:hover { text-decoration: underline; }
   const fmtInt = (n) => Number(n).toLocaleString("en");
   const fmtSize = (n) => (n < 1024 ? `${n} B` : n < 1048576 ? `${(n / 1024).toFixed(0)} KB` : `${(n / 1048576).toFixed(1)} MB`);
 
-  const state = { datasets: [], active: null, view: "table", result: null, example: null, scratch: null };
+  const state = { mode: "query", datasets: [], active: null, view: "table", result: null, own: null, example: null, scratch: null };
+  const shown = () => (state.mode === "create" ? state.own : state.result); // what the results pane displays
   let seq = 0;
 
   // ---- prefixes and terms -------------------------------------------------
@@ -274,6 +312,46 @@ a.iri:hover { text-decoration: underline; }
     return span;
   }
 
+  // ---- editors: colours and line numbers ----------------------------------
+  const esc = (s) => s.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[c]);
+  const KEYWORD = /^(?:select|where|filter|optional|prefix|base|distinct|reduced|as|order|by|group|having|limit|offset|union|minus|graph|bind|values|ask|construct|describe|from|named|service|silent|not|exists|in|asc|desc|count|sum|min|max|avg|sample|group_concat|separator|lang|langmatches|datatype|str|regex|bound|if|coalesce|contains|strstarts|strends|lcase|ucase|strlen|isiri|isuri|isblank|isliteral|isnumeric|true|false|undef|a)$/i;
+  // strings | IRIs | comments | variables | @directives and language tags | prefixed names | numbers | words
+  const RDF = /("""[\s\S]*?(?:"""|$)|'''[\s\S]*?(?:'''|$)|"(?:[^"\\\n]|\\.)*"?|'(?:[^'\\\n]|\\.)*'?)|(<[^<>\s"{}|^`\\]*>)|(#[^\n]*)|([?$]\w+)|(@[A-Za-z][A-Za-z0-9-]*)|((?:[A-Za-z_][\w.-]*)?:(?:[\w%-](?:[\w.%-]*[\w%-])?)?)|(-?\b\d+(?:\.\d+)?(?:[eE][+-]?\d+)?\b)|([A-Za-z_]\w*)/g;
+  const JSONLD = /("(?:[^"\\\n]|\\.)*"?)(\s*:)?|(-?\b\d+(?:\.\d+)?(?:[eE][+-]?\d+)?\b)|\b(true|false|null)\b/g;
+  const span = (cls, text) => `<span class="t-${cls}">${esc(text)}</span>`;
+  function colour(text, lang) {
+    let out = "", at = 0;
+    const re = lang === "jsonld" ? JSONLD : RDF;
+    re.lastIndex = 0;
+    for (let m; (m = re.exec(text)); ) {
+      if (!m[0]) { re.lastIndex++; continue; }
+      out += esc(text.slice(at, m.index));
+      at = m.index + m[0].length;
+      if (lang === "jsonld") {
+        const kw = m[1] && m[1].startsWith('"@');
+        if (m[1] && m[2]) out += span(kw ? "kw" : "pn", m[1]) + esc(m[2]); // a key
+        else if (m[1]) out += span(kw ? "kw" : "str", m[1]);
+        else out += span(m[3] ? "num" : "kw", m[0]);
+      } else if (m[8]) out += KEYWORD.test(m[8]) ? span("kw", m[8]) : esc(m[8]);
+      else out += span(m[1] ? "str" : m[2] ? "iri" : m[3] ? "com" : m[4] ? "var" : m[5] ? "kw" : m[6] ? "pn" : "num", m[0]);
+    }
+    return out + esc(text.slice(at));
+  }
+  const badLine = { q: 0, d: 0 };
+  const dataLang = () => ($("fmt").value !== "auto" ? $("fmt").value : /^\s*[[{]/.test($("d").value) ? "jsonld" : "ttl");
+  function paint(id) {
+    const text = $(id).value, box = $(`${id}-ed`);
+    box.querySelector("pre").innerHTML = `${colour(text, id === "d" ? dataLang() : "sparql")}\n`;
+    const lines = text.split("\n").length;
+    box.querySelector(".gutter").innerHTML = Array.from({ length: lines }, (_, i) => `<div${i + 1 === badLine[id] ? ' class="bad"' : ""}>${i + 1}</div>`).join("");
+    follow(id);
+  }
+  function follow(id) {
+    const ta = $(id), box = $(`${id}-ed`), pre = box.querySelector("pre");
+    pre.scrollTop = ta.scrollTop; pre.scrollLeft = ta.scrollLeft;
+    box.querySelector(".gutter").scrollTop = ta.scrollTop;
+  }
+
   // ---- datasets -----------------------------------------------------------
   async function addDataset(name, origin, bytes, opts = {}) {
     const graph = await rete.open(bytes);
@@ -301,15 +379,18 @@ a.iri:hover { text-decoration: underline; }
           el("b", {}, ds.name), el("small", {}, `${fmtInt(ds.quads)} triples · ${fmtSize(ds.bytes.length)} · ${ds.origin}`)),
         el("button", { class: "icon", title: "Download .rete", "aria-label": `Download ${ds.name} as .rete`, onclick: () => download(ds) }, "⬇"),
         ds.id === "builtin" ? el("span") : el("button", { class: "icon", title: "Remove from memory", "aria-label": `Remove ${ds.name}`, onclick: () => removeDataset(ds.id) }, "✕"))));
-    const a = active();
-    $("on-label").textContent = a ? `on ${a.name}` : "";
+    onLabel();
     const combine = $("combine"), keep = combine.value;
     combine.replaceChildren(el("option", { value: "" }, "nothing"), ...state.datasets.filter((d) => d.id !== "scratch").map((d) => el("option", { value: d.id }, d.name)));
     combine.value = [...combine.options].some((o) => o.value === keep) ? keep : "";
   }
+  function onLabel() {
+    const a = active();
+    $("on-label").textContent = state.mode === "create" ? "triples of your data" : a ? `on ${a.name}` : "";
+  }
   function removeDataset(id) {
     state.datasets = state.datasets.filter((d) => d.id !== id);
-    if (id === "scratch") { state.scratch = null; $("d-query").disabled = $("d-download").disabled = true; }
+    if (id === "scratch") { state.scratch = null; state.own = null; $("d-query").disabled = $("d-download").disabled = true; }
     if (state.active === id) state.active = state.datasets[0]?.id || null;
     renderDatasets(); runQuery(); syncHash();
   }
@@ -338,7 +419,7 @@ a.iri:hover { text-decoration: underline; }
         await addDataset(file.name.replace(/\.rete$/, ""), "file", buf, { activate: true });
         runQuery();
       } else {
-        showTab("data");
+        setMode("create");
         $("d").value = new TextDecoder().decode(buf);
         $("fmt").value = ext === "ttl" ? "ttl" : ext === "jsonld" || ext === "json" ? "jsonld" : "auto";
         buildData();
@@ -353,6 +434,10 @@ a.iri:hover { text-decoration: underline; }
     s.className = `status ${kind}`;
     s.querySelector(".pill").textContent = pill;
     s.querySelector(".txt").textContent = txt || "";
+    // mark the line an error points at ("error at 14:2", "line 3 column 7") in that editor's gutter
+    const ed = id[0], where = kind === "err" ? /\bat (\d+):\d+|line (\d+)/.exec(txt || "") : null;
+    badLine[ed] = where ? Number(where[1] || where[2]) : 0;
+    paint(ed);
   }
   const shortError = (e) => String(e && e.message ? e.message : e).replace(/expected one of[\s\S]*/, "unexpected token here").slice(0, 400);
 
@@ -373,19 +458,18 @@ a.iri:hover { text-decoration: underline; }
       const warn = (ds.graph.lastWarnings?.() || []).map((w) => w.message).join(" ");
       const count = result.kind === "ask" ? String(result.boolean) : `${fmtInt(result.rows.length)} ${result.kind === "graph" ? "triples" : "rows"}`;
       setStatus("q-status", "ok", "✓ valid", `${count} · ${ms < 10 ? ms.toFixed(1) : ms.toFixed(0)} ms${warn ? ` · ${warn}` : ""}`);
-      $("out").classList.remove("stale");
-      renderResult();
+      if (state.mode === "query") { $("out").classList.remove("stale"); renderResult(); }
     } catch (e) {
       setStatus("q-status", "err", "✗ not valid", shortError(e));
-      $("out").classList.add("stale"); // keep the last good answer on screen while the query is being edited
+      if (state.mode === "query") $("out").classList.add("stale"); // keep the last good answer on screen while the query is being edited
     }
   }
 
   // ---- result views -------------------------------------------------------
   function renderResult() {
-    const out = $("out"), r = state.result;
+    const out = $("out"), r = shown();
     $("csv").disabled = !r || r.kind === "ask";
-    if (!r) { out.replaceChildren(el("div", { class: "empty" }, "Results appear here as you type.")); return; }
+    if (!r) { out.replaceChildren(el("div", { class: "empty" }, state.mode === "create" ? "The triples of your data appear here as you type." : "Results appear here as you type.")); return; }
     if (r.kind === "ask") { out.replaceChildren(el("div", { class: `bool ${r.boolean ? "t" : "f"}` }, r.boolean ? "true" : "false")); return; }
     if (!r.rows.length) { out.replaceChildren(el("div", { class: "empty" }, "The query is valid and matches nothing in this graph.")); return; }
     out.replaceChildren(state.view === "cards" ? cardsView(r) : state.view === "map" ? mapView(r) : tableView(r));
@@ -463,7 +547,7 @@ a.iri:hover { text-decoration: underline; }
       `${pts.length} of ${r.rows.length} rows placed · label ?${labelV}${sizeV ? ` · size ?${sizeV}` : ""} · hover a point for the full row`));
   }
   function csv() {
-    const r = state.result; if (!r) return;
+    const r = shown(); if (!r) return;
     const cell = (s) => (/[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s);
     const text = [r.vars.join(","), ...r.rows.map((row) => r.vars.map((v) => cell(row[v] ? row[v].value : "")).join(","))].join("\n");
     const a = el("a", { href: URL.createObjectURL(new Blob([text], { type: "text/csv" })), download: "results.csv" });
@@ -481,34 +565,45 @@ a.iri:hover { text-decoration: underline; }
   async function buildData() {
     const text = $("d").value, mine = ++buildNo;
     if (!text.trim()) { setStatus("d-status", "", "empty", "Write Turtle or JSON-LD: it is parsed as you type."); return; }
-    const chosen = $("fmt").value;
-    const fmt = chosen !== "auto" ? chosen : /^\s*[[{]/.test(text) ? "jsonld" : "ttl";
+    const fmt = dataLang();
     const label = fmt === "ttl" ? "Turtle" : "JSON-LD";
     try {
       let bytes = await rete.build(text, fmt);
-      const own = (await rete.open(bytes)).info().quads;
+      const ownGraph = await rete.open(bytes), own = ownGraph.info().quads;
+      const triples = ownGraph.queryRaw("SELECT ?subject ?predicate ?object WHERE { ?subject ?predicate ?object }");
       const base = state.datasets.find((d) => d.id === $("combine").value);
       if (base) bytes = await rete.build((await nquads(base.graph, "b")) + (await nquads(await rete.open(bytes), "u")), "nq");
       if (mine !== buildNo) return; // a newer edit is already being built
       const ds = await addDataset(base ? `My graph + ${base.name}` : "My graph", "built here", bytes, { id: "scratch" });
       state.scratch = ds;
+      state.own = { kind: "select", vars: triples.vars, px: {}, rows: triples.rows.map((r) => Object.fromEntries(triples.vars.map((v) => [v, parseTerm(r[v])]))) };
       $("d-query").disabled = $("d-download").disabled = false;
       setStatus("d-status", "ok", `✓ valid ${label}`, `${fmtInt(own)} triples${base ? ` + ${fmtInt(base.quads)} from ${base.name} = ${fmtInt(ds.quads)}` : ""} · .rete ${fmtSize(bytes.length)}, in memory`);
       if (state.active === "scratch") runQuery();
+      if (state.mode === "create") { $("out").classList.remove("stale"); renderResult(); }
     } catch (e) {
       if (mine !== buildNo) return;
       setStatus("d-status", "err", `✗ not valid ${label}`, shortError(e));
+      if (state.mode === "create") $("out").classList.add("stale");
     }
   }
 
   // ---- tabs, examples, link state -----------------------------------------
-  function showTab(name) {
-    const data = name === "data";
-    $("tab-sparql").setAttribute("aria-selected", String(!data));
-    $("tab-data").setAttribute("aria-selected", String(data));
-    for (const id of ["q", "q-status", "sparql-tools"]) $(id).hidden = data;
-    for (const id of ["d", "d-status", "d-actions", "data-tools"]) $(id).hidden = !data;
-    if (data && !$("d").value) { $("d").value = LAB.starterTurtle; buildData(); }
+  // Create KG: write Turtle or JSON-LD, see its triples. Query KG: write SPARQL, see the answer.
+  function setMode(mode) {
+    const create = mode === "create";
+    state.mode = create ? "create" : "query";
+    for (const [id, on] of [["mode-create", create], ["mode-query", !create]]) {
+      if (on) $(id).setAttribute("aria-current", "page"); else $(id).removeAttribute("aria-current");
+    }
+    $("ed-title").textContent = create ? "Your data · Turtle or JSON-LD" : "SPARQL query";
+    for (const id of ["q-ed", "q-status", "sparql-tools"]) $(id).hidden = create;
+    for (const id of ["d-ed", "d-status", "d-actions", "data-tools"]) $(id).hidden = !create;
+    $("out").classList.remove("stale");
+    onLabel();
+    if (create && !$("d").value) $("d").value = LAB.starterTurtle;
+    if (create) { renderResult(); buildData(); } else runQuery();
+    paint(create ? "d" : "q");
   }
   function setView(view) {
     state.view = ["table", "cards", "map"].includes(view) ? view : "table";
@@ -519,9 +614,9 @@ a.iri:hover { text-decoration: underline; }
     state.example = ex.id;
     $("q").value = ex.query;
     for (const b of $("examples").querySelectorAll("button")) b.classList.toggle("on", b.dataset.id === ex.id);
-    showTab("sparql");
     if (ex.view) setView(ex.view);
-    runQuery(); syncHash();
+    if (state.mode === "create") setMode("query"); else runQuery();
+    syncHash();
   }
   function link() {
     const p = new URLSearchParams(), ds = active();
@@ -542,14 +637,18 @@ a.iri:hover { text-decoration: underline; }
   for (const ta of [$("q"), $("d")]) ta.addEventListener("keydown", (e) => {
     if (e.key === "Tab" && !e.shiftKey && !e.altKey && !e.ctrlKey && !e.metaKey) { e.preventDefault(); ta.setRangeText("  ", ta.selectionStart, ta.selectionEnd, "end"); ta.dispatchEvent(new Event("input")); }
   });
-  $("tab-sparql").onclick = () => showTab("sparql");
-  $("tab-data").onclick = () => showTab("data");
+  $("mode-query").onclick = () => setMode("query");
+  $("mode-create").onclick = () => setMode("create");
+  for (const id of ["q", "d"]) {
+    $(id).addEventListener("input", () => paint(id));
+    $(id).addEventListener("scroll", () => follow(id));
+  }
   $("views").onclick = (e) => { if (e.target.dataset.view) { setView(e.target.dataset.view); syncHash(); } };
   $("fmt").onchange = buildData;
   $("combine").onchange = buildData;
   $("prefixes").onclick = () => { $("q").value = `${prefixBlock}\n\n${$("q").value}`; runQuery(); syncHash(); };
   $("d-example").onclick = () => { $("d").value = LAB.starterJsonld; $("fmt").value = "auto"; buildData(); };
-  $("d-query").onclick = () => { state.active = "scratch"; renderDatasets(); showTab("sparql"); runQuery(); syncHash(); };
+  $("d-query").onclick = () => { state.active = "scratch"; renderDatasets(); setMode("query"); syncHash(); };
   $("d-download").onclick = () => state.scratch && download(state.scratch);
   $("csv").onclick = csv;
   $("share").onclick = async () => {

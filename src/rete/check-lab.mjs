@@ -86,10 +86,32 @@ await page.locator('#views [data-view=map]').click()
 check((await page.locator('#out .empty').innerText()).includes('?lat'), 'map view explains what it needs when there are no coordinates')
 await page.locator('#views [data-view=table]').click()
 
+// --- editor: colours, line numbers, collapsible examples ---------------------
+await page.locator('#examples button[data-id=q04]').click()
+await settled('q-status', 'ok')
+const lines = (await page.locator('#q').inputValue()).split('\n').length
+check((await page.locator('#q-ed .gutter div').count()) === lines, `the query editor numbers its ${lines} lines`)
+const kinds = await page.locator('#q-ed pre').evaluate((pre) => [...new Set([...pre.querySelectorAll('span')].map((s) => s.className))].join(' '))
+check(['t-kw', 't-var', 't-iri', 't-str', 't-pn', 't-com'].every((k) => kinds.includes(k)), 'the query is coloured: keywords, variables, IRIs, strings, prefixed names, comments', kinds)
+check(await page.locator('#q-ed pre').evaluate((pre) => pre.textContent === `${document.getElementById('q').value}\n`), 'the coloured text is the text being edited')
+const box = (sel) => page.locator(sel).evaluate((e) => { const r = document.createRange(); r.selectNodeContents(e); const b = r.getClientRects()[0]; return [Math.round(b.left), Math.round(b.top)] })
+const first = await box('#q-ed pre'), caret = await page.locator('#q').evaluate((ta) => { const b = ta.getBoundingClientRect(), c = getComputedStyle(ta); return [Math.round(b.left + parseFloat(c.paddingLeft)), Math.round(b.top + parseFloat(c.paddingTop))] })
+check(Math.abs(first[0] - caret[0]) <= 1 && Math.abs(first[1] - caret[1]) <= 3, 'the coloured text sits exactly under the caret', `${first} vs ${caret}`)
+await page.locator('#q').fill(`${await page.locator('#q').inputValue()}\n}`)
+await settled('q-status', 'err')
+check((await page.locator('#q-ed .gutter .bad').count()) === 1, 'the line of a parse error is marked in the gutter')
+await page.locator('#ex-box summary').click()
+check(!(await page.locator('#examples').isVisible()), 'the example queries collapse')
+await page.locator('#ex-box summary').click()
+check(await page.locator('#examples').isVisible(), 'and expand again')
+
 // --- write data, keep it in memory, query it, download it -----------------------
-await page.locator('#tab-data').click()
+await page.locator('#mode-create').click()
 await settled('d-status', 'ok')
 check((await status('d-status')).includes('valid Turtle'), 'starter Turtle builds into a .rete in memory', await status('d-status'))
+check((await page.locator('#out tbody tr').count()) > 5, 'Create KG shows the triples of the data being written')
+check((await page.locator('#d-ed pre .t-pn').count()) > 5, 'the Turtle is coloured too')
+await shot('lab-create')
 
 await page.locator('#d').fill('@prefix ex: <http://example.org/> .\nex:a ex:b')
 await settled('d-status', 'err')
