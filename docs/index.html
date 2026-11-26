@@ -139,6 +139,52 @@ dialog .f b { color: var(--text); font-weight: 600; }
 dialog input, dialog textarea { padding: 6px 8px; border: 1px solid var(--border); border-radius: 5px; background: var(--bg); color: var(--text); width: 100%; }
 dialog textarea { font: 12.5px/1.45 var(--mono); min-height: 3.4em; resize: vertical; }
 dialog pre { font: 12px/1.5 var(--mono); background: var(--bg-alt); padding: 10px; border-radius: 6px; overflow: auto; margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+#card-dlg { width: min(1140px, calc(100vw - 32px)); }
+.cardcols { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) 390px; }
+.cardleft { min-width: 0; min-height: 0; display: flex; flex-direction: column; }
+.cardleft .body { flex: 1; min-height: 0; align-content: start; }
+.cardright { min-height: 0; overflow-y: auto; background: var(--bg-alt); border-left: 1px solid var(--border); padding: 12px 16px 18px; }
+.pv-label { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
+@media (max-width: 860px) { .cardcols { grid-template-columns: 1fr; overflow-y: auto; } .cardright { border-left: 0; border-top: 1px solid var(--border); overflow: visible; } .cardleft .body { overflow: visible; } }
+/* repeatable entries, chips */
+dialog .rows { display: grid; gap: 5px; }
+dialog .rowitem { display: grid; grid-template-columns: 1fr 1.2fr auto; gap: 5px; }
+dialog .btn.add { justify-self: start; padding: 3px 10px; font-size: 12.5px; color: var(--primary); border-style: dashed; }
+dialog .btn.x { padding: 3px 8px; }
+dialog .chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 2px; }
+dialog .chip { display: inline-flex; align-items: center; gap: 4px; background: var(--tint); color: var(--text); border-radius: 999px; padding: 2px 4px 2px 10px; font-size: 12.5px; max-width: 100%; overflow-wrap: anywhere; }
+dialog .chip button { border: 0; background: none; color: var(--muted); padding: 0 5px; border-radius: 50%; }
+dialog .chip button:hover { color: var(--err); }
+dialog .hint { font-size: 11.5px; color: var(--muted); }
+dialog .newq { display: grid; gap: 5px; border: 1px dashed var(--border); border-radius: 6px; padding: 8px; }
+dialog .newq div { display: flex; gap: 6px; justify-content: flex-end; }
+/* the card as a reader sees it */
+.cv { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--bg); color: var(--text); box-shadow: 0 2px 10px rgba(20,19,43,.08); font-size: 13px; }
+.cv-head { background: linear-gradient(135deg, #26235C, #3B3A7A); color: #fff; padding: 16px 16px 14px; }
+.cv-head .kind { font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: #C2C5E0; }
+.cv-head h3 { margin: 2px 0 0; font-size: 19px; line-height: 1.2; overflow-wrap: anywhere; }
+.cv-head h3.none { color: #A9ADD0; font-weight: 500; }
+.cv-head .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+.cv-head .tags span { background: rgba(255,255,255,.16); border-radius: 999px; padding: 1px 9px; font-size: 11.5px; }
+.cv-body { padding: 12px 16px 14px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+.cv .qs { grid-template-columns: minmax(0, 1fr); }
+.cv-body p { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.cv .kw { display: flex; flex-wrap: wrap; gap: 5px; }
+.cv .kw span { background: var(--tint); border-radius: 999px; padding: 1px 9px; font-size: 12px; }
+.cv dl { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 5px 12px; }
+.cv dt { color: var(--muted); font-size: 11.5px; padding-top: 1px; white-space: nowrap; }
+.cv dd { margin: 0; overflow-wrap: anywhere; }
+.cv dd div + div { margin-top: 2px; }
+.cv a { color: var(--primary); }
+.cv .id { font: 11px var(--mono); color: var(--muted); margin-left: 6px; }
+.cv blockquote { margin: 0; padding: 6px 10px; border-left: 3px solid var(--primary-soft); background: var(--bg-alt); border-radius: 0 6px 6px 0; white-space: pre-wrap; }
+.cv .qs { display: grid; gap: 5px; }
+.cv .qs div { background: var(--bg-alt); border-radius: 6px; padding: 5px 9px; }
+.cv .qs code { display: block; font: 11px var(--mono); color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cv h4 { margin: 4px 0 0; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.cv pre { font-size: 11.5px; }
+.cv-foot { border-top: 1px solid var(--border); padding: 8px 16px; color: var(--muted); font-size: 11.5px; }
+.cv .empty-note { color: var(--muted); }
 dialog .cardtabs { display: flex; gap: 12px; align-items: center; padding: 10px 18px 0; color: var(--muted); font-size: 12.5px; }
 dialog #card-yaml { min-height: 46vh; font: 12.5px/1.5 var(--mono); white-space: pre; tab-size: 2; }
 dialog .eq { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
@@ -449,7 +495,7 @@ a.iri:hover { text-decoration: underline; }
 <ol>
   <li>Switch to <b>Create KG</b> in the top bar. A starter recipe is there; the status line tells you whether it is valid, and the right pane draws the graph as you type. <b>By class</b> shows it as one table per class, <b>Triples</b> as a plain list.</li>
   <li>Replace it with a recipe of your own, in Turtle or JSON-LD (the format is detected; <b>Turtle example</b> and <b>JSON-LD example</b> in the sidebar show the same recipe in both). Reuse the <code>food:</code>, <code>cuisine:</code> and <code>course:</code> IRIs of the course.</li>
-  <li>Open <b>Dataset card…</b> and say what your graph is: title, description, licence, creators. Fill the form or switch to <b>YAML</b> and write the same card as text; the two stay in step. The engine checks the fields, and the card is stored in the <code>.rete</code> file.</li>
+  <li>Open <b>Dataset card…</b> and say what your graph is: title, description, licence, creators. Add as many creators, organizations and example queries as you need; keywords are added with Enter. The right side shows the card as a reader will see it. <b>YAML</b> holds the same card as text, and the two stay in step. The engine checks the fields, and the card is stored in the <code>.rete</code> file.</li>
   <li>Set <b>Combine with</b> to <i>Recipes</i>. Your triples and the course graph become one <code>.rete</code> file, held in memory.</li>
   <li>Press <b>Query this graph</b> (it takes you to <b>Query KG</b>) and run <code>q01</code>, <code>q04</code> and <code>q09</code> again. Does your recipe show up where you expect it?</li>
   <li>Write a query of your own and press <b>+ Add as example</b>. It is listed under “Your examples” and written into the card of your graph.</li>
@@ -576,15 +622,23 @@ node src/rete/check-lab.mjs   # drive the page in a browser                  (or
 <dialog id="card-dlg" aria-labelledby="card-h">
   <form method="dialog" novalidate>
     <header><h2 id="card-h">Dataset card</h2><p>What the graph is, who made it and how it may be used. The card is written into the <code>.rete</code> file. Every field is optional.</p></header>
-    <div class="cardtabs">
-      <div class="tabs" role="tablist">
-        <button role="tab" type="button" id="card-tab-form" aria-selected="true">Form</button>
-        <button role="tab" type="button" id="card-tab-yaml" aria-selected="false">YAML</button>
+    <div class="cardcols">
+      <div class="cardleft">
+        <div class="cardtabs">
+          <div class="tabs" role="tablist">
+            <button role="tab" type="button" id="card-tab-form" aria-selected="true">Form</button>
+            <button role="tab" type="button" id="card-tab-yaml" aria-selected="false">YAML</button>
+          </div>
+          <span>The same card, two ways to write it: switch at any time.</span>
+        </div>
+        <div class="body" id="card-fields"></div>
+        <div class="body one" id="card-yaml-box" hidden><textarea id="card-yaml" spellcheck="false" autocapitalize="off" autocomplete="off" wrap="off" aria-label="Dataset card as YAML"></textarea></div>
       </div>
-      <span>The same card, two ways to write it: switch at any time.</span>
+      <aside class="cardright" aria-label="Preview of the card">
+        <div class="pv-label">Preview</div>
+        <div id="card-preview"></div>
+      </aside>
     </div>
-    <div class="body" id="card-fields"></div>
-    <div class="body one" id="card-yaml-box" hidden><textarea id="card-yaml" spellcheck="false" autocapitalize="off" autocomplete="off" wrap="off" aria-label="Dataset card as YAML"></textarea></div>
     <div class="err" id="card-err" role="alert"></div>
     <footer>
       <button class="btn left" id="card-clear" type="button">Clear card</button>
@@ -612,7 +666,7 @@ node src/rete/check-lab.mjs   # drive the page in a browser                  (or
 <dialog id="info-dlg" aria-labelledby="info-h">
   <form method="dialog">
     <header><h2 id="info-h">Dataset card</h2><p>The curated fields of the card stored in this <code>.rete</code> file.</p></header>
-    <div class="body one"><pre id="info-pre"></pre></div>
+    <div class="body one" id="info-body"></div>
     <footer><button class="btn primary" value="cancel">Close</button></footer>
   </form>
 </dialog>
@@ -1292,11 +1346,11 @@ ${a.stack}`:r}function Pj(a,A){a=a>>>0;let j=m(),r=[];for(let t=a;t<a+4*A;t+=4)r
     ["source", "Source", "text", "https://example.org/where-the-data-comes-from"],
     ["created", "Created", "date", ""],
     ["source_date", "Source date", "date", ""],
-    ["creators", "Creators · one per line: Name, ORCID IRI", "people", "Ada Lovelace, https://orcid.org/0000-0002-1825-0097"],
-    ["publisher", "Publisher · Name, ROR IRI", "agent", "Swiss Data Science Center, https://ror.org/02hdt9m26"],
-    ["keywords", "Keywords · comma separated", "csv", "recipes, food, allergens"],
-    ["theme", "Themes · one IRI per line", "lines", "http://publications.europa.eu/resource/authority/data-theme/AGRI"],
-    ["derived_from", "Derived from · one IRI per line", "lines", "https://example.org/original-dataset"],
+    ["creators", "Creators", "people", "ORCID, e.g. https://orcid.org/0000-0002-1825-0097"],
+    ["publisher", "Organizations", "orgs", "ROR, e.g. https://ror.org/02hdt9m26"],
+    ["keywords", "Keywords", "chips", "Type a keyword and press Enter"],
+    ["theme", "Themes", "chips", "An IRI, e.g. http://publications.europa.eu/resource/authority/data-theme/AGRI, then Enter"],
+    ["derived_from", "Derived from", "chips", "An IRI of the dataset this one comes from, then Enter"],
     ["doi", "DOI", "text", "10.5281/zenodo.1234567"],
     ["canonical_url", "Canonical URL of the .rete file", "text", "https://example.org/data/recipes.rete"],
     ["sparql_endpoint", "SPARQL endpoint", "text", "https://example.org/sparql"],
@@ -1304,7 +1358,7 @@ ${a.stack}`:r}function Pj(a,A){a=a>>>0;let j=m(),r=[];for(let t=a;t<a+4*A;t+=4)r
     ["cite_as", "Cite as", "area", "Lovelace, A. (2026). Recipes of my family."],
     ["extra", "Extra · JSON object for your own fields", "json", '{ "course": "Knowledge Graphs" }'],
   ];
-  const WIDE = new Set(["area", "people", "lines", "json"]);
+  const WIDE = new Set(["area", "people", "orgs", "chips", "json"]);
   const agentIn = (line, idKey) => { const [name, ...id] = line.split(","); return { name: name.trim(), ...(id.join(",").trim() ? { [idKey]: id.join(",").trim() } : {}) }; };
   const agentOut = (a, idKey) => (a ? [a.name, a[idKey]].filter(Boolean).join(", ") : "");
   const exampleText = (ex) => (ex.query.trimStart().startsWith("#") ? ex.query : `# ${ex.title}\n${ex.query}`);
@@ -1417,37 +1471,154 @@ ${a.stack}`:r}function Pj(a,A){a=a>>>0;let j=m(),r=[];for(let t=a;t<a+4*A;t+=4)r
     });
     return { card, examples };
   }
+  // rete's card has one publisher. Further organizations are kept in the card's own `extra` bag.
+  const orgs = (card) => [card.publisher, ...((card.extra && Array.isArray(card.extra.organizations) && card.extra.organizations) || [])].filter((o) => o && typeof o === "object");
+  function setOrgs(list) {
+    const [first, ...rest] = list, extra = { ...(draft.card.extra || {}) };
+    if (first) draft.card.publisher = first; else delete draft.card.publisher;
+    if (rest.length) extra.organizations = rest; else delete extra.organizations;
+    if (Object.keys(extra).length) draft.card.extra = extra; else delete draft.card.extra;
+  }
+  const ownExtra = (card) => { const { organizations, ...rest } = card.extra && typeof card.extra === "object" ? card.extra : {}; return rest; };
+  let flushers = [], extraProblem = "";
+  const touch = () => { $("card-err").textContent = ""; preview(); };
+  function setField(key, v) {
+    if (v == null || v === "" || (Array.isArray(v) && !v.length)) delete draft.card[key]; else draft.card[key] = v;
+    touch();
+  }
+  // name + identifier rows, with a button to add one more
+  function rowsWidget(key, idKey, idHint, get, set, addLabel) {
+    const rows = get().map((a) => ({ name: a.name || "", id: a[idKey] || "" })), box = el("div", { class: "rows", "data-list": key });
+    const commit = () => { set(rows.filter((r) => r.name.trim()).map((r) => ({ name: r.name.trim(), ...(r.id.trim() ? { [idKey]: r.id.trim() } : {}) }))); touch(); };
+    const draw = (focus) => {
+      box.replaceChildren(...rows.map((r, n) => {
+        const name = el("input", { name: "name", placeholder: "Name", "aria-label": "Name", oninput: (e) => { r.name = e.target.value; commit(); } });
+        const id = el("input", { name: "id", placeholder: idHint, "aria-label": idHint, oninput: (e) => { r.id = e.target.value; commit(); } });
+        name.value = r.name; id.value = r.id;
+        return el("div", { class: "rowitem" }, name, id, el("button", { class: "btn x", type: "button", "aria-label": "Remove this entry", onclick: () => { rows.splice(n, 1); commit(); draw(); } }, "✕"));
+      }), el("button", { class: "btn add", type: "button", onclick: () => { rows.push({ name: "", id: "" }); draw(true); } }, addLabel));
+      if (focus) box.querySelectorAll("input[name=name]")[rows.length - 1].focus();
+    };
+    draw();
+    return box;
+  }
+  // type, press Enter, and the entry appears below as a chip
+  function chipsWidget(key, hint, commas) {
+    const input = el("input", { placeholder: hint, "aria-label": hint, "data-chips": key }), list = el("div", { class: "chips" });
+    const items = () => (Array.isArray(draft.card[key]) ? draft.card[key].map(String) : []);
+    const draw = () => list.replaceChildren(...items().map((text, n) => el("span", { class: "chip" }, text,
+      el("button", { type: "button", "aria-label": `Remove ${text}`, onclick: () => { setField(key, items().filter((_, k) => k !== n)); draw(); } }, "✕"))));
+    const add = () => {
+      const fresh = (commas ? input.value.split(",") : [input.value]).map((t) => t.trim()).filter(Boolean);
+      input.value = "";
+      if (!fresh.length) return;
+      setField(key, [...new Set([...items(), ...fresh])]); draw();
+    };
+    input.addEventListener("keydown", (e) => { if (e.key === "Enter" || (commas && e.key === ",")) { e.preventDefault(); add(); } });
+    input.addEventListener("blur", add);
+    flushers.push(add);
+    draw();
+    return [input, list];
+  }
+  function examplesWidget() {
+    const box = el("div", { class: "rows", "data-list": "example_queries" });
+    const draw = (adding) => {
+      const title = el("input", { name: "ex-title", placeholder: "What the query answers", "aria-label": "Title of the query" });
+      const query = el("textarea", { name: "ex-query", rows: 5, spellcheck: "false", placeholder: "SELECT ?s WHERE { ?s a ?class } LIMIT 10", "aria-label": "SPARQL query" });
+      box.replaceChildren(...[
+        draft.examples.length ? el("ul", { class: "eq" }, draft.examples.map((ex) => el("li", {}, el("span", {}, ex.title),
+          el("button", { class: "btn x", type: "button", "aria-label": `Remove ${ex.title}`, onclick: () => { draft.examples = draft.examples.filter((x) => x.id !== ex.id); touch(); draw(); } }, "✕")))) : null,
+        adding
+          ? el("div", { class: "newq" }, title, query, el("div", {},
+              el("button", { class: "btn", type: "button", onclick: () => draw() }, "Cancel"),
+              el("button", { class: "btn primary", type: "button", name: "ex-add", onclick: () => {
+                if (!query.value.trim()) { query.focus(); return; }
+                const n = draft.examples.length + 1;
+                draft.examples = [...draft.examples, { id: `my${n}-${Date.now().toString(36)}`, title: title.value.trim() || queryTitle(query.value, n), query: query.value.trim() }];
+                touch(); draw();
+              } }, "Add query")))
+          : el("button", { class: "btn add", type: "button", name: "ex-new", onclick: () => { draw(true); box.querySelector("[name=ex-title]").focus(); } }, "+ Add SPARQL query"),
+        !adding && !draft.examples.length ? el("span", { class: "hint" }, "Queries a reader can run on the graph. “+ Add as example” in Query KG puts the current query here too.") : null,
+      ].filter(Boolean));
+    };
+    draw();
+    return box;
+  }
   function fillForm() {
+    flushers = []; extraProblem = "";
     $("card-fields").replaceChildren(...CARD_FIELDS.map(([key, label, kind, hint]) => {
+      const wrap = (...kids) => el("div", { class: `f${WIDE.has(kind) ? " full" : ""}`, "data-field": key }, el("b", {}, label), kids);
       const v = draft.card[key];
-      let value = "";
-      try {
-        value = v == null ? "" : kind === "people" ? v.map((a) => agentOut(a, "orcid")).join("\n") : kind === "agent" ? agentOut(v, "ror")
-          : kind === "lines" ? v.join("\n") : kind === "csv" ? v.join(", ") : kind === "json" ? JSON.stringify(v, null, 2) : String(v);
-      } catch { value = typeof v === "string" ? v : JSON.stringify(v); } // a field written with another shape in YAML
-      const input = WIDE.has(kind) ? el("textarea", { name: key, rows: kind === "json" ? 3 : 2, placeholder: hint, spellcheck: "false" }) : el("input", { name: key, type: kind === "date" ? "date" : "text", placeholder: hint });
-      input.value = value;
-      return el("label", { class: `f${WIDE.has(kind) ? " full" : ""}` }, el("b", {}, label), input);
-    }), el("div", { class: "f full" }, el("b", {}, "Example queries"),
-      draft.examples.length
-        ? el("ul", { class: "eq" }, draft.examples.map((ex) => el("li", {}, el("span", {}, ex.title),
-            el("button", { class: "btn", type: "button", "aria-label": `Remove ${ex.title}`, onclick: (e) => { draft.examples = draft.examples.filter((x) => x.id !== ex.id); e.target.closest("li").remove(); } }, "✕"))))
-        : el("span", {}, "None yet. In Query KG, “+ Add as example” puts the current query here; in YAML, add them under example_queries.")));
+      if (kind === "people") return wrap(rowsWidget(key, "orcid", hint, () => (Array.isArray(v) ? v.filter((a) => a && typeof a === "object") : []), (list) => { if (list.length) draft.card[key] = list; else delete draft.card[key]; }, "+ Add creator"));
+      if (kind === "orgs") return wrap(rowsWidget(key, "ror", hint, () => orgs(draft.card), setOrgs, "+ Add organization"),
+        el("span", { class: "hint" }, "The first is the publisher of the card; rete keeps one, so further organizations are stored under extra."));
+      if (kind === "chips") return wrap(chipsWidget(key, hint, key === "keywords"));
+      if (kind === "json") {
+        const own = ownExtra(draft.card), input = el("textarea", { name: key, rows: 3, placeholder: hint, spellcheck: "false" });
+        input.value = Object.keys(own).length ? JSON.stringify(own, null, 2) : "";
+        input.addEventListener("input", () => {
+          const raw = input.value.trim();
+          try {
+            const parsed = raw ? JSON.parse(raw) : {};
+            if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) throw new Error("it must be an object: { … }");
+            const kept = draft.card.extra && draft.card.extra.organizations ? { organizations: draft.card.extra.organizations } : {};
+            const next = { ...parsed, ...kept };
+            extraProblem = "";
+            setField("extra", Object.keys(next).length ? next : null);
+          } catch (e) { extraProblem = `Extra: not valid JSON (${e.message})`; }
+        });
+        return wrap(input);
+      }
+      const input = kind === "area" ? el("textarea", { name: key, rows: 2, placeholder: hint }) : el("input", { name: key, type: kind === "date" ? "date" : "text", placeholder: hint });
+      input.value = v == null ? "" : String(v);
+      input.addEventListener("input", () => setField(key, input.value.trim()));
+      return wrap(input);
+    }), el("div", { class: "f full", "data-field": "example_queries" }, el("b", {}, "Example queries"), examplesWidget()));
   }
   function readForm() {
-    const card = {};
-    for (const [key, label, kind] of CARD_FIELDS) {
-      const raw = $("card-fields").querySelector(`[name=${key}]`).value.trim();
-      if (!raw) continue;
-      const lines = raw.split("\n").map((l) => l.trim()).filter(Boolean);
-      if (kind === "people") card[key] = lines.map((l) => agentIn(l, "orcid"));
-      else if (kind === "agent") card[key] = agentIn(raw, "ror");
-      else if (kind === "lines") card[key] = lines;
-      else if (kind === "csv") card[key] = raw.split(",").map((k) => k.trim()).filter(Boolean);
-      else if (kind === "json") { try { card[key] = JSON.parse(raw); } catch (e) { throw new Error(`${label.split(" · ")[0]}: not valid JSON (${e.message})`); } }
-      else card[key] = raw;
-    }
-    return { card, examples: draft.examples };
+    for (const flush of flushers) flush(); // a keyword typed but not yet entered still counts
+    if (extraProblem) throw new Error(extraProblem);
+    return { card: draft.card, examples: draft.examples };
+  }
+
+  // The card as a reader would see it. `examples` are { title, query }.
+  function cardView(card, examples, foot) {
+    const link = (v, href) => (/^https?:\/\//.test(href || v) ? el("a", { href: href || v, target: "_blank", rel: "noopener" }, v) : String(v));
+    const agent = (a, idKey) => el("div", {}, a.name || "—", a[idKey] ? el("a", { class: "id", href: a[idKey], target: "_blank", rel: "noopener" }, idKey.toUpperCase()) : null);
+    const list = (v) => (Array.isArray(v) ? v : v == null ? [] : [v]);
+    const rows = [
+      ["License", card.license && link(card.license)],
+      ["Creators", list(card.creators).length ? list(card.creators).map((a) => agent(typeof a === "object" && a ? a : { name: String(a) }, "orcid")) : null],
+      [orgs(card).length > 1 ? "Organizations" : "Publisher", orgs(card).length ? orgs(card).map((a) => agent(a, "ror")) : null],
+      ["Source", card.source && link(card.source)],
+      ["Created", card.created], ["Source date", card.source_date],
+      ["DOI", card.doi && link(card.doi, /^https?:/.test(card.doi) ? card.doi : `https://doi.org/${card.doi}`)],
+      ["File", card.canonical_url && link(card.canonical_url)],
+      ["Endpoint", card.sparql_endpoint && link(card.sparql_endpoint)],
+      ["Base IRI", card.base_iri && link(card.base_iri)],
+      ["Themes", list(card.theme).length ? list(card.theme).map((t) => el("div", {}, link(String(t).split("/").pop() || t, t))) : null],
+      ["Derived from", list(card.derived_from).length ? list(card.derived_from).map((t) => el("div", {}, link(t))) : null],
+    ].filter((r) => r[1]);
+    const extra = ownExtra(card), empty = !Object.keys(card).length && !examples.length;
+    return el("article", { class: "cv" },
+      el("div", { class: "cv-head" }, el("div", { class: "kind" }, "Knowledge graph"),
+        el("h3", { class: card.title ? "" : "none" }, card.title || "Untitled graph"),
+        card.version || card.license ? el("div", { class: "tags" }, card.version ? el("span", {}, `v${card.version}`) : null,
+          card.license ? el("span", {}, String(card.license).replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")) : null) : null),
+      el("div", { class: "cv-body" },
+        empty ? el("p", { class: "empty-note" }, "Fill the form and the card takes shape here.") : null,
+        card.description ? el("p", {}, card.description) : null,
+        list(card.keywords).length ? el("div", { class: "kw" }, list(card.keywords).map((k) => el("span", {}, k))) : null,
+        rows.length ? el("dl", {}, rows.map(([k, v]) => [el("dt", {}, k), el("dd", {}, v)])) : null,
+        card.cite_as ? [el("h4", {}, "Cite as"), el("blockquote", {}, card.cite_as)] : null,
+        examples.length ? [el("h4", {}, `Example ${examples.length === 1 ? "query" : "queries"}`), el("div", { class: "qs" }, examples.map((ex) =>
+          el("div", {}, ex.title, el("code", {}, (ex.query.split("\n").find((l) => l.trim() && !l.trim().startsWith("#") && !/^prefix/i.test(l.trim())) || "").trim()))))] : null,
+        Object.keys(extra).length ? [el("h4", {}, "Extra"), el("pre", {}, JSON.stringify(extra, null, 2))] : null),
+      foot ? el("div", { class: "cv-foot" }, foot) : null);
+  }
+  function preview() {
+    const ds = state.scratch && state.datasets.includes(state.scratch) ? state.scratch : null;
+    $("card-preview").replaceChildren(cardView(draft.card, draft.examples, ds ? `${fmtInt(ds.quads)} triples · rete ${LAB.version}` : `rete ${LAB.version}`));
   }
   const YAML_HELP = "# Dataset card. Fields: " + CARD_FIELDS.map((f) => f[0]).join(", ") + ", example_queries.\n# creators is a list of name + orcid; publisher is name + ror; keywords, theme and derived_from are lists.\n";
   // Read the tab that is open into the draft; an error stays in the dialog and nothing changes.
@@ -1461,6 +1632,7 @@ ${a.stack}`:r}function Pj(a,A){a=a>>>0;let j=m(),r=[];for(let t=a;t<a+4*A;t+=4)r
     $("card-fields").hidden = tab !== "form";
     $("card-yaml-box").hidden = tab !== "yaml";
     if (tab === "yaml") { const y = toYaml(withExamples(draft)); $("card-yaml").value = `${YAML_HELP}${y}${y ? "\n" : ""}`; } else fillForm();
+    preview();
   }
   function switchTab(tab) {
     if (tab === cardTab) return;
@@ -1499,7 +1671,8 @@ ${a.stack}`:r}function Pj(a,A){a=a>>>0;let j=m(),r=[];for(let t=a;t<a+4*A;t+=4)r
   }
   function showCard(ds) {
     $("info-h").textContent = `Dataset card · ${ds.name}`;
-    $("info-pre").textContent = JSON.stringify(curated(ds), null, 2);
+    const { example_queries: queries, ...card } = curated(ds);
+    $("info-body").replaceChildren(cardView(card, (queries || []).map((query, n) => ({ title: queryTitle(query, n + 1), query })), `${fmtInt(ds.quads)} triples · ${fmtSize(ds.bytes.length)}`));
     $("info-dlg").showModal();
   }
   // The Create KG sidebar: what the graph is called, how big it is, what its card says.
@@ -1771,8 +1944,13 @@ ${a.stack}`:r}function Pj(a,A){a=a>>>0;let j=m(),r=[];for(let t=a;t<a+4*A;t+=4)r
   $("d-new").onclick = () => { if ($("d").value.trim() || cardJson()) $("confirm-dlg").showModal(); else loadData(""); };
   $("confirm-ok").onclick = () => { state.card = {}; $("confirm-dlg").close(); loadData(""); };
   $("d-card").onclick = openCard;
-  $("card-fields").addEventListener("input", () => { $("card-err").textContent = ""; });
-  $("card-yaml").addEventListener("input", () => { $("card-err").textContent = ""; });
+  // YAML that parses updates the preview as it is typed; while it does not, the last good card stays
+  $("card-yaml").addEventListener("input", () => {
+    $("card-err").textContent = "";
+    try { draft = splitExamples(fromYaml($("card-yaml").value)); preview(); } catch { /* reported on Save or when switching tab */ }
+  });
+  // Enter in a one-line field must not close the dialog
+  $("card-dlg").addEventListener("keydown", (e) => { if (e.key === "Enter" && e.target.tagName === "INPUT") e.preventDefault(); });
   $("card-tab-form").onclick = () => switchTab("form");
   $("card-tab-yaml").onclick = () => switchTab("yaml");
   $("card-yaml").addEventListener("keydown", (e) => {
