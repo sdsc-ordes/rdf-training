@@ -134,6 +134,19 @@ await page.waitForFunction(() => document.querySelector('#d-status .txt').textCo
 const [download] = await Promise.all([page.waitForEvent('download'), page.locator('#d-download').click()])
 const magic = readFileSync(await download.path()).subarray(0, 4).toString('latin1')
 check(magic === 'RETE', 'the graph in memory downloads as a .rete file', `magic ${magic}`)
+// The text downloads must hold the same graph: rebuild each one in the page and count its triples.
+const rebuilt = async (button, format) => {
+  const [file] = await Promise.all([page.waitForEvent('download'), page.locator(button).click()])
+  const text = readFileSync(await file.path(), 'utf8')
+  const quads = await page.evaluate(async ([t, f]) => (await rete.open(await rete.build(t, f))).info().quads, [text, format]).catch((e) => String(e))
+  return { name: file.suggestedFilename(), quads, text }
+}
+const ttl = await rebuilt('#d-ttl', 'ttl')
+check(ttl.name.endsWith('.ttl') && ttl.quads === 814 && ttl.text.includes('@prefix schema:'), 'the graph downloads as Turtle with all 814 triples', `${ttl.name}: ${ttl.quads}`)
+const jsonld = await rebuilt('#d-jsonld', 'jsonld')
+check(jsonld.name.endsWith('.jsonld') && jsonld.quads === 814, 'and as JSON-LD with all 814 triples', `${jsonld.name}: ${jsonld.quads}`)
+const side = await rebuilt('#datasets li:first-child .dl [data-as=ttl]', 'ttl')
+check(side.name === 'recipes.ttl' && side.quads === 807, 'any graph in the sidebar downloads as Turtle too', `${side.name}: ${side.quads}`)
 await shot('lab-data')
 
 await page.locator('#d-query').click()
