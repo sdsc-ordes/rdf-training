@@ -25,11 +25,14 @@ Hands-on, in the browser: model the recipe domain · generate, validate and repa
 direnv allow         # or: just shell  (nix dev shell: Node 24, uv, just, Chromium)
 just setup           # uv sync + npm ci
 just dev             # live slides (or: just dev src/slides/full-day.md)
-just build           # site + decks → _site/
+just build           # site + decks + lab → _site/
 just export          # PDFs → _site/pdf/
 just refs            # after editing src/slides/references.toml or Sources lines
 just check           # everything CI runs; `just` lists the recipes
 ```
+
+Once the checks on `main` pass, `.github/workflows/pages.yml` publishes `_site/` to
+<https://sdsc-ordes.github.io/rdf-training/>: hub, `decks/`, and the RETE lab at `lab/`.
 
 ## Layout
 
@@ -38,11 +41,11 @@ just check           # everything CI runs; `just` lists the recipes
 | `src/slides/` | Slidev decks (one `.md` per format) and `modules/` |
 | `src/site/` | VitePress course hub with the hands-on worksheets |
 | `src/hands-on/` | exercise files: starter model, buggy data, queries |
-| `src/data/` | `ontology/` (classes and properties, SKOS value lists, SHACL shapes), `golden/` instance data, `advanced/` SHACL-SPARQL and rules |
+| `src/data/` | `ontology/` (classes and properties, SKOS value lists, SHACL Core shapes), `instances.ttl` (countries, units, foods, people, recipes), `shacl-advanced.ttl` (SHACL-SPARQL and rules) |
 | `src/kgcourse/` | Python helpers behind the tests and generators |
 | `tests/` | checks for data, shapes, queries, slide code and bibliographies |
 | `src/rete/` | RETE lab: script that builds the `.rete` file and the self-contained query page |
-| `docs/` | published RETE lab: `index.html` (one self-contained page, with its guide), `data/recipes.rete` |
+| `docs/` | RETE lab as built by `just rete`: `index.html` (one self-contained page, with its guide), `data/recipes.rete`; published at `lab/` |
 | `docs/course-design/` | course design brief: modules, minutes per format, errata |
 | `external/sdsc-slides/` | SDSC slide kit (update: `uv run tools/scripts/update-sdsc-kit.py`) |
 | `tools/` | `nix/` dev shell, `scripts/` build, export and slide checks |

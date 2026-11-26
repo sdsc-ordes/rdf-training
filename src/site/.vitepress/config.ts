@@ -9,7 +9,11 @@ export default defineConfig({
   themeConfig: {
     logo: { light: '/SDSC_Logo_RGB.png', dark: '/SDSC_Logo_White.png' },
     siteTitle: false,
-    nav: [{ text: 'Hands-on', link: '/hands-on/h1-model' }],
+    nav: [
+      { text: 'Hands-on', link: '/hands-on/h1-model' },
+      // target _self: the lab is a static page next to the site, outside the VitePress router
+      { text: 'Lab', link: '/lab/', target: '_self' },
+    ],
     sidebar: [
       {
         text: 'Hands-on',

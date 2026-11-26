@@ -4,7 +4,7 @@
 @prefix rec:    <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#> .
 
 # Starter model. Extend it until it answers the competency questions.
-# Reference solution: src/data/vocab/recipes.ttl
+# Reference solution: src/data/ontology/ontology.ttl
 
 rec:Food a rdfs:Class ;
     rdfs:label "Food"@en .

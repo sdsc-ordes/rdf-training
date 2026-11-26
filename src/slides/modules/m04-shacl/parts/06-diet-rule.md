@@ -22,7 +22,7 @@ minutes: 2
 
 # The same rule in SHACL-SPARQL
 
-<<< @/../data/advanced/recipes.shapes-sparql.ttl#veganSparql turtle
+<<< @/../data/shacl-advanced.ttl#veganSparql turtle
 
 - More expressive, and readable for anyone who knows SPARQL
 - Needs an engine with SHACL-SPARQL support (not the browser playground)

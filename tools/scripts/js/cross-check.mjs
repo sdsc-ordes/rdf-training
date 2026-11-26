@@ -9,9 +9,7 @@ import { Parser, Store } from 'n3'
 
 const root = new URL('../../../src', import.meta.url).pathname
 const p = (...parts) => join(root, ...parts)
-const context = ['ontology/ontology.ttl', 'ontology/enumerations.ttl', 'golden/countries.ttl', 'golden/units.ttl', 'golden/foods.ttl', 'golden/people.ttl']
-  .map((f) => p('data', f))
-const recipes = p('data/golden/recipes.ttl')
+const kg = ['ontology/ontology.ttl', 'ontology/enumerations.ttl', 'instances.ttl'].map((f) => p('data', f))
 const h2 = p('hands-on/h2-validate')
 const h3 = p('hands-on/h3-query')
 
@@ -39,8 +37,8 @@ const results = async (files) => {
   return [...new Set(rows)].sort() // compare as sets, like the Python harness
 }
 
-const golden = await results([...context, recipes])
-check(golden.length === 0, 'golden data has no SHACL results', golden.join('\n     '))
+const clean = await results(kg)
+check(clean.length === 0, 'instance data has no SHACL results', clean.join('\n     '))
 
 const expected = {}
 for (const line of readFileSync(join(h2, 'expected.tsv'), 'utf8').trim().split('\n').slice(1)) {
@@ -48,14 +46,14 @@ for (const line of readFileSync(join(h2, 'expected.tsv'), 'utf8').trim().split('
   ;(expected[file] ??= []).push([focus, path, shape, component, severity].map(expand).join(' | '))
 }
 for (const [file, want] of Object.entries(expected)) {
-  const got = await results([...context, join(h2, 'buggy', file)])
+  const got = await results([...kg, join(h2, 'buggy', file)])
   check(JSON.stringify(got) === JSON.stringify(want.sort()), `shacl ${file}`,
     `got:\n       ${got.join('\n       ')}\n     want:\n       ${want.join('\n       ')}`)
 }
 
 // --- SPARQL -----------------------------------------------------------------
 const store = new Store()
-for (const f of [...context, recipes]) store.addQuads(new Parser({ baseIRI: 'file://' + f }).parse(readFileSync(f, 'utf8')))
+for (const f of kg) store.addQuads(new Parser({ baseIRI: 'file://' + f }).parse(readFileSync(f, 'utf8')))
 const engine = new QueryEngine()
 
 const XSD_INTEGER = 'http://www.w3.org/2001/XMLSchema#integer'

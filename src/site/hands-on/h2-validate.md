@@ -15,7 +15,7 @@ Copy the prompt into your LLM chat and replace `CUISINE` with your group's cuisi
 ## 2. Validate · 8 min
 
 <a :href="data.validate" target="_blank" rel="noopener">Open the validator ↗</a>
-with the shapes and vocabulary filled in. Paste the LLM's Turtle at the end of the **Data Graph**.
+with the shapes and the recipe graph filled in. Paste the LLM's Turtle at the end of the **Data Graph**.
 The report updates as you type.
 
 No LLM? <a :href="data.fallback" target="_blank" rel="noopener">Open an LLM's first attempt ↗</a> instead.
@@ -34,5 +34,5 @@ Paste your valid Turtle into the shared pad.
 
 ::: tip Stretch
 - Remove the vocabulary from the data graph. Why does the vegan rule stop working?
-- Validate the SHACL-SPARQL version of the rule (`src/data/advanced/recipes.shapes-sparql.ttl`) in the [EU ITB validator](https://www.itb.ec.europa.eu/shacl/any/upload).
+- Validate the SHACL-SPARQL version of the rule (`src/data/shacl-advanced.ttl`) in the [EU ITB validator](https://www.itb.ec.europa.eu/shacl/any/upload).
 :::

@@ -21,7 +21,7 @@ Fine for display and search engines. You can't ask "which recipes use potatoes?"
 
 ## Things
 
-<<< @/../data/golden/recipes.ttl#rostiUsage turtle
+<<< @/../data/instances.ttl#rostiUsage turtle
 
 Food, amount and unit are each queryable and checkable.
 
