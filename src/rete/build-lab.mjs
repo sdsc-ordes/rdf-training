@@ -85,7 +85,46 @@ const starterJsonld = `${JSON.stringify({
   ingredients: ['food:tomato', 'food:olive-oil', 'food:basil', 'food:salt'],
 }, null, 2)}\n`
 
+// Validate KG: the course shapes, a short shape to start from, and the files that are broken on purpose.
+// A file is left out when its expected result needs sh:not on the values of a path (the diet rules, sh:or
+// in expected.tsv), which rete 0.7.8 does not report.
+const shapes = read('src/data/ontology/shapes.ttl').split('\n').filter((line) => !/^# #(end)?region/.test(line)).join('\n')
+const h2 = 'src/hands-on/h2-validate'
+const expected = read(h2, 'expected.tsv').trim().split('\n').slice(1).map((line) => line.split('\t'))
+const buggy = readdirSync(join(root, h2, 'buggy')).filter((f) => f.endsWith('.ttl')).sort().flatMap((file) => {
+  const rows = expected.filter((row) => row[0] === file)
+  if (!rows.length || rows.some((row) => row[5] === 'sh:OrConstraintComponent')) return []
+  // one bug: its description; several (the LLM's first attempt): the file's own name
+  const bugs = new Set(rows.map((row) => row[1]))
+  const title = bugs.size === 1 ? rows[0][1] : file.slice(4, -4).replaceAll('-', ' ')
+  return [{ id: file.slice(0, 3), file, title, expected: rows.length, ttl: read(h2, 'buggy', file) }]
+})
+const smallShapes = `@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <https://schema.org/> .
+@prefix ex:     <https://example.org/shapes#> .
+
+# Every recipe has a name and exactly one total time, written as a duration.
+ex:RecipeShape a sh:NodeShape ;
+    sh:targetClass schema:Recipe ;
+    sh:property [
+        sh:path schema:name ;
+        sh:minCount 1 ;
+        sh:message "A recipe needs a name."@en ;
+    ] ;
+    sh:property [
+        sh:path schema:totalTime ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:dayTimeDuration ;
+        sh:message "A recipe needs one total time, e.g. \\"PT30M\\"^^xsd:dayTimeDuration."@en ;
+    ] .
+`
+
 const data = {
+  shapes,
+  smallShapes,
+  buggy,
   version,
   prefixes,
   examples,
@@ -102,4 +141,4 @@ const html = read('src/rete/lab.html')
   .replace('__LAB_DATA__', () => JSON.stringify(data).replace(/</g, '\\u003c'))
   .replace('__RETE_ENGINE__', () => engine.replace(/<\/script/gi, '<\\/script'))
 writeFileSync(join(root, 'docs/lab.html'), html)
-console.log(`docs/lab.html: ${(html.length / 1048576).toFixed(1)} MB, rete-graph ${version}, ${examples.length} queries, world outline ${(world.length / 1024).toFixed(0)} KB`)
+console.log(`docs/lab.html: ${(html.length / 1048576).toFixed(1)} MB, rete-graph ${version}, ${examples.length} queries, ${buggy.length} broken files, world outline ${(world.length / 1024).toFixed(0)} KB`)

@@ -93,6 +93,68 @@ button { cursor: pointer; }
 .go:hover { filter: brightness(1.1); }
 .home .links { margin-top: 16px; }
 
+/* Create KG sidebar */
+.mine { margin: 0 16px; }
+.mine b { display: block; overflow-wrap: anywhere; }
+.mine small, .acts small { color: #C2C5E0; font-size: 12px; }
+.acts { padding: 0 16px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.acts select { flex: 1; min-width: 0; padding: 6px 8px; border-radius: 5px; border: 1px solid rgba(255,255,255,.25); background: rgba(0,0,0,.2); color: #fff; }
+.acts .wide { flex: 1 1 100%; text-align: left; }
+.side .btn.primary { background: #90CA42; border-color: #90CA42; color: #14132B; font-weight: 700; }
+.side .btn.primary:hover { background: #A5DB5E; }
+.side .btn:disabled { opacity: .45; cursor: default; }
+.ex .sub { margin: 8px 8px 2px; font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: #A9ADD0; }
+.ex li.mine-ex { display: grid; grid-template-columns: 1fr auto; }
+.ex li.mine-ex .rm { width: auto; color: #C2C5E0; padding: 5px 7px; }
+
+/* dialogs */
+dialog { border: 1px solid var(--border); border-radius: 10px; padding: 0; background: var(--bg); color: var(--text); width: min(680px, calc(100vw - 32px)); max-height: calc(100vh - 48px); box-shadow: 0 18px 60px rgba(0,0,0,.35); }
+dialog::backdrop { background: rgba(20, 19, 43, .55); }
+dialog form { display: flex; flex-direction: column; max-height: calc(100vh - 50px); }
+dialog header { padding: 14px 18px 10px; border-bottom: 1px solid var(--border); }
+dialog header h2 { margin: 0; font-size: 18px; }
+dialog header p { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+dialog .body { padding: 12px 18px; overflow-y: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; }
+dialog .body.one { display: block; }
+dialog .f { display: flex; flex-direction: column; gap: 3px; font-size: 12.5px; color: var(--muted); }
+dialog .f.full { grid-column: 1 / -1; }
+dialog .f b { color: var(--text); font-weight: 600; }
+dialog input, dialog textarea { padding: 6px 8px; border: 1px solid var(--border); border-radius: 5px; background: var(--bg); color: var(--text); width: 100%; }
+dialog textarea { font: 12.5px/1.45 var(--mono); min-height: 3.4em; resize: vertical; }
+dialog pre { font: 12px/1.5 var(--mono); background: var(--bg-alt); padding: 10px; border-radius: 6px; overflow: auto; margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+dialog .eq { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+dialog .eq li { display: flex; gap: 8px; align-items: center; background: var(--bg-alt); border-radius: 5px; padding: 4px 8px; color: var(--text); }
+dialog .eq li span { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+dialog .err { color: var(--err); font-size: 12.5px; padding: 0 18px; overflow-wrap: anywhere; }
+dialog footer { display: flex; gap: 8px; justify-content: flex-end; padding: 10px 18px 14px; border-top: 1px solid var(--border); }
+dialog .btn { padding: 6px 12px; border: 1px solid var(--border); border-radius: 5px; background: var(--bg); }
+dialog .btn.primary { background: var(--primary); border-color: var(--primary); color: var(--bg); font-weight: 600; }
+dialog .btn.left { margin-right: auto; }
+@media (max-width: 600px) { dialog .body { grid-template-columns: 1fr; } }
+
+/* validation report */
+table.report a.iri { white-space: nowrap; }
+table.report td { overflow-wrap: normal; }
+table.report td:nth-child(3) { min-width: 250px; }
+.verdict { padding: 30px 20px; }
+.verdict b { display: block; font-size: 26px; color: var(--ok); }
+.verdict span { color: var(--muted); }
+.sev { font-weight: 700; color: var(--err); }
+.side .note { color: #C2C5E0; font-size: 11.5px; line-height: 1.4; }
+
+/* graph preview */
+.graph { height: 100%; display: flex; flex-direction: column; }
+.graph svg { flex: 1; min-height: 0; width: 100%; background: var(--sea); }
+.graph line { stroke: var(--primary-soft); stroke-width: 1.2; }
+.graph .n circle { fill: var(--primary); stroke: var(--bg); stroke-width: 1.5; }
+.graph .n.cls circle { fill: #6FA82A; }
+.graph .n.bn circle { fill: var(--muted); }
+.graph .n.lit rect { fill: var(--bg); stroke: var(--border); }
+.graph text { font: 11px var(--sans); fill: var(--text); paint-order: stroke; stroke: var(--sea); stroke-width: 3px; stroke-linejoin: round; }
+.graph .n.lit text { stroke: none; font-family: var(--mono); font-size: 10.5px; }
+.graph .el { font: 9.5px var(--mono); fill: var(--muted); text-anchor: middle; }
+.graph .note { padding: 6px 10px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); }
+
 /* shared pane chrome */
 .bar { display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-bottom: 1px solid var(--border); background: var(--bg-alt); flex-wrap: wrap; }
 .tabs { display: inline-flex; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; background: var(--bg); }
@@ -172,6 +234,7 @@ a.iri:hover { text-decoration: underline; }
     <nav aria-label="Mode">
       <button id="mode-home" type="button" aria-current="page">Welcome</button>
       <button id="mode-create" type="button">Create KG</button>
+      <button id="mode-validate" type="button">Validate KG</button>
       <button id="mode-query" type="button">Query KG</button>
     </nav>
     <span class="meta">SPARQL over <code>.rete</code> files, in this page · <a href="index.html">exercises</a></span>
@@ -179,6 +242,63 @@ a.iri:hover { text-decoration: underline; }
 
   <aside class="pane side" aria-label="Datasets and examples" hidden>
 
+    <div id="side-create" hidden>
+      <h2>Your graph</h2>
+      <div class="mine"><b id="my-name">My graph</b><small id="my-meta">Not built yet.</small></div>
+
+      <h2>Start from</h2>
+      <div class="acts">
+        <button class="btn" id="d-new" type="button">New empty graph</button>
+        <button class="btn" id="d-example-ttl" type="button" title="Replace the text with a recipe in Turtle">Turtle example</button>
+        <button class="btn" id="d-example" type="button" title="Replace the text with the same recipe in JSON-LD">JSON-LD example</button>
+        <button class="btn" id="d-open" type="button" title="Load a .ttl or .jsonld file into the editor">Open file…</button>
+      </div>
+
+      <h2>Describe it</h2>
+      <div class="acts">
+        <button class="btn" id="d-card" type="button">Dataset card…</button>
+        <small id="card-meta" class="wide">No card yet.</small>
+      </div>
+
+      <h2>Combine with</h2>
+      <div class="acts"><select id="combine" aria-label="Combine your data with a graph in memory"></select></div>
+
+      <h2>Use it</h2>
+      <div class="acts">
+        <button class="btn primary wide" id="d-query" type="button" disabled>Query this graph →</button>
+        <small class="wide">Download</small>
+        <button class="btn" id="d-download" type="button" disabled title="Download the graph as a .rete file, with its card">.rete</button>
+        <button class="btn" id="d-ttl" type="button" disabled title="Download the graph as Turtle">Turtle</button>
+        <button class="btn" id="d-jsonld" type="button" disabled title="Download the graph as JSON-LD">JSON-LD</button>
+      </div>
+    </div>
+
+    <div id="side-validate" hidden>
+      <h2>Graph to validate</h2>
+      <div class="acts"><select id="v-target" aria-label="Graph to validate"></select></div>
+
+      <h2>Shapes</h2>
+      <div class="acts">
+        <button class="btn" id="s-course" type="button" title="The SHACL shapes of the course">Course shapes</button>
+        <button class="btn" id="s-minimal" type="button" title="One short shape to start from">Small example</button>
+        <button class="btn" id="s-open" type="button" title="Load a Turtle file of shapes into the editor">Open file…</button>
+        <button class="btn" id="s-download" type="button">Download shapes</button>
+        <input type="file" id="s-file" accept=".ttl,.shacl,.txt" hidden>
+      </div>
+
+      <details id="bug-box" open>
+        <summary>Broken data to try</summary>
+        <ul class="ex" id="buggy"></ul>
+      </details>
+
+      <h2>Report</h2>
+      <div class="acts">
+        <button class="btn" id="v-report" type="button" disabled>Download report</button>
+        <small class="note wide">SHACL Core, checked by the rete engine. This version does not report <code>sh:not</code> applied to the values of a path, which the diet rules of the course shapes use.</small>
+      </div>
+    </div>
+
+    <div id="side-query">
     <h2>Graphs in memory</h2>
     <ul class="ds" id="datasets"></ul>
 
@@ -199,6 +319,7 @@ a.iri:hover { text-decoration: underline; }
       <summary>Example queries</summary>
       <ul class="ex" id="examples"></ul>
     </details>
+    </div>
 
     <div class="about">
       Engine: <a href="https://github.com/caviri/rete">rete</a> <span id="ver"></span>, compiled to WebAssembly and
@@ -220,6 +341,16 @@ a.iri:hover { text-decoration: underline; }
             <li>Keep the result in memory as a <code>.rete</code> file, query it or download it.</li>
           </ul>
           <button class="go" id="go-create" type="button">Create a graph →</button>
+        </article>
+        <article>
+          <h2>Validate KG</h2>
+          <p>Write <b>SHACL</b> shapes and check a graph against them. The report follows your typing: which node breaks which rule, and why.</p>
+          <ul>
+            <li>Start from the shapes of the course.</li>
+            <li>Try them on data that is broken on purpose.</li>
+            <li>Validate the graph you created.</li>
+          </ul>
+          <button class="go" id="go-validate" type="button">Validate a graph →</button>
         </article>
         <article>
           <h2>Query KG</h2>
@@ -245,9 +376,9 @@ a.iri:hover { text-decoration: underline; }
       <span class="grow"></span>
       <span id="data-tools" hidden>
         <label>Format <select id="fmt"><option value="auto">auto</option><option value="ttl">Turtle</option><option value="jsonld">JSON-LD</option></select></label>
-        <label>Combine with <select id="combine"></select></label>
       </span>
       <span id="sparql-tools">
+        <button class="btn" id="add-example" type="button" title="Keep this query as an example: it is listed in the sidebar and written into the card of your graph">+ Add as example</button>
         <button class="btn" id="prefixes" type="button" title="Insert the course prefixes at the top">+ prefixes</button>
       </span>
     </div>
@@ -256,29 +387,26 @@ a.iri:hover { text-decoration: underline; }
       <div class="gutter" aria-hidden="true"></div>
       <div class="stack"><pre aria-hidden="true"></pre><textarea id="q" spellcheck="false" autocapitalize="off" autocomplete="off" wrap="off" aria-label="SPARQL query"></textarea></div>
     </div>
+    <div class="ed" id="s-ed" hidden>
+      <div class="gutter" aria-hidden="true"></div>
+      <div class="stack"><pre aria-hidden="true"></pre><textarea id="s" spellcheck="false" autocapitalize="off" autocomplete="off" wrap="off" aria-label="SHACL shapes, Turtle"></textarea></div>
+    </div>
     <div class="ed" id="d-ed" hidden>
       <div class="gutter" aria-hidden="true"></div>
       <div class="stack"><pre aria-hidden="true"></pre><textarea id="d" spellcheck="false" autocapitalize="off" autocomplete="off" wrap="off" aria-label="RDF data, Turtle or JSON-LD"></textarea></div>
     </div>
 
     <div class="status" id="q-status" role="status"><span class="pill">…</span><span class="txt"></span></div>
+    <div class="status" id="s-status" role="status" hidden><span class="pill">…</span><span class="txt"></span></div>
     <div class="status" id="d-status" role="status" hidden>
       <span class="pill">…</span><span class="txt"></span><span class="grow" style="flex:1"></span>
-    </div>
-    <div class="bar" id="d-actions" hidden>
-      <button class="btn" id="d-example" type="button" title="Replace the text with the same recipe in JSON-LD">JSON-LD example</button>
-      <span class="grow"></span>
-      <button class="btn" id="d-query" type="button" disabled>Query this graph</button>
-      <label title="Download the graph" aria-label="Download the graph as">⬇</label>
-      <button class="btn" id="d-download" type="button" disabled title="Download the graph as a .rete file">.rete</button>
-      <button class="btn" id="d-ttl" type="button" disabled title="Download the graph as Turtle">Turtle</button>
-      <button class="btn" id="d-jsonld" type="button" disabled title="Download the graph as JSON-LD">JSON-LD</button>
     </div>
   </section>
 
   <section class="pane res" aria-label="Results" hidden>
     <div class="bar">
       <div class="tabs" role="tablist" id="views">
+        <button role="tab" data-view="graph" aria-selected="false" hidden>Graph</button>
         <button role="tab" data-view="table" aria-selected="true">Table</button>
         <button role="tab" data-view="cards" aria-selected="false">Cards</button>
         <button role="tab" data-view="map" aria-selected="false">Map</button>
@@ -291,6 +419,42 @@ a.iri:hover { text-decoration: underline; }
     <div class="out" id="out"></div>
   </section>
 </div>
+
+<dialog id="card-dlg" aria-labelledby="card-h">
+  <form method="dialog" novalidate>
+    <header><h2 id="card-h">Dataset card</h2><p>What the graph is, who made it and how it may be used. The card is written into the <code>.rete</code> file. Every field is optional.</p></header>
+    <div class="body" id="card-fields"></div>
+    <div class="err" id="card-err" role="alert"></div>
+    <footer>
+      <button class="btn left" id="card-clear" type="button">Clear card</button>
+      <button class="btn" value="cancel">Cancel</button>
+      <button class="btn primary" id="card-save" type="button">Save card</button>
+    </footer>
+  </form>
+</dialog>
+
+<dialog id="ex-dlg" aria-labelledby="ex-h">
+  <form method="dialog">
+    <header><h2 id="ex-h">Add this query as an example</h2><p>It is listed under “Your examples” and written into the card of the graph you create.</p></header>
+    <div class="body one"><label class="f"><b>Title</b><input id="ex-title" maxlength="120" required></label></div>
+    <footer><button class="btn" value="cancel">Cancel</button><button class="btn primary" id="ex-save" type="button">Add example</button></footer>
+  </form>
+</dialog>
+
+<dialog id="confirm-dlg" aria-labelledby="confirm-h">
+  <form method="dialog">
+    <header><h2 id="confirm-h">Start a new graph?</h2><p id="confirm-p">The text in the editor and the dataset card are cleared. Graphs already in memory are kept.</p></header>
+    <footer><button class="btn" value="cancel">Cancel</button><button class="btn primary" id="confirm-ok" type="button">New empty graph</button></footer>
+  </form>
+</dialog>
+
+<dialog id="info-dlg" aria-labelledby="info-h">
+  <form method="dialog">
+    <header><h2 id="info-h">Dataset card</h2><p>The curated fields of the card stored in this <code>.rete</code> file.</p></header>
+    <div class="body one"><pre id="info-pre"></pre></div>
+    <footer><button class="btn primary" value="cancel">Close</button></footer>
+  </form>
+</dialog>
 
 <script type="application/json" id="lab-data">__LAB_DATA__</script>
 <script>__RETE_ENGINE__</script>
@@ -313,8 +477,8 @@ a.iri:hover { text-decoration: underline; }
   const fmtInt = (n) => Number(n).toLocaleString("en");
   const fmtSize = (n) => (n < 1024 ? `${n} B` : n < 1048576 ? `${(n / 1024).toFixed(0)} KB` : `${(n / 1048576).toFixed(1)} MB`);
 
-  const state = { mode: "home", datasets: [], active: null, view: "table", result: null, own: null, example: null, scratch: null };
-  const shown = () => (state.mode === "create" ? state.own : state.result); // what the results pane displays
+  const state = { card: {}, userExamples: [], views: { create: "graph", validate: "table", query: "table" }, report: null, bug: null, pos: new Map(), mode: "home", datasets: [], active: null, result: null, own: null, example: null, scratch: null };
+  const shown = () => (state.mode === "create" ? state.own : state.mode === "validate" ? state.report : state.result); // what the results pane displays
   let seq = 0;
 
   // ---- prefixes and terms -------------------------------------------------
@@ -362,6 +526,7 @@ a.iri:hover { text-decoration: underline; }
 
   function termNode(t, px) {
     if (!t) return el("span", { class: "bn" }, "—");
+    if (t.kind === "iri" && /shacl#(Violation|Warning|Info)$/.test(t.value)) return el("span", { class: "sev" }, t.value.split("#")[1]);
     if (t.kind === "iri") return el("a", { class: "iri", href: t.value, target: "_blank", rel: "noopener", title: t.value }, shorten(t.value, px));
     if (t.kind !== "literal") return el("span", { class: "bn" }, t.value);
     const span = el("span", {}, t.value);
@@ -395,11 +560,11 @@ a.iri:hover { text-decoration: underline; }
     }
     return out + esc(text.slice(at));
   }
-  const badLine = { q: 0, d: 0 };
+  const badLine = { q: 0, d: 0, s: 0 };
   const dataLang = () => ($("fmt").value !== "auto" ? $("fmt").value : /^\s*[[{]/.test($("d").value) ? "jsonld" : "ttl");
   function paint(id) {
     const text = $(id).value, box = $(`${id}-ed`);
-    box.querySelector("pre").innerHTML = `${colour(text, id === "d" ? dataLang() : "sparql")}\n`;
+    box.querySelector("pre").innerHTML = `${colour(text, id === "d" ? dataLang() : id === "s" ? "ttl" : "sparql")}\n`;
     const lines = text.split("\n").length;
     box.querySelector(".gutter").innerHTML = Array.from({ length: lines }, (_, i) => `<div${i + 1 === badLine[id] ? ' class="bad"' : ""}>${i + 1}</div>`).join("");
     follow(id);
@@ -503,21 +668,26 @@ a.iri:hover { text-decoration: underline; }
           el("b", {}, ds.name), el("small", {}, `${fmtInt(ds.quads)} triples · ${fmtSize(ds.bytes.length)} · ${ds.origin}`)),
         ds.id === "builtin" ? el("span") : el("button", { class: "icon", title: "Remove from memory", "aria-label": `Remove ${ds.name}`, onclick: () => removeDataset(ds.id) }, "✕"),
         el("div", { class: "dl" }, "⬇", [["rete", ".rete"], ["ttl", "Turtle"], ["jsonld", "JSON-LD"]].map(([as, label]) =>
-          el("button", { "data-as": as, title: `Download ${ds.name} as ${label}`, onclick: () => download(ds, as) }, label))))));
+          el("button", { "data-as": as, title: `Download ${ds.name} as ${label}`, onclick: () => download(ds, as) }, label)),
+          curated(ds) ? el("button", { "data-as": "card", title: `Show the dataset card of ${ds.name}`, onclick: () => showCard(ds) }, "card") : null))));
+    renderExamples();
     onLabel();
     const combine = $("combine"), keep = combine.value;
     combine.replaceChildren(el("option", { value: "" }, "nothing"), ...state.datasets.filter((d) => d.id !== "scratch").map((d) => el("option", { value: d.id }, d.name)));
     combine.value = [...combine.options].some((o) => o.value === keep) ? keep : "";
+    const target = $("v-target"), was = target.value;
+    target.replaceChildren(...state.datasets.map((d) => el("option", { value: d.id }, d.name)));
+    target.value = [...target.options].some((o) => o.value === was) ? was : state.active || "";
   }
   function onLabel() {
     const a = active();
-    $("on-label").textContent = state.mode === "create" ? "triples of your data" : a ? `on ${a.name}` : "";
+    $("on-label").textContent = state.mode === "create" ? "triples of your data" : state.mode === "validate" ? (state.report ? `report on ${state.report.target}` : "") : a ? `on ${a.name}` : "";
   }
   function removeDataset(id) {
     state.datasets = state.datasets.filter((d) => d.id !== id);
-    if (id === "scratch") { state.scratch = null; state.own = null; for (const b of ["d-query", "d-download", "d-ttl", "d-jsonld"]) $(b).disabled = true; }
+    if (id === "scratch") { state.scratch = null; state.own = null; }
     if (state.active === id) state.active = state.datasets[0]?.id || null;
-    renderDatasets(); runQuery(); syncHash();
+    renderDatasets(); mineInfo(); runQuery(); syncHash();
   }
 
   async function openUrl(url, activate = true) {
@@ -595,13 +765,18 @@ a.iri:hover { text-decoration: underline; }
   function renderResult() {
     const out = $("out"), r = shown();
     $("csv").disabled = !r || r.kind === "ask";
-    if (!r) { out.replaceChildren(el("div", { class: "empty" }, state.mode === "create" ? "The triples of your data appear here as you type." : "Results appear here as you type.")); return; }
+    if (!r) { out.replaceChildren(el("div", { class: "empty" }, state.mode === "create" ? "The triples of your data appear here as you type." : state.mode === "validate" ? "The validation report appears here as you type." : "Results appear here as you type.")); return; }
+    if (r.kind === "report" && r.conforms) {
+      out.replaceChildren(el("div", { class: "verdict" }, el("b", {}, "✓ Conforms"), el("span", {}, `${r.target} breaks none of these shapes.`)));
+      return;
+    }
     if (r.kind === "ask") { out.replaceChildren(el("div", { class: `bool ${r.boolean ? "t" : "f"}` }, r.boolean ? "true" : "false")); return; }
     if (!r.rows.length) { out.replaceChildren(el("div", { class: "empty" }, "The query is valid and matches nothing in this graph.")); return; }
-    out.replaceChildren(state.view === "cards" ? cardsView(r) : state.view === "map" ? mapView(r) : tableView(r));
+    const view = currentView();
+    out.replaceChildren(view === "graph" ? graphView(r) : view === "cards" ? cardsView(r) : view === "map" ? mapView(r) : tableView(r));
   }
   function tableView(r) {
-    return el("table", {},
+    return el("table", { class: r.kind === "report" ? "report" : "" },
       el("thead", {}, el("tr", {}, r.vars.map((v) => el("th", {}, `?${v}`)))),
       el("tbody", {}, r.rows.map((row) => el("tr", {}, r.vars.map((v) => el("td", { class: isNum(row[v]) ? "num" : "" }, termNode(row[v], r.px)))))));
   }
@@ -690,21 +865,29 @@ a.iri:hover { text-decoration: underline; }
   let buildNo = 0;
   async function buildData() {
     const text = $("d").value, mine = ++buildNo;
-    if (!text.trim()) { setStatus("d-status", "", "empty", "Write Turtle or JSON-LD: it is parsed as you type."); return; }
+    if (!text.trim()) {
+      setStatus("d-status", "", "empty", "Write Turtle or JSON-LD: it is parsed as you type.");
+      if (state.scratch) removeDataset("scratch");
+      state.own = null; mineInfo();
+      if (state.mode === "create") renderResult();
+      return;
+    }
     const fmt = dataLang();
     const label = fmt === "ttl" ? "Turtle" : "JSON-LD";
     try {
-      let bytes = await rete.build(text, fmt);
-      const ownGraph = await rete.open(bytes), own = ownGraph.info().quads;
+      const plain = await rete.build(text, fmt); // also the check that the text is valid
+      const ownGraph = await rete.open(plain), own = ownGraph.info().quads;
       const triples = ownGraph.queryRaw("SELECT ?subject ?predicate ?object WHERE { ?subject ?predicate ?object }");
       const base = state.datasets.find((d) => d.id === $("combine").value);
-      if (base) bytes = await rete.build((await nquads(base.graph, "b")) + (await nquads(await rete.open(bytes), "u")), "nq");
+      const src = base ? (await nquads(base.graph, "b")) + (await nquads(ownGraph, "u")) : text, srcFmt = base ? "nq" : fmt;
+      const card = cardJson(); // with a card, the engine's card-writing build is used
+      const bytes = card ? rete.wasm.build_with_card(src, srcFmt, card) : base ? await rete.build(src, srcFmt) : plain;
       if (mine !== buildNo) return; // a newer edit is already being built
-      const ds = await addDataset(base ? `My graph + ${base.name}` : "My graph", "built here", bytes, { id: "scratch" });
+      const ds = await addDataset(`${state.card.title || "My graph"}${base ? ` + ${base.name}` : ""}`, "built here", bytes, { id: "scratch" });
       state.scratch = ds;
       state.own = { kind: "select", vars: triples.vars, px: {}, rows: triples.rows.map((r) => Object.fromEntries(triples.vars.map((v) => [v, parseTerm(r[v])]))) };
-      for (const b of ["d-query", "d-download", "d-ttl", "d-jsonld"]) $(b).disabled = false;
       setStatus("d-status", "ok", `✓ valid ${label}`, `${fmtInt(own)} triples${base ? ` + ${fmtInt(base.quads)} from ${base.name} = ${fmtInt(ds.quads)}` : ""} · .rete ${fmtSize(bytes.length)}, in memory`);
+      mineInfo();
       if (state.active === "scratch") runQuery();
       if (state.mode === "create") { $("out").classList.remove("stale"); renderResult(); }
     } catch (e) {
@@ -714,43 +897,301 @@ a.iri:hover { text-decoration: underline; }
     }
   }
 
+  // ---- SHACL validation ---------------------------------------------------
+  const SH = "http://www.w3.org/ns/shacl#";
+  // The engine gives IRIs bare or in angle brackets and literals as N-Triples tokens.
+  function reportTerm(v) {
+    if (v == null) return null;
+    if (Array.isArray(v)) return v.length ? reportTerm(v[0]) : null;
+    const t = String(v);
+    if (/^(<|"|_:)/.test(t)) return parseTerm(t);
+    return /^[a-z][a-z0-9+.-]*:\S*$/i.test(t) ? { kind: "iri", value: t } : { kind: "literal", value: t, lang: null, datatype: null };
+  }
+  const validationTarget = () => state.datasets.find((d) => d.id === $("v-target").value) || active();
+  function validate() {
+    const ds = validationTarget(), text = $("s").value;
+    $("v-report").disabled = true;
+    if (!ds) { setStatus("s-status", "", "no graph", "Add or create a graph first."); return; }
+    if (!text.trim()) {
+      state.report = null;
+      setStatus("s-status", "", "empty", "Write SHACL shapes in Turtle: the graph is checked as you type.");
+      if (state.mode === "validate") { renderResult(); onLabel(); }
+      return;
+    }
+    const t0 = performance.now();
+    try {
+      const raw = ds.graph.shacl(text), ms = performance.now() - t0;
+      const vars = ["severity", "focus", "message", "path", "value", "shape", "constraint"];
+      const rows = raw.results.map((r) => ({
+        severity: reportTerm(r.resultSeverity), focus: reportTerm(r.focusNode), path: reportTerm(r.resultPath), value: reportTerm(r.valueNode),
+        message: r.resultMessage && r.resultMessage.length ? { kind: "literal", value: [].concat(r.resultMessage)[0], lang: null, datatype: null } : null,
+        shape: reportTerm(r.sourceShape), constraint: reportTerm(r.sourceConstraintComponent),
+      }));
+      state.report = { kind: "report", conforms: raw.conforms, target: ds.name, raw, vars, rows, px: { sh: SH } };
+      const nodes = new Set(raw.results.map((r) => r.focusNode)).size, time = `${ms < 10 ? ms.toFixed(1) : ms.toFixed(0)} ms`;
+      if (raw.conforms) setStatus("s-status", "ok", "✓ conforms", `${ds.name} · ${fmtInt(ds.quads)} triples checked · ${time}`);
+      else setStatus("s-status", "err", `✗ ${rows.length} ${rows.length === 1 ? "result" : "results"}`, `${ds.name} · ${nodes} ${nodes === 1 ? "node breaks" : "nodes break"} the shapes · ${time}`);
+      $("v-report").disabled = false;
+      if (state.mode === "validate") { $("out").classList.remove("stale"); renderResult(); onLabel(); }
+    } catch (e) {
+      setStatus("s-status", "err", "✗ shapes not valid", shortError(e));
+      if (state.mode === "validate") $("out").classList.add("stale");
+    }
+  }
+  // A course file that is broken on purpose, joined with the recipe graph so the shapes find their classes and lists.
+  async function loadBug(bug) {
+    const base = state.datasets.find((d) => d.id === "builtin");
+    const own = await rete.open(await rete.build(bug.ttl, "ttl"));
+    const bytes = await rete.build((await nquads(base.graph, "b")) + (await nquads(own, "u")), "nq");
+    await addDataset(`${bug.id} · ${bug.title}`, "broken on purpose", bytes, { id: "bug" });
+    state.bug = bug.id;
+    $("v-target").value = "bug";
+    renderBugs(); validate();
+  }
+  function renderBugs() {
+    $("buggy").replaceChildren(...LAB.buggy.map((bug) => el("li", {},
+      el("button", { "data-id": bug.id, class: bug.id === state.bug && $("v-target").value === "bug" ? "on" : "", title: `${bug.file}: ${bug.expected} expected ${bug.expected === 1 ? "result" : "results"}`, onclick: () => loadBug(bug) }, el("code", {}, bug.id), bug.title))));
+  }
+
+  // ---- dataset card -------------------------------------------------------
+  // The curated fields rete accepts in a card, and how each one is typed in the form.
+  const CARD_FIELDS = [
+    ["title", "Title", "text", "Recipes of my family"],
+    ["version", "Version", "text", "1.0"],
+    ["description", "Description", "area", "What the graph holds and what it is for."],
+    ["license", "License", "text", "https://creativecommons.org/licenses/by/4.0/"],
+    ["source", "Source", "text", "https://example.org/where-the-data-comes-from"],
+    ["created", "Created", "date", ""],
+    ["source_date", "Source date", "date", ""],
+    ["creators", "Creators · one per line: Name, ORCID IRI", "people", "Ada Lovelace, https://orcid.org/0000-0002-1825-0097"],
+    ["publisher", "Publisher · Name, ROR IRI", "agent", "Swiss Data Science Center, https://ror.org/02hdt9m26"],
+    ["keywords", "Keywords · comma separated", "csv", "recipes, food, allergens"],
+    ["theme", "Themes · one IRI per line", "lines", "http://publications.europa.eu/resource/authority/data-theme/AGRI"],
+    ["derived_from", "Derived from · one IRI per line", "lines", "https://example.org/original-dataset"],
+    ["doi", "DOI", "text", "10.5281/zenodo.1234567"],
+    ["canonical_url", "Canonical URL of the .rete file", "text", "https://example.org/data/recipes.rete"],
+    ["sparql_endpoint", "SPARQL endpoint", "text", "https://example.org/sparql"],
+    ["base_iri", "Base IRI", "text", "https://example.org/id/"],
+    ["cite_as", "Cite as", "area", "Lovelace, A. (2026). Recipes of my family."],
+    ["extra", "Extra · JSON object for your own fields", "json", '{ "course": "Knowledge Graphs" }'],
+  ];
+  const WIDE = new Set(["area", "people", "lines", "json"]);
+  const agentIn = (line, idKey) => { const [name, ...id] = line.split(","); return { name: name.trim(), ...(id.join(",").trim() ? { [idKey]: id.join(",").trim() } : {}) }; };
+  const agentOut = (a, idKey) => (a ? [a.name, a[idKey]].filter(Boolean).join(", ") : "");
+  const exampleText = (ex) => (ex.query.trimStart().startsWith("#") ? ex.query : `# ${ex.title}\n${ex.query}`);
+  // The card as JSON for the engine: the form's fields plus the examples added in Query KG. "" when there is nothing.
+  function cardJson() {
+    const card = { ...state.card };
+    if (state.userExamples.length) card.example_queries = state.userExamples.map(exampleText);
+    return Object.keys(card).length ? JSON.stringify(card) : "";
+  }
+  function openCard() {
+    $("card-fields").replaceChildren(...CARD_FIELDS.map(([key, label, kind, hint]) => {
+      const v = state.card[key];
+      const value = v == null ? "" : kind === "people" ? v.map((a) => agentOut(a, "orcid")).join("\n") : kind === "agent" ? agentOut(v, "ror")
+        : kind === "lines" ? v.join("\n") : kind === "csv" ? v.join(", ") : kind === "json" ? JSON.stringify(v, null, 2) : v;
+      const input = WIDE.has(kind) ? el("textarea", { name: key, rows: kind === "json" ? 3 : 2, placeholder: hint, spellcheck: "false" }) : el("input", { name: key, type: kind === "date" ? "date" : "text", placeholder: hint });
+      input.value = value;
+      return el("label", { class: `f${WIDE.has(kind) ? " full" : ""}` }, el("b", {}, label), input);
+    }), el("div", { class: "f full" }, el("b", {}, "Example queries"),
+      state.userExamples.length
+        ? el("ul", { class: "eq" }, state.userExamples.map((ex) => el("li", {}, el("span", {}, ex.title),
+            el("button", { class: "btn", type: "button", "aria-label": `Remove ${ex.title}`, onclick: (e) => { dropExample(ex.id); e.target.closest("li").remove(); } }, "✕"))))
+        : el("span", {}, "None yet. In Query KG, “+ Add as example” puts the current query here.")));
+    $("card-err").textContent = "";
+    $("card-dlg").showModal();
+  }
+  function saveCard() {
+    const card = {};
+    try {
+      for (const [key, label, kind] of CARD_FIELDS) {
+        const raw = $("card-fields").querySelector(`[name=${key}]`).value.trim();
+        if (!raw) continue;
+        const lines = raw.split("\n").map((l) => l.trim()).filter(Boolean);
+        if (kind === "people") card[key] = lines.map((l) => agentIn(l, "orcid"));
+        else if (kind === "agent") card[key] = agentIn(raw, "ror");
+        else if (kind === "lines") card[key] = lines;
+        else if (kind === "csv") card[key] = raw.split(",").map((k) => k.trim()).filter(Boolean);
+        else if (kind === "json") { try { card[key] = JSON.parse(raw); } catch (e) { throw new Error(`${label.split(" · ")[0]}: not valid JSON (${e.message})`); } }
+        else card[key] = raw;
+      }
+      // the engine's own check of every field: it answers with the problem, or with nothing
+      const problem = Object.keys(card).length ? rete.wasm.validate_card(JSON.stringify(card)) : "";
+      if (problem) throw new Error(problem);
+    } catch (e) {
+      $("card-err").textContent = shortError(e);
+      return;
+    }
+    state.card = card;
+    $("card-dlg").close();
+    mineInfo(); buildData();
+  }
+  const CURATED = [...CARD_FIELDS.map((f) => f[0]), "example_queries"];
+  function curated(ds) {
+    let card = null;
+    try { card = ds.graph.card(); } catch { /* a file without a card */ }
+    if (!card) return null;
+    const kept = Object.fromEntries(CURATED.filter((k) => card[k] != null && !(Array.isArray(card[k]) && !card[k].length)).map((k) => [k, card[k]]));
+    return Object.keys(kept).length ? kept : null;
+  }
+  function showCard(ds) {
+    $("info-h").textContent = `Dataset card · ${ds.name}`;
+    $("info-pre").textContent = JSON.stringify(curated(ds), null, 2);
+    $("info-dlg").showModal();
+  }
+  // The Create KG sidebar: what the graph is called, how big it is, what its card says.
+  function mineInfo() {
+    const ds = state.scratch && state.datasets.includes(state.scratch) ? state.scratch : null;
+    $("my-name").textContent = ds ? ds.name : state.card.title || "My graph";
+    $("my-meta").textContent = ds ? `${fmtInt(ds.quads)} triples · ${fmtSize(ds.bytes.length)} · in memory` : "Not built yet.";
+    const filled = Object.keys(state.card).length, ex = state.userExamples.length;
+    $("card-meta").textContent = filled || ex
+      ? `${filled} of ${CARD_FIELDS.length} fields filled${ex ? ` · ${ex} example ${ex === 1 ? "query" : "queries"}` : ""}`
+      : "No card yet.";
+    for (const b of ["d-query", "d-download", "d-ttl", "d-jsonld"]) $(b).disabled = !ds;
+  }
+
+  // ---- example queries ----------------------------------------------------
+  function dropExample(id) {
+    state.userExamples = state.userExamples.filter((ex) => ex.id !== id);
+    renderExamples(); mineInfo();
+    if ($("d").value.trim()) buildData();
+  }
+  function renderExamples() {
+    const item = (ex, code) => el("button", { "data-id": ex.id, class: ex.id === state.example ? "on" : "", title: ex.title, onclick: () => loadExample(ex) }, code ? el("code", {}, code) : null, ex.title);
+    const ds = active(), card = ds && ds.id !== "scratch" ? curated(ds) : null;
+    const fromCard = ((card && card.example_queries) || []).map((query, i) => ({ id: `card${i + 1}`, title: (/^#\s*(.+)$/m.exec(query) || [])[1] || `Example ${i + 1}`, query }));
+    $("examples").replaceChildren(
+      ...(state.userExamples.length ? [el("li", { class: "sub" }, "Your examples")] : []),
+      ...state.userExamples.map((ex) => el("li", { class: "mine-ex" }, item(ex),
+        el("button", { class: "rm", title: "Remove this example", "aria-label": `Remove ${ex.title}`, onclick: () => dropExample(ex.id) }, "✕"))),
+      ...(fromCard.length ? [el("li", { class: "sub" }, `From the card of ${ds.name}`)] : []),
+      ...fromCard.map((ex) => el("li", {}, item(ex))),
+      ...(state.userExamples.length || fromCard.length ? [el("li", { class: "sub" }, "Course worksheet")] : []),
+      ...LAB.examples.map((ex) => el("li", {}, item(ex, ex.id))));
+  }
+
+  // ---- graph preview ------------------------------------------------------
+  const GRAPH_MAX = 150;
+  function graphView(r) {
+    const NS = "http://www.w3.org/2000/svg", S = (tag, attrs = {}, text) => { const n = document.createElementNS(NS, tag); for (const [k, v] of Object.entries(attrs)) n.setAttribute(k, v); if (text != null) n.textContent = text; return n; };
+    const rows = r.rows.slice(0, GRAPH_MAX), nodes = new Map(), links = [];
+    const clip = (t, n) => (t.length > n ? `${t.slice(0, n - 1)}…` : t);
+    const node = (t, id, kind) => { if (!nodes.has(id)) nodes.set(id, { id, kind, label: kind === "lit" ? clip(t.value, 26) : clip(plain(t, r.px), 34), tip: t.value, deg: 0 }); return nodes.get(id); };
+    rows.forEach((row, i) => {
+      const s = row.subject, p = row.predicate, o = row.object;
+      const a = node(s, s.value, s.kind === "iri" ? "iri" : "bn");
+      // a literal is a leaf of its own triple; an IRI or blank node is shared by every triple that names it
+      const b = o.kind === "literal" ? node(o, `lit${i}`, "lit") : node(o, o.value, o.kind === "iri" ? "iri" : "bn");
+      if (p.value === RDF_TYPE && b.kind === "iri") b.kind = "cls";
+      a.deg++; b.deg++;
+      links.push({ a, b, label: p.value === RDF_TYPE ? "a" : clip(plain(p, r.px), 30) });
+    });
+    const list = [...nodes.values()], n = list.length;
+    // A small force layout: nodes repel, triples pull, everything drifts to the middle. Positions are kept
+    // between rebuilds, so the drawing stays put while you type.
+    list.forEach((d, i) => { const was = state.pos.get(d.id), ang = (i / n) * 2 * Math.PI, rad = 60 + 14 * Math.sqrt(n); d.x = was ? was[0] : rad * Math.cos(ang) + (i % 7); d.y = was ? was[1] : rad * Math.sin(ang) + (i % 5); });
+    const steps = n > 120 ? 120 : 260;
+    for (let it = 0; it < steps; it++) {
+      const cool = 1 - it / steps, max = 2 + 26 * cool;
+      for (const d of list) { d.fx = -d.x * 0.012; d.fy = -d.y * 0.012; }
+      for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) {
+        const a = list[i], b = list[j]; let dx = a.x - b.x, dy = a.y - b.y; const d2 = dx * dx + dy * dy || 0.01, d = Math.sqrt(d2), f = Math.min(12000 / d2, 40);
+        dx /= d; dy /= d; a.fx += dx * f; a.fy += dy * f; b.fx -= dx * f; b.fy -= dy * f;
+      }
+      for (const { a, b } of links) {
+        let dx = b.x - a.x, dy = b.y - a.y; const d = Math.sqrt(dx * dx + dy * dy) || 0.01, f = (d - (b.kind === "lit" ? 95 : 135)) * 0.045;
+        dx /= d; dy /= d; a.fx += dx * f; a.fy += dy * f; b.fx -= dx * f; b.fy -= dy * f;
+      }
+      for (const d of list) { const m = Math.sqrt(d.fx * d.fx + d.fy * d.fy) || 1, k = Math.min(m, max) / m; d.x += d.fx * k; d.y += d.fy * k; }
+    }
+    state.pos = new Map(list.map((d) => [d.id, [d.x, d.y]]));
+    const pad = 90, xs = list.map((d) => d.x), ys = list.map((d) => d.y);
+    const x0 = Math.min(...xs) - pad, y0 = Math.min(...ys) - pad / 2, w = Math.max(...xs) - Math.min(...xs) + pad * 2.2, h = Math.max(...ys) - Math.min(...ys) + pad;
+    const svg = S("svg", { viewBox: `${x0} ${y0} ${w} ${h}`, role: "img", "aria-label": `Drawing of the graph: ${n} nodes and ${links.length} links` });
+    const defs = S("defs"), marker = S("marker", { id: "arrow", viewBox: "0 0 10 10", refX: 10, refY: 5, markerWidth: 7, markerHeight: 7, orient: "auto-start-reverse" });
+    marker.append(S("path", { d: "M0,0 L10,5 L0,10 z", fill: "var(--primary-soft)" })); defs.append(marker); svg.append(defs);
+    const size = (d) => (d.kind === "lit" ? 0 : 6 + Math.min(8, d.deg));
+    for (const { a, b, label } of links) {
+      const dx = b.x - a.x, dy = b.y - a.y, d = Math.sqrt(dx * dx + dy * dy) || 1, ra = size(a), rb = b.kind === "lit" ? 10 : size(b) + 1;
+      svg.append(S("line", { x1: a.x + (dx / d) * ra, y1: a.y + (dy / d) * ra, x2: b.x - (dx / d) * rb, y2: b.y - (dy / d) * rb, "marker-end": "url(#arrow)" }));
+      svg.append(S("text", { class: "el", x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 - 3 }, label));
+    }
+    for (const d of list) {
+      const g = S("g", { class: `n ${d.kind}` });
+      g.append(S("title", {}, d.tip));
+      if (d.kind === "lit") {
+        const tw = d.label.length * 6.4 + 12;
+        g.append(S("rect", { x: d.x - tw / 2, y: d.y - 9, width: tw, height: 18, rx: 4 }), S("text", { x: d.x, y: d.y + 3.5, "text-anchor": "middle" }, d.label));
+      } else g.append(S("circle", { cx: d.x, cy: d.y, r: size(d) }), S("text", { x: d.x + size(d) + 4, y: d.y + 4 }, d.label));
+      svg.append(g);
+    }
+    return el("div", { class: "graph" }, svg, el("div", { class: "note" },
+      `${n} nodes · ${links.length} of ${r.rows.length} triples drawn${r.rows.length > GRAPH_MAX ? ` (the first ${GRAPH_MAX})` : ""} · blue: things · green: classes · boxes: literal values`));
+  }
+
   // ---- tabs, examples, link state -----------------------------------------
   // Welcome: what this is. Create KG: write Turtle or JSON-LD, see its triples. Query KG: write SPARQL, see the answer.
+  const MODES = {
+    create: { ed: "d", title: "Your data · Turtle or JSON-LD", tools: "data-tools" },
+    validate: { ed: "s", title: "SHACL shapes · Turtle", tools: null },
+    query: { ed: "q", title: "SPARQL query", tools: "sparql-tools" },
+  };
   function setMode(mode) {
-    state.mode = ["home", "create", "query"].includes(mode) ? mode : "home";
-    const home = state.mode === "home", create = state.mode === "create";
-    for (const m of ["home", "create", "query"]) {
+    state.mode = mode in MODES ? mode : "home";
+    const home = state.mode === "home";
+    for (const m of ["home", ...Object.keys(MODES)]) {
       if (m === state.mode) $(`mode-${m}`).setAttribute("aria-current", "page"); else $(`mode-${m}`).removeAttribute("aria-current");
     }
     $("home").hidden = !home;
     for (const pane of document.querySelectorAll(".pane.side, .pane.edit, .pane.res")) pane.hidden = home; // Welcome has the page to itself
     if (home) return;
-    $("ed-title").textContent = create ? "Your data · Turtle or JSON-LD" : "SPARQL query";
-    for (const id of ["q-ed", "q-status", "sparql-tools"]) $(id).hidden = create;
-    for (const id of ["d-ed", "d-status", "d-actions", "data-tools"]) $(id).hidden = !create;
+    for (const [m, { ed, tools }] of Object.entries(MODES)) {
+      const on = m === state.mode;
+      for (const id of [`${ed}-ed`, `${ed}-status`, `side-${m}`, ...(tools ? [tools] : [])]) $(id).hidden = !on;
+    }
+    $("ed-title").textContent = MODES[state.mode].title;
+    $("share").hidden = state.mode !== "query";
     $("out").classList.remove("stale");
+    setView(currentView());
+    mineInfo();
+    if (state.mode === "create") {
+      if (!$("d").value) $("d").value = LAB.starterTurtle;
+      buildData();
+    } else if (state.mode === "validate") {
+      if (!$("s").value) $("s").value = LAB.shapes;
+      validate();
+    } else runQuery();
     onLabel();
-    if (create && !$("d").value) $("d").value = LAB.starterTurtle;
-    if (create) { renderResult(); buildData(); } else runQuery();
-    paint(create ? "d" : "q");
+    paint(MODES[state.mode].ed);
   }
+  // Create KG previews the graph (drawing or triples), Validate KG lists the results of the report,
+  // Query KG shows an answer (table, cards or map).
+  const VIEWS = { create: ["graph", "table"], validate: ["table", "cards"], query: ["table", "cards", "map"] };
+  const viewMode = () => (state.mode in VIEWS ? state.mode : "query");
+  const currentView = () => state.views[viewMode()];
   function setView(view) {
-    state.view = ["table", "cards", "map"].includes(view) ? view : "table";
-    for (const b of $("views").children) b.setAttribute("aria-selected", String(b.dataset.view === state.view));
+    const mode = viewMode(), allowed = VIEWS[mode];
+    if (allowed.includes(view)) state.views[mode] = view;
+    for (const b of $("views").children) {
+      b.hidden = !allowed.includes(b.dataset.view);
+      b.textContent = b.dataset.view === "table" && mode === "create" ? "Triples" : b.dataset.view[0].toUpperCase() + b.dataset.view.slice(1);
+      b.setAttribute("aria-selected", String(b.dataset.view === currentView()));
+    }
     renderResult();
   }
   function loadExample(ex) {
     state.example = ex.id;
     $("q").value = ex.query;
-    for (const b of $("examples").querySelectorAll("button")) b.classList.toggle("on", b.dataset.id === ex.id);
-    if (ex.view) setView(ex.view);
-    if (state.mode !== "query") setMode("query"); else runQuery();
+    for (const b of $("examples").querySelectorAll("button[data-id]")) b.classList.toggle("on", b.dataset.id === ex.id);
+    if (ex.view) state.views.query = ex.view;
+    if (state.mode !== "query") setMode("query"); else { setView(state.views.query); runQuery(); }
     syncHash();
   }
   function link() {
     const p = new URLSearchParams(), ds = active();
     if (ds && ds.url) p.set("url", ds.url);
-    if (state.view !== "table") p.set("view", state.view);
+    if (state.views.query !== "table") p.set("view", state.views.query);
     p.set("q", $("q").value);
     return `${location.href.split("#")[0]}#${p}`;
   }
@@ -758,20 +1199,31 @@ a.iri:hover { text-decoration: underline; }
 
   // ---- wiring -------------------------------------------------------------
   $("ver").textContent = $("ver2").textContent = LAB.version;
-  $("examples").replaceChildren(...LAB.examples.map((ex) =>
-    el("li", {}, el("button", { "data-id": ex.id, title: ex.title, onclick: () => loadExample(ex) }, el("code", {}, ex.id), ex.title))));
+  renderExamples();
   $("q").addEventListener("input", () => { state.example = null; for (const b of $("examples").querySelectorAll("button.on")) b.classList.remove("on"); });
   $("q").addEventListener("input", debounce(() => { runQuery(); syncHash(); }, 200));
   $("d").addEventListener("input", debounce(buildData, 300));
-  for (const ta of [$("q"), $("d")]) ta.addEventListener("keydown", (e) => {
+  for (const ta of [$("q"), $("d"), $("s")]) ta.addEventListener("keydown", (e) => {
     if (e.key === "Tab" && !e.shiftKey && !e.altKey && !e.ctrlKey && !e.metaKey) { e.preventDefault(); ta.setRangeText("  ", ta.selectionStart, ta.selectionEnd, "end"); ta.dispatchEvent(new Event("input")); }
   });
   $("mode-home").onclick = () => setMode("home");
   $("go-create").onclick = () => setMode("create");
   $("go-query").onclick = () => setMode("query");
+  $("mode-validate").onclick = () => setMode("validate");
+  $("go-validate").onclick = () => setMode("validate");
+  $("s").addEventListener("input", debounce(validate, 300));
+  $("v-target").onchange = () => { renderBugs(); validate(); };
+  const loadShapes = (text) => { $("s").value = text; $("s").scrollTop = 0; validate(); };
+  $("s-course").onclick = () => loadShapes(LAB.shapes);
+  $("s-minimal").onclick = () => loadShapes(LAB.smallShapes);
+  $("s-open").onclick = () => $("s-file").click();
+  $("s-file").onchange = async (e) => { const f = e.target.files[0]; e.target.value = ""; if (f) loadShapes(await f.text()); };
+  $("s-download").onclick = () => save("shapes", "ttl", $("s").value, "text/turtle");
+  $("v-report").onclick = () => state.report && save(`report ${state.report.target}`, "json", `${JSON.stringify(state.report.raw, null, 2)}\n`, "application/json");
+  renderBugs();
   $("mode-query").onclick = () => setMode("query");
   $("mode-create").onclick = () => setMode("create");
-  for (const id of ["q", "d"]) {
+  for (const id of ["q", "d", "s"]) {
     $(id).addEventListener("input", () => paint(id));
     $(id).addEventListener("scroll", () => follow(id));
   }
@@ -779,7 +1231,30 @@ a.iri:hover { text-decoration: underline; }
   $("fmt").onchange = buildData;
   $("combine").onchange = buildData;
   $("prefixes").onclick = () => { $("q").value = `${prefixBlock}\n\n${$("q").value}`; runQuery(); syncHash(); };
-  $("d-example").onclick = () => { $("d").value = LAB.starterJsonld; $("fmt").value = "auto"; buildData(); };
+  const loadData = (text) => { $("d").value = text; $("fmt").value = "auto"; $("d").scrollTop = 0; buildData(); };
+  $("d-example").onclick = () => loadData(LAB.starterJsonld);
+  $("d-example-ttl").onclick = () => loadData(LAB.starterTurtle);
+  $("d-open").onclick = () => $("file").click();
+  $("d-new").onclick = () => { if ($("d").value.trim() || cardJson()) $("confirm-dlg").showModal(); else loadData(""); };
+  $("confirm-ok").onclick = () => { state.card = {}; $("confirm-dlg").close(); loadData(""); };
+  $("d-card").onclick = openCard;
+  $("card-fields").addEventListener("input", () => { $("card-err").textContent = ""; });
+  $("card-save").onclick = saveCard;
+  $("card-clear").onclick = () => { state.card = {}; $("card-dlg").close(); buildData(); mineInfo(); };
+  $("add-example").onclick = () => {
+    const q = $("q").value;
+    if (!q.trim()) return;
+    $("ex-title").value = (/^#\s*(?:q\d+\s*·\s*)?(.+)$/m.exec(q) || [])[1] || "";
+    $("ex-dlg").showModal(); $("ex-title").select();
+  };
+  $("ex-save").onclick = () => {
+    const title = $("ex-title").value.trim();
+    if (!title) { $("ex-title").focus(); return; }
+    const ex = { id: `my${state.userExamples.length + 1}-${Date.now().toString(36)}`, title, query: $("q").value };
+    state.userExamples.push(ex); state.example = ex.id;
+    $("ex-dlg").close(); renderExamples(); mineInfo();
+    if ($("d").value.trim()) buildData(); // the card of your graph now lists it
+  };
   $("d-query").onclick = () => { state.active = "scratch"; renderDatasets(); setMode("query"); syncHash(); };
   $("d-download").onclick = () => state.scratch && download(state.scratch);
   $("d-ttl").onclick = () => state.scratch && download(state.scratch, "ttl");
@@ -793,7 +1268,7 @@ a.iri:hover { text-decoration: underline; }
   $("url-form").onsubmit = (e) => { e.preventDefault(); openUrl($("url").value.trim()); };
   $("file-btn").onclick = () => $("file").click();
   $("file").onchange = (e) => { if (e.target.files[0]) openFile(e.target.files[0]); e.target.value = ""; };
-  addEventListener("resize", debounce(() => { if (state.view === "map") renderResult(); }, 150));
+  addEventListener("resize", debounce(() => { if (currentView() === "map" || currentView() === "graph") renderResult(); }, 150));
   addEventListener("dragover", (e) => e.preventDefault());
   addEventListener("drop", (e) => { e.preventDefault(); if (e.dataTransfer.files[0]) openFile(e.dataTransfer.files[0]); });
 
@@ -808,7 +1283,7 @@ a.iri:hover { text-decoration: underline; }
     const p = new URLSearchParams(location.hash.slice(1));
     const first = LAB.examples[0];
     $("q").value = p.get("q") ?? first.query;
-    if (!p.has("q")) { state.example = first.id; $("examples").querySelector("button").classList.add("on"); }
+    if (!p.has("q")) { state.example = first.id; renderExamples(); }
     setView(p.get("view") || "table");
     $("kg-size").textContent = `${fmtInt(active().quads)} triples, ${fmtSize(active().bytes.length)}`;
     runQuery();

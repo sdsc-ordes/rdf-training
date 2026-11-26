@@ -113,40 +113,64 @@ check(!(await page.locator('#examples').isVisible()), 'the example queries colla
 await page.locator('#ex-box summary').click()
 check(await page.locator('#examples').isVisible(), 'and expand again')
 
-// --- write data, keep it in memory, query it, download it -----------------------
+// --- Create KG: write data, preview it, describe it, download it ---------------------
 await page.locator('#mode-create').click()
 await settled('d-status', 'ok')
 check((await status('d-status')).includes('valid Turtle'), 'starter Turtle builds into a .rete in memory', await status('d-status'))
-check((await page.locator('#out tbody tr').count()) > 5, 'Create KG shows the triples of the data being written')
+check(await page.locator('#side-create').isVisible() && !(await page.locator('#examples').isVisible()), 'Create KG has its own sidebar, without the query list')
+check((await page.locator('#out svg g.n').count()) > 5 && (await page.locator('#out svg line').count()) === 11, 'Create KG draws the graph: one link per triple')
 check((await page.locator('#d-ed pre .t-pn').count()) > 5, 'the Turtle is coloured too')
 await shot('lab-create')
+await page.locator('#views [data-view=table]').click()
+check((await page.locator('#out tbody tr').count()) === 11, 'and lists its triples')
+await page.locator('#views [data-view=graph]').click()
 
 await page.locator('#d').fill('@prefix ex: <http://example.org/> .\nex:a ex:b')
 await settled('d-status', 'err')
 check((await status('d-status')).includes('not valid Turtle'), 'broken Turtle is reported while typing')
 
-await page.locator('#d-example').click()
+await page.locator('#d-example-ttl').click()
 await settled('d-status', 'ok')
+check((await status('d-status')).includes('valid Turtle'), 'the Turtle example loads from the sidebar')
+await page.locator('#d-example').click()
+await page.waitForFunction(() => document.querySelector('#d-status .pill').textContent.includes('JSON-LD'))
 check((await status('d-status')).includes('valid JSON-LD'), 'JSON-LD example builds into a .rete in memory', await status('d-status'))
+
+// dataset card
+await page.locator('#d-card').click()
+check((await page.locator('#card-fields [name]').count()) === 18, 'the card dialog offers the 18 curated fields of a rete card')
+await page.locator('#card-fields [name=title]').fill('Family recipes')
+await page.locator('#card-fields [name=description]').fill('Recipes written in the course, with the course graph.')
+await page.locator('#card-fields [name=license]').fill('https://creativecommons.org/licenses/by/4.0/')
+await page.locator('#card-fields [name=creators]').fill('Ada Lovelace, https://orcid.org/0000-0002-1825-0097')
+await page.locator('#card-fields [name=keywords]').fill('recipes, course')
+await page.locator('#card-fields [name=theme]').fill('not an IRI')
+await page.locator('#card-save').click()
+check((await page.locator('#card-err').innerText()).includes('theme'), 'the engine checks the card: a theme that is not an IRI is refused', await page.locator('#card-err').innerText())
+await page.locator('#card-fields [name=theme]').fill('http://publications.europa.eu/resource/authority/data-theme/AGRI')
+await shot('lab-card')
+await page.locator('#card-save').click()
+await page.waitForFunction(() => document.getElementById('my-name').textContent === 'Family recipes')
+check(!(await page.locator('#card-dlg').isVisible()) && (await page.locator('#card-meta').innerText()).startsWith('6 of 18'), 'a saved card names the graph', await page.locator('#card-meta').innerText())
 
 await page.locator('#combine').selectOption('builtin')
 await page.waitForFunction(() => document.querySelector('#d-status .txt').textContent.includes('from Recipes'))
 const [download] = await Promise.all([page.waitForEvent('download'), page.locator('#d-download').click()])
-const magic = readFileSync(await download.path()).subarray(0, 4).toString('latin1')
-check(magic === 'RETE', 'the graph in memory downloads as a .rete file', `magic ${magic}`)
+const file = readFileSync(await download.path())
+check(file.subarray(0, 4).toString('latin1') === 'RETE', 'the graph in memory downloads as a .rete file')
+const card = await page.evaluate(async (b64) => (await rete.open(Uint8Array.from(atob(b64), (c) => c.charCodeAt(0)))).card(), file.toString('base64'))
+check(card.title === 'Family recipes' && card.creators[0].orcid.includes('orcid.org') && card.keywords.length === 2 && card.triple_count === 814, 'the downloaded .rete carries the card', JSON.stringify(card).slice(0, 200))
 // The text downloads must hold the same graph: rebuild each one in the page and count its triples.
 const rebuilt = async (button, format) => {
-  const [file] = await Promise.all([page.waitForEvent('download'), page.locator(button).click()])
-  const text = readFileSync(await file.path(), 'utf8')
+  const [text_file] = await Promise.all([page.waitForEvent('download'), page.locator(button).click()])
+  const text = readFileSync(await text_file.path(), 'utf8')
   const quads = await page.evaluate(async ([t, f]) => (await rete.open(await rete.build(t, f))).info().quads, [text, format]).catch((e) => String(e))
-  return { name: file.suggestedFilename(), quads, text }
+  return { name: text_file.suggestedFilename(), quads, text }
 }
 const ttl = await rebuilt('#d-ttl', 'ttl')
 check(ttl.name.endsWith('.ttl') && ttl.quads === 814 && ttl.text.includes('@prefix schema:'), 'the graph downloads as Turtle with all 814 triples', `${ttl.name}: ${ttl.quads}`)
 const jsonld = await rebuilt('#d-jsonld', 'jsonld')
 check(jsonld.name.endsWith('.jsonld') && jsonld.quads === 814, 'and as JSON-LD with all 814 triples', `${jsonld.name}: ${jsonld.quads}`)
-const side = await rebuilt('#datasets li:first-child .dl [data-as=ttl]', 'ttl')
-check(side.name === 'recipes.ttl' && side.quads === 807, 'any graph in the sidebar downloads as Turtle too', `${side.name}: ${side.quads}`)
 await shot('lab-data')
 
 await page.locator('#d-query').click()
@@ -160,12 +184,61 @@ SELECT ?name ?ingredient WHERE {
 }`)
 await page.waitForFunction(() => document.querySelectorAll('#out tbody tr').length === 4, null, { timeout: 10000 }).catch(() => {})
 check((await page.locator('#out tbody tr').count()) === 4, 'the written recipe joins the course graph: 4 labelled ingredients', await status('q-status'))
+
+// keep the query as an example: sidebar and card
+await page.locator('#add-example').click()
+await page.locator('#ex-title').fill('Ingredients of my salad')
+await page.locator('#ex-save').click()
+check((await page.locator('#examples .mine-ex').count()) === 1, 'a query can be kept as an example in the sidebar')
 await shot('lab-own-recipe')
+await page.waitForTimeout(600) // the graph is rebuilt with the new card
+await page.locator('#datasets li.on .dl [data-as=card]').click()
+const shownCard = await page.locator('#info-pre').innerText()
+check(shownCard.includes('Family recipes') && shownCard.includes('# Ingredients of my salad'), 'and it is written into the card of the graph', shownCard.slice(0, 200))
+await page.locator('#info-dlg button').click()
+const side = await rebuilt('#datasets li:first-child .dl [data-as=ttl]', 'ttl')
+check(side.name === 'recipes.ttl' && side.quads === 807, 'any graph in the sidebar downloads as Turtle too', `${side.name}: ${side.quads}`)
+
+await page.locator('#mode-create').click()
+await page.locator('#d-new').click()
+check(await page.locator('#confirm-dlg').isVisible(), 'New empty graph asks before clearing the text and the card')
+await page.locator('#confirm-ok').click()
+await page.waitForFunction(() => document.getElementById('my-meta').textContent.startsWith('Not built'))
+check((await page.locator('#d').inputValue()) === '' && await page.locator('#d-query').isDisabled() && (await page.locator('#my-name').innerText()) === 'My graph', 'and then starts from nothing')
+
+// --- Validate KG: SHACL shapes against a graph ------------------------------------
+await page.locator('#mode-validate').click()
+await settled('s-status', 'ok')
+check(await page.locator('#side-validate').isVisible() && (await page.locator('#out .verdict').innerText()).includes('Conforms'), 'Validate KG: the recipe graph conforms to the course shapes', await status('s-status'))
+check((await page.locator('#s-ed pre .t-kw').count()) > 5 && (await page.locator('#s-ed .gutter div').count()) === (await page.locator('#s').inputValue()).split('\n').length, 'the shapes editor has colours and line numbers')
+for (const bug of await page.locator('#buggy button').all()) {
+  const id = await bug.getAttribute('data-id'), want = Number(/: (\d+) expected/.exec(await bug.getAttribute('title'))[1])
+  await bug.click()
+  await page.waitForFunction((i) => document.getElementById('on-label').textContent.includes(`report on ${i} `), id)
+  const got = await page.locator('#out tbody tr').count()
+  check(got === want, `${id} gives the ${want} expected SHACL result${want === 1 ? '' : 's'}`, `got ${got}: ${await status('s-status')}`)
+}
+await shot('lab-validate')
+await page.locator('#views [data-view=cards]').click()
+check((await page.locator('#out .card').count()) === 9, 'the report reads as cards too')
+await page.locator('#views [data-view=table]').click()
+const [reportFile] = await Promise.all([page.waitForEvent('download'), page.locator('#v-report').click()])
+const report = JSON.parse(readFileSync(await reportFile.path(), 'utf8'))
+check(report.conforms === false && report.results.length === 9, 'the report downloads as JSON')
+const shapes = await page.locator('#s').inputValue()
+await page.locator('#s').fill(`${shapes}\nrecsh:Broken a sh:NodeShape ; sh:targetClass`)
+await settled('s-status', 'err')
+await page.waitForFunction(() => document.querySelector('#s-status .pill').textContent.includes('shapes not valid'))
+check((await page.locator('#s-ed .gutter .bad').count()) === 1 && await page.locator('#out.stale').count() === 1, 'shapes that do not parse are reported with their line')
+await page.locator('#s-minimal').click()
+await page.waitForFunction(() => /result|conforms/.test(document.querySelector('#s-status .pill').textContent))
+check((await page.locator('#s').inputValue()).includes('ex:RecipeShape') && (await page.locator('#out tbody tr').count()) > 0, 'a small example shape finds the missing fields of the broken file', await status('s-status'))
 
 // --- open a .rete by URL ----------------------------------------------------------
+await page.locator('#mode-query').click()
 await page.locator('#url').fill(reteUrl)
 await page.locator('#url-form button').click()
-await page.waitForFunction(() => document.querySelectorAll('#datasets li').length === 3, null, { timeout: 10000 }).catch(() => {})
+await page.waitForFunction(() => (document.querySelector('#datasets li.on small') || {}).textContent?.includes('URL'), null, { timeout: 10000 }).catch(() => {})
 check((await page.locator('#datasets li.on small').innerText()).includes('URL'), 'a .rete file opens from a URL and becomes the queried graph', await page.locator('#add-msg').innerText())
 
 await page.goto('about:blank')

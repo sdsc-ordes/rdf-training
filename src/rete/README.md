@@ -6,8 +6,8 @@ Sources of the lab published from `docs/`: a self-contained HTML page that runs 
 | File | Role |
 |---|---|
 | `build-rete.sh` | builds `docs/data/recipes.rete` from `src/data/` with the rete CLI, then calls `build-lab.mjs` |
-| `build-lab.mjs` | inlines the engine, the graph, the worksheet queries and a world outline into `lab.html` → `docs/lab.html` |
-| `lab.html` | the page template: sidebar, live SPARQL and Turtle/JSON-LD editors, table, cards and map views |
+| `build-lab.mjs` | inlines the engine, the graph, the worksheet queries, the course shapes, the broken H2 files and a world outline into `lab.html` → `docs/lab.html` |
+| `lab.html` | the page template: Welcome, Create KG (Turtle/JSON-LD, graph preview, dataset card), Validate KG (SHACL) and Query KG (SPARQL; table, cards, map) |
 | `check-lab.mjs` | browser checks of `docs/lab.html`; `--shots` rewrites `docs/img/` |
 
 ```sh
