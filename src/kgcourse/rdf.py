@@ -19,19 +19,11 @@ ONTOLOGY = DATA / "ontology" / "ontology.ttl"
 ENUMERATIONS = DATA / "ontology" / "enumerations.ttl"
 SHAPES = DATA / "ontology" / "shapes.ttl"
 # Examples beyond SHACL Core (SHACL-SPARQL, SHACL rules).
-ADVANCED = DATA / "advanced"
-
-GOLDEN = DATA / "golden"
-# What attendees paste next to their own recipes: ontology, value lists and reference instance data.
-CONTEXT = [
-    ONTOLOGY,
-    ENUMERATIONS,
-    GOLDEN / "countries.ttl",
-    GOLDEN / "units.ttl",
-    GOLDEN / "foods.ttl",
-    GOLDEN / "people.ttl",
-]
-RECIPES = GOLDEN / "recipes.ttl"
+SHACL_ADVANCED = DATA / "shacl-advanced.ttl"
+# Countries, units, foods, people and recipes.
+INSTANCES = DATA / "instances.ttl"
+# The recipe knowledge graph: ontology, value lists and instance data.
+KG = [ONTOLOGY, ENUMERATIONS, INSTANCES]
 
 
 def load(*paths: Path | str) -> Graph:
@@ -44,11 +36,6 @@ def load(*paths: Path | str) -> Graph:
     return g
 
 
-def context() -> Graph:
-    """Load the vocabulary and reference data the recipes depend on."""
-    return load(*CONTEXT)
-
-
 def kg() -> Graph:
     """Load the full recipe knowledge graph."""
-    return load(*CONTEXT, RECIPES)
+    return load(*KG)

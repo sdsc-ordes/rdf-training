@@ -38,7 +38,7 @@ just check           # everything CI runs; `just` lists the recipes
 | `src/slides/` | Slidev decks (one `.md` per format) and `modules/` |
 | `src/site/` | VitePress course hub with the hands-on worksheets |
 | `src/hands-on/` | exercise files: starter model, buggy data, queries |
-| `src/data/` | `ontology/` (classes and properties, SKOS value lists, SHACL shapes), `golden/` instance data, `advanced/` SHACL-SPARQL and rules |
+| `src/data/` | `ontology/` (classes and properties, SKOS value lists, SHACL Core shapes), `instances.ttl` (countries, units, foods, people, recipes), `shacl-advanced.ttl` (SHACL-SPARQL and rules) |
 | `src/kgcourse/` | Python helpers behind the tests and generators |
 | `tests/` | checks for data, shapes, queries, slide code and bibliographies |
 | `src/rete/` | RETE lab: script that builds the `.rete` file and the self-contained query page |

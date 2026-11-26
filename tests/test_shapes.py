@@ -16,20 +16,20 @@ with open(H2 / "expected.tsv", newline="") as fh:
 
 
 @pytest.mark.parametrize("inference", ["none", "rdfs"])
-def test_golden_data_has_no_results(inference):
+def test_instance_data_has_no_results(inference):
     _, results = shacl.validate(rdf.kg(), inference=inference)
     assert results == set()
 
 
-def test_golden_data_passes_sparql_shapes():
-    shapes = rdf.load(rdf.ADVANCED / "recipes.shapes-sparql.ttl")
+def test_instance_data_passes_sparql_shapes():
+    shapes = rdf.load(rdf.SHACL_ADVANCED)
     conforms, results = shacl.validate(rdf.kg(), shapes=shapes, advanced=True)
     assert conforms, results
 
 
 def test_cheese_dish_rule_matches_query():
     rec = Namespace("https://sdsc-ordes.github.io/rdf-training/vocab/recipes#")
-    out = shacl.infer(rdf.kg(), rdf.load(rdf.ADVANCED / "recipes.rules.ttl"))
+    out = shacl.infer(rdf.kg(), rdf.load(rdf.SHACL_ADVANCED))
     query = "SELECT ?r WHERE { ?r a schema:Recipe ; rec:hasIngredient/a/rdfs:subClassOf* rec:Cheese }"
     expected = {row.r for row in rdf.kg().query(query)}
     assert len(expected) == 2 and set(out.subjects(RDF.type, rec.CheeseDish)) == expected
@@ -37,7 +37,7 @@ def test_cheese_dish_rule_matches_query():
 
 @pytest.mark.parametrize("name", sorted(EXPECTED))
 def test_buggy_file_gives_expected_results(name):
-    g = rdf.context()
+    g = rdf.kg()
     g.parse(H2 / "buggy" / name)
     conforms, results = shacl.validate(g)
     assert not conforms
@@ -54,7 +54,7 @@ def test_usages_match_ingredients():
     assert not rdf.kg().query(ask).askAnswer
 
 
-@pytest.mark.parametrize("path", [rdf.SHAPES, *sorted(rdf.ADVANCED.glob("*.ttl"))], ids=lambda p: p.name)
+@pytest.mark.parametrize("path", [rdf.SHAPES, rdf.SHACL_ADVANCED], ids=lambda p: p.name)
 def test_shapes_pass_shacl_shacl(path):
     conforms, _, text = meta_validate(rdf.load(path))
     assert conforms, text

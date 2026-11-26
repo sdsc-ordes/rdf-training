@@ -27,7 +27,7 @@ Both versions classify 2 of our 11 recipes as cheese dishes: the fondue and the 
 
 ## SHACL rule
 
-<<< @/../data/advanced/recipes.rules.ttl#cheeseDishRule turtle
+<<< @/../data/shacl-advanced.ttl#cheeseDishRule turtle
 
 </div>
 </div>

@@ -19,9 +19,9 @@ EXPECTED = rdf.HANDS_ON / "h3-query" / "expected"
 
 @cache
 def store() -> Store:
-    """Load the recipe graph and its context into an in-memory Oxigraph store, once."""
+    """Load the recipe knowledge graph into an in-memory Oxigraph store, once."""
     s = Store()
-    for path in (*rdf.CONTEXT, rdf.RECIPES):
+    for path in rdf.KG:
         s.load(path=path, format=RdfFormat.TURTLE)
     return s
 

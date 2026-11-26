@@ -62,8 +62,7 @@ echo "using $("$rete" --version) ($rete)"
 # One Turtle file: ontology, value lists and instance data, the same sources as the course's kg.ttl.
 src="$(mktemp -d)"
 trap 'rm -rf "$src"' EXIT
-cat src/data/ontology/ontology.ttl src/data/ontology/enumerations.ttl \
-  src/data/golden/{countries,units,foods,people,recipes}.ttl >"$src/recipes.ttl"
+cat src/data/ontology/ontology.ttl src/data/ontology/enumerations.ttl src/data/instances.ttl >"$src/recipes.ttl"
 
 # Date of the last change to the data, so that the same sources give the same file.
 epoch="$(git log -1 --format=%ct -- src/data 2>/dev/null || true)"

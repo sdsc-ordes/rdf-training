@@ -1,0 +1,289 @@
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema:   <https://schema.org/> .
+@prefix qudt:     <http://qudt.org/schema/qudt/> .
+@prefix unit:     <http://qudt.org/vocab/unit/> .
+@prefix wd:       <http://www.wikidata.org/entity/> .
+@prefix geo:      <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix rec:      <https://sdsc-ordes.github.io/rdf-training/vocab/recipes#> .
+@prefix recipe:   <https://sdsc-ordes.github.io/rdf-training/id/recipe/> .
+@prefix food:     <https://sdsc-ordes.github.io/rdf-training/id/food/> .
+@prefix allergen: <https://sdsc-ordes.github.io/rdf-training/id/allergen/> .
+@prefix cuisine:  <https://sdsc-ordes.github.io/rdf-training/id/cuisine/> .
+@prefix course:   <https://sdsc-ordes.github.io/rdf-training/id/course/> .
+@prefix person:   <https://sdsc-ordes.github.io/rdf-training/id/person/> .
+
+# Instance data for the recipe ontology: countries, units, foods, people and recipes.
+# Conforms to ontology/shapes.ttl when loaded with ontology/ontology.ttl and ontology/enumerations.ttl.
+
+# --- Countries ---------------------------------------------------------------
+
+# Local labels for the Wikidata countries we link to (IDs checked against Wikidata),
+# with an approximate centre point so query results can be drawn on a map.
+
+wd:Q29  a schema:Country ; rdfs:label "Spain"@en, "Spanien"@de ;
+    geo:lat 40.2 ; geo:long -3.6 .
+wd:Q142 a schema:Country ; rdfs:label "France"@en, "Frankreich"@de ;
+    geo:lat 46.6 ; geo:long 2.5 .
+wd:Q39  a schema:Country ; rdfs:label "Switzerland"@en, "Schweiz"@de ;
+    geo:lat 46.8 ; geo:long 8.2 .
+wd:Q38  a schema:Country ; rdfs:label "Italy"@en, "Italien"@de ;
+    geo:lat 42.8 ; geo:long 12.8 .
+wd:Q869 a schema:Country ; rdfs:label "Thailand"@en, "Thailand"@de ;
+    geo:lat 15.1 ; geo:long 100.9 .
+wd:Q668 a schema:Country ; rdfs:label "India"@en, "Indien"@de ;
+    geo:lat 22.4 ; geo:long 78.9 .
+wd:Q30  a schema:Country ; rdfs:label "United States"@en, "Vereinigte Staaten"@de ;
+    geo:lat 39.8 ; geo:long -98.6 .
+wd:Q17  a schema:Country ; rdfs:label "Japan"@en, "Japan"@de ;
+    geo:lat 36.5 ; geo:long 138.5 .
+
+# --- Units -------------------------------------------------------------------
+
+# Units that QUDT does not define. All other units are reused from QUDT (http://qudt.org/vocab/unit/).
+
+rec:Pinch a qudt:Unit ;
+    rdfs:label "pinch"@en ;
+    rdfs:comment "As much as fits between thumb and forefinger."@en .
+
+# --- Foods -------------------------------------------------------------------
+
+# Basic foods
+
+food:potato a rec:Vegetable ; rdfs:label "potato"@en .
+food:garlic a rec:Vegetable ; rdfs:label "garlic"@en .
+food:onion a rec:Vegetable ; rdfs:label "onion"@en .
+food:tomato a rec:Vegetable ; rdfs:label "tomato"@en .
+food:romaine-lettuce a rec:Vegetable ; rdfs:label "romaine lettuce"@en .
+food:bean-sprouts a rec:Vegetable ; rdfs:label "bean sprouts"@en .
+food:spring-onion a rec:Vegetable ; rdfs:label "spring onion"@en .
+food:carrot a rec:Vegetable ; rdfs:label "carrot"@en .
+food:celery a rec:Vegetable ; rdfs:label "celery"@en ; rec:hasAllergen allergen:celery .
+food:kombu a rec:Vegetable ; rdfs:label "kombu"@en ; rec:grownIn wd:Q17 .
+
+food:fuji-apple a rec:Fruit ; rdfs:label "Fuji apple"@en ; rec:grownIn wd:Q29, wd:Q142, wd:Q17 .
+food:lemon a rec:Fruit ; rdfs:label "lemon"@en ; rec:grownIn wd:Q29, wd:Q38 .
+food:lime a rec:Fruit ; rdfs:label "lime"@en .
+food:tamarind a rec:Fruit ; rdfs:label "tamarind"@en ; rec:grownIn wd:Q668, wd:Q869 .
+
+food:wheat a rec:Grain ; rdfs:label "wheat"@en ; rec:hasAllergen allergen:gluten .
+food:wheat-flour a rec:Grain ; rdfs:label "wheat flour"@en ; rec:hasAllergen allergen:gluten .
+food:durum-wheat a rec:Grain ; rdfs:label "durum wheat"@en ; rec:hasAllergen allergen:gluten .
+food:rice a rec:Grain ; rdfs:label "rice"@en ; rec:grownIn wd:Q869, wd:Q668 .
+food:cornstarch a rec:Grain ; rdfs:label "cornstarch"@en .
+food:polenta a rec:Grain ; rdfs:label "polenta"@en .
+
+food:chickpea a rec:Legume ; rdfs:label "chickpea"@en ; rec:grownIn wd:Q668 .
+food:peanut a rec:Legume ; rdfs:label "peanut"@en ; rec:hasAllergen allergen:peanuts .
+food:soybean a rec:Legume ; rdfs:label "soybean"@en ; rec:hasAllergen allergen:soybeans .
+food:azuki-bean a rec:Legume ; rdfs:label "azuki bean"@en ; rec:grownIn wd:Q17 .
+food:pine-nut a rec:NutOrSeed ; rdfs:label "pine nut"@en .
+
+food:basil a rec:HerbOrSpice ; rdfs:label "basil"@en .
+food:ginger a rec:HerbOrSpice ; rdfs:label "ginger"@en ; rec:grownIn wd:Q668 .
+food:garam-masala a rec:HerbOrSpice ; rdfs:label "garam masala"@en .
+food:black-pepper a rec:HerbOrSpice ; rdfs:label "black pepper"@en ; rec:grownIn wd:Q668 .
+food:nutmeg a rec:HerbOrSpice ; rdfs:label "nutmeg"@en .
+
+food:olive-oil a rec:Oil ; rdfs:label "olive oil"@en ; rec:grownIn wd:Q29, wd:Q38 .
+food:sunflower-oil a rec:Oil ; rdfs:label "sunflower oil"@en .
+food:salt a rec:Seasoning ; rdfs:label "salt"@en .
+food:vinegar a rec:Seasoning ; rdfs:label "vinegar"@en .
+food:sugar a rec:Sweetener ; rdfs:label "sugar"@en .
+food:honey a rec:Honey ; rdfs:label "honey"@en .
+food:white-wine a rec:Beverage ; rdfs:label "white wine"@en ; rec:hasAllergen allergen:sulphites .
+food:kirsch a rec:Beverage ; rdfs:label "kirsch"@en .
+food:red-wine a rec:Beverage ; rdfs:label "red wine"@en ; rec:hasAllergen allergen:sulphites .
+
+food:butter a rec:DairyProduct ; rdfs:label "butter"@en ; rec:hasAllergen allergen:milk .
+food:vacherin-fribourgeois a rec:Cheese ; rdfs:label "Vacherin Fribourgeois"@en ; rec:hasAllergen allergen:milk .
+food:mozzarella a rec:Cheese ; rdfs:label "mozzarella"@en ; rec:hasAllergen allergen:milk .
+food:gruyere a rec:HardCheese ; rdfs:label "Gruyère"@en ; rec:hasAllergen allergen:milk .
+food:parmesan a rec:HardCheese ; rdfs:label "Parmesan"@en ; rec:hasAllergen allergen:milk .
+food:egg a rec:Egg ; rdfs:label "egg"@en ; rec:hasAllergen allergen:eggs .
+food:anchovy a rec:FishOrSeafood ; rdfs:label "anchovy"@en ; rec:hasAllergen allergen:fish .
+food:bonito-flakes a rec:FishOrSeafood ; rdfs:label "bonito flakes"@en ; rec:hasAllergen allergen:fish .
+food:beef a rec:Meat ; rdfs:label "beef"@en .
+food:bacon a rec:Meat ; rdfs:label "bacon"@en .
+food:creme-fraiche a rec:DairyProduct ; rdfs:label "crème fraîche"@en ; rec:hasAllergen allergen:milk .
+
+# Products: what they contain is only stated here, not in the recipes
+
+food:worcestershire-sauce a rec:Product ; rdfs:label "Worcestershire sauce"@en ;
+    rec:containsIngredient food:anchovy, food:vinegar, food:sugar, food:tamarind ;
+    rec:hasAllergen allergen:fish .
+food:soy-sauce a rec:Product ; rdfs:label "soy sauce"@en ;
+    rec:containsIngredient food:soybean, food:wheat, food:salt ;
+    rec:hasAllergen allergen:soybeans, allergen:gluten .
+food:fish-sauce a rec:Product ; rdfs:label "fish sauce"@en ;
+    rec:containsIngredient food:anchovy, food:salt ;
+    rec:hasAllergen allergen:fish .
+food:pesto a rec:Product ; rdfs:label "pesto"@en ;
+    rec:containsIngredient food:basil, food:pine-nut, food:parmesan, food:olive-oil, food:garlic ;
+    rec:hasAllergen allergen:milk .
+food:croutons a rec:Product ; rdfs:label "croutons"@en ;
+    rec:containsIngredient food:wheat-flour, food:olive-oil, food:salt ;
+    rec:hasAllergen allergen:gluten .
+food:rice-noodles a rec:Product ; rdfs:label "rice noodles"@en ;
+    rec:containsIngredient food:rice .
+food:spaghetti a rec:Product ; rdfs:label "spaghetti"@en ;
+    rec:containsIngredient food:durum-wheat ;
+    rec:hasAllergen allergen:gluten .
+food:tofu a rec:Product ; rdfs:label "tofu"@en ;
+    rec:containsIngredient food:soybean ;
+    rec:hasAllergen allergen:soybeans .
+food:shortcrust-pastry a rec:Product ; rdfs:label "shortcrust pastry"@en ;
+    rec:containsIngredient food:wheat-flour, food:butter, food:salt ;
+    rec:hasAllergen allergen:gluten, allergen:milk .
+food:dashi a rec:Product ; rdfs:label "dashi"@en ;
+    rec:containsIngredient food:kombu, food:bonito-flakes ;
+    rec:hasAllergen allergen:fish .
+food:miso a rec:Product ; rdfs:label "miso"@en ;
+    rec:containsIngredient food:soybean, food:rice, food:salt ;
+    rec:hasAllergen allergen:soybeans .
+food:red-bean-paste a rec:Product ; rdfs:label "red bean paste"@en ;
+    rec:containsIngredient food:azuki-bean, food:sugar .
+
+# --- People ------------------------------------------------------------------
+
+# Fictional recipe authors.
+
+person:anna-keller a schema:Person ; schema:name "Anna Keller" .
+person:luca-bernasconi a schema:Person ; schema:name "Luca Bernasconi" .
+person:chloe-dubois a schema:Person ; schema:name "Chloé Dubois" .
+person:hana-mori a schema:Person ; schema:name "Hana Mori" .
+
+# --- Recipes -----------------------------------------------------------------
+
+recipe:rosti a schema:Recipe ;
+    schema:name "Rösti"@de, "Rösti"@en ;
+    schema:description "Crispy grated potato cake from German-speaking Switzerland."@en ;
+    schema:author person:anna-keller ;
+    schema:totalTime "PT40M"^^xsd:dayTimeDuration ;
+    rec:cuisine cuisine:swiss ;
+    rec:course course:side ;
+    schema:suitableForDiet schema:VegetarianDiet, schema:GlutenFreeDiet ;
+    rec:hasIngredient food:potato, food:butter, food:salt ;
+    schema:recipeIngredient "800 g potatoes, grated", "40 g butter", "1 tsp salt" ;
+    rec:hasIngredientUsage recipe:rosti-u1, recipe:rosti-u2, recipe:rosti-u3 .
+
+# #region rostiUsage
+recipe:rosti-u1 a rec:IngredientUsage ;
+    rec:food food:potato ;
+    rec:quantity 800.0 ;
+    rec:unit unit:GM ;
+    rec:preparation "grated"@en .
+# #endregion rostiUsage
+recipe:rosti-u2 a rec:IngredientUsage ; rec:food food:butter ; rec:quantity 40.0 ; rec:unit unit:GM .
+recipe:rosti-u3 a rec:IngredientUsage ; rec:food food:salt ; rec:quantity 1.0 ; rec:unit unit:TSP .
+
+recipe:fondue-moitie-moitie a schema:Recipe ;
+    schema:name "Fondue moitié-moitié"@fr, "Fondue moitié-moitié"@de, "Half-and-half fondue"@en ;
+    schema:description "Gruyère and Vacherin melted in white wine, from Fribourg."@en ;
+    schema:author person:chloe-dubois ;
+    schema:totalTime "PT30M"^^xsd:dayTimeDuration ;
+    rec:cuisine cuisine:swiss ;
+    rec:course course:main ;
+    schema:suitableForDiet schema:VegetarianDiet, schema:GlutenFreeDiet ;
+    rec:hasIngredient food:gruyere, food:vacherin-fribourgeois, food:white-wine, food:garlic, food:cornstarch, food:kirsch .
+
+recipe:caesar-salad a schema:Recipe ;
+    schema:name "Caesar salad"@en, "Caesar-Salat"@de ;
+    schema:description "Romaine lettuce with croutons, Parmesan and a creamy dressing."@en ;
+    schema:author person:luca-bernasconi ;
+    schema:totalTime "PT20M"^^xsd:dayTimeDuration ;
+    rec:cuisine cuisine:american ;
+    rec:course course:starter ;
+    rec:hasIngredient food:romaine-lettuce, food:parmesan, food:egg, food:worcestershire-sauce,
+        food:croutons, food:olive-oil, food:lemon, food:garlic, food:black-pepper .
+
+recipe:pad-thai a schema:Recipe ;
+    schema:name "Pad Thai"@en, "Pad Thai"@de ;
+    schema:description "Stir-fried rice noodles with tofu, egg, peanuts and tamarind."@en ;
+    schema:author person:luca-bernasconi ;
+    schema:totalTime "PT30M"^^xsd:dayTimeDuration ;
+    rec:cuisine cuisine:thai ;
+    rec:course course:main ;
+    rec:hasIngredient food:rice-noodles, food:tofu, food:egg, food:fish-sauce, food:soy-sauce,
+        food:peanut, food:bean-sprouts, food:lime, food:tamarind, food:sugar, food:spring-onion .
+
+recipe:spaghetti-al-pesto a schema:Recipe ;
+    schema:name "Spaghetti al pesto"@it, "Spaghetti with pesto"@en ;
+    schema:description "Spaghetti tossed with basil pesto."@en ;
+    schema:author person:chloe-dubois ;
+    schema:totalTime "PT15M"^^xsd:dayTimeDuration ;
+    rec:cuisine cuisine:italian ;
+    rec:course course:main ;
+    schema:suitableForDiet schema:VegetarianDiet ;
+    rec:hasIngredient food:spaghetti, food:pesto, food:salt .
+
+recipe:apple-tart a schema:Recipe ;
+    schema:name "Apfelwähe"@de, "Apple tart"@en, "Tarte aux pommes"@fr ;
+    schema:description "Swiss open apple tart."@en ;
+    schema:author person:anna-keller ;
+    schema:totalTime "PT1H10M"^^xsd:dayTimeDuration ;
+    rec:cuisine cuisine:swiss ;
+    rec:course course:dessert ;
+    schema:suitableForDiet schema:VegetarianDiet ;
+    rec:hasIngredient food:fuji-apple, food:wheat-flour, food:butter, food:sugar, food:egg .
+
+recipe:chana-masala a schema:Recipe ;
+    schema:name "Chana masala"@en ;
+    schema:description "Chickpeas simmered in a spiced tomato and onion sauce."@en ;
+    schema:author person:chloe-dubois ;
+    schema:totalTime "PT45M"^^xsd:dayTimeDuration ;
+    rec:cuisine cuisine:indian ;
+    rec:course course:main ;
+    schema:suitableForDiet schema:VeganDiet, schema:VegetarianDiet, schema:GlutenFreeDiet ;
+    rec:hasIngredient food:chickpea, food:tomato, food:onion, food:garlic, food:ginger,
+        food:garam-masala, food:sunflower-oil, food:salt .
+
+recipe:quiche-lorraine a schema:Recipe ;
+    schema:name "Quiche lorraine"@fr, "Quiche Lorraine"@en ;
+    schema:description "Savoury tart with bacon, eggs and crème fraîche, from Lorraine."@en ;
+    schema:author person:chloe-dubois ;
+    schema:totalTime "PT1H15M"^^xsd:dayTimeDuration ;
+    rec:cuisine cuisine:french ;
+    rec:course course:main ;
+    rec:hasIngredient food:shortcrust-pastry, food:bacon, food:egg, food:creme-fraiche, food:nutmeg,
+        food:black-pepper, food:salt ;
+    schema:recipeIngredient "250 g shortcrust pastry", "200 g bacon, diced", "3 eggs", "200 ml crème fraîche",
+        "1 pinch nutmeg" ;
+    rec:hasIngredientUsage recipe:quiche-lorraine-u1, recipe:quiche-lorraine-u2, recipe:quiche-lorraine-u3,
+        recipe:quiche-lorraine-u4, recipe:quiche-lorraine-u5 .
+recipe:quiche-lorraine-u1 a rec:IngredientUsage ; rec:food food:shortcrust-pastry ; rec:quantity 250.0 ; rec:unit unit:GM .
+recipe:quiche-lorraine-u2 a rec:IngredientUsage ; rec:food food:bacon ; rec:quantity 200.0 ; rec:unit unit:GM ;
+    rec:preparation "diced"@en .
+recipe:quiche-lorraine-u3 a rec:IngredientUsage ; rec:food food:egg ; rec:quantity 3.0 ; rec:unit unit:NUM .
+recipe:quiche-lorraine-u4 a rec:IngredientUsage ; rec:food food:creme-fraiche ; rec:quantity 200.0 ; rec:unit unit:MilliL .
+recipe:quiche-lorraine-u5 a rec:IngredientUsage ; rec:food food:nutmeg ; rec:quantity 1.0 ; rec:unit rec:Pinch .
+
+recipe:miso-soup a schema:Recipe ;
+    schema:name "Miso soup"@en, "Misosuppe"@de ;
+    schema:description "Dashi broth with miso, tofu and spring onion."@en ;
+    schema:author person:hana-mori ;
+    schema:totalTime "PT15M"^^xsd:dayTimeDuration ;
+    rec:cuisine cuisine:japanese ;
+    rec:course course:starter ;
+    rec:hasIngredient food:dashi, food:miso, food:tofu, food:spring-onion .
+
+recipe:brasato-con-polenta a schema:Recipe ;
+    schema:name "Brasato al Merlot con polenta"@it, "Beef braised in Merlot with polenta"@en ;
+    schema:description "Beef braised in red wine with vegetables, served with polenta, from Ticino."@en ;
+    schema:author person:luca-bernasconi ;
+    schema:totalTime "PT3H"^^xsd:dayTimeDuration ;
+    rec:cuisine cuisine:ticinese ;
+    rec:course course:main ;
+    schema:suitableForDiet schema:GlutenFreeDiet ;
+    rec:hasIngredient food:beef, food:red-wine, food:onion, food:carrot, food:celery, food:polenta,
+        food:butter, food:salt .
+
+recipe:dorayaki a schema:Recipe ;
+    schema:name "Dorayaki"@en, "Dorayaki"@de ;
+    schema:description "Two small honey pancakes filled with sweet red bean paste."@en ;
+    schema:author person:hana-mori ;
+    schema:totalTime "PT45M"^^xsd:dayTimeDuration ;
+    rec:cuisine cuisine:japanese ;
+    rec:course course:dessert ;
+    schema:suitableForDiet schema:VegetarianDiet ;
+    rec:hasIngredient food:wheat-flour, food:egg, food:sugar, food:honey, food:red-bean-paste .
