@@ -9,6 +9,10 @@ hero:
       text: 2 h workshop slides
       link: /decks/workshop-2h/
       target: _self
+    - theme: alt
+      text: RETE lab
+      link: /lab/
+      target: _self
 ---
 
 ## Formats
