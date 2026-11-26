@@ -21,3 +21,4 @@ __pycache__/
 # nix / direnv
 .direnv/
 result
+.cache/

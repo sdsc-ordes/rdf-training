@@ -33,3 +33,5 @@ jobs:
       - run: just build
       - run: npx playwright install --with-deps chromium
       - run: just check-slides
+      - run: just rete
+      - run: just check-rete

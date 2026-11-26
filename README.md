@@ -41,6 +41,8 @@ just check           # everything CI runs; `just` lists the recipes
 | `src/data/` | `ontology/` (classes and properties, SKOS value lists, SHACL shapes), `golden/` instance data, `advanced/` SHACL-SPARQL and rules |
 | `src/kgcourse/` | Python helpers behind the tests and generators |
 | `tests/` | checks for data, shapes, queries, slide code and bibliographies |
+| `src/rete/` | RETE lab: script that builds the `.rete` file and the self-contained query page |
+| `docs/` | published RETE lab: `index.html` (exercises), `lab.html`, `data/recipes.rete` |
 | `docs/course-design/` | course design brief: modules, minutes per format, errata |
 | `external/sdsc-slides/` | SDSC slide kit (update: `uv run tools/scripts/update-sdsc-kit.py`) |
 | `tools/` | `nix/` dev shell, `scripts/` build, export and slide checks |
