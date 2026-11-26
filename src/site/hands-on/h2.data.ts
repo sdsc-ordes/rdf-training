@@ -21,6 +21,7 @@ const prompt = read('hands-on/h2-validate/prompt-generate.md')
   .replace('{{courses}}', iris('data/ontology/enumerations.ttl', 'course', 'skos:Concept'))
   .replace('{{people}}', iris('data/instances.ttl', 'person', 'schema:Person'))
   .replace('{{foods}}', iris('data/instances.ttl', 'food', 'rec:\\w+'))
+  .replace('{{recipes}}', iris('data/instances.ttl', 'recipe', 'schema:Recipe'))
 
 export default {
   watch: ['../../data/**/*.ttl', '../../hands-on/h2-validate/**/*'],

@@ -15,17 +15,18 @@ Start with exactly these prefixes:
 
 Follow this example exactly:
 
-recipe:rosti a schema:Recipe ;
-    schema:name "Rösti"@de, "Rösti"@en ;
-    schema:description "Crispy grated potato cake from German-speaking Switzerland."@en ;
+recipe:potato-soup a schema:Recipe ;
+    schema:name "Kartoffelsuppe"@de, "Potato soup"@en ;
+    schema:description "Thick soup of potatoes, onion and carrot."@en ;
     schema:author person:anna-keller ;
-    schema:totalTime "PT40M"^^xsd:dayTimeDuration ;
+    schema:totalTime "PT45M"^^xsd:dayTimeDuration ;
     rec:cuisine cuisine:swiss ;
-    rec:course course:side ;
+    rec:course course:starter ;
     schema:suitableForDiet schema:VegetarianDiet, schema:GlutenFreeDiet ;
-    rec:hasIngredient food:potato, food:butter, food:salt .
+    rec:hasIngredient food:potato, food:onion, food:carrot, food:butter, food:salt .
 
 Rules:
+- Recipe IRIs: new ones only, not {{recipes}}, which are already in the graph.
 - schema:name: at most one per language, tagged en, de, fr or it.
 - schema:totalTime: exactly one, typed xsd:dayTimeDuration.
 - rec:cuisine: one of {{cuisines}}.
