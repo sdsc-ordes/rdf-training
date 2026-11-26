@@ -12,6 +12,7 @@ export const PREFIXES: Record<string, string> = {
   unit: 'http://qudt.org/vocab/unit/',
   wd: 'http://www.wikidata.org/entity/',
   wdt: 'http://www.wikidata.org/prop/direct/',
+  geo: 'http://www.w3.org/2003/01/geo/wgs84_pos#',
   rec: 'https://sdsc-ordes.github.io/rdf-training/vocab/recipes#',
   recsh: 'https://sdsc-ordes.github.io/rdf-training/vocab/recipes-shapes#',
   recipe: 'https://sdsc-ordes.github.io/rdf-training/id/recipe/',

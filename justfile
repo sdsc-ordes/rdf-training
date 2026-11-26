@@ -64,5 +64,13 @@ export:
 check-slides:
     npm run check:slides
 
+# Build docs/data/recipes.rete and the self-contained lab page docs/index.html.
+rete:
+    bash src/rete/build-rete.sh
+
+# Drive docs/index.html in a browser: queries, validation, data editor; needs `just rete` first.
+check-rete *args:
+    node src/rete/check-lab.mjs {{args}}
+
 # Run every check CI runs.
-check: lint test cross-check build check-slides
+check: lint test cross-check build check-slides check-rete
