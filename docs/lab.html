@@ -72,6 +72,24 @@ button { cursor: pointer; }
 .about { margin-top: auto; padding: 12px 16px 16px; font-size: 11.5px; color: #C2C5E0; }
 .about a { color: #fff; }
 
+/* home */
+.home { grid-column: 2 / -1; overflow-y: auto; }
+.home-in { max-width: 880px; padding: 36px 32px 48px; }
+.home h1 { margin: 0 0 8px; font-size: 30px; line-height: 1.15; color: var(--primary); }
+.home h2 { margin: 30px 0 6px; font-size: 19px; }
+.home p { margin: 8px 0; max-width: 72ch; }
+.home .lead { font-size: 16px; color: var(--muted); }
+.home code { font: 12.5px var(--mono); background: var(--bg-alt); padding: 1px 5px; border-radius: 4px; }
+.home a { color: var(--primary); }
+.modes { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 22px; }
+.modes article { border: 1px solid var(--border); border-top: 3px solid var(--primary); border-radius: 8px; padding: 16px 18px; display: flex; flex-direction: column; background: var(--bg); }
+.modes h2 { margin: 0 0 4px; }
+.modes ul { margin: 6px 0 14px; padding-left: 18px; }
+.modes li { margin: 3px 0; }
+.go { margin-top: auto; align-self: flex-start; background: var(--primary); color: var(--bg); border: 0; border-radius: 6px; padding: 8px 14px; font-weight: 600; }
+.go:hover { filter: brightness(1.1); }
+.home .links { margin-top: 16px; }
+
 /* shared pane chrome */
 .bar { display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-bottom: 1px solid var(--border); background: var(--bg-alt); flex-wrap: wrap; }
 .tabs { display: inline-flex; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; background: var(--bg); }
@@ -139,6 +157,7 @@ a.iri:hover { text-decoration: underline; }
   .top .meta { display: none; }
   .pane + .pane { border-left: 0; border-top: 1px solid var(--border); }
   .pane.edit { height: 60vh; } .pane.res { height: 80vh; }
+  .home { grid-column: 1; } .home-in { padding: 24px 16px 32px; }
 }
 </style>
 </head>
@@ -148,8 +167,9 @@ a.iri:hover { text-decoration: underline; }
   <header class="top">
     <span class="name">RETE lab</span>
     <nav aria-label="Mode">
+      <button id="mode-home" type="button" aria-current="page">Home</button>
       <button id="mode-create" type="button">Create KG</button>
-      <button id="mode-query" type="button" aria-current="page">Query KG</button>
+      <button id="mode-query" type="button">Query KG</button>
     </nav>
     <span class="meta">SPARQL over <code>.rete</code> files, in this page · <a href="index.html">exercises</a></span>
   </header>
@@ -184,7 +204,39 @@ a.iri:hover { text-decoration: underline; }
     </div>
   </aside>
 
-  <section class="pane edit" aria-label="Editor">
+  <section class="pane home" id="home" aria-label="Home">
+    <div class="home-in">
+      <h1>A knowledge graph lab in one file</h1>
+      <p class="lead">Write RDF, turn it into a graph and ask it questions with SPARQL. Everything runs in this page: nothing to install, nothing sent to a server, and it works offline.</p>
+      <div class="modes">
+        <article>
+          <h2>Create KG</h2>
+          <p>Write triples in <b>Turtle</b> or <b>JSON-LD</b>. The text is checked as you type and its triples are listed next to it.</p>
+          <ul>
+            <li>Combine your data with the course's recipe graph.</li>
+            <li>Keep the result in memory as a <code>.rete</code> file, query it or download it.</li>
+          </ul>
+          <button class="go" id="go-create" type="button">Create a graph →</button>
+        </article>
+        <article>
+          <h2>Query KG</h2>
+          <p>Write <b>SPARQL</b> against a graph in memory. There is no Run button: the answer follows your typing, and a query that does not parse is reported with its line.</p>
+          <ul>
+            <li>Start from the worksheet queries in the sidebar.</li>
+            <li>Read the answer as a table, as cards or on a map.</li>
+            <li>Open any <code>.rete</code> file by URL or from disk.</li>
+          </ul>
+          <button class="go" id="go-query" type="button">Query the recipe graph →</button>
+        </article>
+      </div>
+      <h2>The engine: rete</h2>
+      <p><a href="https://github.com/caviri/rete" target="_blank" rel="noopener">rete</a> (Latin for “net”) stores a whole RDF graph in one immutable <code>.rete</code> file: the term dictionary, the sorted triple indexes and a dataset card. Put the file on any static host and clients run SPARQL against it where it sits, the idea of Parquet or PMTiles applied to RDF graphs.</p>
+      <p>This page embeds the rete engine, version <span id="ver2"></span>, compiled to WebAssembly, together with the recipe graph of the course (<span id="kg-size"></span>). rete is experimental: the file format can change before version 1.0, so a <code>.rete</code> file must be read by the version that wrote it.</p>
+      <p class="links"><a href="https://github.com/caviri/rete" target="_blank" rel="noopener">github.com/caviri/rete</a> · <a href="index.html">exercises for this lab</a> · <a href="https://github.com/sdsc-ordes/rdf-training" target="_blank" rel="noopener">course repository</a></p>
+    </div>
+  </section>
+
+  <section class="pane edit" aria-label="Editor" hidden>
     <div class="bar">
       <span class="title" id="ed-title">SPARQL query</span>
       <span class="grow"></span>
@@ -218,7 +270,7 @@ a.iri:hover { text-decoration: underline; }
     </div>
   </section>
 
-  <section class="pane res" aria-label="Results">
+  <section class="pane res" aria-label="Results" hidden>
     <div class="bar">
       <div class="tabs" role="tablist" id="views">
         <button role="tab" data-view="table" aria-selected="true">Table</button>
@@ -395,7 +447,7 @@ ${a.stack}`:r}function Pj(a,A){a=a>>>0;let j=m(),r=[];for(let t=a;t<a+4*A;t+=4)r
   const fmtInt = (n) => Number(n).toLocaleString("en");
   const fmtSize = (n) => (n < 1024 ? `${n} B` : n < 1048576 ? `${(n / 1024).toFixed(0)} KB` : `${(n / 1048576).toFixed(1)} MB`);
 
-  const state = { mode: "query", datasets: [], active: null, view: "table", result: null, own: null, example: null, scratch: null };
+  const state = { mode: "home", datasets: [], active: null, view: "table", result: null, own: null, example: null, scratch: null };
   const shown = () => (state.mode === "create" ? state.own : state.result); // what the results pane displays
   let seq = 0;
 
@@ -515,7 +567,7 @@ ${a.stack}`:r}function Pj(a,A){a=a>>>0;let j=m(),r=[];for(let t=a;t<a+4*A;t+=4)r
     const list = $("datasets");
     list.replaceChildren(...state.datasets.map((ds) =>
       el("li", { class: ds.id === state.active ? "on" : "" },
-        el("button", { class: "pick", title: ds.url || ds.origin, "aria-pressed": String(ds.id === state.active), onclick: () => { state.active = ds.id; renderDatasets(); runQuery(); syncHash(); } },
+        el("button", { class: "pick", title: ds.url || ds.origin, "aria-pressed": String(ds.id === state.active), onclick: () => { state.active = ds.id; renderDatasets(); if (state.mode === "home") setMode("query"); else runQuery(); syncHash(); } },
           el("b", {}, ds.name), el("small", {}, `${fmtInt(ds.quads)} triples · ${fmtSize(ds.bytes.length)} · ${ds.origin}`)),
         el("button", { class: "icon", title: "Download .rete", "aria-label": `Download ${ds.name} as .rete`, onclick: () => download(ds) }, "⬇"),
         ds.id === "builtin" ? el("span") : el("button", { class: "icon", title: "Remove from memory", "aria-label": `Remove ${ds.name}`, onclick: () => removeDataset(ds.id) }, "✕"))));
@@ -545,7 +597,8 @@ ${a.stack}`:r}function Pj(a,A){a=a>>>0;let j=m(),r=[];for(let t=a;t<a+4*A;t+=4)r
       const name = decodeURIComponent(new URL(url, location.href).pathname.split("/").pop() || "remote").replace(/\.rete$/, "");
       await addDataset(name, "URL", bytes, { activate, url });
       msg.textContent = "";
-      runQuery(); syncHash();
+      if (state.mode === "home") setMode("query"); else runQuery();
+      syncHash();
     } catch (e) {
       msg.textContent = `Could not open ${url}: ${e.message || e}. The host must allow cross-origin requests.`;
     }
@@ -557,7 +610,7 @@ ${a.stack}`:r}function Pj(a,A){a=a>>>0;let j=m(),r=[];for(let t=a;t<a+4*A;t+=4)r
       const ext = file.name.split(".").pop().toLowerCase();
       if (ext === "rete") {
         await addDataset(file.name.replace(/\.rete$/, ""), "file", buf, { activate: true });
-        runQuery();
+        if (state.mode === "home") setMode("query"); else runQuery();
       } else {
         setMode("create");
         $("d").value = new TextDecoder().decode(buf);
@@ -729,13 +782,16 @@ ${a.stack}`:r}function Pj(a,A){a=a>>>0;let j=m(),r=[];for(let t=a;t<a+4*A;t+=4)r
   }
 
   // ---- tabs, examples, link state -----------------------------------------
-  // Create KG: write Turtle or JSON-LD, see its triples. Query KG: write SPARQL, see the answer.
+  // Home: what this is. Create KG: write Turtle or JSON-LD, see its triples. Query KG: write SPARQL, see the answer.
   function setMode(mode) {
-    const create = mode === "create";
-    state.mode = create ? "create" : "query";
-    for (const [id, on] of [["mode-create", create], ["mode-query", !create]]) {
-      if (on) $(id).setAttribute("aria-current", "page"); else $(id).removeAttribute("aria-current");
+    state.mode = ["home", "create", "query"].includes(mode) ? mode : "home";
+    const home = state.mode === "home", create = state.mode === "create";
+    for (const m of ["home", "create", "query"]) {
+      if (m === state.mode) $(`mode-${m}`).setAttribute("aria-current", "page"); else $(`mode-${m}`).removeAttribute("aria-current");
     }
+    $("home").hidden = !home;
+    for (const pane of document.querySelectorAll(".pane.edit, .pane.res")) pane.hidden = home;
+    if (home) return;
     $("ed-title").textContent = create ? "Your data · Turtle or JSON-LD" : "SPARQL query";
     for (const id of ["q-ed", "q-status", "sparql-tools"]) $(id).hidden = create;
     for (const id of ["d-ed", "d-status", "d-actions", "data-tools"]) $(id).hidden = !create;
@@ -755,7 +811,7 @@ ${a.stack}`:r}function Pj(a,A){a=a>>>0;let j=m(),r=[];for(let t=a;t<a+4*A;t+=4)r
     $("q").value = ex.query;
     for (const b of $("examples").querySelectorAll("button")) b.classList.toggle("on", b.dataset.id === ex.id);
     if (ex.view) setView(ex.view);
-    if (state.mode === "create") setMode("query"); else runQuery();
+    if (state.mode !== "query") setMode("query"); else runQuery();
     syncHash();
   }
   function link() {
@@ -768,7 +824,7 @@ ${a.stack}`:r}function Pj(a,A){a=a>>>0;let j=m(),r=[];for(let t=a;t<a+4*A;t+=4)r
   const syncHash = debounce(() => { try { history.replaceState(null, "", link()); } catch { /* file:// in some browsers */ } }, 400);
 
   // ---- wiring -------------------------------------------------------------
-  $("ver").textContent = LAB.version;
+  $("ver").textContent = $("ver2").textContent = LAB.version;
   $("examples").replaceChildren(...LAB.examples.map((ex) =>
     el("li", {}, el("button", { "data-id": ex.id, title: ex.title, onclick: () => loadExample(ex) }, el("code", {}, ex.id), ex.title))));
   $("q").addEventListener("input", () => { state.example = null; for (const b of $("examples").querySelectorAll("button.on")) b.classList.remove("on"); });
@@ -777,6 +833,9 @@ ${a.stack}`:r}function Pj(a,A){a=a>>>0;let j=m(),r=[];for(let t=a;t<a+4*A;t+=4)r
   for (const ta of [$("q"), $("d")]) ta.addEventListener("keydown", (e) => {
     if (e.key === "Tab" && !e.shiftKey && !e.altKey && !e.ctrlKey && !e.metaKey) { e.preventDefault(); ta.setRangeText("  ", ta.selectionStart, ta.selectionEnd, "end"); ta.dispatchEvent(new Event("input")); }
   });
+  $("mode-home").onclick = () => setMode("home");
+  $("go-create").onclick = () => setMode("create");
+  $("go-query").onclick = () => setMode("query");
   $("mode-query").onclick = () => setMode("query");
   $("mode-create").onclick = () => setMode("create");
   for (const id of ["q", "d"]) {
@@ -816,7 +875,9 @@ ${a.stack}`:r}function Pj(a,A){a=a>>>0;let j=m(),r=[];for(let t=a;t<a+4*A;t+=4)r
     $("q").value = p.get("q") ?? first.query;
     if (!p.has("q")) { state.example = first.id; $("examples").querySelector("button").classList.add("on"); }
     setView(p.get("view") || "table");
+    $("kg-size").textContent = `${fmtInt(active().quads)} triples, ${fmtSize(active().bytes.length)}`;
     runQuery();
+    if (p.has("q") || p.has("url")) setMode("query");
     if (p.get("url")) await openUrl(p.get("url"));
   })();
 })();

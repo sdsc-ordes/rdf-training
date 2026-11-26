@@ -42,6 +42,14 @@ const settled = (id, kind) => page.waitForFunction(([i, k]) => document.getEleme
 await page.goto(pathToFileURL(join(root, 'docs/lab.html')).href)
 await settled('q-status', 'ok')
 check((await page.locator('#datasets li').count()) === 1, 'built-in recipe graph opens from the page itself')
+check(await page.locator('#home').isVisible() && !(await page.locator('#q').isVisible()), 'the page opens on Home')
+check((await page.locator('#home a[href="https://github.com/caviri/rete"]').count()) >= 1 && (await page.locator('#ver2').innerText()) !== '', 'Home names the rete engine, its version and its repository')
+await shot('lab-home')
+await page.locator('#go-create').click()
+check(await page.locator('#d').isVisible(), 'Home leads to Create KG')
+await page.locator('#mode-home').click()
+await page.locator('#go-query').click()
+check(await page.locator('#q').isVisible() && !(await page.locator('#home').isVisible()), 'and to Query KG')
 
 // --- worksheet queries ------------------------------------------------------
 for (const file of readdirSync(expectedDir).sort()) {
