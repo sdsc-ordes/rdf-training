@@ -64,11 +64,11 @@ export:
 check-slides:
     npm run check:slides
 
-# Build docs/data/recipes.rete and the self-contained lab page docs/lab.html.
+# Build docs/data/recipes.rete and the self-contained lab page docs/index.html.
 rete:
     bash src/rete/build-rete.sh
 
-# Drive docs/lab.html in a browser: worksheet queries, live checks, data editor; needs `just rete` first.
+# Drive docs/index.html in a browser: queries, validation, data editor; needs `just rete` first.
 check-rete *args:
     node src/rete/check-lab.mjs {{args}}
 

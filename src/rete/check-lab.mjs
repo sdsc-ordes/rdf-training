@@ -1,6 +1,6 @@
-// Drive docs/lab.html in a browser, opened from disk: every worksheet query must return the rows of its
+// Drive docs/index.html in a browser, opened from disk: every worksheet query must return the rows of its
 // snapshot, a broken query must be reported, and Turtle and JSON-LD must build into a graph that can be
-// queried and downloaded. With --shots, also write the screenshots used in docs/index.html.
+// queried and downloaded. With --shots, also write the screenshots in docs/img/.
 import { createServer } from 'node:http'
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
@@ -39,7 +39,7 @@ const shot = async (name) => {
 const status = (id) => page.locator(`#${id}`).innerText()
 const settled = (id, kind) => page.waitForFunction(([i, k]) => document.getElementById(i).classList.contains(k), [id, kind], { timeout: 10000 })
 
-await page.goto(pathToFileURL(join(root, 'docs/lab.html')).href)
+await page.goto(pathToFileURL(join(root, 'docs/index.html')).href)
 await settled('q-status', 'ok')
 check((await page.locator('#datasets li').count()) === 1, 'built-in recipe graph opens from the page itself')
 check(await page.locator('#home').isVisible() && !(await page.locator('#q').isVisible()) && !(await page.locator('.side').isVisible()), 'the page opens on Welcome, without the sidebar')
@@ -218,7 +218,41 @@ for (const bug of await page.locator('#buggy button').all()) {
   const got = await page.locator('#out tbody tr').count()
   check(got === want, `${id} gives the ${want} expected SHACL result${want === 1 ? '' : 's'}`, `got ${got}: ${await status('s-status')}`)
 }
+// the last one, b11, breaks several shapes: each is highlighted, and the cursor is on the first
+const pointed = await page.evaluate(() => {
+  const ta = document.getElementById('s'), line = ta.value.slice(0, ta.selectionStart).split('\n').length
+  const hits = [...document.querySelectorAll('#s-ed .gutter .hit')].map((d) => Number(d.textContent))
+  return { line, hits, text: ta.value.split('\n')[line - 1], focused: document.activeElement === ta, bands: document.querySelectorAll('#s-ed pre .band').length, visible: ta.scrollTop < (line - 1) * 20.15 }
+})
+check(pointed.bands > 1 && pointed.hits[0] === pointed.line && /^recsh:\S+ a sh:/.test(pointed.text) && pointed.focused && pointed.visible, 'picking a broken file highlights the shapes it breaks and puts the cursor on the first', JSON.stringify(pointed))
 await shot('lab-validate')
+const layers = await page.evaluate(() => ({ band: getComputedStyle(document.querySelector('#s-ed pre .band')).zIndex, shown: document.elementFromPoint(...(() => { const b = document.querySelector('#s-ed pre .band').getBoundingClientRect(); return [b.left + 60, b.top + 8] })()).id }))
+check(layers.band === '-1' && layers.shown === 's', 'the highlight sits behind the text', JSON.stringify(layers))
+
+// layout: scrollbars above and below a wide table, a divider to drag, a sidebar to hide
+const bars = await page.evaluate(() => { const hs = document.getElementById('hscroll'), out = document.getElementById('out'); hs.scrollLeft = 120; return new Promise((done) => setTimeout(() => done({ shown: !hs.hidden, wide: out.scrollWidth > out.clientWidth, follows: out.scrollLeft }), 100)) })
+check(bars.shown && bars.wide && bars.follows === 120, 'a wide table has a scrollbar above it that moves the table', JSON.stringify(bars))
+await page.evaluate(() => { document.getElementById('out').scrollLeft = 0 })
+const width = () => page.locator('.pane.edit').evaluate((e) => Math.round(e.getBoundingClientRect().width))
+const before = await width(), handle = await page.locator('#split').boundingBox()
+await page.mouse.move(handle.x + 4, handle.y + 300)
+await page.mouse.down()
+await page.mouse.move(handle.x + 4 - 150, handle.y + 300, { steps: 5 })
+await page.mouse.up()
+check(Math.abs((await width()) - (before - 150)) <= 3, 'the divider between editor and results can be dragged', `${before} -> ${await width()}`)
+await page.locator('#split').focus()
+await page.keyboard.press('ArrowRight')
+check(Math.abs((await width()) - (before - 118)) <= 3, 'and moved with the arrow keys')
+await page.locator('#split').dblclick()
+check(Math.abs((await width()) - before) <= 3, 'a double-click puts it back')
+await page.locator('#side-toggle').click()
+check(!(await page.locator('.side').isVisible()) && (await width()) > before + 100, 'the sidebar collapses and gives its room to the panes')
+await page.locator('#side-toggle').click()
+check(await page.locator('.side').isVisible() && Math.abs((await width()) - before) <= 3, 'and comes back')
+
+await page.locator('#out tbody tr').nth(1).click()
+const one = await page.evaluate(() => ({ bands: document.querySelectorAll('#s-ed pre .band').length, text: document.getElementById('s').value.split('\n')[Number(document.querySelector('#s-ed .gutter .hit').textContent) - 1] }))
+check(one.bands === 1 && one.text.startsWith('recsh:'), 'clicking a result points at its shape', JSON.stringify(one))
 await page.locator('#views [data-view=cards]').click()
 check((await page.locator('#out .card').count()) === 9, 'the report reads as cards too')
 await page.locator('#views [data-view=table]').click()
@@ -242,9 +276,20 @@ await page.waitForFunction(() => (document.querySelector('#datasets li.on small'
 check((await page.locator('#datasets li.on small').innerText()).includes('URL'), 'a .rete file opens from a URL and becomes the queried graph', await page.locator('#add-msg').innerText())
 
 await page.goto('about:blank')
-await page.goto(`${pathToFileURL(join(root, 'docs/lab.html')).href}#view=cards&q=${encodeURIComponent('ASK { ?s ?p ?o }')}`)
+await page.goto(`${pathToFileURL(join(root, 'docs/index.html')).href}#view=cards&q=${encodeURIComponent('ASK { ?s ?p ?o }')}`)
 await settled('q-status', 'ok')
 check((await page.locator('#out .bool').innerText()) === 'true', 'a link restores the query')
+
+await page.locator('#mode-guide').click()
+check(await page.locator('#guide').isVisible() && !(await page.locator('.side').isVisible()) && (await page.locator('#guide h3').count()) === 5 && (await page.locator('#guide #ai').count()) === 1, 'the Guide tab holds the five exercises and the AI disclosure, in the same file')
+await shot('lab-guide')
+await page.locator('#guide [data-go=validate]').click()
+check(await page.locator('#s').isVisible(), 'an exercise leads to its tab')
+await page.goto('about:blank')
+await page.goto(`${pathToFileURL(join(root, 'docs/index.html')).href}#tab=guide`)
+await page.waitForFunction(() => !document.getElementById('guide').hidden)
+check(await page.locator('#guide').isVisible(), 'a link can open the Guide')
+check(await page.evaluate(() => [...document.querySelectorAll('img, link[href], script[src]')].length) === 0, 'the page loads no other file')
 
 check(errors.length === 0, 'no uncaught errors in the page', errors.join('\n     '))
 await browser.close()

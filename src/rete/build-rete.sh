@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Build docs/data/recipes.rete from the course data, then the self-contained lab page docs/lab.html.
+# Build docs/data/recipes.rete from the course data, then the self-contained lab page docs/index.html.
 #
 #   bash src/rete/build-rete.sh            # .rete file and lab page
 #   bash src/rete/build-rete.sh --no-lab   # .rete file only

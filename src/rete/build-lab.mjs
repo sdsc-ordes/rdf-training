@@ -1,4 +1,4 @@
-// Assemble docs/lab.html: the template src/rete/lab.html with the rete engine, the recipe graph,
+// Assemble docs/index.html: the template src/rete/lab.html with the rete engine, the recipe graph,
 // the course queries and a world outline inlined, so the page works from any host or from disk.
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
@@ -140,5 +140,5 @@ const data = {
 const html = read('src/rete/lab.html')
   .replace('__LAB_DATA__', () => JSON.stringify(data).replace(/</g, '\\u003c'))
   .replace('__RETE_ENGINE__', () => engine.replace(/<\/script/gi, '<\\/script'))
-writeFileSync(join(root, 'docs/lab.html'), html)
-console.log(`docs/lab.html: ${(html.length / 1048576).toFixed(1)} MB, rete-graph ${version}, ${examples.length} queries, ${buggy.length} broken files, world outline ${(world.length / 1024).toFixed(0)} KB`)
+writeFileSync(join(root, 'docs/index.html'), html)
+console.log(`docs/index.html: ${(html.length / 1048576).toFixed(1)} MB, rete-graph ${version}, ${examples.length} queries, ${buggy.length} broken files, world outline ${(world.length / 1024).toFixed(0)} KB`)
