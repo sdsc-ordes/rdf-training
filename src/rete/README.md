@@ -1,6 +1,6 @@
 # RETE lab
 
-Sources of the lab published from `docs/`: a self-contained HTML page that runs SPARQL over
+Sources of the lab built into `docs/` and published at `lab/` of the course site: a self-contained HTML page that runs SPARQL over
 [rete](https://github.com/caviri/rete) files in the browser.
 
 | File | Role |
