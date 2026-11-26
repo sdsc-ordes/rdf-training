@@ -21,5 +21,5 @@ minutes: 3
 
 <!--
 Property shapes constrain the values reached through a path from each focus node.
-Paths can be sequences, inverses or repeats, as in the vegan rule.
+Paths can also be sequences, inverses or repeats, e.g. rec:hasIngredient/rec:containsIngredient* to look inside products; the course shapes keep to single properties.
 -->

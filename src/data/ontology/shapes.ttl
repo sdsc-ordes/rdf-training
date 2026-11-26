@@ -103,36 +103,35 @@ recsh:CuisineConcept a sh:NodeShape ;
 recsh:CourseConcept a sh:NodeShape ;
     sh:property [ sh:path skos:inScheme ; sh:hasValue course:scheme ] .
 
-# --- Diet claims must match the ingredients (also inside products) ----------
+# --- Diet claims must match the ingredients --------------------------------
+
+# Each rule reads: either the recipe makes no such claim, or none of its ingredients breaks it.
 
 # #region veganRule
 recsh:VeganRecipeShape a sh:NodeShape ;
     sh:targetClass schema:Recipe ;
     sh:or (
         [ sh:not [ sh:path schema:suitableForDiet ; sh:hasValue schema:VeganDiet ] ]
-        [ sh:path ( rec:hasIngredient [ sh:zeroOrMorePath rec:containsIngredient ] ) ;
-          sh:not [ sh:class rec:AnimalProduct ] ]
+        [ sh:path rec:hasIngredient ; sh:not [ sh:class rec:AnimalProduct ] ]
     ) ;
-    sh:message "A vegan recipe must not contain animal products, not even inside products like pesto."@en .
+    sh:message "A vegan recipe must not contain animal products."@en .
 # #endregion veganRule
 
 recsh:VegetarianRecipeShape a sh:NodeShape ;
     sh:targetClass schema:Recipe ;
     sh:or (
         [ sh:not [ sh:path schema:suitableForDiet ; sh:hasValue schema:VegetarianDiet ] ]
-        [ sh:path ( rec:hasIngredient [ sh:zeroOrMorePath rec:containsIngredient ] ) ;
-          sh:not [ sh:class rec:MeatOrFish ] ]
+        [ sh:path rec:hasIngredient ; sh:not [ sh:class rec:MeatOrFish ] ]
     ) ;
-    sh:message "A vegetarian recipe must not contain meat or fish, not even inside products like Worcestershire sauce."@en .
+    sh:message "A vegetarian recipe must not contain meat or fish."@en .
 
 recsh:GlutenFreeRecipeShape a sh:NodeShape ;
     sh:targetClass schema:Recipe ;
     sh:or (
         [ sh:not [ sh:path schema:suitableForDiet ; sh:hasValue schema:GlutenFreeDiet ] ]
-        [ sh:path ( rec:hasIngredient [ sh:zeroOrMorePath rec:containsIngredient ] ) ;
-          sh:not [ sh:path rec:hasAllergen ; sh:hasValue allergen:gluten ] ]
+        [ sh:path rec:hasIngredient ; sh:not [ sh:path rec:hasAllergen ; sh:hasValue allergen:gluten ] ]
     ) ;
-    sh:message "A gluten-free recipe must not contain gluten, not even inside products like soy sauce."@en .
+    sh:message "A gluten-free recipe must not contain gluten."@en .
 
 # --- Ingredient usage (quantity + unit) -------------------------------------
 

@@ -11,7 +11,8 @@
 
 # --- SHACL-SPARQL ------------------------------------------------------------
 
-# The vegan rule as SHACL-SPARQL, for comparison with the SHACL Core version.
+# The vegan rule as SHACL-SPARQL. Unlike the SHACL Core version, it also looks inside products
+# (rec:containsIngredient*), e.g. the Parmesan in pesto.
 
 # #region veganSparql
 recsh:VeganRecipeSparqlShape a sh:NodeShape ;
