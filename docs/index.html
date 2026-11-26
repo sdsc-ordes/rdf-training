@@ -384,16 +384,10 @@ a.iri:hover { text-decoration: underline; }
         <input type="file" id="s-file" accept=".ttl,.shacl,.txt" hidden>
       </div>
 
-      <details id="bug-box" open>
+      <details id="bug-box">
         <summary>Broken data to try</summary>
         <ul class="ex" id="buggy"></ul>
       </details>
-
-      <h2>Report</h2>
-      <div class="acts">
-        <button class="btn" id="v-report" type="button" disabled>Download report</button>
-        <small class="note wide">SHACL Core, checked by the rete engine. This version does not report <code>sh:not</code> applied to the values of a path, which the diet rules of the course shapes use.</small>
-      </div>
     </div>
 
     <div id="side-query">
@@ -420,8 +414,6 @@ a.iri:hover { text-decoration: underline; }
     </div>
 
     <div class="about">
-      Engine: <a href="https://github.com/caviri/rete">rete</a> <span id="ver"></span>, compiled to WebAssembly and
-      embedded in this file. Nothing is sent to a server.<br>
       Page drafted with an AI coding assistant; see the <a href="#tab=guide" data-go="guide">disclosure</a> in the guide.
     </div>
   </aside>
@@ -1295,7 +1287,6 @@ ${a.stack}`:r}function Pj(a,A){a=a>>>0;let j=m(),r=[];for(let t=a;t<a+4*A;t+=4)r
   const validationTarget = () => state.datasets.find((d) => d.id === $("v-target").value) || active();
   function validate() {
     const ds = validationTarget(), text = $("s").value;
-    $("v-report").disabled = true;
     if (!ds) { setStatus("s-status", "", "no graph", "Add or create a graph first."); return; }
     if (!text.trim()) {
       state.report = null;
@@ -1316,7 +1307,6 @@ ${a.stack}`:r}function Pj(a,A){a=a>>>0;let j=m(),r=[];for(let t=a;t<a+4*A;t+=4)r
       const nodes = new Set(raw.results.map((r) => r.focusNode)).size, time = `${ms < 10 ? ms.toFixed(1) : ms.toFixed(0)} ms`;
       if (raw.conforms) setStatus("s-status", "ok", "✓ conforms", `${ds.name} · ${fmtInt(ds.quads)} triples checked · ${time}`);
       else setStatus("s-status", "err", `✗ ${rows.length} ${rows.length === 1 ? "result" : "results"}`, `${ds.name} · ${nodes} ${nodes === 1 ? "node breaks" : "nodes break"} the shapes · ${time}`);
-      $("v-report").disabled = false;
       state.stale.validate = false;
       if (state.mode === "validate") { renderResult(); onLabel(); dim(); }
     } catch (e) {
@@ -1893,7 +1883,7 @@ ${a.stack}`:r}function Pj(a,A){a=a>>>0;let j=m(),r=[];for(let t=a;t<a+4*A;t+=4)r
   const syncHash = debounce(() => { try { history.replaceState(null, "", link()); } catch { /* file:// in some browsers */ } }, 400);
 
   // ---- wiring -------------------------------------------------------------
-  $("ver").textContent = $("ver2").textContent = LAB.version;
+  $("ver2").textContent = LAB.version;
   renderExamples();
   $("q").addEventListener("input", () => { state.example = null; for (const b of $("examples").querySelectorAll("button.on")) b.classList.remove("on"); });
   $("q").addEventListener("input", () => { outdated("query"); syncHash(); });
@@ -1966,7 +1956,6 @@ ${a.stack}`:r}function Pj(a,A){a=a>>>0;let j=m(),r=[];for(let t=a;t<a+4*A;t+=4)r
   $("s-open").onclick = () => $("s-file").click();
   $("s-file").onchange = async (e) => { const f = e.target.files[0]; e.target.value = ""; if (f) loadShapes(await f.text()); };
   $("s-download").onclick = () => save("shapes", "ttl", $("s").value, "text/turtle");
-  $("v-report").onclick = () => state.report && save(`report ${state.report.target}`, "json", `${JSON.stringify(state.report.raw, null, 2)}\n`, "application/json");
   renderBugs();
   $("mode-query").onclick = () => setMode("query");
   $("mode-create").onclick = () => setMode("create");
