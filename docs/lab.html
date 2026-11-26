@@ -73,8 +73,8 @@ button { cursor: pointer; }
 .about a { color: #fff; }
 
 /* home */
-.home { grid-column: 2 / -1; overflow-y: auto; }
-.home-in { max-width: 880px; padding: 36px 32px 48px; }
+.pane.home { grid-column: 1 / -1; overflow-y: auto; border: 0; }
+.home-in { max-width: 880px; margin: 0 auto; padding: 44px 24px 56px; }
 .home h1 { margin: 0 0 8px; font-size: 30px; line-height: 1.15; color: var(--primary); }
 .home h2 { margin: 30px 0 6px; font-size: 19px; }
 .home p { margin: 8px 0; max-width: 72ch; }
@@ -167,14 +167,14 @@ a.iri:hover { text-decoration: underline; }
   <header class="top">
     <span class="name">RETE lab</span>
     <nav aria-label="Mode">
-      <button id="mode-home" type="button" aria-current="page">Home</button>
+      <button id="mode-home" type="button" aria-current="page">Welcome</button>
       <button id="mode-create" type="button">Create KG</button>
       <button id="mode-query" type="button">Query KG</button>
     </nav>
     <span class="meta">SPARQL over <code>.rete</code> files, in this page · <a href="index.html">exercises</a></span>
   </header>
 
-  <aside class="pane side" aria-label="Datasets and examples">
+  <aside class="pane side" aria-label="Datasets and examples" hidden>
 
     <h2>Graphs in memory</h2>
     <ul class="ds" id="datasets"></ul>
@@ -204,7 +204,7 @@ a.iri:hover { text-decoration: underline; }
     </div>
   </aside>
 
-  <section class="pane home" id="home" aria-label="Home">
+  <section class="pane home" id="home" aria-label="Welcome">
     <div class="home-in">
       <h1>A knowledge graph lab in one file</h1>
       <p class="lead">Write RDF, turn it into a graph and ask it questions with SPARQL. Everything runs in this page: nothing to install, nothing sent to a server, and it works offline.</p>
@@ -782,7 +782,7 @@ ${a.stack}`:r}function Pj(a,A){a=a>>>0;let j=m(),r=[];for(let t=a;t<a+4*A;t+=4)r
   }
 
   // ---- tabs, examples, link state -----------------------------------------
-  // Home: what this is. Create KG: write Turtle or JSON-LD, see its triples. Query KG: write SPARQL, see the answer.
+  // Welcome: what this is. Create KG: write Turtle or JSON-LD, see its triples. Query KG: write SPARQL, see the answer.
   function setMode(mode) {
     state.mode = ["home", "create", "query"].includes(mode) ? mode : "home";
     const home = state.mode === "home", create = state.mode === "create";
@@ -790,7 +790,7 @@ ${a.stack}`:r}function Pj(a,A){a=a>>>0;let j=m(),r=[];for(let t=a;t<a+4*A;t+=4)r
       if (m === state.mode) $(`mode-${m}`).setAttribute("aria-current", "page"); else $(`mode-${m}`).removeAttribute("aria-current");
     }
     $("home").hidden = !home;
-    for (const pane of document.querySelectorAll(".pane.edit, .pane.res")) pane.hidden = home;
+    for (const pane of document.querySelectorAll(".pane.side, .pane.edit, .pane.res")) pane.hidden = home; // Welcome has the page to itself
     if (home) return;
     $("ed-title").textContent = create ? "Your data · Turtle or JSON-LD" : "SPARQL query";
     for (const id of ["q-ed", "q-status", "sparql-tools"]) $(id).hidden = create;
