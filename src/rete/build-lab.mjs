@@ -88,7 +88,8 @@ const starterJsonld = `${JSON.stringify({
 // Validate KG: the course shapes, a short shape to start from, and the files that are broken on purpose.
 // A file is left out when its expected result needs sh:not on the values of a path (the diet rules, sh:or
 // in expected.tsv), which rete 0.7.8 does not report.
-const shapes = read('src/data/ontology/shapes.ttl').split('\n').filter((line) => !/^# #(end)?region/.test(line)).join('\n')
+const noRegions = (text) => text.split('\n').filter((line) => !/^# #(end)?region/.test(line)).join('\n') // slide markers
+const shapes = noRegions(read('src/data/ontology/shapes.ttl'))
 const h2 = 'src/hands-on/h2-validate'
 const expected = read(h2, 'expected.tsv').trim().split('\n').slice(1).map((line) => line.split('\t'))
 const buggy = readdirSync(join(root, h2, 'buggy')).filter((f) => f.endsWith('.ttl')).sort().flatMap((file) => {
@@ -121,8 +122,14 @@ ex:RecipeShape a sh:NodeShape ;
     ] .
 `
 
+// Create KG: the whole course graph as Turtle, from the same files as recipes.rete, to read or start from.
+const courseTurtle = ['ontology/ontology.ttl', 'ontology/enumerations.ttl', 'instances.ttl']
+  .map((file) => `# ==== ${file} ====\n\n${noRegions(read('src/data', file)).trim()}\n`)
+  .join('\n')
+
 const data = {
   shapes,
+  courseTurtle,
   smallShapes,
   buggy,
   version,

@@ -354,6 +354,7 @@ a.iri:hover { text-decoration: underline; }
       <div class="acts">
         <button class="btn" id="d-new" type="button">New empty graph</button>
         <button class="btn" id="d-example-ttl" type="button" title="Replace the text with a recipe in Turtle">Turtle example</button>
+        <button class="btn" id="d-course" type="button" title="Replace the text with the whole recipe graph of the course: ontology, value lists and instance data">Course recipe graph</button>
         <button class="btn adv" id="d-example" type="button" title="Replace the text with the same recipe in JSON-LD">JSON-LD example</button>
         <button class="btn adv" id="d-open" type="button" title="Load a .ttl or .jsonld file into the editor">Open file…</button>
       </div>
@@ -431,7 +432,7 @@ a.iri:hover { text-decoration: underline; }
       <div class="modes">
         <article>
           <h2>Create KG</h2>
-          <p>Write a recipe in <b>Turtle</b> and see it drawn as a graph.</p>
+          <p>Write a recipe in <b>Turtle</b>, or open the course's recipe graph, and look at it as a drawing or as tables.</p>
           <button class="go" id="go-create" type="button">Create a graph →</button>
         </article>
         <article>
@@ -514,6 +515,7 @@ a.iri:hover { text-decoration: underline; }
 <h2>Around the page</h2>
 <ul>
   <li><b>All options</b> (top right) shows the tools you rarely need: other graphs, downloads, the dataset card, CSV and links.</li>
+  <li><b>Course recipe graph</b> in Create KG puts the whole course graph in the editor: read it as Turtle, or as one table per class under <b>By class</b>.</li>
   <li><b>☰</b> in the top bar hides and shows the sidebar.</li>
   <li><b>Ctrl+Enter</b> (<b>⌘+Enter</b> on a Mac) in the editor does the same as <b>Run</b> or <b>Validate</b>.</li>
   <li>Drag the line between the editor and the results to give one of them more room; double-click it to reset. With the keyboard: focus it and use the arrow keys.</li>
@@ -1842,6 +1844,8 @@ node src/rete/check-lab.mjs   # drive the page in a browser                  (or
   const loadData = (text) => { $("d").value = text; $("fmt").value = "auto"; $("d").scrollTop = 0; buildData(); };
   $("d-example").onclick = () => loadData(LAB.starterJsonld);
   $("d-example-ttl").onclick = () => loadData(LAB.starterTurtle);
+  // the drawing shows only the first triples of a graph this size: open it as one table per class
+  $("d-course").onclick = () => { setView("classes"); loadData(LAB.courseTurtle); };
   $("d-open").onclick = () => $("file").click();
   $("d-new").onclick = () => { if ($("d").value.trim() || cardJson()) $("confirm-dlg").showModal(); else loadData(""); };
   $("confirm-ok").onclick = () => { state.card = {}; $("confirm-dlg").close(); loadData(""); };
