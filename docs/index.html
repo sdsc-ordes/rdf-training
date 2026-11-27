@@ -62,7 +62,12 @@ button { cursor: pointer; }
 .pane + .pane { border-left: 1px solid var(--border); }
 
 /* sidebar */
-.side { background: linear-gradient(160deg, var(--navy), var(--navy-2)); color: #fff; overflow-y: auto; }
+.side { background: linear-gradient(160deg, var(--navy), var(--navy-2)); color: #fff; overflow-x: hidden; overflow-y: auto; }
+/* the sidebar scrolls only up and down, with a scrollbar drawn for its dark background */
+.side { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.32) transparent; }
+.side::-webkit-scrollbar { width: 8px; background: transparent; }
+.side::-webkit-scrollbar-thumb { background: rgba(255,255,255,.32); border-radius: 4px; }
+.side::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,.5); }
 .side h2, .side summary { margin: 14px 16px 6px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #C2C5E0; font-weight: 600; }
 .ds { list-style: none; margin: 0; padding: 0 8px; }
 .ds li { display: grid; grid-template-columns: 1fr auto; gap: 0 2px; align-items: center; border-radius: 6px; }
@@ -75,7 +80,7 @@ button { cursor: pointer; }
 .ds .pick small { color: #C2C5E0; }
 .ds .icon { background: none; border: 0; color: #C2C5E0; padding: 6px 7px; border-radius: 4px; }
 .ds .icon:hover { background: rgba(255,255,255,.16); color: #fff; }
-.add { padding: 4px 16px; display: grid; gap: 6px; }
+.add { padding: 4px 16px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; }
 .add .row { display: flex; gap: 6px; }
 .add input[type=url] { flex: 1; min-width: 0; padding: 6px 8px; border-radius: 5px; border: 1px solid rgba(255,255,255,.25); background: rgba(0,0,0,.2); color: #fff; }
 .add input::placeholder { color: #A9ADD0; }

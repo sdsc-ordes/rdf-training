@@ -356,6 +356,14 @@ await page.locator('#url-form button').click()
 await page.waitForFunction(() => (document.querySelector('#datasets li.on small') || {}).textContent?.includes('URL'), null, { timeout: 10000 }).catch(() => {})
 check((await page.locator('#datasets li.on small').innerText()).includes('URL'), 'a .rete file opens from a URL and becomes the queried graph', await page.locator('#add-msg').innerText())
 
+// with All options on, every sidebar fits its width and scrolls only vertically
+const sides = []
+for (const mode of ['create', 'validate', 'query']) {
+  await page.locator(`#mode-${mode}`).click()
+  sides.push(await page.locator('.side').evaluate((s, m) => ({ m, fits: s.scrollWidth <= s.clientWidth, x: getComputedStyle(s).overflowX, w: `${s.scrollWidth}/${s.clientWidth}` }), mode))
+}
+check(sides.every((s) => s.fits && s.x === 'hidden'), 'every sidebar fits its width, with no horizontal scrolling', JSON.stringify(sides))
+
 await page.goto('about:blank')
 await page.goto(`${pathToFileURL(join(root, 'docs/index.html')).href}#view=cards&q=${encodeURIComponent('ASK { ?s ?p ?o }')}`)
 await graphLoaded()
